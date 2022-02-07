@@ -1,0 +1,23 @@
+#content {
+  background-color: #FFF2EB;
+  background-image: url(../../../images/grupo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 300px 300px;
+  opacity: 1;
+	height: 100%;
+	margin: 0 auto;
+	width: 100vw;
+}
+
+#color_materia{
+  height: 45px;
+}
+
+.botonesBarra{
+  visibility: hidden;
+}
+
+#logout{
+  visibility:visible;
+}

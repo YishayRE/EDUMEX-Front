@@ -1,0 +1,81 @@
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="./css/style_EscIni.css">
+    <link rel="stylesheet" type="text/css" href="../../css/generales/esc_general.css">
+    <link rel="stylesheet" type="text/css" href="../css/popups.css">
+    <link rel="stylesheet" type="text/css" href="../css/tarjetas.css">
+    <title>Escritorio de Inicio</title>
+</head>
+<body>
+    <div id="blocker"></div>
+    <div id="loader"></div>
+    <header class="stick" id="navBar">
+    </header>
+
+    <div id="content">
+        <div id="emergentes">
+            <div id="popup1" class="overlay">
+                <div class="popup">
+                    <h2>Unirme a Grupo</h2>
+
+                    <a class="close" href="#">&times;</a>
+
+                    <div class="content">
+                        <form class="center" id="form_unirGrupo">
+                            <div class="inputbox">
+                                <input id="Nom_grupo" type="text" name="nombre">
+
+                                <span>Código del grupo</span>
+                            </div>
+                            
+                            <div>
+                                <button id="enviar_codigo" type="submit">Unirme</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div id="popup2" class="overlay">
+                <div class="popup">
+                    <h2>Crear Grupo</h2>
+
+                    <a class="close" href="#">&times;</a>
+                    
+                    <div class="content">
+                        <form class="center" id="form_crearGrupo">
+                            <div class="inputbox">
+                                <input id="Nom_grupo" type="text" name="nom_grupo" placeholder="Ej. '3°B'">
+
+                                <span>Nombre del grupo</span>
+                            </div>
+                            
+                            <div class="inputbox">
+                                <input id="Texto_bienvenida" type="text" name="texto_bienvenida" placeholder="Inserte una bienvenida">
+                                
+                                <span>Texto de Bienvenida</span>
+                            </div>
+                            
+                            <div>
+                                <button id="enviar_grupo" type="submit">Crear Grupo</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tarjetas" class="container">
+        </div>
+    </div>
+    <script src="../../js/const.js"></script>
+    <script src="../../js/cabecera.js"></script>
+    <script src="../../js/validarJWT.js"></script>
+    <script src="../../js/loaders.js"></script>
+    <script src="../js/navBar.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/tarjetas.js"></script>
+    <script src="../js/petArray.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

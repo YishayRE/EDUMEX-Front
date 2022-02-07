@@ -1,0 +1,41 @@
+/*------------------------------------------CUERPO DE LA PÁGINA-----------------------------------*/
+body {
+
+	color: #FFF2EB;
+	font-family: Arial;
+	font-size: 14px;
+	margin: 0;
+	padding: 0;
+	max-width: 100vw;
+	max-height: 100vh;
+	overflow: hidden;
+}
+
+.stick {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.container-ccenter {
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-xcenter {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-ycenter {
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}

@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="./css/style_EscMat.css">
+    <link rel="stylesheet" type="text/css" href="../../css/generales/esc_general.css">
+    <link rel="stylesheet" type="text/css" href="../../css/generales/barra_navegacion.css">
+    <link rel="stylesheet" type="text/css" href="../../css/generales/loader.css">
+    <link rel="stylesheet" type="text/css" href="../../css/generales/blocker.css">
+    <link rel="stylesheet" type="text/css" href="../css/popups.css">
+    <link rel="stylesheet" type="text/css" href="../css/tarjetas.css">
+    <title>Escritorio de la Materia</title>
+</head>
+<body>
+    <div id="blocker"></div>
+    <div id="loader"></div>
+    <header class="stick" id="navBar">
+
+    </header>
+
+    <div id="content">
+        <div class="emergentes">
+            <div id="popup1" class="overlay">
+                <div class="popup">
+                    <h2>Crear Actividad</h2>
+                    <a class="close" href="#">&times;</a>
+                    <div class="content">
+                        <form class="center" id="form_crearActividad">
+                            <div class="inputbox">
+                                <input id="Nom_actividad" type="text" name="nombre" placeholder="Ej. '3°B'">
+                                <span>Nombre de la materia</span>
+                            </div><div class="inputbox">
+                                <input id="Desc_actividad" type="text" name="descripcion" placeholder="Inserte una descripción">
+                                <span>Descripcion de la actividad</span>
+                            </div><div class="inputbox">
+                                <input id="Obj_actividad" type="text" name="objetivo" placeholder="Inserte un objetivo">
+                                <span>Objetivo de la actividad</span>
+                            </div><div class="inputbox">
+                                <input id="Calif_actividad" type="text" name="calificacion" placeholder="Ej. 10">
+                                <span>Calificación</span>
+                            </div><div class="inputbox">
+                                <input id="Tiempo_actividad" type="text" name="tiempo" placeholder="Ej. 10 min">
+                                <span>Tiempo</span>
+                            </div><div>
+                                <button id="enviar_actividad" type="submit">Crear</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="tarjetas" class="container">
+        </div>
+    </div>
+    <script src="../../js/cabecera.js"></script>
+    <script src="../../js/const.js"></script>
+    <script src="../../js/navBar.js"></script>
+    <script src="../../js/validarJWT.js"></script>
+    <script src="../../js/loaders.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/tarjetas.js"></script>
+    <script src="../js/petArray.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

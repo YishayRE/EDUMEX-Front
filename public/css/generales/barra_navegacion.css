@@ -1,0 +1,107 @@
+/*-------------------------------------------BARRA DE NAVEGACION---------------------------------------*/
+nav {
+    background: #ffb4a2;
+    height: 60px;
+    width: 100%;
+}
+
+.enlace {
+    position: absolute;
+    padding: 10px 30px;
+}
+
+.logo {
+    height: 40px;
+}
+
+nav ul {
+    float: right;
+    margin-right: 5%;
+    margin-bottom: 0rem;
+}
+
+nav ul li {
+    display: inline-block;
+    line-height: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    padding: 10px 32px;
+    border-radius: 13px;
+    text-transform: uppercase;
+    background: #E5989B;
+    transition: all .5s;
+}
+
+li a.active {
+    color: black;
+    transition: all .5s;
+    font-size: 16px;
+}
+
+li a:hover {
+    color: black;
+    background: #917681;
+    transition: .5s;
+    font-size: 16px;
+}
+
+.checkbtn {
+    font-size: 30px;
+    color: black;
+    float: right;
+    line-height: 60px;
+    margin-right: 40px;
+    margin-top: 15px;
+    cursor: pointer;
+    display: none;
+}
+
+#check {
+    display: none;
+}
+/*-------------------------------------------ESTILOS PAGINA RESPONSIVA-----------------------------------*/
+@media (max-width: 952px) {
+    .enlace {
+        padding-left: 20px;
+    }
+    nav ul li a {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 858px) {
+    .checkbtn {
+        display: block;
+    }
+    ul {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #FFF2EB;;
+        top: 40px;
+        left: -130%;
+        text-align: center;
+        transition: all .5s;
+    }
+    nav ul li {
+        display: block;
+        margin: 50px 0;
+        margin-right: 25vw;
+        line-height: 20px;
+    }
+    nav ul li a {
+        font-size: 20px;
+    }
+    li a:hover,
+    li a.active {
+        background: pink;
+        color: black;
+    }
+    #check:checked~ul {
+        left: 0;
+    }
+}
