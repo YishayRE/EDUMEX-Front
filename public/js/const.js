@@ -1,6 +1,5 @@
-console.log(window.location.hostname);
 const baseUrl = ( window.location.hostname.includes('localhost') )
-    ? 'http://localhost:5500/'
+    ? 'http://localhost:3000/'
     : 'https://edumex-3f447.web.app/';
 
 const baseApi = ( window.location.hostname.includes('localhost') )

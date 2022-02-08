@@ -1,7 +1,7 @@
 document.head.innerHTML = `
 <meta charset="UTF-8">
 <link rel="icon" href="${baseUrl}images/logoPNG.png" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge chrome=1">
+<meta http-equiv="x-ua-compatible" content="IE=edge chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <meta name="description" content="Plataforma educativa para la educación primaria">
 <meta name="title" content="EDUMEX">

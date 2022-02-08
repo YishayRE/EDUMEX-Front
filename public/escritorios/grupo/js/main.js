@@ -13,6 +13,14 @@ const accesos = [
 	}
 ];
 
+
+const accesoP = [
+    {
+        'nombre': 'Crear Materia',
+		'referencia': `#popup1`
+	}
+];
+
 //-----------------------------Formulario para crear una nueva materia--------------------------
 formCrear.addEventListener('submit', ev => {
     
@@ -65,13 +73,13 @@ formCrear.addEventListener('submit', ev => {
 const checarRol = async() => {
     const grupo = localStorage.getItem('grupo');
     if(rol == "PRO_ROLE"){
-        dibujarNavBar(accesos);
+        dibujarNavBar(accesoP);
         cerrarSesion();
-        mostrarBotones(1);
+        console.log('Hola');
         const {materias} = await obtenerArray(`materia/${grupo}`);
         dibujarMateria(materias);
     }else if(rol == "EST_ROLE"){
-        dibujarNavBar(accesos);
+        dibujarNavBar([]);
         cerrarSesion();
         const {materias} = await obtenerArray(`materia/${grupo}`);
         dibujarMateria(materias);

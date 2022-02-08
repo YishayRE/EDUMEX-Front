@@ -17,7 +17,7 @@ function cerrarSesion(){
     const btnSalir = document.querySelector('#logout');
     btnSalir.addEventListener('click', e => {
         localStorage.removeItem('token');
-        window.location = `${baseUrl}pantalla_inicial`;
+        window.location = `${baseUrl}`;
     });
 }
 

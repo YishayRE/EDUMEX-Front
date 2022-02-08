@@ -1,0 +1,24 @@
+{
+  "name": "front",
+  "version": "1.0.0",
+  "description": "EDUMEX-Front",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YishayRE/EDUMEX-Front.git"
+  },
+  "author": "Javier & Miguel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YishayRE/EDUMEX-Front/issues"
+  },
+  "homepage": "https://github.com/YishayRE/EDUMEX-Front#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "http-server": "^14.1.0"
+  }
+}

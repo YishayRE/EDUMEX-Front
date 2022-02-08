@@ -3,16 +3,16 @@ const formCrear = document.querySelector('#form_crearGrupo');
 
 const accesoP = [
     {
-        'nombre': 'Unirme a Grupo',
-        'referencia': `#popup1`
-
-    }
+        'nombre': 'Crear Grupo',
+		'referencia': `#popup1`
+	}
 ];
 const accesoE = [
     {
-		'nombre': 'Crear Grupo',
-		'referencia': `#popup2`
-	}
+        'nombre': 'Unirme a Grupo',
+        'referencia': `#popup2`
+
+    }
 ];
 
 //-----------------------------Formulario para crear un nuevo grupo--------------------------
