@@ -7,7 +7,8 @@ const iniciar = async(formData) => {
     const {msg, token} = await resp.json();
 
     if(msg){
-        console.error(msg);
+        console.error(msg);            
+        dibujarPopAlerta(msg);
         return;
     }
 
@@ -33,7 +34,8 @@ const registrar = async(formData) => {
         errors.forEach((err, index) => {
             errores += `${index}. ${err.msg}\n`;
         });
-        console.error(errores);
+        console.error(errores);        
+        dibujarPopAlerta(errores);
         return;
     }
 

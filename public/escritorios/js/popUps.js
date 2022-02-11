@@ -1,53 +1,111 @@
-const popUp = document.querySelector('#navBar');
+const emergentes = document.querySelector('#emergentes');
+const overlay = document.querySelector('.overlay');
+const prof = document.querySelector("#pro0");
 
-const dibujarNavBar = (datos = []) => {
+
+const dibujarPopUp = (datos = []) => {
     let popUpHtml = '';
-
-    popUpHtml += `
-        <div id="popup1" class="overlay">
+    
+    datos.forEach(({ nombre, form, boton },index) => {
+        popUpHtml += `
+        <div id="popup${index+1}" class="overlay">
             <div class="popup">
-                <h2>Unirme a Grupo</h2>
+                <h2>${nombre}</h2>
 
                 <a class="close" href="#">&times;</a>
 
                 <div class="content">
-                    <form class="center" id="form_unirGrupo">
+                    <form class="center" id="${form}">
+        `;
+    if(form === "form_unirGrupo"){
+        popUpHtml += `
                         <div class="inputbox">
                             <input id="Nom_grupo" type="text" name="nombre">
 
                             <span>Código del grupo</span>
+                        </div>    
+    `;  
+    }else if(form === "form_crearGrupo"){
+        popUpHtml += `
+                        <div class="inputbox">
+                            <input id="Nom_grupo" type="text" name="nom_grupo" placeholder="Ej. '3°B'">
+
+                            <span>Nombre del grupo</span>
                         </div>
                         
+                        <div class="inputbox">
+                            <input id="Texto_bienvenida" type="text" name="texto_bienvenida" placeholder="Inserte una bienvenida">
+                            
+                            <span>Texto de Bienvenida</span>
+                        </div>
+    `;
+    }else if(form === "form_crearMateria"){
+        popUpHtml += `
+                        <div class="inputbox">
+                            <input id="Nom_materia" type="text" name="nombre" placeholder="Ej. '3°B'">
+                            <span>Nombre de la materia</span>
+                        </div><div class="inputbox">
+                            <input id="Desc_materia" type="text" name="desc_materia" placeholder="Inserte una descripción">
+                            <span>Descripción de la materia</span>
+                        </div><div class="inputbox">
+                            <input id="Color_materia" type="color" pattern="#[a-f0-9]{6}" name="color">
+                            <span>Color de la materia</span>
+                        </div>
+    `;
+    }else if(form === "form_crearActividad"){
+        popUpHtml += `
+                        <div class="inputbox">
+                            <input id="Nom_actividad" type="text" name="nombre" placeholder="Ej. '3°B'">
+                            <span>Nombre de la materia</span>
+                        </div><div class="inputbox">
+                            <input id="Desc_actividad" type="text" name="descripcion" placeholder="Inserte una descripción">
+                            <span>Descripcion de la actividad</span>
+                        </div><div class="inputbox">
+                            <input id="Obj_actividad" type="text" name="objetivo" placeholder="Inserte un objetivo">
+                            <span>Objetivo de la actividad</span>
+                        </div><div class="inputbox">
+                            <input id="Calif_actividad" type="text" name="calificacion" placeholder="Ej. 10">
+                            <span>Calificación</span>
+                        </div><div class="inputbox">
+                            <input id="Tiempo_actividad" type="text" name="tiempo" placeholder="Ej. 10 min">
+                            <span>Tiempo</span>
+                        </div>
+    `;
+    }
+    
+    popUpHtml += `
                         <div>
-                            <button id="enviar_codigo" type="submit">Unirme</button>
+                            <button id="enviar${form}" type="submit">${boton}</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-    `;
-
-    datos.forEach(({ nombre, referencia },index) => {
-        if(referencia.startsWith('#')){
-            popUpHtml += `
-            <li><a class="botonesBarra" id="vp${index+1}" href="${referencia}">${nombre}</a></li>
-            `;
-        }else if(referencia.startsWith('')){
-            popUpHtml += `
-            <li><a id="logout" href="${referencia}">${nombre}</a></li>
-            `;
-        }else{
-            popUpHtml += `
-            <li><a href="${baseUrl}${referencia}">${nombre}</a></li>
-            `;
-        }
+    `;  
         aux=1;
     });
 
-    popUpHtml += `
-            </ul>
-        </nav>
-    `;
-
-    popUp.innerHTML = popUpHtml;
+    emergentes.innerHTML = popUpHtml;
 }
+
+function showPop() {
+    overlay.style.opacity = "1";
+}
+
+function hiddenPop(){
+    overlay.style.opacity = "0";
+}
+
+
+if(prof){
+    prof.addEventListener('click', showPop(1));
+}
+
+/*if(est){
+    est.addEventListener('click', showPop(2));
+}*/
+
+if(overlay){
+    overlay.addEventListener('click', hiddenPop(1));
+}
+

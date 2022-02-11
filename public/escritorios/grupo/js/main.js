@@ -1,24 +1,20 @@
 const formCrear = document.querySelector('#form_crearMateria');
 const crearMateria = document.querySelector('#enviar_materia');
 
-const accesos = [
-    {
-        'nombre': 'Crear Materia',
-        'referencia': `#popup1`
-
-    },
-    {
-		'nombre': 'Cerrar sesión',
-		'referencia': ``
-	}
-];
-
-
 const accesoP = [
     {
         'nombre': 'Crear Materia',
 		'referencia': `#popup1`
 	}
+];
+
+const datosPop = [
+    {
+        'nombre': 'Crear Materia',
+        'form': `form_crearMateria`,
+        'boton': `Crear`
+
+    }
 ];
 
 //-----------------------------Formulario para crear una nueva materia--------------------------
@@ -75,7 +71,7 @@ const checarRol = async() => {
     if(rol == "PRO_ROLE"){
         dibujarNavBar(accesoP);
         cerrarSesion();
-        console.log('Hola');
+        dibujarPopUp(datosPop);
         const {materias} = await obtenerArray(`materia/${grupo}`);
         dibujarMateria(materias);
     }else if(rol == "EST_ROLE"){
@@ -117,23 +113,6 @@ const renovarJWT = async() => {
 
     localStorage.setItem('token', tokenDB);
 }
-
-/*function dibujarAlerta(tipo) {
-    let alertasHtml = '';
-    let alerta = '';
-
-    if(tipo == 1){
-        alerta = "Falta información en uno o más campos";
-    }else if(tipo==2){
-        alerta = "Las contraseñas no coinciden";
-    }
-    alertasHtml += `
-		<h5>
-        ${alerta}
-		</h5>
-	    `;
-    alertas.innerHTML = alertasHtml;
-}*/
 
 function validarCamposVacios(){
     var c1 = document.getElementById("Nom_materia").value;

@@ -15,6 +15,21 @@ const accesoE = [
     }
 ];
 
+const datosPop = [
+    {
+        'nombre': 'Unirme a Grupo',
+        'form': `form_unirGrupo`,
+        'boton': `Unirme`
+
+    },
+    {
+        'nombre': 'Crear Grupo',
+        'form': `form_crearGrupo`,
+        'boton': `Crear`
+
+    }
+];
+
 //-----------------------------Formulario para crear un nuevo grupo--------------------------
 formCrear.addEventListener('submit', ev => {
     ev.preventDefault();
@@ -95,13 +110,13 @@ const checarRol = async() => {
     if(rol == "PRO_ROLE"){
         dibujarNavBar(accesoP);
         cerrarSesion();
-        //mostrarBotones(2);
+        dibujarPopUp(datosPop);
         const {grupos} = await obtenerArray(`grupo/${uid}`);
         dibujarGrupo(grupos);
     }else if(rol == "EST_ROLE"){
         dibujarNavBar(accesoE);
         cerrarSesion();
-        //mostrarBotones(1);
+        dibujarPopUp(datosPop);
         const {grupos} = await obtenerArray(`inscrito/${uid}`);
         dibujarGrupo(grupos);
     }

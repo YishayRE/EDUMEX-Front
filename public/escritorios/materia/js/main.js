@@ -2,20 +2,25 @@ const popCrear = document.querySelector('#vp2');
 const formCrear = document.querySelector('#form_crearActividad');
 const crearActividad = document.querySelector('#enviar_actividad');
 
-const accesos = [
+const accesoP = [
     {
-        'nombre': 'Crear Actividad',
+        'nombre': 'Unirme a Grupo',
         'referencia': `#popup1`
 
-    },
+    }
+];
+
+const datosPop = [
     {
-		'nombre': 'Cerrar sesión',
-		'referencia': ``
-	}
+        'nombre': 'Crear Actividad',
+        'form': `form_crearActividad`,
+        'boton': `Crear`
+
+    }
 ];
 
 //-----------------------------Formulario para crear una nueva actividad--------------------------
-formCrear.addEventListener('submit', ev => {
+/*formCrear.addEventListener('submit', ev => {
     
     const token = localStorage.getItem('token');
     const grupo = localStorage.getItem('grupo');
@@ -61,20 +66,21 @@ formCrear.addEventListener('submit', ev => {
         hiddenLoad();
         console.log(err)
     })
-});
+});*/
 
 const checarRol = async() => {
     const materia = localStorage.getItem('materia');
 
     if(rol == "PRO_ROLE"){
-        dibujarNavBar(accesos);
+        dibujarNavBar(accesoP);
         cerrarSesion();
-        mostrarBotones(1);
+        dibujarPopUp(datosPop);
         const {actividades} = await obtenerArray(`actividad/${materia}`);
         dibujarActividad(actividades);
     }else if(rol == "EST_ROLE"){
         dibujarNavBar(accesos);
         cerrarSesion();
+        dibujarPopUp(datosPop);
         const {actividades} = await obtenerArray(`actividad/${materia}`);
         dibujarActividad(actividades);
     }
@@ -122,10 +128,10 @@ const renovarJWT = async() => {
         alerta = "Las contraseñas no coinciden";
     }
     alertasHtml += `
-		<h5>
+        <h5>
         ${alerta}
-		</h5>
-	    `;
+        </h5>
+        `;
     alertas.innerHTML = alertasHtml;
 }*/
 

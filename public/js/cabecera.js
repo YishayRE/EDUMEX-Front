@@ -26,5 +26,6 @@ document.head.innerHTML = `
 <link rel="stylesheet" type="text/css" href="${baseUrl}css/generales/barra_navegacion.css">
 <link rel="stylesheet" type="text/css" href="${baseUrl}css/generales/loader.css">
 <link rel="stylesheet" type="text/css" href="${baseUrl}css/generales/blocker.css">
+<link rel="stylesheet" type="text/css" href="${baseUrl}css/generales/alertas.css">
 ${document.head.innerHTML} 
 `;

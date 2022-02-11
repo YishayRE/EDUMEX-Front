@@ -9,6 +9,7 @@
     transition: opacity 500ms;
     visibility: hidden;
     opacity: 0;
+    z-index: 1000;
   }
   .overlay:target {
     visibility: visible;
@@ -58,16 +59,7 @@
     background: #fff;
     border-radius: 10px;
   }
-  .center h1 {
-    font-size: 2em;
-    border-left: 5px solid dodgerblue;
-    padding: 10px;
-    color: #000;
-    letter-spacing: 5px;
-    margin-bottom: 60px;
-    font-weight: bold;
-    padding-left: 10px;
-  }
+
   .center .inputbox {
     position: relative;
     width: 300px;

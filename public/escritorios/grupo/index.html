@@ -1,11 +1,7 @@
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="./css/style_EscGru.css">
     <link rel="stylesheet" type="text/css" href="../../css/generales/esc_general.css">
-    <link rel="stylesheet" type="text/css" href="../../css/generales/barra_navegacion.css">
-    <link rel="stylesheet" type="text/css" href="../../css/generales/loader.css">
-    <link rel="stylesheet" type="text/css" href="../../css/generales/blocker.css">
     <link rel="stylesheet" type="text/css" href="../css/popups.css">
     <link rel="stylesheet" type="text/css" href="../css/tarjetas.css">
     <title>Escritorio del Grupo</title>
@@ -19,28 +15,7 @@
 
     <div id="content">
         <div class="emergentes">
-            <div id="popup1" class="overlay">
-                <div class="popup">
-                    <h2>Crear Materias</h2>
-                    <a class="close" href="#">&times;</a>
-                    <div class="content">
-                        <form class="center" id="form_crearMateria">
-                            <div class="inputbox">
-                                <input id="Nom_materia" type="text" name="nombre" placeholder="Ej. '3°B'">
-                                <span>Nombre de la materia</span>
-                            </div><div class="inputbox">
-                                <input id="Desc_materia" type="text" name="desc_materia" placeholder="Inserte una descripción">
-                                <span>Descripción de la materia</span>
-                            </div><div class="inputbox">
-                                <input id="Color_materia" type="color" pattern="#[a-f0-9]{6}" name="color">
-                                <span>Color de la materia</span>
-                            </div><div>
-                                <button id="enviar_materia" type="submit">Crear</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+            
         </div>
 
         <div id="tarjetas" class="container">
@@ -48,12 +23,14 @@
     </div>
     <script src="../../js/const.js"></script>
     <script src="../../js/cabecera.js"></script>
-    <script src="../js/navBar.js"></script>
     <script src="../../js/validarJWT.js"></script>
     <script src="../../js/loaders.js"></script>
+    <script src="../js/navBar.js"></script>
+    <script src="../js/popUps.js"></script>
     <script src="../js/common.js"></script>
     <script src="../js/tarjetas.js"></script>
     <script src="../js/petArray.js"></script>
     <script src="js/main.js"></script>
+    
 </body>
 </html>

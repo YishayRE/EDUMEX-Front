@@ -16,15 +16,15 @@ miFormulario.addEventListener('submit', async (ev) => {
 
     if(!validarCamposVacios()){
         hiddenLoad();
-        tipo = 1;
-        dibujarAlerta(tipo);
+        const msg = "Falta algún dato";
+        dibujarPopAlerta(msg);
         throw Error('Falta algún dato')
     }
 
     if(!validarContraseña()){
         hiddenLoad();
-        tipo = 2;
-        dibujarAlerta(tipo);
+        const msg = "La contraseña no coincide o no ha sido ingresada";
+        dibujarPopAlerta(msg);
         throw Error('La contraseña no coincide o no ha sido ingresada');
     }
 
@@ -73,22 +73,6 @@ function validarCamposVacios(){
     return true;
 }
 
-function dibujarAlerta(tipo) {
-    let alertasHtml = '';
-    let alerta = '';
-
-    if(tipo == 1){
-        alerta = "Falta información en uno o más campos";
-    }else if(tipo==2){
-        alerta = "Las contraseñas no coinciden";
-    }
-    alertasHtml += `
-		<h5>
-        ${alerta}
-		</h5>
-	    `;
-    alertas.innerHTML = alertasHtml;
-}
 
 function valorRol(){
     var checkedValue = null;
