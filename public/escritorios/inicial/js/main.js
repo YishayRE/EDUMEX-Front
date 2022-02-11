@@ -31,7 +31,7 @@ const datosPop = [
 ];
 
 //-----------------------------Formulario para crear un nuevo grupo--------------------------
-formCrear.addEventListener('submit', ev => {
+/*formCrear.addEventListener('submit', ev => {
     ev.preventDefault();
     showLoad();
 
@@ -66,10 +66,10 @@ formCrear.addEventListener('submit', ev => {
         hiddenLoad();
         console.log(err)
     })
-});
+});*/
 
 //-----------------------------Formulario para unirse a un grupo------------------------------
-formUnir.addEventListener('submit', ev => {
+/*formUnir.addEventListener('submit', ev => {
     ev.preventDefault();
     showLoad();
 
@@ -104,7 +104,7 @@ formUnir.addEventListener('submit', ev => {
         hiddenLoad();
         console.log(err)
     })
-});
+});*/
 
 const checarRol = async() => {
     if(rol == "PRO_ROLE"){
