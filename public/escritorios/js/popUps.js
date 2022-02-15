@@ -1,10 +1,11 @@
-const emergentes = document.querySelector('#emergentes');
-const overlay = document.querySelector('.overlay');
-const prof = document.querySelector("#pro0");
+let overlay = "";
+let botonPop = "";
+const emergentes =  document.querySelector("#emergentes");
 
 
 const dibujarPopUp = (datos = []) => {
     let popUpHtml = '';
+    let valorForm = "";
     
     datos.forEach(({ nombre, form, boton },index) => {
         popUpHtml += `
@@ -12,7 +13,7 @@ const dibujarPopUp = (datos = []) => {
             <div class="popup">
                 <h2>${nombre}</h2>
 
-                <a class="close" href="#">&times;</a>
+                <a class="close" href="">&times;</a>
 
                 <div class="content">
                     <form class="center" id="${form}">
@@ -24,7 +25,8 @@ const dibujarPopUp = (datos = []) => {
 
                             <span>Código del grupo</span>
                         </div>    
-    `;  
+        `;
+        valorForm = form;
     }else if(form === "form_crearGrupo"){
         popUpHtml += `
                         <div class="inputbox">
@@ -86,26 +88,39 @@ const dibujarPopUp = (datos = []) => {
     });
 
     emergentes.innerHTML = popUpHtml;
+
+    overlay = document.querySelector(".overlay");
+    botonClose = document.querySelector(".close");
+
+    if(valorForm === "form_unirGrupo"){
+        botonPop = document.querySelector("#est0");
+    }else{
+        botonPop = document.querySelector("#pro0");
+    }
+
+    botonClose.addEventListener('click', (event) => {
+        event.preventDefault();
+        hiddenPop();
+    });
+
+    botonPop.addEventListener('click', (event) => {
+        event.preventDefault();
+        showPop();
+    });
+
+    overlay.addEventListener('click', (event) => {
+        if(event.target == overlay){
+            hiddenPop();
+        }
+    });    
 }
 
 function showPop() {
     overlay.style.opacity = "1";
+    overlay.style.visibility = "visible";
 }
 
 function hiddenPop(){
     overlay.style.opacity = "0";
+    overlay.style.visibility = "hidden";
 }
-
-
-if(prof){
-    prof.addEventListener('click', showPop(1));
-}
-
-/*if(est){
-    est.addEventListener('click', showPop(2));
-}*/
-
-if(overlay){
-    overlay.addEventListener('click', hiddenPop(1));
-}
-

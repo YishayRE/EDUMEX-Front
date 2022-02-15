@@ -70,9 +70,11 @@ const dibujarPopAlerta = (err) => {
 
 function showAlert() {
     overlayAlert.style.opacity = "1";
+    overlayAlert.style.visibility = "visible"
 }
 
 function hiddenAlert() {
     overlayAlert.style.opacity = "0";
+    overlayAlert.style.visibility = "hidden"
 }
     

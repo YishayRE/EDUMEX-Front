@@ -2,7 +2,7 @@
     position: fixed;
     left: 50%;
     top: 50%;
-    z-index: 1000;
+    z-index: 3000;
     width: 120px;
     height: 120px;
     margin: -76px 0 0 -76px;

@@ -18,7 +18,7 @@ const datosPop = [
 ];
 
 //-----------------------------Formulario para crear una nueva materia--------------------------
-formCrear.addEventListener('submit', ev => {
+/*formCrear.addEventListener('submit', ev => {
     
     const token = localStorage.getItem('token');
     const grupo = localStorage.getItem('grupo');
@@ -64,7 +64,7 @@ formCrear.addEventListener('submit', ev => {
         hiddenLoad();
         console.log(err)
     })
-});
+});*/
 
 const checarRol = async() => {
     const grupo = localStorage.getItem('grupo');
@@ -82,38 +82,6 @@ const checarRol = async() => {
     }
 }
 
-function checarExpiracion(exp){
-    const fechaExp = new Date(exp * 1000);
-    console.log(fechaExp.toUTCString());
-
-    const actual = Date.now();
-    const fechaAhorita = new Date(actual);
-    console.log(fechaAhorita.toUTCString());
-
-    if(fechaExp > fechaAhorita){
-        console.log("SE RENOVÓ EL TOKEN")
-        renovarJWT();
-    } else if(fechaExp < fechaAhorita){
-        console.log("EL TOKEN HA EXPIRADO");
-        //otra cosa, checar esta parte
-    }
-}
-
-const renovarJWT = async() => {
-    const token = localStorage.getItem('token') || '';
-
-    if(token.length <= 10){
-        throw new Error('No hay token en el servidor');
-    }
-    const resp = await fetch(url + "auth", {
-        method: 'GET',
-        headers: {'x-token': token}
-    });
-    const {usuario: userDB, token: tokenDB} = await resp.json();
-
-    localStorage.setItem('token', tokenDB);
-}
-
 function validarCamposVacios(){
     var c1 = document.getElementById("Nom_materia").value;
     var c2 = document.getElementById("Desc_materia").value;
@@ -128,6 +96,7 @@ const main = async() => {
     showLoad();
     await validarJWT();
     await checarRol();
+    checarExpiracion(fecha);
     hiddenLoad();
 }
 

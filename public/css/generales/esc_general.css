@@ -11,13 +11,6 @@ body {
 	overflow: hidden;
 }
 
-.stick {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
 .container-ccenter {
     align-items: center;
     align-content: center;

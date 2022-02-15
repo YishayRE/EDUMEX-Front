@@ -92,19 +92,6 @@
     button:hover, .btn-item:hover {
       background: #E5989B;
     }
-    @media (min-width: 568px) {
-      html, body {
-        height: 100%;
-      }
-      .main-block {
-        flex-direction: row;
-        height: calc(100% - 50px);
-      }
-      .left-part, form {
-        flex: 1;
-        height: auto;
-      }
-    }
 
     #selectorRol {
       list-style-type: none;
@@ -182,4 +169,21 @@
 
     #barras {
       margin-top: 0px; 
+    }
+
+    @media (min-width: 568px) {
+      html, body {
+        height: 100%;
+      }
+      .main-block {
+        flex-direction: row;
+        height: calc(100% - 50px);
+      }
+      .left-part, form {
+        flex: 1;
+        height: auto;
+      }
+      #selectorRol {
+        flex-direction: row;
+      }
     }

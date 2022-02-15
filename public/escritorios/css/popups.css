@@ -9,7 +9,7 @@
     transition: opacity 500ms;
     visibility: hidden;
     opacity: 0;
-    z-index: 1000;
+    z-index: 900;
   }
   .overlay:target {
     visibility: visible;
@@ -25,6 +25,7 @@
     max-height:fit-content;
     position: relative;
     transition: all 5s ease-in-out;
+    z-index: 1600;
   }
   
   .popup h2 {

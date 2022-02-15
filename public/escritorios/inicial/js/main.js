@@ -4,28 +4,31 @@ const formCrear = document.querySelector('#form_crearGrupo');
 const accesoP = [
     {
         'nombre': 'Crear Grupo',
-		'referencia': `#popup1`
+		'referencia': ``
 	}
 ];
 const accesoE = [
     {
         'nombre': 'Unirme a Grupo',
-        'referencia': `#popup2`
+        'referencia': ``
 
     }
 ];
 
-const datosPop = [
-    {
-        'nombre': 'Unirme a Grupo',
-        'form': `form_unirGrupo`,
-        'boton': `Unirme`
-
-    },
+const datosPopP = [
     {
         'nombre': 'Crear Grupo',
         'form': `form_crearGrupo`,
         'boton': `Crear`
+
+    }
+];
+
+const datosPopE = [
+    {
+        'nombre': 'Unirme a Grupo',
+        'form': `form_unirGrupo`,
+        'boton': `Unirme`
 
     }
 ];
@@ -110,55 +113,23 @@ const checarRol = async() => {
     if(rol == "PRO_ROLE"){
         dibujarNavBar(accesoP);
         cerrarSesion();
-        dibujarPopUp(datosPop);
+        dibujarPopUp(datosPopP);
         const {grupos} = await obtenerArray(`grupo/${uid}`);
         dibujarGrupo(grupos);
     }else if(rol == "EST_ROLE"){
         dibujarNavBar(accesoE);
         cerrarSesion();
-        dibujarPopUp(datosPop);
+        dibujarPopUp(datosPopE);
         const {grupos} = await obtenerArray(`inscrito/${uid}`);
         dibujarGrupo(grupos);
     }
-}
-
-function checarExpiracion(exp){
-    const fechaExp = new Date(exp * 1000);
-    console.log(fechaExp.toUTCString());
-
-    const actual = Date.now();
-    const fechaAhorita = new Date(actual);
-    console.log(fechaAhorita.toUTCString());
-
-    if(fechaExp > fechaAhorita){
-        console.log("SE RENOVÓ EL TOKEN")
-        renovarJWT();
-    } else if(fechaExp < fechaAhorita){
-        console.log("EL TOKEN HA EXPIRADO");
-        //otra cosa, checar esta parte
-    }
-}
-
-const renovarJWT = async() => {
-    const token = localStorage.getItem('token') || '';
-
-    if(token.length <= 10){
-        throw new Error('No hay token en el servidor');
-    }
-
-    const resp = await fetch(baseApi + "auth", {
-        method: 'GET',
-        headers: {'x-token': token}
-    });
-    const {usuario: userDB, token: tokenDB} = await resp.json();
-
-    localStorage.setItem('token', tokenDB);
 }
 
 const main = async() => {
     showLoad();
     await validarJWT();
     await checarRol();
+    checarExpiracion(fecha);
     hiddenLoad();
 }
 

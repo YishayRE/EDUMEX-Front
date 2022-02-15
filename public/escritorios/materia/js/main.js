@@ -1,10 +1,9 @@
-const popCrear = document.querySelector('#vp2');
 const formCrear = document.querySelector('#form_crearActividad');
 const crearActividad = document.querySelector('#enviar_actividad');
 
 const accesoP = [
     {
-        'nombre': 'Unirme a Grupo',
+        'nombre': 'Crear Actividad',
         'referencia': `#popup1`
 
     }
@@ -80,60 +79,10 @@ const checarRol = async() => {
     }else if(rol == "EST_ROLE"){
         dibujarNavBar(accesos);
         cerrarSesion();
-        dibujarPopUp(datosPop);
         const {actividades} = await obtenerArray(`actividad/${materia}`);
         dibujarActividad(actividades);
     }
 }
-
-function checarExpiracion(exp){
-    const fechaExp = new Date(exp * 1000);
-    console.log(fechaExp.toUTCString());
-
-    const actual = Date.now();
-    const fechaAhorita = new Date(actual);
-    console.log(fechaAhorita.toUTCString());
-
-    if(fechaExp > fechaAhorita){
-        console.log("SE RENOVÓ EL TOKEN")
-        renovarJWT();
-    } else if(fechaExp < fechaAhorita){
-        console.log("EL TOKEN HA EXPIRADO");
-        //otra cosa, checar esta parte
-    }
-}
-
-const renovarJWT = async() => {
-    const token = localStorage.getItem('token') || '';
-
-    if(token.length <= 10){
-        throw new Error('No hay token en el servidor');
-    }
-    const resp = await fetch(url + "auth", {
-        method: 'GET',
-        headers: {'x-token': token}
-    });
-    const {usuario: userDB, token: tokenDB} = await resp.json();
-
-    localStorage.setItem('token', tokenDB);
-}
-
-/*function dibujarAlerta(tipo) {
-    let alertasHtml = '';
-    let alerta = '';
-
-    if(tipo == 1){
-        alerta = "Falta información en uno o más campos";
-    }else if(tipo==2){
-        alerta = "Las contraseñas no coinciden";
-    }
-    alertasHtml += `
-        <h5>
-        ${alerta}
-        </h5>
-        `;
-    alertas.innerHTML = alertasHtml;
-}*/
 
 function validarCamposVacios(){
     var c1 = document.getElementById("Nom_materia").value;
@@ -149,6 +98,7 @@ const main = async() => {
     showLoad();
     await validarJWT();
     await checarRol();
+    checarExpiracion(fecha);
     hiddenLoad();
 }
 
