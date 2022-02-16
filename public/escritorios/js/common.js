@@ -12,6 +12,8 @@ function hexToRgbA(hex){
     throw new Error('Bad Hex');
 }
 
+//se recomienda mover a otro js
+
 //-----------------------Cerrar Sesion----------------------
 function cerrarSesion(){
     const btnSalir = document.querySelector('#logout');
@@ -21,14 +23,20 @@ function cerrarSesion(){
     });
 }
 
-/*
-function mostrarBotones(tipo){
-    if(tipo === 1){
-        const pop1 = document.querySelector('#vp1');
-        pop1.style.visibility = "visible";
-    }else{
-        const pop2 = document.querySelector('#vp2');
-        pop2.style.visibility = "visible";
+const formData = () => {
+    showLoad();
+
+    if(!validarCamposVacios()){
+        hiddenLoad();
+        throw Error('Falta algun dato');
     }
+
+    const formData = {};
+
+    for(let el of miFormulario.elements){
+        if(el.name.length > 0){
+            formData[el.name] = el.value;
+        }
+    }
+    return formData;
 }
-*/

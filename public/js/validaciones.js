@@ -1,5 +1,4 @@
 function validarFormulario(formulario) {
-    evObject.preventDefault();
     var todoCorrecto = true;
     for (var i=0; i<formulario.length; i++) {
                     if(formulario[i].type =='text') {
@@ -13,3 +12,9 @@ function validarFormulario(formulario) {
     }
     if (todoCorrecto ==true) {formulario.submit();}
 }
+
+/*
+forof/forin
+.foreach
+.map
+*/
