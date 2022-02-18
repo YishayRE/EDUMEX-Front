@@ -16,7 +16,7 @@ const dibujarNavBar = (accesos = [], userType) => {
                 <img src="${baseUrl}/images/logoPNG.png" alt="EDUMEX" class="logo">
             </a>
 
-            <ul>
+            <ul id="lista">
     `;
 
     accesos.forEach(({ nombre, referencia },index) => {
@@ -33,8 +33,16 @@ const dibujarNavBar = (accesos = [], userType) => {
     `;
 
     navBar.innerHTML = navBarHtml;
-}
 
+    const lista = document.querySelector("#lista");
+
+    for(let i = 0; i < (lista.children.length - 1); i++){
+        document.querySelector(`#${role}${i}`).addEventListener('click', (event) => {
+            event.preventDefault();
+            showPop();
+        });
+    }
+}
 /*
     accesos.forEach(({ nombre, referencia },index) => {
         if(referencia.startsWith('#')){
@@ -53,3 +61,4 @@ const dibujarNavBar = (accesos = [], userType) => {
         aux=1;
     });
 */
+

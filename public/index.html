@@ -5,6 +5,8 @@
     <link rel="stylesheet" type="text/css" href="./css/style_inicio.css">
     <link rel="stylesheet" type="text/css" href="./css/generales/esc_general.css">
     <link rel="stylesheet" type="text/css" href="./css/generales/footer.css">
+    <link rel="stylesheet" type="text/css" href="./escritorios/css/popups.css">
+
 
 </head>
 <body>
@@ -12,28 +14,31 @@
     </header>
     
     <div id="content">
+        <div id="emergentes">
+            
+        </div>
+
     </div>
 
     <footer id="footer">
-        <nav>
-            <input type="checkbox" id="check">
-            <label for="check" class="checkbtn" id="barras">
-                    <i class="fas fa-bars"></i>
+            <input type="checkbox" id="select" name="select">
+            <label for="select" class="selectbtn" id="menuFoot">
+                    <i class="flecha"><img src="./images/information.png" alt="EDUMEX" class="logo"></i>
             </label>
-            <ul>
-                <li><a href="./">Nosotros</a></li>
-                <li><a href="./">Contactanos</a></li>
-                <li><a href="./">Manual</a></li>
-                <li><a href="./">T&C</a></li>
-                <li><a href="./">Políticas</a></li>
+            <ul class="opciones">
+                <li><a id="nosotros" href="">Nosotros</a></li>
+                <li><a id="contacto" href="">Contactanos</a></li>
+                <li><a id="manual" href="">Manual</a></li>
+                <li><a id="tc" href="">T&C</a></li>
+                <li><a id="politicas" href="">Políticas</a></li>
             </ul>
-        </nav>
     </footer>
-    
+
     <script src="js/const.js"></script>
     <script src="js/cabecera.js"></script>
     <script src="js/validarJWT.js"></script>
     <script src="js/navBar.js"></script>
+    <script src="js/PopFooter.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

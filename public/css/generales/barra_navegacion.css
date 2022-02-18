@@ -4,35 +4,35 @@
     position: sticky;
     top: 0;
     z-index: 100;
-}
-
-nav {
+  }
+  
+  nav {
     background: #ffb4a2;
     height: 60px;
     width: 100%;
-}
-
-.enlace {
+  }
+  
+  .enlace {
     position: absolute;
     padding: 10px 30px;
-}
-
-.logo {
+  }
+  
+  .logo {
     height: 40px;
-}
-
-nav ul {
+  }
+  
+  nav ul {
     float: right;
     margin-right: 5%;
     margin-bottom: 0rem;
-}
-
-nav ul li {
+  }
+  
+  nav ul li {
     display: inline-block;
     line-height: 30px;
-}
-
-nav ul li a {
+  }
+  
+  nav ul li a {
     text-decoration: none;
     color: black;
     font-size: 14px;
@@ -41,22 +41,22 @@ nav ul li a {
     text-transform: uppercase;
     background: #E5989B;
     transition: all .5s;
-}
-
-li a.active {
+  }
+  
+  li a.active {
     color: black;
     transition: all .5s;
     font-size: 16px;
-}
-
-li a:hover {
+  }
+  
+  li a:hover {
     color: black;
     background: #917681;
     transition: .5s;
     font-size: 16px;
-}
-
-.checkbtn {
+  }
+  
+  .checkbtn {
     font-size: 30px;
     color: black;
     float: right;
@@ -65,22 +65,22 @@ li a:hover {
     margin-top: 15px;
     cursor: pointer;
     display: none;
-}
-
-#check {
+  }
+  
+  #check {
     display: none;
-}
-/*-------------------------------------------ESTILOS PAGINA RESPONSIVA-----------------------------------*/
-@media (max-width: 952px) {
+  }
+  /*-------------------------------------------ESTILOS PAGINA RESPONSIVA-----------------------------------*/
+  @media (max-width: 952px) {
     .enlace {
         padding-left: 20px;
     }
     nav ul li a {
         font-size: 16px;
     }
-}
-
-@media (max-width: 858px) {
+  }
+  
+  @media (max-width: 858px) {
     .checkbtn {
         display: block;
     }
@@ -111,4 +111,4 @@ li a:hover {
     #check:checked~ul {
         left: 0;
     }
-}
+  }

@@ -11,7 +11,7 @@ const accesos = [
 
 const main = async() => {
 	dibujarNavBar(accesos);
-	dibujarFooter();
+	dibujarPopFooter();
 	await tieneJWT();
 }
 

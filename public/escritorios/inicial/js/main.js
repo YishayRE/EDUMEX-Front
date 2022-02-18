@@ -16,18 +16,27 @@ const accesoE = [
 ];
 
 const datosPopP = [
-    {
-        'nombre': 'Crear Grupo',
-        'form': `form_crearGrupo`,
-        'boton': `Crear`
-
-    }
+    'Crear Grupo',
+    'grupo',
+    [
+        {
+            'type': 'text',
+            'name': 'nombre',
+            'titulo': 'Nombre del grupo'
+        },
+        {
+            'type': 'text',
+            'name': 'saludo',
+            'titulo': 'Texto de Bienvenida'
+        }
+    ],
+    'Crear'
 ];
 
 const datosPopE = [
     {
         'nombre': 'Unirme a Grupo',
-        'form': `form_unirGrupo`,
+        'form': `inscrito`,
         'boton': `Unirme`
 
     }
