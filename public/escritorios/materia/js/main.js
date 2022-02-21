@@ -4,18 +4,32 @@ const crearActividad = document.querySelector('#enviar_actividad');
 const accesoP = [
     {
         'nombre': 'Crear Actividad',
-        'referencia': `#popup1`
+        'referencia': ``
 
     }
 ];
 
 const datosPop = [
-    {
-        'nombre': 'Crear Actividad',
-        'form': `form_crearActividad`,
-        'boton': `Crear`
-
-    }
+    'Crear Actividad',
+    'actividad',
+    [
+        {
+            'type': 'text',
+            'name': 'nombre',
+            'titulo': 'Nombre de la actividad'
+        },
+        {
+            'type': 'text',
+            'name': 'descripcion',
+            'titulo': 'Descripcion de la actividad'
+        },
+        {
+            'type': 'text',
+            'name': 'objetivo',
+            'titulo': 'Objetivo de la actividad'
+        }
+    ],
+    'Crear'
 ];
 
 //-----------------------------Formulario para crear una nueva actividad--------------------------

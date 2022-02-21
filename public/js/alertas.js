@@ -35,21 +35,29 @@ const dibujarPopAlertas = (errors = []) => {
 
 const dibujarPopAlerta = (err) => {
     let popAlertaHtml = '';
-
         popAlertaHtml += `
         <div id="popError" class="overlayAlerta">
             <div class="popupAlerta">
                 <h2>Aviso</h2>
 
-                <a class="close" href="#">&times;</a>
+                <a class="close" href="">&times;</a>
 
                 <div class="contentAlerta">
                     <div class="centerAlerta" id="infoAlerta">
                         <div class="alertas">
         `;
-        popAlertaHtml += `
+        if(err == "salir"){
+            popAlertaHtml += `
+                            <h2>¿Seguro que quieres salir?</h2>
+                            <div>
+                                <button id="logoutC" href="">Salir</button>
+                            </div>
+            `; 
+        }else{
+            popAlertaHtml += `
                             <h2>${err}</h2>
-        `;
+            `; 
+        }
         popAlertaHtml += `
                         </div>    
                     </div>
@@ -60,12 +68,27 @@ const dibujarPopAlerta = (err) => {
         aux=1;
     alertPop.innerHTML = popAlertaHtml;
     overlayAlert = document.getElementById('popError');
+    botonClose = document.querySelector(".close");
+
+    botonClose.addEventListener('click', (event) => {
+        event.preventDefault();
+        hiddenAlert();
+    });
 
     overlayAlert.addEventListener('click', (event) => {
-        hiddenAlert();
+        if(event.target == overlayAlert){
+            hiddenAlert();
+        }
     });
     
     showAlert();
+    if(err == "salir"){
+        const btnSalir = document.querySelector('#logoutC');
+        btnSalir.addEventListener('click', e => {
+            localStorage.removeItem('token');
+            window.location = `${baseUrl}`;
+        });
+    }
 }
 
 function showAlert() {

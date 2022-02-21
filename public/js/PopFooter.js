@@ -20,6 +20,25 @@ const datosPop = [
     }
 ];
 
+const dibujarFooter = () => {
+    let footerHtml = '';
+
+    footerHtml += `
+        <input type="checkbox" id="select" name="select">
+        <label for="select" class="selectbtn" id="menuFoot">
+                <i class="flecha"><img src="./images/information.png" alt="EDUMEX" class="logo"></i>
+        </label>
+        <ul class="opciones">
+            <li><a id="nosotros" href="">Nosotros</a></li>
+            <li><a id="contacto" href="">Contactanos</a></li>
+            <li><a id="manual" href="">Manual</a></li>
+            <li><a id="tc" href="">T&C</a></li>
+            <li><a id="politicas" href="">Políticas</a></li>
+        </ul>
+    `;
+    navBar.innerHTML = navBarHtml;
+}
+
 const dibujarPopFooter = () => {
     let popFooterHtml = '';
     

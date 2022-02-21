@@ -114,4 +114,6 @@
     font-size: 15px;
     font-weight: 400;
     color: #fff;
+    cursor: pointer;
+    transition: all .5s;
   }

@@ -16,10 +16,11 @@ function hexToRgbA(hex){
 
 //-----------------------Cerrar Sesion----------------------
 function cerrarSesion(){
-    const btnSalir = document.querySelector('#logout');
-    btnSalir.addEventListener('click', e => {
-        localStorage.removeItem('token');
-        window.location = `${baseUrl}`;
+    const btnLogout = document.querySelector('#logout');
+    btnLogout.addEventListener('click', e => {
+        e.preventDefault();
+        let salir = "salir";
+        dibujarPopAlerta(salir);
     });
 }
 

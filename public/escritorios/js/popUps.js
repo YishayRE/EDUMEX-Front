@@ -5,7 +5,6 @@ const emergentes =  document.querySelector("#emergentes");
 
 const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '']) => {
     let popUpHtml = '';
-    let valorForm = "";
 
     popUpHtml += `
         <div class="overlay">
@@ -37,7 +36,6 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '']) => {
             </div>
         </div>
     `;  
-        //aux=1;
     emergentes.innerHTML = popUpHtml;
 
     overlay = document.querySelector(".overlay");
@@ -57,13 +55,35 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '']) => {
     const formulario = document.querySelector(`#${form}`);
     formulario.addEventListener('submit', async(e) => {
         e.preventDefault();
-
-        const datos = dataForm(formulario);
-        datos["usuario"] = uid;
+        showLoad();
+        let vId = '';
+        let validador = '';
+        switch (form) {
+            case 'grupo':
+                validador = "usuario";
+                vId = uid;
+                break;
+            case 'materia':
+                validador = "grupo";
+                vId = localStorage.getItem('grupo');
+                break;
+            case 'actividad':
+                validador = "materia";
+                vId = localStorage.getItem('materia');
+                break;
+            default:
+                hiddenLoad();
+                throw new Error("No se ha podido validar la petición");        
+                break;
+        }
+        const datos = dataForm(formulario, validador, vId);
+        datos[`${validador}`] = vId;
         if(valForm(datos))
             await creacion(datos, form);
-        else
-            console.log("Faltan Datos");    
+        else{
+            console.log("Faltan Datos");  
+            hiddenLoad();
+        }  
     });
 
 }

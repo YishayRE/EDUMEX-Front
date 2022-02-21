@@ -14,8 +14,9 @@ miFormulario.addEventListener('submit', async(ev) => {
 
     if(!validarCamposVacios()){
         hiddenLoad();
-        dibujarAlerta();
-        throw new Error('Falta algún dato');
+        const msg = "Falta algún dato";
+        dibujarPopAlerta(msg);
+        throw new Error(msg);
     }
 
     const formData = {};
@@ -30,16 +31,6 @@ miFormulario.addEventListener('submit', async(ev) => {
     
     hiddenLoad();
 });
-
-function dibujarAlerta() {
-    let alertasHtml = '';
-        alertasHtml += `
-		<h4>
-        Falta información en uno de los campos
-		</h4>
-		`;
-    alertas.innerHTML = alertasHtml;
-}
 
 function validarCamposVacios() {
     var c1 = document.getElementById("Correo_inicio").value;

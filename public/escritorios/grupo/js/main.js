@@ -4,17 +4,26 @@ const crearMateria = document.querySelector('#enviar_materia');
 const accesoP = [
     {
         'nombre': 'Crear Materia',
-		'referencia': `#popup1`
+		'referencia': ``
 	}
 ];
 
 const datosPop = [
-    {
-        'nombre': 'Crear Materia',
-        'form': `form_crearMateria`,
-        'boton': `Crear`
-
-    }
+    'Crear Materia',
+    'materia',
+    [
+        {
+            'type': 'text',
+            'name': 'nombre',
+            'titulo': 'Nombre de la materia'
+        },
+        {
+            'type': 'color',
+            'name': 'color',
+            'titulo': 'Color de la materia'
+        }
+    ],
+    'Crear'
 ];
 
 //-----------------------------Formulario para crear una nueva materia--------------------------

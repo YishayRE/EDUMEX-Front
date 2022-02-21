@@ -6,6 +6,12 @@ const obtenerArray = async(arrayPath) => {
     });
 
     const respuesta = await resp.json();
+    
+    if(respuesta.msg){
+        hiddenLoad();
+        dibujarPopAlerta("No tienes materias, crea una");
+        throw new Error(respuesta.msg);        
+    }
 
     return respuesta;
 }

@@ -27,7 +27,7 @@ const dibujarNavBar = (accesos = [], userType) => {
     });
     
     navBarHtml += `
-                <li><a id="logout" href="">Salir</a></li>
+                <li><a id="logout" href>Salir</a></li>
             </ul>
         </nav>
     `;

@@ -18,7 +18,7 @@ miFormulario.addEventListener('submit', async (ev) => {
         hiddenLoad();
         const msg = "Falta algún dato";
         dibujarPopAlerta(msg);
-        throw Error('Falta algún dato')
+        throw Error(msg);
     }
 
     if(!validarContraseña()){
