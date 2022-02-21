@@ -55,15 +55,13 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '']) => {
     });  
     
     const formulario = document.querySelector(`#${form}`);
-    formulario.addEventListener('submit', e => {
+    formulario.addEventListener('submit', async(e) => {
         e.preventDefault();
 
         const datos = dataForm(formulario);
         datos["usuario"] = uid;
-        if(valForm(datos)){
-            const { grupo } = creacion(datos, form);
-            console.log(grupo);
-        }
+        if(valForm(datos))
+            await creacion(datos, form);
         else
             console.log("Faltan Datos");    
     });
