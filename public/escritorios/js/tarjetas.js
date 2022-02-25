@@ -6,6 +6,9 @@ const dibujarGrupo = (grupos = []) => {
         gruposHtml += `
 		<div class="tarjeta">
 			<div class="tarjeta_nombre">
+                <div name="${index}" id="editar" class="button_editar">
+                    <img src="${baseUrl}/images/editar.png" alt="..." class="imgEditar">
+                </div>
 				<h3>${nombre}</h3>
 			</div>
 
@@ -28,6 +31,16 @@ const dibujarGrupo = (grupos = []) => {
             window.location = '../grupo';
         });
     });
+
+    const vistaTarjetas = document.querySelectorAll("#editar");
+
+    vistaTarjetas.forEach((edit, index) => {
+        edit.addEventListener('click', (event) => {
+            event.preventDefault();
+            dibujarPopEditar(datosPopP, grupos[index]._id);
+            showEditar();
+        });
+    });
 }
 
 const dibujarMateria = (materias = []) => {
@@ -38,6 +51,9 @@ const dibujarMateria = (materias = []) => {
 		<div class="tarjetaMateria" 
         style="background-color: ${fondo}; border: 5px solid ${color};">
 			<div class="tarjeta_nombre" style="color: ${color};">
+                <div name="${index}" id="editar${index}" class="button_editar">
+                    <img src="${baseUrl}/images/editar.png" alt="..." class="imgEditar">
+                </div>
 				<h3>${nombre}</h3>
 			</div>
         <div name="${index}" id="entrar" class="tarjetaMateria_button"
@@ -58,6 +74,16 @@ const dibujarMateria = (materias = []) => {
             window.location = '../materia';
         });
     });
+
+    const vistaTarjetas = document.querySelector("#tarjetas");
+
+    for(let i = 0; i < (vistaTarjetas.children.length); i++){
+        document.querySelector(`#editar${i}`).addEventListener('click', (event) => {
+            event.preventDefault();
+            dibujarPopEditar(datosPop);
+            showEditar();
+        });
+    }
 }
 
 const dibujarActividad = (actividades = []) => {
@@ -70,6 +96,9 @@ const dibujarActividad = (actividades = []) => {
 		<div class="tarjetaMateria" 
         style="background-color: ${fondo}; border: 5px solid ${color};">
 			<div class="tarjeta_nombre" style="color: ${color};">
+                <div name="${index}" id="editar${index}" class="button_editar">
+                    <img src="${baseUrl}/images/editar.png" alt="..." class="imgEditar">
+                </div>
 				<h3>${nombre}</h3>
 			</div>
             <div>
@@ -93,4 +122,14 @@ const dibujarActividad = (actividades = []) => {
             window.location = '../escritorio_juego';
         });
     });
+
+    const vistaTarjetas = document.querySelector("#tarjetas");
+
+    for(let i = 0; i < (vistaTarjetas.children.length); i++){
+        document.querySelector(`#editar${i}`).addEventListener('click', (event) => {
+            event.preventDefault();
+            dibujarPopEditar(datosPop);
+            showEditar();
+        });
+    }
 }

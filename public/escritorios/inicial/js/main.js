@@ -20,9 +20,14 @@ const datosPopP = [
     'grupo',
     [
         {
-            'type': 'text',
-            'name': 'nombre',
-            'titulo': 'Nombre del grupo'
+            'type': 'list',
+            'name': 'grado',
+            'titulo': 'Grado'
+        },
+        {
+            'type': 'list',
+            'name': 'grupo',
+            'titulo': 'Letra'
         },
         {
             'type': 'text',

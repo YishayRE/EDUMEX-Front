@@ -13,7 +13,7 @@ const datosPop = [
     'materia',
     [
         {
-            'type': 'text',
+            'type': 'list',
             'name': 'nombre',
             'titulo': 'Nombre de la materia'
         },
@@ -23,7 +23,13 @@ const datosPop = [
             'titulo': 'Color de la materia'
         }
     ],
-    'Crear'
+    'Crear',
+    [
+        'Español',
+        'Matemáticas',
+        'Ciencias Naturales',
+        'Civismo'
+    ]
 ];
 
 //-----------------------------Formulario para crear una nueva materia--------------------------

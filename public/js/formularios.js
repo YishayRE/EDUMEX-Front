@@ -10,6 +10,23 @@ const dataForm = (formulario) => {
     return datosForm;
 } 
 
+const gruposUpd = (formulario) => {
+    const datosForm = {};
+    datosForm['nombre'] = '';
+    let index = 0;
+
+    for(let el of formulario.elements){
+        index++;
+        if(el.name.length > 0)
+            if(index < 3)
+                datosForm['nombre'] += `${el.value.trim()} `;
+            else
+                datosForm[el.name] = el.value.trim();
+    }
+
+    return datosForm;
+} 
+
 const valForm = (datosForm) => {
     for (const key in datosForm) {
         if (Object.hasOwnProperty.call(datosForm, key)) {

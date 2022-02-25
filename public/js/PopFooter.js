@@ -7,7 +7,7 @@ const datosPop = [
         'nombre': 'Nosotros',
     },
     {
-        'nombre': 'Contactanos',
+        'nombre': 'Contáctanos',
     },
     {
         'nombre': 'Manual',
@@ -48,38 +48,38 @@ const dibujarPopFooter = () => {
             <div class="popup">
                 <h2>${nombre}</h2>
 
-                <a class="close">&times;</a>
+                <a class="close" id="close${index+1}">&times;</a>
 
                 <div class="content">
         `;
     if(nombre === "Nosotros"){
         popFooterHtml += `
-                        <div class="inputbox">
-
+                        <div class="center">
+                            <h2>Informacion de nosotros</h2>
                         </div>    
         `;
     }else if(nombre === "Contáctanos"){
         popFooterHtml += `
-                        <div class="inputbox">
-
+                        <div class="center">
+                            <h2>Información de contacto</h2>
                         </div>
     `;
     }else if(nombre === "Manual"){
         popFooterHtml += `
-                        <div class="inputbox">
-
+                        <div class="center">
+                            <h2>Enlace para descargar el manual</h2>
                         </div>
     `;
     }else if(nombre === "T&C"){
         popFooterHtml += `
-                        <div class="inputbox">
-
+                        <div class="center">
+                            <h2>Terminos Y Condiciones</h2>
                         </div>
     `;
     }else if(nombre === "Políticas"){
         popFooterHtml += `
-                        <div class="inputbox">
-
+                        <div class="center">
+                            <h2>Nuestras políticas</h2>
                         </div>
     `;
     }
@@ -95,7 +95,13 @@ const dibujarPopFooter = () => {
     emergentes.innerHTML = popFooterHtml;
 
     overlay = document.querySelector(".overlay");
-    botonClose = document.querySelector(".close");
+
+    botonClose1 = document.querySelector("#close1");
+    botonClose2 = document.querySelector("#close2");
+    botonClose3 = document.querySelector("#close3");
+    botonClose4 = document.querySelector("#close4");
+    botonClose5 = document.querySelector("#close5");
+
 
     botonPop1 = document.querySelector("#nosotros");
     botonPop2 = document.querySelector("#contacto");
@@ -134,9 +140,34 @@ const dibujarPopFooter = () => {
         showPop(overlayPop);
     });
 
-    botonClose.addEventListener('click', (event) => {
+    botonClose1.addEventListener('click', (event) => {
         event.preventDefault();
-        hiddenPop();
+        overlayPop = document.querySelector("#popFooter1");
+        hiddenPop(overlayPop);
+    });
+
+    botonClose2.addEventListener('click', (event) => {
+        event.preventDefault();
+        overlayPop = document.querySelector("#popFooter2");
+        hiddenPop(overlayPop);
+    });
+    
+    botonClose3.addEventListener('click', (event) => {
+        event.preventDefault();
+        overlayPop = document.querySelector("#popFooter3");
+        hiddenPop(overlayPop);
+    });
+
+    botonClose4.addEventListener('click', (event) => {
+        event.preventDefault();
+        overlayPop = document.querySelector("#popFooter4");
+        hiddenPop(overlayPop);
+    });
+
+    botonClose5.addEventListener('click', (event) => {
+        event.preventDefault();
+        overlayPop = document.querySelector("#popFooter5");
+        hiddenPop(overlayPop);
     });
 
     overlay.addEventListener('click', (event) => {
@@ -151,7 +182,7 @@ function showPop(overlayPop) {
     overlayPop.style.visibility = "visible";
 }
 
-function hiddenPop(){
+function hiddenPop(overlayPop){
     overlayPop.style.opacity = "0";
     overlayPop.style.visibility = "hidden";
 }

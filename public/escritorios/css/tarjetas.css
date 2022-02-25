@@ -83,6 +83,23 @@
   cursor: pointer;
 }
 
+.button_editar {
+  width:fit-content;
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display:flex;
+  margin-top: 3px;
+  margin-left: 155px;
+  cursor: pointer;
+}
+
+.imgEditar{
+  width: 20px;
+  height: 20px;
+}
+
 .tarjeta_button h5{
   margin-block-end: 0px;
   margin-block-start: 0px;

@@ -82,6 +82,7 @@ const dibujarPopAlerta = (err) => {
     });
     
     showAlert();
+    
     if(err == "salir"){
         const btnSalir = document.querySelector('#logoutC');
         btnSalir.addEventListener('click', e => {
