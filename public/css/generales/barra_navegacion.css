@@ -9,7 +9,9 @@
   nav {
     background: #ffb4a2;
     height: 60px;
-    width: 100%;
+    width: 99.5%;
+    border: 3px solid;
+    border-color: #ffb4a2;
   }
   
   .enlace {
@@ -19,6 +21,12 @@
   
   .logo {
     height: 40px;
+  }
+
+  #titulo{
+    position: fixed;
+    margin-left: 30%;
+    color: black;
   }
   
   nav ul {

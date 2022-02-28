@@ -1,6 +1,7 @@
 document.cookie = " ";
 const miFormulario = document.querySelector('#form_inicio');
 const alertas = document.querySelector("#alertas");
+const titulo = "";
 const accesos = [
 	{
 		'nombre': 'Registrar',
@@ -43,7 +44,7 @@ function validarCamposVacios() {
 }
 
 const main = async() => {
-    dibujarNavBar(accesos);
+    dibujarNavBar(accesos, titulo);
     await tieneJWT();
 }
 

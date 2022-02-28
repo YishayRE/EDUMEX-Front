@@ -1,6 +1,7 @@
 document.cookie = " ";
 const miFormulario = document.querySelector('#form_registro');
 const alertas = document.querySelector("#alertas");
+const titulo = "";
 let tipo = null;
 
 const accesos = [
@@ -86,7 +87,7 @@ function valorRol(){
 }
 
 const main = async() => {
-    dibujarNavBar(accesos);
+    dibujarNavBar(accesos, titulo);
     await tieneJWT();
 }
 

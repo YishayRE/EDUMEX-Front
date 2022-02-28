@@ -4,7 +4,7 @@ const dibujarNavBar = (accesos = []) => {
     let navBarHtml = '';
 
     navBarHtml += `
-        <nav>
+        <nav id="barraNav">
             <input type="checkbox" id="check">
 
             <label for="check" class="checkbtn" id="barras">

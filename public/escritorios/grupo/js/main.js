@@ -1,5 +1,6 @@
 const formCrear = document.querySelector('#form_crearMateria');
 const crearMateria = document.querySelector('#enviar_materia');
+const titulo = localStorage.getItem('titulo');
 
 const accesoP = [
     {
@@ -32,65 +33,16 @@ const datosPop = [
     ]
 ];
 
-//-----------------------------Formulario para crear una nueva materia--------------------------
-/*formCrear.addEventListener('submit', ev => {
-    
-    const token = localStorage.getItem('token');
-    const grupo = localStorage.getItem('grupo');
-
-    console.log(grupo);
-    console.log(token);
-
-
-    ev.preventDefault();
-    showLoad();
-
-    if(!validarCamposVacios()){
-        hiddenLoad();
-        //dibujarAlerta(tipo);
-        throw Error('Falta algun dato');
-    }
-
-    const formData = {};
-
-    for(let el of formCrear.elements){
-        if(el.name.length > 0){
-            formData[el.name] = el.value;
-        }
-    }
-    formData["grupo"] = grupo;
-
-    console.log(formData);
-
-    fetch(url + 'materia', {
-        method: 'POST',
-        body: JSON.stringify(formData),
-        headers: { 'x-token': token, 
-        'Content-Type': 'application/json'}
-    })
-    .then(resp => resp.json())
-    .then (({msg, token}) => {
-        if(msg){
-            hiddenLoad();
-            return console.error(msg);
-        }
-    })
-    .catch(err => {
-        hiddenLoad();
-        console.log(err)
-    })
-});*/
-
 const checarRol = async() => {
     const grupo = localStorage.getItem('grupo');
     if(rol == "PRO_ROLE"){
-        dibujarNavBar(accesoP);
+        dibujarNavBar(accesoP, titulo);
         cerrarSesion();
         dibujarPopUp(datosPop);
         const {materias} = await obtenerArray(`materia/${grupo}`);
         dibujarMateria(materias);
     }else if(rol == "EST_ROLE"){
-        dibujarNavBar([]);
+        dibujarNavBar([], titulo);
         cerrarSesion();
         const {materias} = await obtenerArray(`materia/${grupo}`);
         dibujarMateria(materias);

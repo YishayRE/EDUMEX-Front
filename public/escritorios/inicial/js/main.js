@@ -1,5 +1,6 @@
 const formUnir = document.querySelector('#form_unirGrupo');
 const formCrear = document.querySelector('#form_crearGrupo');
+const titulo = "Escritorio Principal"
 
 const accesoP = [
     {
@@ -11,7 +12,6 @@ const accesoE = [
     {
         'nombre': 'Unirme a Grupo',
         'referencia': ``
-
     }
 ];
 
@@ -53,13 +53,14 @@ const datosPopE = [
 
 const checarRol = async() => {
     if(rol == "PRO_ROLE"){
-        dibujarNavBar(accesoP);
+        dibujarNavBar(accesoP, titulo);
         cerrarSesion();
         dibujarPopUp(datosPopP);
         const {grupos} = await obtenerArray(`grupo/${uid}`);
+        console.log(grupos);
         dibujarGrupo(grupos);
     }else if(rol == "EST_ROLE"){
-        dibujarNavBar(accesoE);
+        dibujarNavBar(accesoE, titulo);
         cerrarSesion();
         dibujarPopUp(datosPopE);
         const {grupos} = await obtenerArray(`inscrito/${uid}`);

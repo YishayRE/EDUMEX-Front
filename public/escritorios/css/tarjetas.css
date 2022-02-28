@@ -83,7 +83,7 @@
   cursor: pointer;
 }
 
-.button_editar {
+.buttons_tarjetas {
   width:fit-content;
   align-content: center;
   text-align: center;
@@ -91,13 +91,19 @@
   align-items: center;
   display:flex;
   margin-top: 3px;
-  margin-left: 155px;
+  margin-left: 5px;
   cursor: pointer;
 }
 
 .imgEditar{
   width: 20px;
   height: 20px;
+}
+
+.imgEliminar{
+  width: 17px;
+  height: 17px;
+  padding-right: 132px;
 }
 
 .tarjeta_button h5{

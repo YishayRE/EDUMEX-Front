@@ -1,19 +1,23 @@
-const dibujarNavBar = (accesos = [], userType) => {
+const dibujarNavBar = (accesos = [], titulo) => {
     let navBarHtml = '';
     const role = (rol === 'PRO_ROLE')
         ? 'pro'
         : 'est';
 
     navBarHtml += `
-        <nav>
+        <nav id=barraNav>
             <input type="checkbox" id="check">
+
+            <div id="titulo">
+                <h2>${titulo}</h2>
+            </div>
 
             <label for="check" class="checkbtn" id="barras">
                     <i class="fas fa-bars"></i>
             </label>
 
             <a href="#" class="enlace">
-                <img src="${baseUrl}/images/logoPNG.png" alt="EDUMEX" class="logo">
+                <img src="${baseUrl}/images/atras.png" alt="Regresar" class="logo">
             </a>
 
             <ul id="lista">
@@ -21,13 +25,13 @@ const dibujarNavBar = (accesos = [], userType) => {
 
     accesos.forEach(({ nombre, referencia },index) => {
         navBarHtml += `
-            <li><a id="${role}${index}" href="${referencia}">${nombre}</a></li>
+            <li><a id="${role}${index}" href="${referencia}" class="botonesNav">${nombre}</a></li>
         `;
         aux=1;
     });
     
     navBarHtml += `
-                <li><a id="logout" href>Salir</a></li>
+                <li><a id="logout" href class="botonesNav">Salir</a></li>
             </ul>
         </nav>
     `;
@@ -43,6 +47,15 @@ const dibujarNavBar = (accesos = [], userType) => {
         });
     }
 }
+
+const colorNav = (color) => {
+    let barraNav = document.querySelector("#barraNav");
+    let fondo = hexToRgbA(color);
+
+    barraNav.style.background = `${fondo}`;
+    barraNav.style.borderColor = `${color}`;
+}
+
 /*
     accesos.forEach(({ nombre, referencia },index) => {
         if(referencia.startsWith('#')){

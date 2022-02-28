@@ -159,7 +159,7 @@ const dibujarPopEditar = ([nombre = '', form = '', datos = [], boton = '', datos
                     let n = 1;
                     while( n < 7 ){
                         popEditarHtml += `
-                            <option value="${n}°">
+                            <option value="${n}">
                         `;
                         n++;
                     }
@@ -195,7 +195,6 @@ const dibujarPopEditar = ([nombre = '', form = '', datos = [], boton = '', datos
             </div>    
             `;
         }
-        
     });
     popEditarHtml += `
                         <div>
@@ -226,7 +225,7 @@ const dibujarPopEditar = ([nombre = '', form = '', datos = [], boton = '', datos
     formulario.addEventListener('submit', async(e) => {
         e.preventDefault();
         showLoad();
-        const datos = gruposUpd(formulario);
+        const datos = dataForm(formulario);
         if(valForm(datos))
             await actTarjeta(datos, `${form}/${editarId}`);
         else{

@@ -9,9 +9,14 @@ const obtenerArray = async(arrayPath) => {
     
     if(respuesta.msg){
         hiddenLoad();
-        dibujarPopAlerta("No tienes materias, crea una");
+        if(arrayPath.startsWith('grupo')){
+            dibujarPopAlerta("No tienes grupos, crea uno");
+        }else if(arrayPath.startsWith('materia')){
+            dibujarPopAlerta("No tienes materias, agrega una");
+        }else if(arrayPath.startsWith('actividad')){
+            dibujarPopAlerta("No tienes actividades, agrega una");
+        }
         throw new Error(respuesta.msg);        
     }
-
     return respuesta;
 }

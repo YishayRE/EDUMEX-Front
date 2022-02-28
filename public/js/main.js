@@ -1,3 +1,5 @@
+const titulo = "";
+
 const accesos = [
 	{
 		'nombre': 'Iniciar Sesión',
@@ -10,7 +12,7 @@ const accesos = [
 ];
 
 const main = async() => {
-	dibujarNavBar(accesos);
+	dibujarNavBar(accesos, titulo);
 	dibujarPopFooter();
 	await tieneJWT();
 }
