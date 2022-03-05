@@ -10,9 +10,13 @@ const dibujarGrupo = (grupos = []) => {
         `;
         if(rol == "PRO_ROLE"){
             gruposHtml += `
-                <div name="${index}" id="editar" class="buttons_tarjetas">
-                    <img src="${baseUrl}/images/eliminar.png" alt="Eliminar" class="imgEliminar">
-                    <img src="${baseUrl}/images/editar.png" alt="Editar" class="imgEditar">
+                <div class="buttons_tarjetas">
+                    <div name="${index}" id="eliminar">
+                        <img src="${baseUrl}/images/eliminar.png" alt="Eliminar" class="imgEliminar">
+                    </div>    
+                    <div name="${index}" id="editar">
+                        <img src="${baseUrl}/images/editar.png" alt="Editar" class="imgEditar">
+                    </div>
                 </div>
             `;
         }
@@ -37,19 +41,28 @@ const dibujarGrupo = (grupos = []) => {
         btn.addEventListener('click', () => {
             localStorage.setItem('grupo', grupos[index]._id);
             nombreTitulo = 'Grupo: ' +  grupos[index].grado + '°' + grupos[index].grupo;
-            localStorage.setItem('titulo', nombreTitulo);
-            window.location = '../grupo';
+            localStorage.setItem('tituloG', nombreTitulo);
+            window.location.replace(`${escritoriosUrl}grupo`);
         });
     });
 
     if(rol == "PRO_ROLE"){
-        const vistaTarjetas = document.querySelectorAll("#editar");
+        const vistaTarjetaEd = document.querySelectorAll("#editar");
 
-        vistaTarjetas.forEach((edit, index) => {
+        vistaTarjetaEd.forEach((edit, index) => {
             edit.addEventListener('click', (event) => {
                 event.preventDefault();
                 dibujarPopEditar(datosPopP, grupos[index]._id);
                 showEditar();
+            });
+        });
+
+        const vistaTarjetaEl = document.querySelectorAll("#eliminar");
+
+        vistaTarjetaEl.forEach((edit, index) => {
+            edit.addEventListener('click', (event) => {
+                event.preventDefault();
+                dibujarPopAlerta('eliminar', `grupo/${grupos[index]._id}`);
             });
         });
     }
@@ -67,9 +80,13 @@ const dibujarMateria = (materias = []) => {
         `;
         if(rol == "PRO_ROLE"){
             materiasHtml += `
-            <div name="${index}" id="editar" class="buttons_tarjetas">
-                <img src="${baseUrl}/images/eliminar.png" alt="Eliminar" class="imgEliminar">
-                <img src="${baseUrl}/images/editar.png" alt="Editar" class="imgEditar">
+            <div class="buttons_tarjetas">
+                    <div name="${index}" id="eliminar">
+                        <img src="${baseUrl}/images/eliminar.png" alt="Eliminar" class="imgEliminar">
+                    </div>    
+                    <div name="${index}" id="editar">
+                        <img src="${baseUrl}/images/editar.png" alt="Editar" class="imgEditar">
+                    </div>
             </div>
             `;
         }
@@ -92,8 +109,8 @@ const dibujarMateria = (materias = []) => {
             localStorage.setItem('materia',materias[index]._id);
             localStorage.setItem('color',materias[index].color);
             nombreTitulo = 'Materia: ' +  materias[index].nombre;
-            localStorage.setItem('titulo', nombreTitulo);
-            window.location = '../materia';
+            localStorage.setItem('tituloM', nombreTitulo);
+            window.location.replace(`${escritoriosUrl}materia`);
         });
     });
 
@@ -105,6 +122,15 @@ const dibujarMateria = (materias = []) => {
                 event.preventDefault();
                 dibujarPopEditar(datosPop, materias[index]._id);
                 showEditar();
+            });
+        });
+
+        const vistaTarjetaEl = document.querySelectorAll("#eliminar");
+
+        vistaTarjetaEl.forEach((edit, index) => {
+            edit.addEventListener('click', (event) => {
+                event.preventDefault();
+                dibujarPopAlerta('eliminar', `materia/${materias[index]._id}`);
             });
         });
     }
@@ -124,9 +150,13 @@ const dibujarActividad = (actividades = []) => {
         `;
         if(rol == "PRO_ROLE"){
             actividadesHtml += `
-            <div name="${index}" id="editar" class="buttons_tarjetas">
-                <img src="${baseUrl}/images/eliminar.png" alt="Eliminar" class="imgEliminar">
-                <img src="${baseUrl}/images/editar.png" alt="Editar" class="imgEditar">
+            <div class="buttons_tarjetas">
+                    <div name="${index}" id="eliminar">
+                        <img src="${baseUrl}/images/eliminar.png" alt="Eliminar" class="imgEliminar">
+                    </div>    
+                    <div name="${index}" id="editar">
+                        <img src="${baseUrl}/images/editar.png" alt="Editar" class="imgEditar">
+                    </div>
             </div>
             `;
         }
@@ -151,7 +181,7 @@ const dibujarActividad = (actividades = []) => {
     btnEntrar.forEach((btn, index) => {
         btn.addEventListener('click', () => {
             localStorage.setItem('juego',actividades[index]._id);
-            window.location = '../escritorio_juego';
+            window.location.replace(`${escritoriosUrl}actividad`);
         });
     });
 
@@ -163,6 +193,15 @@ const dibujarActividad = (actividades = []) => {
                 event.preventDefault();
                 dibujarPopEditar(datosPop, actividades[index]._id);
                 showEditar();
+            });
+        });
+
+        const vistaTarjetaEl = document.querySelectorAll("#eliminar");
+
+        vistaTarjetaEl.forEach((edit, index) => {
+            edit.addEventListener('click', (event) => {
+                event.preventDefault();
+                dibujarPopAlerta('eliminar', `actividad/${actividades[index]._id}`);
             });
         });
     }

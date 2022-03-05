@@ -44,7 +44,7 @@ const datosPopE = [
     [
         {
             'type': 'text',
-            'name': 'codigo',
+            'name': 'grupo',
             'titulo': 'Código del grupo'
         }
     ],
@@ -57,7 +57,6 @@ const checarRol = async() => {
         cerrarSesion();
         dibujarPopUp(datosPopP);
         const {grupos} = await obtenerArray(`grupo/${uid}`);
-        console.log(grupos);
         dibujarGrupo(grupos);
     }else if(rol == "EST_ROLE"){
         dibujarNavBar(accesoE, titulo);
@@ -77,3 +76,6 @@ const main = async() => {
 }
 
 main();
+
+window.history.length = 0;
+console.dir(window.history);

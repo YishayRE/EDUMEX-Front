@@ -33,7 +33,7 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '', datosList
                     let n = 1;
                     while( n < 7 ){
                         popUpHtml += `
-                            <option value="${n}°">
+                            <option value="${n}">
                         `;
                         n++;
                     }
@@ -115,15 +115,31 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '', datosList
                 validador = "materia";
                 vId = localStorage.getItem('materia');
                 break;
+            case 'inscrito':
+                validador = "estudiante";
+                vId = uid;
+                break;
             default:
                 hiddenLoad();
                 throw new Error("No se ha podido validar la petición");        
                 break;
         }
-        const datos = dataForm(formulario, validador, vId);
+        let datos = dataForm(formulario);
         datos[`${validador}`] = vId;
+
         if(valForm(datos))
-            await creacion(datos, form);
+            switch (form) {
+                case 'inscrito':
+                    const estu = {estudiante: `${datos['estudiante']}`}
+                    const gru = {grupo: `${datos['grupo']}`}
+                    const finalResult = Object.assign(estu,gru);
+                    console.log(finalResult);
+                    await inscripcion(finalResult, form);
+                    break;
+                default:
+                    await creacion(datos, form);
+                    break;
+            }
         else{
             console.log("Faltan Datos");  
             hiddenLoad();

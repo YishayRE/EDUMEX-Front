@@ -92,18 +92,23 @@
   display:flex;
   margin-top: 3px;
   margin-left: 5px;
-  cursor: pointer;
+}
+
+#eliminar{
+  padding-right: 132px;
+
 }
 
 .imgEditar{
   width: 20px;
   height: 20px;
+  cursor: pointer;
 }
 
 .imgEliminar{
   width: 17px;
   height: 17px;
-  padding-right: 132px;
+  cursor: pointer;
 }
 
 .tarjeta_button h5{

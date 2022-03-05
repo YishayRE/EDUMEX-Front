@@ -6,6 +6,7 @@ const obtenerArray = async(arrayPath) => {
     });
 
     const respuesta = await resp.json();
+    console.log(respuesta);
     
     if(respuesta.msg){
         hiddenLoad();

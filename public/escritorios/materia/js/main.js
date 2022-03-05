@@ -1,6 +1,6 @@
 const formCrear = document.querySelector('#form_crearActividad');
 const crearActividad = document.querySelector('#enviar_actividad');
-const titulo = localStorage.getItem('titulo');
+const titulo = localStorage.getItem('tituloM');
 
 
 const accesoP = [
@@ -38,14 +38,14 @@ const checarRol = async() => {
     const color = localStorage.getItem('color');
 
     if(rol == "PRO_ROLE"){
-        dibujarNavBar(accesoP, titulo);
+        dibujarNavBar(accesoP, titulo, 'grupo');
         colorNav(color);
         cerrarSesion();
         dibujarPopUp(datosPop);
         const {actividades} = await obtenerArray(`actividad/${materia}`);
         dibujarActividad(actividades);
     }else if(rol == "EST_ROLE"){
-        dibujarNavBar([], titulo);
+        dibujarNavBar([], titulo, 'grupo');
         cerrarSesion();
         const {actividades} = await obtenerArray(`actividad/${materia}`);
         dibujarActividad(actividades);

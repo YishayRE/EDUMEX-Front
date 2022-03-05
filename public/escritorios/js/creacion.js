@@ -29,9 +29,15 @@ const creacion = async(formData = {}, route = '') => {
         dibujarPopAlerta(errores);
         throw new Error(errores);        
     }
+    if(respuesta.msg){
+        hiddenLoad();
+        dibujarPopAlerta(respuesta.msg);
+        throw new Error(respuesta.msg);
+    }
 
     localStorage.setItem(route, respuesta);
-    window.location = `../${route}`;
+    //window.location = `../${route}`;
+    location.reload();
 }
 
 /*

@@ -1,16 +1,16 @@
-const elimTarjeta = async(route = '') => {
+const inscripcion = async(formData = {}, route = '') => {
     const token = localStorage.getItem('token') || '';
     let myHeaders = new Headers();
     myHeaders.append("x-token", token);
     myHeaders.append("user", uid);
     myHeaders.append("Content-Type", "application/json");
     
-    let raw = '';
+    let raw = JSON.stringify(formData);
 
     console.log(raw);
     
     let requestOptions = {
-      method: 'PATCH',
+      method: 'POST',
       headers: myHeaders,
       body: raw,
       redirect: 'follow'
@@ -19,7 +19,6 @@ const elimTarjeta = async(route = '') => {
     const resp = await fetch(baseApi + route, requestOptions);
       
     const respuesta = await resp.json();
-    console.log(respuesta);
     let errores = '';
     
     if(respuesta.errors){
@@ -31,5 +30,7 @@ const elimTarjeta = async(route = '') => {
         throw new Error(errores);        
     }
 
-    location.reload();    
+    localStorage.setItem(route, respuesta);
+    //window.location = `../${route}`;
+    location.reload();
 }

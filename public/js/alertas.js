@@ -33,7 +33,7 @@ const dibujarPopAlertas = (errors = []) => {
     showAlert();
 }
 
-const dibujarPopAlerta = (err) => {
+const dibujarPopAlerta = (err, route) => {
     let popAlertaHtml = '';
         popAlertaHtml += `
         <div id="popError" class="overlayAlerta">
@@ -46,17 +46,28 @@ const dibujarPopAlerta = (err) => {
                     <div class="centerAlerta" id="infoAlerta">
                         <div class="alertas">
         `;
-        if(err == "salir"){
-            popAlertaHtml += `
+        switch (err) {
+            case 'salir':
+                popAlertaHtml += `
                             <h2>¿Seguro que quieres salir?</h2>
                             <div>
                                 <button id="logoutC" href="">Salir</button>
                             </div>
-            `; 
-        }else{
-            popAlertaHtml += `
+                `; 
+                break;
+            case 'eliminar':
+                popAlertaHtml += `
+                            <h2>¿Seguro que quieres eliminarlo?</h2>
+                            <div>
+                                <button id="eliminarC" href="">Eliminar</button>
+                            </div>
+                `; 
+                break;
+            default:
+                popAlertaHtml += `
                             <h2>${err}</h2>
-            `; 
+                `; 
+                break;
         }
         popAlertaHtml += `
                         </div>    
@@ -82,13 +93,27 @@ const dibujarPopAlerta = (err) => {
     });
     
     showAlert();
-    
-    if(err == "salir"){
-        const btnSalir = document.querySelector('#logoutC');
-        btnSalir.addEventListener('click', e => {
-            localStorage.removeItem('token');
-            window.location = `${baseUrl}`;
-        });
+
+    switch (err) {
+        case 'salir':
+            const btnSalir = document.querySelector('#logoutC');
+            btnSalir.addEventListener('click', e => {
+                localStorage.removeItem('token');
+                window.location = `${baseUrl}`;
+            });
+            break;
+        case 'eliminar':
+            const btnEliminar = document.querySelector('#eliminarC');
+            btnEliminar.addEventListener('click', async(e) => {
+                e.preventDefault();
+                showLoad();
+                console.log(route)
+                await elimTarjeta(route);
+                hiddenLoad();
+            });
+            break;
+        default:
+            break;
     }
 }
 

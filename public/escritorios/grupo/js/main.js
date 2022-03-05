@@ -1,6 +1,6 @@
 const formCrear = document.querySelector('#form_crearMateria');
 const crearMateria = document.querySelector('#enviar_materia');
-const titulo = localStorage.getItem('titulo');
+const titulo = localStorage.getItem('tituloG');
 
 const accesoP = [
     {
@@ -13,11 +13,6 @@ const datosPop = [
     'Crear Materia',
     'materia',
     [
-        {
-            'type': 'list',
-            'name': 'nombre',
-            'titulo': 'Nombre de la materia'
-        },
         {
             'type': 'color',
             'name': 'color',
@@ -36,13 +31,13 @@ const datosPop = [
 const checarRol = async() => {
     const grupo = localStorage.getItem('grupo');
     if(rol == "PRO_ROLE"){
-        dibujarNavBar(accesoP, titulo);
+        dibujarNavBar(accesoP, titulo, 'inicial');
         cerrarSesion();
         dibujarPopUp(datosPop);
         const {materias} = await obtenerArray(`materia/${grupo}`);
         dibujarMateria(materias);
     }else if(rol == "EST_ROLE"){
-        dibujarNavBar([], titulo);
+        dibujarNavBar([], titulo, 'inicial');
         cerrarSesion();
         const {materias} = await obtenerArray(`materia/${grupo}`);
         dibujarMateria(materias);

@@ -1,4 +1,4 @@
-const dibujarNavBar = (accesos = [], titulo) => {
+const dibujarNavBar = (accesos = [], titulo, url) => {
     let navBarHtml = '';
     const role = (rol === 'PRO_ROLE')
         ? 'pro'
@@ -15,13 +15,23 @@ const dibujarNavBar = (accesos = [], titulo) => {
             <label for="check" class="checkbtn" id="barras">
                     <i class="fas fa-bars"></i>
             </label>
-
-            <a href="#" class="enlace">
-                <img src="${baseUrl}/images/atras.png" alt="Regresar" class="logo">
-            </a>
-
-            <ul id="lista">
     `;
+        if(titulo == 'Escritorio Principal'){
+            navBarHtml += `
+            <div class="enlace">
+                <img src="${baseUrl}/images/logoPNG.png" alt="EDUMEX" class="logo">
+            </div>
+            `;
+        }else{
+            navBarHtml += `
+            <div class="enlace" id="regresar">
+                <img src="${baseUrl}/images/atras.png" alt="Regresar" class="logo">
+            </div>
+            `;
+        }
+        navBarHtml += `
+            <ul id="lista">
+        `;
 
     accesos.forEach(({ nombre, referencia },index) => {
         navBarHtml += `
@@ -37,6 +47,13 @@ const dibujarNavBar = (accesos = [], titulo) => {
     `;
 
     navBar.innerHTML = navBarHtml;
+
+    if(titulo != 'Escritorio Principal'){
+        const btnRegresar = document.querySelector('#regresar');
+        btnRegresar.addEventListener('click', e => {
+            window.location.replace(`${escritoriosUrl}${url}`);
+        });
+    }
 
     const lista = document.querySelector("#lista");
 
@@ -55,23 +72,3 @@ const colorNav = (color) => {
     barraNav.style.background = `${fondo}`;
     barraNav.style.borderColor = `${color}`;
 }
-
-/*
-    accesos.forEach(({ nombre, referencia },index) => {
-        if(referencia.startsWith('#')){
-            navBarHtml += `
-            <li><a class="botonesBarra" id="vp${index+1}" href="${referencia}">${nombre}</a></li>
-            `;
-        }else if(referencia.startsWith(' ')){
-            navBarHtml += `
-            <li><a id="logout" href="${referencia}">${nombre}</a></li>
-            `;
-        }else{
-            navBarHtml += `
-            <li><a href="${baseUrl}${referencia}">${nombre}</a></li>
-            `;
-        }
-        aux=1;
-    });
-*/
-

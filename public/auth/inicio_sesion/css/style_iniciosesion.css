@@ -86,6 +86,7 @@
     }
     button {
       width: 100%;
+      cursor: pointer;
     }
     button:hover, .btn-item:hover {
       background: #E5989B;

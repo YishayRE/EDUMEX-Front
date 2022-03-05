@@ -23,21 +23,3 @@ function cerrarSesion(){
         dibujarPopAlerta(salir);
     });
 }
-
-const formData = () => {
-    showLoad();
-
-    if(!validarCamposVacios()){
-        hiddenLoad();
-        throw Error('Falta algun dato');
-    }
-
-    const formData = {};
-
-    for(let el of miFormulario.elements){
-        if(el.name.length > 0){
-            formData[el.name] = el.value;
-        }
-    }
-    return formData;
-}
