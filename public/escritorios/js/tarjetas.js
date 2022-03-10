@@ -181,7 +181,7 @@ const dibujarActividad = (actividades = []) => {
     btnEntrar.forEach((btn, index) => {
         btn.addEventListener('click', () => {
             localStorage.setItem('juego',actividades[index]._id);
-            window.location.replace(`${escritoriosUrl}actividad`);
+            window.location.replace(`${baseUrl}escritorios/actividad/seleccion`);
         });
     });
 

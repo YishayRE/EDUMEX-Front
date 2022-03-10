@@ -1,0 +1,53 @@
+.sidenav {
+    margin-top: 66px;
+    margin-bottom: 100px;
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #ffcdc1;
+    overflow-x: hidden;
+  }
+  
+  .cajaInfo {
+    border: 3px solid;
+    border-bottom: 0px;
+    border-color: #917681;
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 10px;
+    color: #818181;
+    display: block;
+    height: 94.4px;
+  }
+
+  .cajaInfo2 {
+    border: 3px solid;
+    border-color: #917681;
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 10px;
+    color: #818181;
+    display: block;
+    height: 95.2px;
+  }
+   
+  .elementoJuego {
+    margin-left: 170px; /* Same as the width of the sidenav */
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+    color: #85046f;
+    border: 3px dashed;
+    border-radius: 30px;
+    border-color: #917681;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
