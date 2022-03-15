@@ -1,6 +1,6 @@
 const dataForm = (formulario) => {
     const datosForm = {};
-
+    
     for(let el of formulario.elements){
         if(el.name.length > 0){
             datosForm[el.name] = el.value.trim();

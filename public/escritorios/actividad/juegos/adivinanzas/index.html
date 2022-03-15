@@ -1,12 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/generalJuego.css">
+    <link rel="stylesheet" type="text/css" href="../../../../css/generales/esc_general.css">
     <title>Document</title>
 </head>
-<body>
-    <h1>Hola desde Adivinazas</h1>
+<body> 
+    <div id="blocker"></div>
+    <div id="loader"></div>
+    <header class="stick" id="navBar">
+    </header>
+
+    <div class="sidenav">
+        <div class="cajaInfo">
+            <h1 id="materia">Materia</h1>
+        </div>
+        <div class="cajaInfo">
+            <h1 id="actividad">Nombre Actividad</h1>
+        </div>
+        <div class="cajaInfo">
+            <h1 id="tipoJ">Tipo Juego</h1>
+        </div>
+        <div class="cajaInfo">
+            <h1 id="objetivo">Objetivo</h1>
+        </div>
+        <div class="cajaInfo2">
+            <h1 id="descripcion">Descripcion</h1>
+        </div>
+    </div>
+
+    <div id="content">
+        <form>
+            <div id="contenedor">
+                <div class="elementoJuego">
+                    <div class="image-upload">
+                        <label for="imagen0">
+                        <img id="cargaImagen" src="../../../../images/upload.png"/>
+                        </label>
+                        
+                        <input type="file" name="imagen0" id="imagen0" accept="image/png, image/jpeg">
+                    </div>
+                    <div>
+                        <h5>Ingresa la sentencia</h5>
+                        <input type="text" name="sentencia0" id="sentencia0">
+                    </div>
+                    <div>
+                        <h5>Escribe la respuesta</h5>
+                        <input type="text" name="respuesta0" id="respuesta0">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="adicion">
+        <h1 id="simbolo">+</h1>
+    </div>
+
 </body>
+    <script src="../../../../js/const.js"></script>
+    <script src="../../../js/const.js"></script>
+    <script src="../../js/const.js"></script>
+    <script src="../../../js/common.js"></script>
+    <script src="../../../../js/cabecera.js"></script>
+    <script src="../../../../js/validarJWT.js"></script>
+    <script src="../../../../escritorios/js/renovarJWT.js"></script>
+    <script src="../../../../js/loaders.js"></script>
+    <script src="../../js/navBar.js"></script>
+    <script src="../../../../js/alertas.js"></script>
+    <script src="../js/actividad.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="js/main.js"></script>
 </html>

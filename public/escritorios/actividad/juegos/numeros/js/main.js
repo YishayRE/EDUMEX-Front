@@ -11,17 +11,6 @@ const select = document.querySelector('#select0');
 
 const titulo = localStorage.getItem('tituloJ');
 
-const accesoP = [
-    {
-        'nombre': 'Terminar Juego',
-        'referencia': ``
-    },
-    {
-        'nombre': 'Probar',
-        'referencia': ``
-    }
-];
-
 let contadorEtiqueta = 0;
 
 adicion.addEventListener('click', () => {
@@ -36,7 +25,8 @@ adicion.addEventListener('click', () => {
                 <input type="file" name="imagen${contadorEtiqueta}" id="imagen${contadorEtiqueta}" accept="image/png, image/jpeg">
             </div>
             <select name="opcion${contadorEtiqueta}" id="opcion${contadorEtiqueta}">
-                <option value="Palabra" selected>Palabra</option>
+                <option value="" selected disabled hidden>Elige el tipo</option>
+                <option value="Palabra">Palabra</option>
                 <option value="Oración">Oración</option>
             </select>
             <h1 id="select${contadorEtiqueta}">
@@ -48,18 +38,19 @@ adicion.addEventListener('click', () => {
 });
 
 opcion.addEventListener('change', () => {
-    if(opcion.selectedIndex === 1)
-        select.innerHTML = 'Oración';
+    if(opcion.selectedIndex === 2)
+        select.innerHTML = 'Secuencia';
     else
-        select.innerHTML = 'Palabra';
+        select.innerHTML = 'Operación';
 });
 
 const checarRol = async() => {
     if(rol == "PRO_ROLE"){
-        dibujarNavBar(accesoP);
+        dibujarNavBar();
         cerrarSesion();
     }else if(rol == "EST_ROLE"){
-        window.location.replace(`${baseUrl}`);
+        dibujarNavBar();
+        cerrarSesion();
     }
 }
 

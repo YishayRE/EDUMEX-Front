@@ -11,17 +11,6 @@ const select = document.querySelector('#select0');
 
 const titulo = localStorage.getItem('tituloJ');
 
-const accesoP = [
-    {
-        'nombre': 'Terminar Juego',
-        'referencia': ``
-    },
-    {
-        'nombre': 'Probar',
-        'referencia': ``
-    }
-];
-
 let contadorEtiqueta = 0;
 
 adicion.addEventListener('click', () => {
@@ -35,31 +24,25 @@ adicion.addEventListener('click', () => {
                 
                 <input type="file" name="imagen${contadorEtiqueta}" id="imagen${contadorEtiqueta}" accept="image/png, image/jpeg">
             </div>
-            <select name="opcion${contadorEtiqueta}" id="opcion${contadorEtiqueta}">
-                <option value="Palabra" selected>Palabra</option>
-                <option value="Oración">Oración</option>
-            </select>
-            <h1 id="select${contadorEtiqueta}">
-                Palabra
-            </h1>
-            <input type="text" name="opt${contadorEtiqueta}" id="opt${contadorEtiqueta}">
+            <div>
+                <h5>Ingresa la sentencia</h5>
+                <input type="text" name="sentencia${contadorEtiqueta}" id="sentencia${contadorEtiqueta}">
+            </div>
+            <div>
+                <h5>Escribe la respuesta</h5>
+                <input type="text" name="respuesta${contadorEtiqueta}" id="respuesta${contadorEtiqueta}">
+            </div>
         </div>
     `;
 });
 
-opcion.addEventListener('change', () => {
-    if(opcion.selectedIndex === 1)
-        select.innerHTML = 'Oración';
-    else
-        select.innerHTML = 'Palabra';
-});
-
 const checarRol = async() => {
     if(rol == "PRO_ROLE"){
-        dibujarNavBar(accesoP);
+        dibujarNavBar();
         cerrarSesion();
     }else if(rol == "EST_ROLE"){
-        window.location.replace(`${baseUrl}`);
+        dibujarNavBar();
+        cerrarSesion();
     }
 }
 

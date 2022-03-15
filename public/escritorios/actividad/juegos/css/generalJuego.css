@@ -35,6 +35,9 @@
   }
    
   .elementoJuego {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 10px 10px;
     margin-left: 170px; /* Same as the width of the sidenav */
     margin-top: 10px;
     margin-right: 10px;
@@ -46,6 +49,40 @@
     border-radius: 30px;
     border-color: #917681;
   }
+
+  #adicion{
+    color: #85046f;
+    margin-left: 56vw; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    background-color: #ffcdc1;
+    border-radius: 100px;
+    max-width: 50px;
+  }
+
+  #simbolo{
+    margin-top: 0px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  #cargaImagen{
+    width: 100px;
+    height: 100px;
+  }
+
+  .image-upload>input {
+    display: none;
+  }
+
+  /*.scrollY{
+    overflow-y: auto !important;
+  }*/
+
+  .scrollY{ 
+    overflow-y:scroll; 
+    max-height: calc(100vh - 60px);
+}
+
   
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
