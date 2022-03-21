@@ -46,6 +46,7 @@ const checarRol = async() => {
         dibujarActividad(actividades);
     }else if(rol == "EST_ROLE"){
         dibujarNavBar([], titulo, 'grupo');
+        colorNav(color);
         cerrarSesion();
         const {actividades} = await obtenerArray(`actividad/${materia}`);
         dibujarActividad(actividades);

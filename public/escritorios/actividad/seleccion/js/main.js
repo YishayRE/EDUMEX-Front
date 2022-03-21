@@ -1,6 +1,8 @@
 const btnJuego = document.querySelectorAll('#btnJuego'); 
 const titulo = localStorage.getItem('tituloJ');
 
+const accesoP = [];
+
 const elegirJuego = () => {
     btnJuego.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -12,7 +14,7 @@ const elegirJuego = () => {
 
 const checarRol = async() => {
     if(rol == "PRO_ROLE"){
-        dibujarNavBar();
+        dibujarNavBar(accesoP, 'seleccion');
         cerrarSesion();
     }else if(rol == "EST_ROLE"){
         dibujarNavBar();

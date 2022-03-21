@@ -68,9 +68,44 @@ li a:hover {
   display: none;
 }
 
+.close{
+  cursor: pointer;
+}
+
 #select {
   display: none;
 }
+
+.contTexto{
+  overflow-y:scroll; 
+  max-height: 30vh;
+  max-width: 60vw;
+  color: black;
+  word-wrap: normal;
+}
+
+.elementFooter{
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+.elementFooter2{
+  justify-items: center;
+  display: grid;
+  grid-template-columns: auto;
+}
+
+.imgFooter{
+  width: 30px;
+  height: 30px;
+}
+
+.imgFooter2{
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+
 /*-------------------------------------------ESTILOS PAGINA RESPONSIVA-----------------------------------*/
 @media (max-width: 952px) {
   .enlace {

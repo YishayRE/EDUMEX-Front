@@ -21,3 +21,12 @@
 #logout{
   visibility:visible;
 }
+
+#eliminar{
+  visibility: hidden;
+
+}
+
+#pro0{
+  visibility: hidden;
+}

@@ -29,34 +29,35 @@
         </div>
     </div>
 
-    <div id="content">
-        <form>
-            <div id="contenedor">
-                <div class="elementoJuego">
-                    <div class="image-upload">
-                        <label for="imagen0">
-                        <img id="cargaImagen" src="../../../../images/upload.png"/>
-                        </label>
-                        
-                        <input type="file" name="imagen0" id="imagen0" accept="image/png, image/jpeg">
+    <div class="scrollY">
+        <div id="content">
+            <form id="formJ">
+                <div id="contenedor">
+                    <div class="elementoJuego">
+                        <div class="image-upload">
+                            <label for="imagen0">
+                            <img id="cargaImagen" src="../../../../images/upload.png"/>
+                            </label>
+                            
+                            <input type="file" name="imagen0" id="imagen0" accept="image/png, image/jpeg">
+                        </div>
+                        <select name="opcion0" id="opcion0">
+                            <option value="" selected disabled hidden>Elige el tipo</option>
+                            <option value="Palabra">Palabra</option>
+                            <option value="Oración">Oración</option>
+                        </select>
+                        <h1 id="select0">
+                            Palabra
+                        </h1>
+                        <input type="text" name="opt0" id="opt0">
                     </div>
-                    <select name="opcion0" id="opcion0">
-                        <option value="" selected disabled hidden>Elige el tipo</option>
-                        <option value="Palabra">Palabra</option>
-                        <option value="Oración">Oración</option>
-                    </select>
-                    <h1 id="select0">
-                        Palabra
-                    </h1>
-                    <input type="text" name="opt0" id="opt0">
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
+        <div id="adicion">
+            <h1 id="simbolo">+</h1>
+        </div>
     </div>
-    <div id="adicion">
-        <h1 id="simbolo">+</h1>
-    </div>
-
 </body>
     <script src="../../../../js/const.js"></script>
     <script src="../../../js/const.js"></script>

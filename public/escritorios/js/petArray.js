@@ -6,16 +6,30 @@ const obtenerArray = async(arrayPath) => {
     });
 
     const respuesta = await resp.json();
-    console.log(respuesta);
     
     if(respuesta.msg){
         hiddenLoad();
-        if(arrayPath.startsWith('grupo')){
-            dibujarPopAlerta("No tienes grupos, crea uno");
-        }else if(arrayPath.startsWith('materia')){
-            dibujarPopAlerta("No tienes materias, agrega una");
-        }else if(arrayPath.startsWith('actividad')){
-            dibujarPopAlerta("No tienes actividades, agrega una");
+        switch (rol) {
+            case "PRO_ROLE":
+                if(arrayPath.startsWith('grupo')){
+                    dibujarPopAlerta("No tienes grupos, crea uno");
+                }else if(arrayPath.startsWith('materia')){
+                    dibujarPopAlerta("No tienes materias, agrega una");
+                }else if(arrayPath.startsWith('actividad')){
+                    dibujarPopAlerta("No tienes actividades, agrega una");
+                }
+                break;
+            case "EST_ROLE":
+                if(arrayPath.startsWith('grupo')){
+                    dibujarPopAlerta("Todavia no estás inscrito en un grupo");
+                }else if(arrayPath.startsWith('materia')){
+                    dibujarPopAlerta("Tu profesor no ha agregado materias");
+                }else if(arrayPath.startsWith('actividad')){
+                    dibujarPopAlerta("Tu profesor no ha agregado actividades");
+                }
+                break;
+            default:
+                break;
         }
         throw new Error(respuesta.msg);        
     }

@@ -7,7 +7,7 @@ const html2 = `</div>
 
 let html3 = `<header class="stick" id="navBar">
 </header>
-<div>`;
+<div id="contenidoJuego">`;
 
 const generarHtml = () => {
     const formulario = dataForm(formJ);

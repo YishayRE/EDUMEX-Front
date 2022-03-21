@@ -11,11 +11,22 @@ const select = document.querySelector('#select0');
 
 const titulo = localStorage.getItem('tituloJ');
 
+const accesoP = [
+    {
+        'nombre': 'Terminar Juego',
+        'referencia': ``
+    },
+    {
+        'nombre': 'Probar',
+        'referencia': ``
+    }
+];
+
 let contadorEtiqueta = 0;
 
 const checarRol = async() => {
     if(rol == "PRO_ROLE"){
-        dibujarNavBar();
+        dibujarNavBar(accesoP, 'numeros');
         cerrarSesion();
     }else if(rol == "EST_ROLE"){
         dibujarNavBar();

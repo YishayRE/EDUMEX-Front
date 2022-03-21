@@ -56,7 +56,7 @@ opcion.addEventListener('change', () => {
 
 const checarRol = async() => {
     if(rol == "PRO_ROLE"){
-        dibujarNavBar(accesoP);
+        dibujarNavBar(accesoP, 'abecedario');
         cerrarSesion();
     }else if(rol == "EST_ROLE"){
         window.location.replace(`${baseUrl}`);
