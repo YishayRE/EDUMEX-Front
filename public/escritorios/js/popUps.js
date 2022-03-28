@@ -22,7 +22,7 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '', datosList
         if(type == "list"){
             popUpHtml += `
             <div class="inputbox">
-                <input list="${type}${name}" name="${name}">
+                <input list="${type}${name}" name="${name}" id="l${name}">
 
                 <span>${titulo}</span>
 
@@ -63,7 +63,7 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '', datosList
         }else{
             popUpHtml += `
             <div class="inputbox">
-                <input type="${type}" name="${name}">
+                <input type="${type}" name="${name}" id="${name}">
 
                 <span>${titulo}</span>
             </div>    
@@ -94,7 +94,39 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '', datosList
         if(event.target == overlay){
             hiddenPop();
         }
-    });  
+    });
+
+    switch (form) {
+        case 'grupo':
+            const grado = document.querySelector('#lgrado');
+            const grupo = document.querySelector('#lgrupo');
+
+            grado.onkeypress = function() {return soloNumeros(event)};
+            grupo.onkeypress = function() {return soloLetras(event)};
+
+            break;
+        case 'materia':
+    
+            break;
+        case 'actividad':
+            const nombre = document.querySelector('#nombre');
+            const descripcion = document.querySelector('#descripcion');
+            const objetivo = document.querySelector('#objetivo');            
+
+            nombre.onkeypress = function() {return sinEspeciales(event)};
+            descripcion.onkeypress = function() {return sinEspeciales(event)};
+            objetivo.onkeypress = function() {return sinEspeciales(event)};
+
+            break;
+        case 'inscrito':
+            const codigo = document.querySelector('#grupo');
+            codigo.onkeypress = function() {return sinEspeciales(event)};
+            
+            break;
+        default:
+                   
+            break;
+    }
     
     const formulario = document.querySelector(`#${form}`);
     formulario.addEventListener('submit', async(e) => {
@@ -164,7 +196,7 @@ const dibujarPopEditar = ([nombre = '', form = '', datos = [], boton = '', datos
         if(type == "list"){
             popEditarHtml += `
             <div class="inputbox">
-                <input list="${type}${name}" name="${name}">
+                <input list="${type}${name}" name="${name}" id="le${name}">
 
                 <span>${titulo}</span>
 
@@ -205,7 +237,7 @@ const dibujarPopEditar = ([nombre = '', form = '', datos = [], boton = '', datos
         }else{
             popEditarHtml += `
             <div class="inputbox">
-                <input type="${type}" name="${name}">
+                <input type="${type}" name="${name}" id="e${name}">
 
                 <span>${titulo}</span>
             </div>    
@@ -236,6 +268,38 @@ const dibujarPopEditar = ([nombre = '', form = '', datos = [], boton = '', datos
             hiddenEditar();
         }
     });  
+
+    switch (form) {
+        case 'grupo':
+            const grado = document.querySelector('#legrado');
+            const grupo = document.querySelector('#legrupo');
+
+            grado.onkeypress = function() {return soloNumeros(event)};
+            grupo.onkeypress = function() {return soloLetras(event)};
+
+            break;
+        case 'materia':
+    
+            break;
+        case 'actividad':
+            const nombre = document.querySelector('#enombre');
+            const descripcion = document.querySelector('#edescripcion');
+            const objetivo = document.querySelector('#eobjetivo');            
+
+            nombre.onkeypress = function() {return sinEspeciales(event)};
+            descripcion.onkeypress = function() {return sinEspeciales(event)};
+            objetivo.onkeypress = function() {return sinEspeciales(event)};
+
+            break;
+        case 'inscrito':
+            const codigo = document.querySelector('#grupo');
+            codigo.onkeypress = function() {return sinEspeciales(event)};
+            
+            break;
+        default:
+                   
+            break;
+    }
     
     const formulario = document.querySelector(`#e${form}`);
     formulario.addEventListener('submit', async(e) => {
@@ -250,7 +314,6 @@ const dibujarPopEditar = ([nombre = '', form = '', datos = [], boton = '', datos
         }  
     });
 }
-
 
 function showPop() {
     overlay.style.opacity = "1";

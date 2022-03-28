@@ -13,12 +13,8 @@ miFormulario.addEventListener('submit', async(ev) => {
     ev.preventDefault();
     showLoad();
 
-    if(!validarCamposVacios()){
-        hiddenLoad();
-        const msg = "Falta algún dato";
-        dibujarPopAlerta(msg);
-        throw new Error(msg);
-    }
+    if(!validarFormulario())
+        throw new Error("Hubo un error en los datos del formulario");
 
     const formData = {};
 
@@ -32,14 +28,31 @@ miFormulario.addEventListener('submit', async(ev) => {
     
     hiddenLoad();
 });
+  
+function validarFormulario() {
+    let c1 = document.getElementById("Correo_inicio").value;
+    let c2 = document.getElementById("Contra_inicio").value;
 
-function validarCamposVacios() {
-    var c1 = document.getElementById("Correo_inicio").value;
-    var c2 = document.getElementById("Contra_inicio").value;
-
-    if (c1.length === 0 || c2.length === 0) {
+    if(c1.length === 0 && c2.length === 0) {
+        hiddenLoad();
+        dibujarPopAlerta("No has ingresado ningún dato");
+        return false;
+    }else if(c1.length === 0){
+        hiddenLoad();
+        dibujarPopAlerta("No has ingresado el correo");
+        return false;
+    }else if(c2.length === 0){
+        hiddenLoad();
+        dibujarPopAlerta("No has ingresado la contraseña");
         return false;
     }
+
+    if (c2.length != 6) {
+        hiddenLoad();
+        dibujarPopAlerta("La contraseña no es valida, debe ser de 6 caracteres");
+        return false;
+    }
+
     return true;
 }
 

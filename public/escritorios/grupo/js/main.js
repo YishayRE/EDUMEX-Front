@@ -1,8 +1,14 @@
 const formCrear = document.querySelector('#form_crearMateria');
 const crearMateria = document.querySelector('#enviar_materia');
 const titulo = localStorage.getItem('tituloG');
+let disponibleGrupo;
+
 
 const accesoP = [
+    {
+        'nombre': 'Activar Grupo',
+		'referencia': ``
+	},
     {
         'nombre': 'Crear Materia',
 		'referencia': ``
@@ -31,15 +37,16 @@ const datosPop = [
 const checarRol = async() => {
     const grupo = localStorage.getItem('grupo');
     if(rol == "PRO_ROLE"){
+        const {materias} = await obtenerArray(`materia/${grupo}`);
+        disponibleGrupo = materias[0].grupo.disponible;
         dibujarNavBar(accesoP, titulo, 'inicial');
         cerrarSesion();
         dibujarPopUp(datosPop);
-        const {materias} = await obtenerArray(`materia/${grupo}`);
         dibujarMateria(materias);
     }else if(rol == "EST_ROLE"){
+        const {materias} = await obtenerArray(`materia/${grupo}`);
         dibujarNavBar([], titulo, 'inicial');
         cerrarSesion();
-        const {materias} = await obtenerArray(`materia/${grupo}`);
         dibujarMateria(materias);
     }
 }

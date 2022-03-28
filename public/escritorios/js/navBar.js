@@ -1,5 +1,7 @@
 const dibujarNavBar = (accesos = [], titulo, url) => {
     let navBarHtml = '';
+    let extraHtml = '';
+    let i = null;
     const role = (rol === 'PRO_ROLE')
         ? 'pro'
         : 'est';
@@ -34,10 +36,40 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
         `;
 
     accesos.forEach(({ nombre, referencia },index) => {
-        navBarHtml += `
-            <li><a id="${role}${index}" href="${referencia}" class="botonesNav">${nombre}</a></li>
-        `;
-        aux=1;
+        if(titulo.startsWith('Grupo') && nombre == "Activar Grupo"){
+            switch (disponibleGrupo) {
+                case true:
+                    extraHtml += `
+                    <li>
+                        <a id="${role}${index}" href class="botonesNav">
+                            <div class="activar">
+                                <img src="${baseUrl}/images/switch-on.png" alt="Activar grupo" class="logoBoton">
+                            </div>
+                        </a>
+                    </li>
+                    `;
+                    break;
+                case false:
+                    extraHtml += `
+                    <li>
+                        <a id="${role}${index}" href class="botonesNav">
+                            <div class="activar">
+                                <img src="${baseUrl}/images/switch-off.png" alt="Activar grupo" class="logoBoton">
+                            </div>
+                        </a>
+                    </li>
+                    `;
+                    break;
+                default:
+                    break;
+            }
+            
+            navBarHtml += extraHtml;
+        }else{
+            navBarHtml += `
+                <li><a id="${role}${index}" href="${referencia}" class="botonesNav">${nombre}</a></li>
+            `;
+        }
     });
     
     navBarHtml += `
@@ -57,7 +89,22 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
 
     const lista = document.querySelector("#lista");
 
-    for(let i = 0; i < (lista.children.length - 1); i++){
+    if(titulo.startsWith('Grupo')){
+        i = 1;
+        let grupoActual = new Object();
+        grupoActual.disponible = !disponibleGrupo;
+
+        activar = document.querySelector('#pro0');
+        activar.addEventListener('click', (event) =>{
+            event.preventDefault();
+            console.log(grupoActual);
+            activarGrupo(grupoActual, localStorage.getItem('grupo'));
+        });
+    }else{
+        i = 0;
+    }
+
+    for(i; i < (lista.children.length - 1); i++){
         document.querySelector(`#${role}${i}`).addEventListener('click', (event) => {
             event.preventDefault();
             showPop();

@@ -18,6 +18,17 @@
     position: absolute;
     padding: 10px 30px;
   }
+
+  .activar{
+    position: absolute;
+    margin-left: 13px;
+    margin-top: -5px;
+  }
+
+  .logoBoton{
+    height: 40px;
+    cursor:pointer;
+  }
   
   .logo {
     height: 40px;
@@ -28,6 +39,7 @@
     position: fixed;
     margin-left: 30%;
     color: black;
+    max-width: 450px;
   }
   
   nav ul {

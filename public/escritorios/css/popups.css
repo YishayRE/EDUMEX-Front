@@ -50,9 +50,12 @@
     max-height: fit-content;
     width: fit-content;
     overflow: auto;
-    
   }
 
+  #ecolor{
+    height: 50px;
+    cursor: pointer;
+  }
   .center {
     width: auto;
     position: relative;

@@ -99,6 +99,7 @@ const dibujarPopAlerta = (err, route) => {
             const btnSalir = document.querySelector('#logoutC');
             btnSalir.addEventListener('click', e => {
                 localStorage.removeItem('token');
+                localStorage.clear();
                 window.location = `${baseUrl}`;
             });
             break;
