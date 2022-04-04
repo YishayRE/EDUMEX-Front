@@ -42,13 +42,13 @@ const checarRol = async() => {
         colorNav(color);
         cerrarSesion();
         dibujarPopUp(datosPop);
-        const {actividades} = await obtenerArray(`actividad/${materia}`);
+        const {actividades} = await obtenerArray(`actividad/`, materia);
         dibujarActividad(actividades);
     }else if(rol == "EST_ROLE"){
         dibujarNavBar([], titulo, 'grupo');
         colorNav(color);
         cerrarSesion();
-        const {actividades} = await obtenerArray(`actividad/${materia}`);
+        const {actividades} = await obtenerArray(`actividad/`, materia);
         dibujarActividad(actividades);
     }
 }

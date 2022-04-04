@@ -64,7 +64,7 @@ opcion.addEventListener('change', () => {
 
 const checarRol = async() => {
     if(rol == "PRO_ROLE"){
-        dibujarNavBar(accesoP, 'memoria');
+        dibujarNavBar(accesoP, 'memoria', 'materia');
         cerrarSesion();
     }else if(rol == "EST_ROLE"){
         dibujarNavBar();
@@ -76,7 +76,7 @@ const main = async() => {
     showLoad();
     await validarJWT();
     await checarRol();
-    await obtenerInfo();
+    //await obtenerInfo();
     checarExpiracion(fecha);
     hiddenLoad();
 }

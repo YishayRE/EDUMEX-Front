@@ -139,9 +139,12 @@
 }
 
 .tituloTarjetas{
-  color: black;
+  color: #68555c;
   margin: 0px;
   font-size: 20px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 19px;
 }
 
 

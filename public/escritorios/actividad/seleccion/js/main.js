@@ -1,12 +1,14 @@
 const btnJuego = document.querySelectorAll('#btnJuego'); 
-const titulo = localStorage.getItem('tituloJ');
-
-const accesoP = [];
+const titulo = "Seleccion de juego";
 
 const elegirJuego = () => {
     btnJuego.forEach(btn => {
-        btn.addEventListener('click', (e) => {
+        btn.addEventListener('click', async(e) => {
             localStorage.setItem('tipoJ', btn.attributes.name.value);
+            let actividadActual = new Object();
+            actividadActual.actividad = localStorage.getItem('actividad');
+            const infoJuego = await crearJuego(actividadActual);
+            localStorage.setItem('juego', infoJuego);
             window.location.replace(`${juegosUrl}juegos/${btn.attributes.name.value}`);
         });  
     });
@@ -14,7 +16,7 @@ const elegirJuego = () => {
 
 const checarRol = async() => {
     if(rol == "PRO_ROLE"){
-        dibujarNavBar(accesoP, 'seleccion');
+        dibujarNavBar([], titulo, 'materia');
         cerrarSesion();
     }else if(rol == "EST_ROLE"){
         dibujarNavBar();

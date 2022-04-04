@@ -1,12 +1,4 @@
 document.cookie = " ";
-let c1 = document.querySelector("#Nom_registro").value;
-let c2 = document.querySelector("#Pat_registro").value;
-let c3 = document.querySelector("#Mat_registro").value;
-let c4 = document.querySelector("#Correo_registro").value;
-let c5 = document.querySelector("#Contra_registro").value;
-let c6 = document.querySelector("#ContraC_registro").value;
-let c7 = document.querySelector("#cb1").checked;
-let c8 = document.querySelector("#cb2").checked;
 const miFormulario = document.querySelector('#form_registro');
 const alertas = document.querySelector("#alertas");
 const titulo = "";
@@ -42,11 +34,15 @@ miFormulario.addEventListener('submit', async (ev) => {
 });
 
 function validarFormulario() {
-    if(c1.length == 0 && c2.length == 0 && c3.length == 0 && c4.length == 0 && c5.length == 0 && c6.length == 0 && !(c7 || c8)) {
-        hiddenLoad();
-        dibujarPopAlerta("No has ingresado ningún dato");
-        return false;
-    }else if(c1.length === 0){
+    let c1 = document.querySelector("#Nom_registro").value;
+    let c2 = document.querySelector("#Pat_registro").value;
+    let c3 = document.querySelector("#Mat_registro").value;
+    let c4 = document.querySelector("#Correo_registro").value;
+    let c5 = document.querySelector("#Contra_registro").value;
+    let c6 = document.querySelector("#ContraC_registro").value;
+    let c7 = document.querySelector("#cb1").checked;
+    let c8 = document.querySelector("#cb2").checked;
+    if(c1.length === 0){
         hiddenLoad();
         dibujarPopAlerta("No has ingresado el nombre");
         return false;
@@ -90,13 +86,13 @@ function validarFormulario() {
     return true;
 }
 
-const validarCampos = () => {
+/*const validarCampos = () => {
     console.log("hola");
     c1.onkeypress = function() {return soloLetras(event)};
     c2.onkeypress = function() {return soloLetras(event)};
     c3.onkeypress = function() {return soloLetras(event)};
     console.log("adios");
-}
+}*/
 
 function valorRol(){
     var checkedValue = null;
@@ -111,7 +107,6 @@ function valorRol(){
 
 const main = async() => {
     dibujarNavBar(accesos, titulo);
-    validarCampos();
     await tieneJWT();
 }
 

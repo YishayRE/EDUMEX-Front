@@ -119,7 +119,7 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '', datosList
 
             break;
         case 'inscrito':
-            const codigo = document.querySelector('#grupo');
+            const codigo = document.querySelector('#codigo');
             codigo.onkeypress = function() {return sinEspeciales(event)};
             
             break;
@@ -163,7 +163,7 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '', datosList
             switch (form) {
                 case 'inscrito':
                     const estu = {estudiante: `${datos['estudiante']}`}
-                    const gru = {grupo: `${datos['grupo']}`}
+                    const gru = {codigo: `${datos['codigo']}`}
                     const finalResult = Object.assign(estu,gru);
                     console.log(finalResult);
                     await inscripcion(finalResult, form);

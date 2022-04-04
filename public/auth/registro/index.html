@@ -46,18 +46,22 @@
         <input id="Contra_registro" type="password" name="password" placeholder="*Contraseña">
         <input id="ContraC_registro" type="password" name="passwordC" placeholder="*Confirmar contraseña">
 
-        <ul id=selectorRol>
-          <li class="elemento"><input id="cb1" type="checkbox" class="rolCheckbox" value="EST_ROLE" />
-            <label for="cb1" class="imagenOpcion"><img src="../../images/alumno.png" /></label>
-          </li>
+        <div class="centrarSelectores">
+          <ul id=selectorRol>
+            <li class="elemento"><input id="cb1" type="checkbox" class="rolCheckbox" value="EST_ROLE" />
+              <label for="cb1" class="imagenOpcion"><img src="../../images/alumno.png" /></label>
+            </li>
 
-          <li class="elemento"><input id="cb2" type="checkbox" class="rolCheckbox" value="PRO_ROLE" />
-            <label for="cb2" class="imagenOpcion"><img src="../../images/profesor.png" /></label>
-          </li>
-        </ul>
+            <li class="elemento"><input id="cb2" type="checkbox" class="rolCheckbox" value="PRO_ROLE" />
+              <label for="cb2" class="imagenOpcion"><img src="../../images/profesor.png" /></label>
+            </li>
+          </ul>
+        </div>
       </div>
       
-      <button id="enviar_registro" type="submit">Registrarme</button>
+      <div class="botonEnvioForm">
+        <button id="enviar_registro" type="submit">Registrarme</button>
+      </div>
     </form>
   </div>
   <script src="../../js/const.js"></script>

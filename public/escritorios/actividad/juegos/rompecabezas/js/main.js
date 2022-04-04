@@ -26,7 +26,7 @@ let contadorEtiqueta = 0;
 
 const checarRol = async() => {
     if(rol == "PRO_ROLE"){
-        dibujarNavBar(accesoP, 'numeros');
+        dibujarNavBar(accesoP, 'numeros', 'materia');
         cerrarSesion();
     }else if(rol == "EST_ROLE"){
         dibujarNavBar();
@@ -38,7 +38,7 @@ const main = async() => {
     showLoad();
     await validarJWT();
     await checarRol();
-    await obtenerInfo();
+    //await obtenerInfo();
     checarExpiracion(fecha);
     hiddenLoad();
 }

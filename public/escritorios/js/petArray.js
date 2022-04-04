@@ -1,8 +1,8 @@
-const obtenerArray = async(arrayPath) => {
+const obtenerArray = async(arrayPath, idT) => {
     const token = localStorage.getItem('token') || '';
-    const resp = await fetch(baseApi + arrayPath, {
+    const resp = await fetch(baseApi + arrayPath + 'id', {
         method: 'GET',
-        headers: { 'x-token': token, user: uid }
+        headers: { 'x-token': token, user: uid, id: idT }
     });
 
     const respuesta = await resp.json();
@@ -20,7 +20,7 @@ const obtenerArray = async(arrayPath) => {
                 }
                 break;
             case "EST_ROLE":
-                if(arrayPath.startsWith('grupo')){
+                if(arrayPath.startsWith('inscrito')){
                     dibujarPopAlerta("Todavia no estás inscrito en un grupo");
                 }else if(arrayPath.startsWith('materia')){
                     dibujarPopAlerta("Tu profesor no ha agregado materias");

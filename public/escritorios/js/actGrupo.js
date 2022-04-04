@@ -3,6 +3,7 @@ const activarGrupo = async(datoGrupo = {}, grupoId = '') => {
     let myHeaders = new Headers();
     myHeaders.append("x-token", token);
     myHeaders.append("user", uid);
+    myHeaders.append("id", grupoId);
     myHeaders.append("Content-Type", "application/json");
     
     let raw = JSON.stringify(datoGrupo);
@@ -16,9 +17,12 @@ const activarGrupo = async(datoGrupo = {}, grupoId = '') => {
       redirect: 'follow'
     };
     
-    const resp = await fetch(baseApi + 'grupo/activar/' + `${grupoId}`, requestOptions);
+    const resp = await fetch(baseApi + 'grupo/activar/id', requestOptions);
       
     const respuesta = await resp.json();
+
+    console.log(respuesta);
+
     let errores = '';
     
     if(respuesta.errors){
@@ -30,5 +34,6 @@ const activarGrupo = async(datoGrupo = {}, grupoId = '') => {
         throw new Error(errores);        
     }
 
-    location.reload();    
+    //location.reload(); 
+    return respuesta;   
 }

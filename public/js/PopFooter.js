@@ -69,11 +69,11 @@ const dibujarPopFooter = () => {
                             <div>
                                 <div class="elementFooter">
                                     <img src="${baseUrl}/images/telephone-call.png" alt="Telefono" class="imgFooter">
-                                    <h2>Tel: 55 - 1234 - 5678</h2>
+                                    <h2>55 - 1234 - 5678</h2>
                                 </div>
                                 <div class="elementFooter">
                                     <img src="${baseUrl}/images/email.png" alt="Correo" class="imgFooter">
-                                    <h2>EDUMEX@edu.com.mx</h2>
+                                    <h2>edumex@edu.mx</h2>
                                 </div>
                             </div>
                         </div>

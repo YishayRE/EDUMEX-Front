@@ -35,13 +35,14 @@ footer ul li {
 
 footer ul li a {
   text-decoration: none;
-  color: black;
+  color: #68555c;
   font-size: 14px;
   padding: 10px 32px;
   border-radius: 13px;
   text-transform: uppercase;
   background: #E5989B;
   transition: all .5s;
+  font-weight: bold;
 }
 
 li a:active {

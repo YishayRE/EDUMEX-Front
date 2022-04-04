@@ -180,7 +180,7 @@ const dibujarActividad = (actividades = []) => {
     const btnEntrar = document.querySelectorAll('#entrar');
     btnEntrar.forEach((btn, index) => {
         btn.addEventListener('click', () => {
-            localStorage.setItem('juego',actividades[index]._id);
+            localStorage.setItem('actividad',actividades[index]._id);
             window.location.replace(`${baseUrl}escritorios/actividad/seleccion`);
         });
     });

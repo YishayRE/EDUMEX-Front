@@ -11,7 +11,7 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
             <input type="checkbox" id="check">
 
             <div id="titulo">
-                <h2>${titulo}</h2>
+                <h3>${titulo}</h3>
             </div>
 
             <label for="check" class="checkbtn" id="barras">
@@ -36,14 +36,14 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
         `;
 
     accesos.forEach(({ nombre, referencia },index) => {
-        if(titulo.startsWith('Grupo') && nombre == "Activar Grupo"){
+        if(titulo.startsWith('Grupo') && nombre == "Activar Grupo" && rol === 'PRO_ROLE'){
             switch (disponibleGrupo) {
                 case true:
                     extraHtml += `
                     <li>
                         <a id="${role}${index}" href class="botonesNav">
                             <div class="activar">
-                                <img src="${baseUrl}/images/switch-on.png" alt="Activar grupo" class="logoBoton">
+                                <img src="${baseUrl}/images/activado.png" alt="Activar grupo" class="logoBoton">
                             </div>
                         </a>
                     </li>
@@ -54,7 +54,7 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
                     <li>
                         <a id="${role}${index}" href class="botonesNav">
                             <div class="activar">
-                                <img src="${baseUrl}/images/switch-off.png" alt="Activar grupo" class="logoBoton">
+                                <img src="${baseUrl}/images/desactivado.png" alt="Activar grupo" class="logoBoton">
                             </div>
                         </a>
                     </li>
@@ -95,10 +95,18 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
         grupoActual.disponible = !disponibleGrupo;
 
         activar = document.querySelector('#pro0');
-        activar.addEventListener('click', (event) =>{
+        activar.style.padding = "10px 70px";
+        
+        activar.addEventListener('click', async(event) =>{
             event.preventDefault();
-            console.log(grupoActual);
-            activarGrupo(grupoActual, localStorage.getItem('grupo'));
+            const {codigo} = await activarGrupo(grupoActual, localStorage.getItem('grupo'));
+            if(disponibleGrupo == false){
+                dibujarPopAlerta("codGrupo", codigo);
+            }
+            else{
+                location.reload();
+            }
+            
         });
     }else{
         i = 0;

@@ -32,5 +32,5 @@ const inscripcion = async(formData = {}, route = '') => {
 
     localStorage.setItem(route, respuesta);
     //window.location = `../${route}`;
-    location.reload();
+    //location.reload();
 }

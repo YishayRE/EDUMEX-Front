@@ -63,6 +63,15 @@ const dibujarPopAlerta = (err, route) => {
                             </div>
                 `; 
                 break;
+            case 'codGrupo':
+                popAlertaHtml += `
+                            <h2>El código del grupo es:</h2>
+                            <h3>${route}</h3>
+                            <div>
+                                <button id="aceptarAct" href="">Aceptar</button>
+                            </div>
+                `; 
+                break;
             default:
                 popAlertaHtml += `
                             <h2>${err}</h2>
@@ -108,9 +117,15 @@ const dibujarPopAlerta = (err, route) => {
             btnEliminar.addEventListener('click', async(e) => {
                 e.preventDefault();
                 showLoad();
-                console.log(route)
                 await elimTarjeta(route);
                 hiddenLoad();
+            });
+            break;
+        case 'codGrupo':
+            const btnAceptar = document.querySelector('#aceptarAct');
+            btnAceptar.addEventListener('click', async(e) => {
+                e.preventDefault();
+                location.reload();
             });
             break;
         default:

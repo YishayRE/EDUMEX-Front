@@ -13,7 +13,7 @@ let htmlJs = `
     <script>window.locaction.reload()</script>
 `;
 
-const dibujarNavBar = (accesos = [], tipoJuego) => {
+const dibujarNavBar = (accesos = [], tipoJuego, url) => {
     let navBarHtml = '';
     let tipo = '';
 
@@ -21,28 +21,22 @@ const dibujarNavBar = (accesos = [], tipoJuego) => {
         <nav id="barraNav">
             <input type="checkbox" id="check">
 
+            <div id="titulo">
+                <h3>${tipoJuego}</h3>
+            </div>
+
             <label for="check" class="checkbtn" id="barras">
                     <i class="fas fa-bars"></i>
             </label>
     `;
-    
-    if(tipoJuego == "seleccion"){
-        navBarHtml += `
-            <a href id="regresar" class="enlace">
-                <img src="${baseUrl}images/atras.png" alt="EDUMEX" class="logo">
-            </a>
 
-            <ul>
-        `;
-    }else{
-        navBarHtml += `
-            <a href="${juegosUrl}seleccion" class="enlace">
-                <img src="${baseUrl}images/atras.png" alt="EDUMEX" class="logo">
-            </a>
+    navBarHtml += `
+        <div class="enlace" id="regresar">
+            <img src="${baseUrl}/images/atras.png" alt="Regresar" class="logo">
+        </div>
 
-            <ul>
-        `;
-    }
+        <ul>
+    `;
     
     accesos.forEach(({ nombre, referencia }, index) => {
         if((accesos.length - 1) === index){
@@ -80,10 +74,11 @@ const dibujarNavBar = (accesos = [], tipoJuego) => {
         });
     }
 
-    if(tipoJuego == 'seleccion'){
-        const btnRegresar = document.querySelector('#regresar');
-        btnRegresar.addEventListener('click', e => {
-            window.history.back();
-        });
-    }
+    const btnRegresar = document.querySelector('#regresar');
+
+    btnRegresar.addEventListener('click', e => {
+        window.location.replace(`${escritoriosUrl}${url}`);
+    });
+
+
 }

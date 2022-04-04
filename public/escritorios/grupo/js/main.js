@@ -37,14 +37,14 @@ const datosPop = [
 const checarRol = async() => {
     const grupo = localStorage.getItem('grupo');
     if(rol == "PRO_ROLE"){
-        const {materias} = await obtenerArray(`materia/${grupo}`);
+        const {materias} = await obtenerArray(`materia/`, grupo);
         disponibleGrupo = materias[0].grupo.disponible;
         dibujarNavBar(accesoP, titulo, 'inicial');
         cerrarSesion();
         dibujarPopUp(datosPop);
         dibujarMateria(materias);
     }else if(rol == "EST_ROLE"){
-        const {materias} = await obtenerArray(`materia/${grupo}`);
+        const {materias} = await obtenerArray(`materia/`, grupo);
         dibujarNavBar([], titulo, 'inicial');
         cerrarSesion();
         dibujarMateria(materias);
