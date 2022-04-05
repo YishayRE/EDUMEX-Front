@@ -169,7 +169,7 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '', datosList
                     await inscripcion(finalResult, form);
                     break;
                 default:
-                    await creacion(datos, form);
+                    await creacion(datos, form, vId);
                     break;
             }
         else{
@@ -307,7 +307,7 @@ const dibujarPopEditar = ([nombre = '', form = '', datos = [], boton = '', datos
         showLoad();
         const datos = dataForm(formulario);
         if(valForm(datos))
-            await actTarjeta(datos, `${form}/${editarId}`);
+            await actTarjeta(datos, `${form}/`, editarId);
         else{
             console.log("Faltan Datos");  
             hiddenLoad();

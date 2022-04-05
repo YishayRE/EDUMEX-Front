@@ -62,7 +62,7 @@ const dibujarGrupo = (grupos = []) => {
         vistaTarjetaEl.forEach((edit, index) => {
             edit.addEventListener('click', (event) => {
                 event.preventDefault();
-                dibujarPopAlerta('eliminar', `grupo/${grupos[index]._id}`);
+                dibujarPopAlerta('eliminar', `grupo/id/`, grupos[index]._id);
             });
         });
     }
@@ -130,7 +130,7 @@ const dibujarMateria = (materias = []) => {
         vistaTarjetaEl.forEach((edit, index) => {
             edit.addEventListener('click', (event) => {
                 event.preventDefault();
-                dibujarPopAlerta('eliminar', `materia/${materias[index]._id}`);
+                dibujarPopAlerta('eliminar', `materia/id/`, materias[index]._id);
             });
         });
     }
@@ -201,7 +201,7 @@ const dibujarActividad = (actividades = []) => {
         vistaTarjetaEl.forEach((edit, index) => {
             edit.addEventListener('click', (event) => {
                 event.preventDefault();
-                dibujarPopAlerta('eliminar', `actividad/${actividades[index]._id}`);
+                dibujarPopAlerta('eliminar', `actividad/id/`, actividades[index]._id);
             });
         });
     }

@@ -1,8 +1,9 @@
-const actTarjeta = async(formData = {}, route = '') => {
+const actTarjeta = async(formData = {}, route = '', idT, esJuego = '') => {
     const token = localStorage.getItem('token') || '';
     let myHeaders = new Headers();
     myHeaders.append("x-token", token);
     myHeaders.append("user", uid);
+    myHeaders.append("id", idT);
     myHeaders.append("Content-Type", "application/json");
     
     let raw = JSON.stringify(formData);
@@ -16,7 +17,7 @@ const actTarjeta = async(formData = {}, route = '') => {
       redirect: 'follow'
     };
     
-    const resp = await fetch(baseApi + route, requestOptions);
+    const resp = await fetch(baseApi + route + 'id/', requestOptions);
       
     const respuesta = await resp.json();
     console.log(respuesta);
@@ -30,6 +31,9 @@ const actTarjeta = async(formData = {}, route = '') => {
         dibujarPopAlerta(errores);
         throw new Error(errores);        
     }
-
-    location.reload();    
+    if(esJuego){
+        window.open(`${juegosUrl}juegos/${esJuego}/prueba/`);
+    }else{
+        location.reload();    
+    }
 }

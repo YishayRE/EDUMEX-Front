@@ -78,4 +78,3 @@ const main = async() => {
 main();
 
 window.history.length = 0;
-console.dir(window.history);

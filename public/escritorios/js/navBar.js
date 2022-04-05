@@ -89,7 +89,7 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
 
     const lista = document.querySelector("#lista");
 
-    if(titulo.startsWith('Grupo')){
+    if(titulo.startsWith('Grupo') && rol === 'PRO_ROLE'){
         i = 1;
         let grupoActual = new Object();
         grupoActual.disponible = !disponibleGrupo;

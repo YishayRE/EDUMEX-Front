@@ -1,13 +1,13 @@
-const elimTarjeta = async(route = '') => {
+const elimTarjeta = async(route = '', idT) => {
     const token = localStorage.getItem('token') || '';
     let myHeaders = new Headers();
     myHeaders.append("x-token", token);
     myHeaders.append("user", uid);
+    myHeaders.append("id", idT);
     myHeaders.append("Content-Type", "application/json");
-    
+    console.log(idT);
     let raw = '';
 
-    console.log(raw);
     
     let requestOptions = {
       method: 'PATCH',

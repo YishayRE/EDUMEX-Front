@@ -33,7 +33,7 @@ const dibujarPopAlertas = (errors = []) => {
     showAlert();
 }
 
-const dibujarPopAlerta = (err, route) => {
+const dibujarPopAlerta = (err, route, idT) => {
     let popAlertaHtml = '';
         popAlertaHtml += `
         <div id="popError" class="overlayAlerta">
@@ -117,7 +117,7 @@ const dibujarPopAlerta = (err, route) => {
             btnEliminar.addEventListener('click', async(e) => {
                 e.preventDefault();
                 showLoad();
-                await elimTarjeta(route);
+                await elimTarjeta(route, idT);
                 hiddenLoad();
             });
             break;

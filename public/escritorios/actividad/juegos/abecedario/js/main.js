@@ -26,7 +26,6 @@ let contadorEtiqueta = 0;
 
 adicion.addEventListener('click', () => {
     let contenedor = document.querySelector('#contenedor');
-    
     contadorEtiqueta++;
     contenedor.innerHTML += `
         <div class="elementoJuego">

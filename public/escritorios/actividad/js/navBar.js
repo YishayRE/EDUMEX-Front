@@ -66,11 +66,10 @@ const dibujarNavBar = (accesos = [], tipoJuego, url) => {
             let formulario = generarHtml();
             let cssJuego = `<link rel="stylesheet" type="text/css" href="${baseUrl}escritorios/actividad/juegos/${tipoJuego}/css/estiloJuego.css">`;
             let jsJuego = `<script src="${baseUrl}escritorios/actividad/juegos/${tipoJuego}/js/logicaJuego.js"></script>`;
-            html1 += cssJuego;
-            htmlJs += jsJuego;
-            formulario += htmlJs;
-            let htmlContent = html1 + formulario;
-            await fs.writeFile('./my-page.html', htmlContent, (error) => { console.log('No se pudo crear la pagina'); });
+            
+            let idJuego = await actTarjeta({
+                codigo: formulario
+            }, 'juego/', localStorage.getItem('juego'), localStorage.getItem('tipoJ'));
         });
     }
 
