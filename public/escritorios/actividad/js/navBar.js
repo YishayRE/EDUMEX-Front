@@ -39,13 +39,17 @@ const dibujarNavBar = (accesos = [], tipoJuego, url) => {
     `;
     
     accesos.forEach(({ nombre, referencia }, index) => {
-        if((accesos.length - 1) === index){
+        if(nombre == 'Probar'){
             navBarHtml += `
                 <li><a id="probarJ">${nombre}</a></li>
             `;
+            
+        }else if(nombre == 'Terminar Juego'){
+            navBarHtml += `
+                <li><a id="terminarJ">${nombre}</a></li>
+            `;
             tipo = nombre;
-        }
-        else
+        }else
             navBarHtml += `
                 <li><a href="${baseUrl}${referencia}">${nombre}</a></li>
             `;
@@ -60,18 +64,28 @@ const dibujarNavBar = (accesos = [], tipoJuego, url) => {
 
     navBar.innerHTML = navBarHtml;
 
-    if(tipo == 'Probar'){
-        const probarJ = document.querySelector('#probarJ');
-        probarJ.addEventListener('click', async(e) => {
-            let formulario = generarHtml();
-            let cssJuego = `<link rel="stylesheet" type="text/css" href="${baseUrl}escritorios/actividad/juegos/${tipoJuego}/css/estiloJuego.css">`;
-            let jsJuego = `<script src="${baseUrl}escritorios/actividad/juegos/${tipoJuego}/js/logicaJuego.js"></script>`;
-            
-            let idJuego = await actTarjeta({
-                codigo: formulario
-            }, 'juego/', localStorage.getItem('juego'), localStorage.getItem('tipoJ'));
-        });
-    }
+    const probarJ = document.querySelector('#probarJ');
+    const terminarJ = document.querySelector('#terminarJ');
+
+    probarJ.addEventListener('click', async(e) => {
+        let formulario = generarHtml();
+        let cssJuego = `<link rel="stylesheet" type="text/css" href="${baseUrl}escritorios/actividad/juegos/${tipoJuego}/css/estiloJuego.css">`;
+        let jsJuego = `<script src="${baseUrl}escritorios/actividad/juegos/${tipoJuego}/js/logicaJuego.js"></script>`;
+        
+        let idJuego = await actTarjeta({
+            codigo: formulario
+        }, 'juego/', localStorage.getItem('juego'), localStorage.getItem('tipoJ'));
+    });
+
+    terminarJ.addEventListener('click', async(e) => {
+        let formulario = generarHtml();
+        let cssJuego = `<link rel="stylesheet" type="text/css" href="${baseUrl}escritorios/actividad/juegos/${tipoJuego}/css/estiloJuego.css">`;
+        let jsJuego = `<script src="${baseUrl}escritorios/actividad/juegos/${tipoJuego}/js/logicaJuego.js"></script>`;
+        
+        let idJuego = await terminarJuego({
+            codigo: formulario
+        }, 'juego/', localStorage.getItem('juego'), localStorage.getItem('tipoJ'));
+    });
 
     const btnRegresar = document.querySelector('#regresar');
 

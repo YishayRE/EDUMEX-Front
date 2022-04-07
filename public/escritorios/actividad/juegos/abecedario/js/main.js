@@ -5,6 +5,7 @@ const tipoJ = document.querySelector('#tipoJ');
 const objetivo = document.querySelector('#objetivo');
 const descripcion = document.querySelector('#descripcion');
 const adicion = document.querySelector('#adicion');
+const quitar = document.querySelector('#quitar');
 const select = document.querySelectorAll('#select');
 let opcion = document.querySelectorAll(`#opcion`);
 
@@ -28,7 +29,7 @@ adicion.addEventListener('click', () => {
     let contenedor = document.querySelector('#contenedor');
     contadorEtiqueta++;
     contenedor.innerHTML += `
-        <div class="elementoJuego">
+        <div class="elementoJuego" id="elementoJuego${contadorEtiqueta}">
             <div class="image-upload">
                 <label for="imagen${contadorEtiqueta}">
                 <img id="cargaImagen" src="../../../../images/upload.png"/>

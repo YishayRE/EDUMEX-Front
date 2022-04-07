@@ -5,8 +5,7 @@ const elegirJuego = () => {
     btnJuego.forEach(btn => {
         btn.addEventListener('click', async(e) => {
             localStorage.setItem('tipoJ', btn.attributes.name.value);
-            let actividadActual = new Object();
-            actividadActual.actividad = localStorage.getItem('actividad');
+            let actividadActual = localStorage.getItem('actividad');
             const infoJuego = await crearJuego(actividadActual);
             localStorage.setItem('juego', infoJuego);
             window.location.replace(`${juegosUrl}juegos/${btn.attributes.name.value}`);

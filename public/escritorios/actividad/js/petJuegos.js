@@ -1,11 +1,12 @@
-const crearJuego = async(idAct = {}) => {
+const crearJuego = async(idAct) => {
     const token = localStorage.getItem('token') || '';
     let myHeaders = new Headers();
     myHeaders.append("x-token", token);
     myHeaders.append("user", uid);
+    myHeaders.append("idAct", idAct);
     myHeaders.append("Content-Type", "application/json");
     
-    let raw = JSON.stringify(idAct);
+    let raw = JSON.stringify({});
 
     console.log(raw);
     
@@ -35,15 +36,18 @@ const crearJuego = async(idAct = {}) => {
     return respuesta;   
 }
 
-const actualizarJuego = async(codigoJuego = {}) => {
+const terminarJuego = async(formData = {}, route = '', idT, esJuego = '') => {
     const token = localStorage.getItem('token') || '';
     let myHeaders = new Headers();
     myHeaders.append("x-token", token);
     myHeaders.append("user", uid);
+    myHeaders.append("id", idT);
+    myHeaders.append("idAct", localStorage.getItem('actividad'));
     myHeaders.append("Content-Type", "application/json");
     
-    let raw = JSON.stringify(idAct);
-
+    console.log(localStorage.getItem('actividad'));
+    let raw = JSON.stringify(formData);
+//mandar tipo de juego
     console.log(raw);
     
     let requestOptions = {
@@ -53,7 +57,7 @@ const actualizarJuego = async(codigoJuego = {}) => {
       redirect: 'follow'
     };
     
-    const resp = await fetch(baseApi + 'juego/', requestOptions);
+    const resp = await fetch(baseApi + route + 'id/terminar/', requestOptions);
       
     const respuesta = await resp.json();
     console.log(respuesta);
@@ -68,6 +72,9 @@ const actualizarJuego = async(codigoJuego = {}) => {
         dibujarPopAlerta(errores);
         throw new Error(errores);        
     }
-
-    return respuesta;   
+    if(esJuego){
+        //window.open(`${juegosUrl}juegos/${esJuego}/prueba/`);
+    }else{
+        //location.reload();    
+    }
 }
