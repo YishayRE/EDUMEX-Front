@@ -1,0 +1,17 @@
+#contenidoJuego{
+    display: flex;
+    justify-content: center;
+}
+
+.reactivoAbecedario{
+    margin: 20px;
+    text-align: center;
+    margin: 10px;
+    padding: 20px;
+    color: black;
+    background-color: #ffcdc1;
+    border-color: #917681;
+    border-radius: 15px;
+    width: 300px;
+}
+
