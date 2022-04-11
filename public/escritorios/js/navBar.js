@@ -34,9 +34,19 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
         navBarHtml += `
             <ul id="lista">
         `;
-
     accesos.forEach(({ nombre, referencia },index) => {
-        if(titulo.startsWith('Grupo') && nombre == "Activar Grupo" && rol === 'PRO_ROLE'){
+        if(nombre == "Calificaciones"){
+            navBarHtml += `
+                <li>
+                    <a id="${role}${index}" href class="botonesNav">
+                        <div class="activar">
+                            <img src="${baseUrl}/images/calificaciones.png" alt="Calificaciones" class="logoBoton">
+                        </div>
+                    </a>
+                </li>
+            `;
+        }
+        else if(titulo.startsWith('Grupo') && nombre == "Activar Grupo" && rol === 'PRO_ROLE'){
             switch (disponibleGrupo) {
                 case true:
                     extraHtml += `
@@ -62,8 +72,8 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
                     break;
                 default:
                     break;
+                    
             }
-            
             navBarHtml += extraHtml;
         }else{
             navBarHtml += `
@@ -87,15 +97,15 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
         });
     }
 
-    const lista = document.querySelector("#lista");
-
     if(titulo.startsWith('Grupo') && rol === 'PRO_ROLE'){
-        i = 1;
+        i = 2;
         let grupoActual = new Object();
         grupoActual.disponible = !disponibleGrupo;
 
-        activar = document.querySelector('#pro0');
+        activar = document.querySelector('#pro1');
         activar.style.padding = "10px 70px";
+        calificaciones = document.querySelector('#pro0');
+        calificaciones.style.padding = "10px 60px 10px 70px";
         
         activar.addEventListener('click', async(event) =>{
             event.preventDefault();
@@ -108,9 +118,15 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
             }
             
         });
+    }else if(titulo.startsWith('Materia')){
+        calificaciones = document.querySelector('#pro0');
+        calificaciones.style.padding = "10px 60px 10px 70px";
+        i = 1;
     }else{
         i = 0;
     }
+
+    const lista = document.querySelector("#lista");
 
     for(i; i < (lista.children.length - 1); i++){
         document.querySelector(`#${role}${i}`).addEventListener('click', (event) => {

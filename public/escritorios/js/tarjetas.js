@@ -164,24 +164,39 @@ const dibujarActividad = (actividades = []) => {
 				<h3>${nombre}</h3>
 			</div>
             <div>
-                <h5>${descripcion}</h5>
+                <h5 style="color: ${color};">${descripcion}</h5>
             </div>
             <div>
-                <h5>${objetivo}</h5>
+                <h5 style="color: ${color};">${objetivo}</h5>
             </div>
-        <div name="${index}" id="entrar" class="tarjetaMateria_button"
-        style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
-            <h5>Abrir</h5>
+        <div class="botonesActividad">
+            <div name="${index}" id="entrar" class="tarjetaMateria_button"
+            style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
+                <h5>Abrir</h5>
+            </div>
+            <div name="${index}" id="comentarios" class="tarjetaMateria_button"
+            style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
+                <h5>Comentarios</h5>
+            </div>
         </div>
+
         </div>
 		`;
     });
     tarjetas.innerHTML = actividadesHtml;
+
     const btnEntrar = document.querySelectorAll('#entrar');
     btnEntrar.forEach((btn, index) => {
         btn.addEventListener('click', () => {
             localStorage.setItem('actividad',actividades[index]._id);
             window.location.replace(`${baseUrl}escritorios/actividad/seleccion`);
+        });
+    });
+
+    const btnComentarios = document.querySelectorAll('#comentarios');
+    btnComentarios.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            showPopComentarios();
         });
     });
 

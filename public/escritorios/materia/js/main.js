@@ -5,6 +5,10 @@ const titulo = localStorage.getItem('tituloM');
 
 const accesoP = [
     {
+        'nombre': 'Calificaciones',
+		'referencia': ``
+	},
+    {
         'nombre': 'Crear Actividad',
         'referencia': ``
     }
@@ -33,6 +37,18 @@ const datosPop = [
     'Crear'
 ];
 
+const datosPopComentarios = [
+    'comentarAct',
+    [
+        {
+            'type': 'text',
+            'name': 'nombre',
+            'titulo': 'Escribe tu comentario:'
+        }
+    ],
+    'Enviar'
+];
+
 const checarRol = async() => {
     const materia = localStorage.getItem('materia');
     const color = localStorage.getItem('color');
@@ -42,12 +58,14 @@ const checarRol = async() => {
         colorNav(color);
         cerrarSesion();
         dibujarPopUp(datosPop);
+        dibujarPopComentarios(datosPopComentarios);
         const {actividades} = await obtenerArray(`actividad/`, materia);
         dibujarActividad(actividades);
     }else if(rol == "EST_ROLE"){
         dibujarNavBar([], titulo, 'grupo');
         colorNav(color);
         cerrarSesion();
+        dibujarPopComentarios(datosPopComentarios);
         const {actividades} = await obtenerArray(`actividad/`, materia);
         dibujarActividad(actividades);
     }

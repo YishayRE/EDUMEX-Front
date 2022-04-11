@@ -71,7 +71,7 @@
 
 .tarjetaMateria_button {
   background-color: #FFB4A2;
-  width: 50px;
+  width: 77px;
   align-content: center;
   text-align: center;
   justify-content: center;
@@ -81,6 +81,7 @@
   border: 5px solid #E5989B;
   margin:auto;
   cursor: pointer;
+  margin-bottom: 5px;
 }
 
 .buttons_tarjetas {
@@ -147,4 +148,8 @@
   font-size: 19px;
 }
 
+.botonesActividad{
+  display: grid;
+  grid-template-columns: auto auto;
+}
 

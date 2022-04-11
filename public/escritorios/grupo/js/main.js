@@ -6,6 +6,10 @@ let disponibleGrupo;
 
 const accesoP = [
     {
+        'nombre': 'Calificaciones',
+		'referencia': ``
+	},
+    {
         'nombre': 'Activar Grupo',
 		'referencia': ``
 	},
