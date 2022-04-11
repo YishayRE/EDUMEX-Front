@@ -1,4 +1,4 @@
-const btnJuego = document.querySelectorAll('#btnJuego'); 
+const btnJuego = document.querySelectorAll('#btnJuego');
 const materia = document.querySelector('#materia');
 const actividad = document.querySelector('#actividad');
 const tipoJ = document.querySelector('#tipoJ');
@@ -6,13 +6,12 @@ const objetivo = document.querySelector('#objetivo');
 const descripcion = document.querySelector('#descripcion');
 const contenedor = document.querySelector('#contenedor');
 const adicion = document.querySelector('#adicion');
-const opcion = document.querySelector('#opcion0');
-const select = document.querySelector('#select0');
+//const opcion = document.querySelector('#opcion0');
+//const select = document.querySelector('#select0');
 
 const titulo = localStorage.getItem('tituloJ');
 
-const accesoP = [
-    {
+const accesoP = [{
         'nombre': 'Terminar Juego',
         'referencia': ``
     },
@@ -22,8 +21,7 @@ const accesoP = [
     }
 ];
 
-let contadorEtiqueta = 0;
-
+/*
 adicion.addEventListener('click', () => {
     contadorEtiqueta++;
     contenedor.innerHTML += `
@@ -54,12 +52,19 @@ opcion.addEventListener('change', () => {
     else
         select.innerHTML = 'Operación';
 });
+*/
+
+let contadorEtiqueta = 0;
+
+adicion.addEventListener('click', () => {
+    insertarCodigo(contadorEtiqueta++);
+});
 
 const checarRol = async() => {
-    if(rol == "PRO_ROLE"){
+    if (rol == "PRO_ROLE") {
         dibujarNavBar(accesoP, 'numeros', 'materia');
         cerrarSesion();
-    }else if(rol == "EST_ROLE"){
+    } else if (rol == "EST_ROLE") {
         dibujarNavBar();
         cerrarSesion();
     }

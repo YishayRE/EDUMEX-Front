@@ -1,21 +1,8 @@
 const navBar = document.querySelector('#navBar');
-
-
-let html1 = `
-    <title>EDUMEX INICIO</title>
-    <link rel="stylesheet" type="text/css" href="${baseUrl}css/style_inicio.css">
-    <link rel="stylesheet" type="text/css" href="${baseUrl}css/generales/esc_general.css">
-    <link rel="stylesheet" type="text/css" href="${baseUrl}css/generales/footer.css">
-    <link rel="stylesheet" type="text/css" href="${baseUrl}escritorios/css/popups.css">
-    `;
-let htmlJs = `
-    <script src="${baseUrl}escritorios/actividad/js/navBar.js"></script>
-    <script>window.locaction.reload()</script>
-`;
+const juegoId = localStorage.getItem('juego');
 
 const dibujarNavBar = (accesos = [], tipoJuego, url) => {
     let navBarHtml = '';
-    let tipo = '';
 
     navBarHtml += `
         <nav id="barraNav">
@@ -37,18 +24,18 @@ const dibujarNavBar = (accesos = [], tipoJuego, url) => {
 
         <ul>
     `;
-    
+
     accesos.forEach(({ nombre, referencia }, index) => {
-        if(nombre == 'Probar'){
+        if (nombre == 'Probar') {
             navBarHtml += `
                 <li><a id="probarJ">${nombre}</a></li>
             `;
-            
-        }else if(nombre == 'Terminar Juego'){
+
+        } else if (nombre == 'Terminar Juego') {
             navBarHtml += `
                 <li><a id="terminarJ">${nombre}</a></li>
             `;
-        }else
+        } else
             navBarHtml += `
                 <li><a href="${baseUrl}${referencia}">${nombre}</a></li>
             `;
@@ -63,28 +50,24 @@ const dibujarNavBar = (accesos = [], tipoJuego, url) => {
 
     navBar.innerHTML = navBarHtml;
 
-    if(tipoJuego !== "Seleccion de juego"){
+    if (tipoJuego !== "Seleccion de juego") {
         const probarJ = document.querySelector('#probarJ');
         const terminarJ = document.querySelector('#terminarJ');
 
         probarJ.addEventListener('click', async(e) => {
             let formulario = generarHtml();
-            let cssJuego = `<link rel="stylesheet" type="text/css" href="${baseUrl}escritorios/actividad/juegos/${tipoJuego}/css/estiloJuego.css">`;
-            let jsJuego = `<script src="${baseUrl}escritorios/actividad/juegos/${tipoJuego}/js/logicaJuego.js"></script>`;
-            
+
             let idJuego = await actTarjeta({
                 codigo: formulario
-            }, 'juego/', localStorage.getItem('juego'), localStorage.getItem('tipoJ'));
+            }, 'juego/', juegoId, tipoJuego);
         });
 
         terminarJ.addEventListener('click', async(e) => {
             let formulario = generarHtml();
-            let cssJuego = `<link rel="stylesheet" type="text/css" href="${baseUrl}escritorios/actividad/juegos/${tipoJuego}/css/estiloJuego.css">`;
-            let jsJuego = `<script src="${baseUrl}escritorios/actividad/juegos/${tipoJuego}/js/logicaJuego.js"></script>`;
-            
+
             let idJuego = await terminarJuego({
                 codigo: formulario
-            }, 'juego/', localStorage.getItem('juego'), localStorage.getItem('tipoJ'));
+            }, 'juego/', juegoId, tipoJuego);
         });
     }
 

@@ -29,7 +29,7 @@ adicion.addEventListener('click', () => {
 
 const checarRol = async() => {
     if (rol == "PRO_ROLE") {
-        dibujarNavBar(accesoP, 'abecedario', 'materia');
+        dibujarNavBar(accesoP, localStorage.getItem("tipoJ"), 'materia');
         cerrarSesion();
     } else if (rol == "EST_ROLE") {
         window.location.replace(`${baseUrl}`);
