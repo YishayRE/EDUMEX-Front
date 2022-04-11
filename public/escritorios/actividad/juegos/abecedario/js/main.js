@@ -1,4 +1,4 @@
-const btnJuego = document.querySelectorAll('#btnJuego'); 
+const btnJuego = document.querySelectorAll('#btnJuego');
 const materia = document.querySelector('#materia');
 const actividad = document.querySelector('#actividad');
 const tipoJ = document.querySelector('#tipoJ');
@@ -7,13 +7,11 @@ const descripcion = document.querySelector('#descripcion');
 const adicion = document.querySelector('#adicion');
 const quitar = document.querySelector('#quitar');
 const select = document.querySelectorAll('#select');
-let opcion = document.querySelectorAll(`#opcion`);
 
 
 const titulo = localStorage.getItem('tituloJ');
 
-const accesoP = [
-    {
+const accesoP = [{
         'nombre': 'Terminar Juego',
         'referencia': ``
     },
@@ -26,43 +24,14 @@ const accesoP = [
 let contadorEtiqueta = 0;
 
 adicion.addEventListener('click', () => {
-    let contenedor = document.querySelector('#contenedor');
-    contadorEtiqueta++;
-    contenedor.innerHTML += `
-        <div class="elementoJuego" id="elementoJuego${contadorEtiqueta}">
-            <div class="image-upload">
-                <label for="imagen${contadorEtiqueta}">
-                <img id="cargaImagen" src="../../../../images/upload.png"/>
-                </label>
-                
-                <input type="file" name="imagen${contadorEtiqueta}" id="imagen${contadorEtiqueta}" accept="image/png, image/jpeg">
-            </div>
-            <select name="opcion${contadorEtiqueta}" id="opcion">
-                <option value="Palabra" selected>Palabra</option>
-                <option value="Oración">Oración</option>
-            </select>
-            <h1 id="select${contadorEtiqueta}">
-                Palabra
-            </h1>
-            <input type="text" name="opt${contadorEtiqueta}" id="opt${contadorEtiqueta}">
-        </div>
-    `;
-});
-
-opcion.forEach((btn, index) => {
-    btn.addEventListener('change', () => {
-        if(opcion.selectedIndex === 1)
-            select.innerHTML = 'Oración';
-        else
-            select.innerHTML = 'Palabra';
-    });
+    insertarCodigo(contadorEtiqueta++);
 });
 
 const checarRol = async() => {
-    if(rol == "PRO_ROLE"){
+    if (rol == "PRO_ROLE") {
         dibujarNavBar(accesoP, 'abecedario', 'materia');
         cerrarSesion();
-    }else if(rol == "EST_ROLE"){
+    } else if (rol == "EST_ROLE") {
         window.location.replace(`${baseUrl}`);
     }
 }

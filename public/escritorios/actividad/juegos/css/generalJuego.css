@@ -9,9 +9,9 @@
     left: 0;
     background-color: #ffcdc1;
     overflow-x: hidden;
-  }
-  
-  .cajaInfo {
+}
+
+.cajaInfo {
     border: 3px solid;
     border-bottom: 0px;
     border-color: #917681;
@@ -21,9 +21,9 @@
     color: #818181;
     display: block;
     height: 94.4px;
-  }
+}
 
-  .cajaInfo2 {
+.cajaInfo2 {
     border: 3px solid;
     border-color: #917681;
     padding: 6px 8px 6px 16px;
@@ -32,59 +32,67 @@
     color: #818181;
     display: block;
     height: 95.2px;
-  }
-   
-  .elementoJuego {
+}
+
+.elementoJuego {
     display: grid;
     grid-template-columns: auto auto auto auto;
     gap: 10px 10px;
-    margin-left: 170px; /* Same as the width of the sidenav */
+    margin-left: 170px;
+    /* Same as the width of the sidenav */
     margin-top: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
-    font-size: 28px; /* Increased text to enable scrolling */
+    font-size: 28px;
+    /* Increased text to enable scrolling */
     padding: 0px 10px;
     color: #85046f;
     border: 3px dashed;
     border-radius: 30px;
     border-color: #917681;
-  }
+}
 
-  #adicion{
+#adicion {
     color: #85046f;
-    margin-left: 56vw; /* Same as the width of the sidenav */
-    font-size: 28px; /* Increased text to enable scrolling */
+    margin-left: 56vw;
+    /* Same as the width of the sidenav */
+    font-size: 28px;
+    /* Increased text to enable scrolling */
     background-color: #ffcdc1;
     border-radius: 100px;
     max-width: 50px;
-  }
+}
 
-  #simbolo{
+#simbolo {
     margin-top: 0px;
     margin-bottom: 10px;
     text-align: center;
-  }
+}
 
-  #cargaImagen{
+.cargaImagen {
     width: 100px;
     height: 100px;
-  }
+}
 
-  .image-upload>input {
+.image-upload>input {
     display: none;
-  }
+}
 
-  /*.scrollY{
+
+/*.scrollY{
     overflow-y: auto !important;
   }*/
 
-  .scrollY{ 
-    overflow-y: scroll; 
+.scrollY {
+    overflow-y: scroll;
     max-height: calc(100vh - 60px);
 }
 
-  
-  @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-  }
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
