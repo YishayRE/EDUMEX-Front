@@ -72,9 +72,6 @@ const terminarJuego = async(formData = {}, route = '', idT, esJuego = '') => {
         dibujarPopAlerta(errores);
         throw new Error(errores);        
     }
-    if(esJuego){
-        //window.open(`${juegosUrl}juegos/${esJuego}/prueba/`);
-    }else{
-        //location.reload();    
-    }
+
+    window.location.replace(`${materiaUrl}`);
 }

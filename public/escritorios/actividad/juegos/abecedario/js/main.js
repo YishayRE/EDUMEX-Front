@@ -40,7 +40,7 @@ const main = async() => {
     showLoad();
     await validarJWT();
     await checarRol();
-    //await obtenerInfo();
+    await obtenerInfo();
     checarExpiracion(fecha);
     hiddenLoad();
 }

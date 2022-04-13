@@ -14,15 +14,23 @@ const insertarCodigo = (contadorEtiqueta) => {
         </div>
 
         <select name="opcion${contadorEtiqueta}" id="opcion${contadorEtiqueta}">
-            <option value="Palabra" selected>Palabra</option>
-            <option value="Oración">Oración</option>
+            <option value="Tamano" selected>Tamaño</option>
+            <option value="Forma">Forma</option>
         </select>
 
         <h1 id="select${contadorEtiqueta}">
-            Palabra
+            Tamaño
         </h1>
 
         <input type="text" name="opt${contadorEtiqueta}" id="opt${contadorEtiqueta}">
+
+        <div class="image-upload">
+            <label for="imagen${contadorEtiqueta + 1}">
+                <img class="cargaImagen" id="cargaImagen${contadorEtiqueta + 1}" src="../../../../images/upload.png"/>
+            </label>
+                
+            <input type="file" name="imagen${contadorEtiqueta + 1}" id="imagen${contadorEtiqueta + 1}" accept="image/png, image/jpeg">
+        </div>
     `;
 
     contenedor.appendChild(elementoJuego);
@@ -32,8 +40,8 @@ const insertarCodigo = (contadorEtiqueta) => {
 
     opcion.addEventListener('change', () => {
         if (opcion.selectedIndex === 1)
-            select.innerHTML = 'Oración';
+            select.innerHTML = 'Forma';
         else
-            select.innerHTML = 'Palabra';
+            select.innerHTML = 'Tamaño';
     });
 }

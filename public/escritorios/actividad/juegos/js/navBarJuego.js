@@ -31,12 +31,18 @@ const dibujarNavBar = (accesos = [], titulo) => {
         `;
     });
     navBarHtml += `
-                <li><a id="salirJuego" href class="botonesNav">Salir</a></li>
+                <li><a id="cerrarPrueba" href class="botonesNav">Cerrar</a></li>
             </ul>
         </nav>
     `;
 
     navBar.innerHTML = navBarHtml;
+
+    const cerrar = document.querySelector("#cerrarPrueba");
+    cerrar.addEventListener('click', (event) => {
+        event.preventDefault();
+        window.close();
+    });
 
     /*const lista = document.querySelector("#lista");
 

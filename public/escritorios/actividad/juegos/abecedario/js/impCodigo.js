@@ -13,16 +13,20 @@ const insertarCodigo = (contadorEtiqueta) => {
             <input type="file" name="imagen${contadorEtiqueta}" id="imagen${contadorEtiqueta}" accept="image/png, image/jpeg">
         </div>
 
-        <select name="opcion${contadorEtiqueta}" id="opcion${contadorEtiqueta}">
-            <option value="Palabra" selected>Palabra</option>
-            <option value="Oración">Oración</option>
-        </select>
+        <div class="contenedorTipo">
+            <select class="selectTipo" name="opcion${contadorEtiqueta}" id="opcion${contadorEtiqueta}">
+                <option value="Palabra" selected>Palabra</option>
+                <option value="Oración">Oración</option>
+            </select>
+        </div>
 
-        <h1 id="select${contadorEtiqueta}">
+        <h1 class="selectTitulo" id="select${contadorEtiqueta}">
             Palabra
         </h1>
-
-        <input type="text" name="opt${contadorEtiqueta}" id="opt${contadorEtiqueta}">
+        
+        <div class="contenedorRespuesta"> 
+            <input class="valorRespuesta" type="text" name="opt${contadorEtiqueta}" id="opt${contadorEtiqueta}">
+        </div>
     `;
 
     contenedor.appendChild(elementoJuego);

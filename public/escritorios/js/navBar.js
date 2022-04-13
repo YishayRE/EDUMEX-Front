@@ -96,7 +96,7 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
             window.location.replace(`${escritoriosUrl}${url}`);
         });
     }
-
+    
     if(titulo.startsWith('Grupo') && rol === 'PRO_ROLE'){
         i = 2;
         let grupoActual = new Object();
@@ -118,7 +118,7 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
             }
             
         });
-    }else if(titulo.startsWith('Materia')){
+    }else if(titulo.startsWith('Materia') && rol === 'PRO_ROLE'){
         calificaciones = document.querySelector('#pro0');
         calificaciones.style.padding = "10px 60px 10px 70px";
         i = 1;

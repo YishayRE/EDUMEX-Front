@@ -30,7 +30,7 @@ const generarHtml = () => {
     }
 
     arrayJ.forEach((opcionJ, index) => {
-        html3 += `<div id="$elemento${index}" class="reactivoAbecedario">`;
+        html3 += `<div id="elemento${index}" class="reactivoAbecedario">`;
         if(opcionJ[0])
             html3 += `
             <img src="${opcionJ[0]}" alt="imagenJ" class="logo">

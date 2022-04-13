@@ -25,26 +25,7 @@ const accesoP = [
 let contadorEtiqueta = 0;
 
 adicion.addEventListener('click', () => {
-    contadorEtiqueta++;
-    contenedor.innerHTML += `
-        <div class="elementoJuego">
-            <div class="image-upload">
-                <label for="imagen${contadorEtiqueta}">
-                <img id="cargaImagen" src="../../../../images/upload.png"/>
-                </label>
-                
-                <input type="file" name="imagen${contadorEtiqueta}" id="imagen${contadorEtiqueta}" accept="image/png, image/jpeg">
-            </div>
-            <div>
-                <h5>Ingresa la sentencia</h5>
-                <input type="text" name="sentencia${contadorEtiqueta}" id="sentencia${contadorEtiqueta}">
-            </div>
-            <div>
-                <h5>Escribe la respuesta</h5>
-                <input type="text" name="respuesta${contadorEtiqueta}" id="respuesta${contadorEtiqueta}">
-            </div>
-        </div>
-    `;
+    insertarCodigo(contadorEtiqueta++);
 });
 
 const checarRol = async() => {

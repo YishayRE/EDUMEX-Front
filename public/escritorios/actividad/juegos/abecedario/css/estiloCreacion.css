@@ -1,0 +1,53 @@
+.image-upload{
+    width: fit-content;
+    height: fit-content;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.contenedorTipo{
+    width: fit-content;
+    height: fit-content;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.selectTipo{
+    width: 150px;
+    height: 50px;
+}
+
+.selectTitulo{
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-size: 30px;
+}
+
+.valorRespuesta{
+    width: 200px;
+    height: 50px;
+}
+
+.contenedorRespuesta{
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.elementoJuego {
+    display: grid;
+    grid-template-columns: 10vw 15vw 10vw 18vw;
+    gap: 10px 10px;
+    width: 80vw;
+    margin-left: 210px;
+    /* Same as the width of the sidenav */
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 28px;
+    /* Increased text to enable scrolling */
+    padding: 0px 10px;
+    color: #85046f;
+    border: 3px dashed;
+    border-radius: 30px;
+    border-color: #917681;
+}

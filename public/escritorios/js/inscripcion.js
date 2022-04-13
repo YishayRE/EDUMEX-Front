@@ -20,9 +20,11 @@ const inscripcion = async(formData = {}, route = '') => {
       
     const respuesta = await resp.json();
     let errores = '';
+
+    console.log(respuesta);
     
-    if(respuesta.errors){
-        respuesta.errors.forEach((err, index) => {
+    if(respuesta.msg){
+        respuesta.msg.forEach((err, index) => {
             errores += `${index}. ${err.msg}\n`;
         });
         hiddenLoad();

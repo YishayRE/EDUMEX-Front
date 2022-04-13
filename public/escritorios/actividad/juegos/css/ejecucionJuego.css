@@ -3,6 +3,11 @@
     justify-content: center;
 }
 
+#codigo{
+    display: flex;
+    justify-content: center;
+}
+
 .reactivoAbecedario{
     margin: 20px;
     text-align: center;
@@ -10,8 +15,11 @@
     padding: 20px;
     color: black;
     background-color: #ffcdc1;
+    border: 5px solid;
     border-color: #917681;
     border-radius: 15px;
+    text-transform: uppercase;
+    height: 300px;
     width: 300px;
 }
 
