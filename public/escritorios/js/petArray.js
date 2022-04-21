@@ -6,7 +6,7 @@ const obtenerArray = async(arrayPath, idT) => {
     });
 
     const respuesta = await resp.json();
-    
+    console.log(respuesta);
     if(respuesta.msg){
         hiddenLoad();
         switch (rol) {
@@ -31,7 +31,7 @@ const obtenerArray = async(arrayPath, idT) => {
             default:
                 break;
         }
-        throw new Error(respuesta.msg);        
+        throw new Error(respuesta.msg);
     }
     return respuesta;
 }
