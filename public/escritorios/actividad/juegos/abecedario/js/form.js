@@ -5,10 +5,8 @@ const html2 = `</div>
 </body>
 </html>`;
 
-let html3 = `<header class="stick" id="navBar">
-</header>
-<div id="contenidoJuego">
-<form id="juego">
+let html3 = `
+<form id="contenidoJuego">
 `;
 
 const generarHtml = () => {
@@ -56,5 +54,5 @@ const generarHtml = () => {
     }*/
     let body = html3;
     html3 = '';
-    return [`${body}</form></div>`,respuestas];
+    return [`${body}</form>`,respuestas];
 }

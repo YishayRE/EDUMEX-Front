@@ -51,3 +51,12 @@
     background: #fff;
     border-radius: 10px;
 }
+
+#elementosCod{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.clipboard{
+    padding-top: 15px;
+}

@@ -73,5 +73,5 @@ const terminarJuego = async(formData = {}, route = '', idT, esJuego = '') => {
         throw new Error(errores);        
     }
 
-    window.location.replace(`${materiaUrl}`);
+   // window.location.replace(`${materiaUrl}`);
 }

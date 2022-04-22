@@ -65,8 +65,15 @@ const dibujarPopAlerta = (err, route, idT) => {
                 break;
             case 'codGrupo':
                 popAlertaHtml += `
-                            <h2>El código del grupo es:</h2>
-                            <h3>${route}</h3>
+                            <div id="elementosCod">
+                                <div>
+                                    <h2>El código del grupo es:</h2>
+                                    <h3>${route}</h3>
+                                </div>
+                                <div class="clipboard">
+                                    <img src="${baseUrl}/images/paste.png" alt="Activar grupo" class="logoBoton">
+                                </div>
+                            </div>
                             <div>
                                 <button id="aceptarAct" href="">Aceptar</button>
                             </div>

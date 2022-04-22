@@ -28,6 +28,5 @@ const obtenerRespuestas = async() => {
     if(respuesta.msg){
         throw new Error(respuesta.msg);        
     }
-    console.log(respuesta);
     return respuesta;
 }
