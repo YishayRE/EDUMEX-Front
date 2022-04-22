@@ -41,3 +41,9 @@ const insertarCodigo = (contadorEtiqueta) => {
             select.innerHTML = 'Palabra';
     });
 }
+
+const eliminarCodigo = (contadorEtiqueta) => {
+    const contenedor = document.querySelector('#contenedor');
+    const elementoJuego = document.getElementById(`elementoJuego${contadorEtiqueta}`);
+    contenedor.removeChild(elementoJuego);
+}

@@ -17,7 +17,7 @@
     border-color: #917681;
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 10px;
+    font-size: 9px;
     color: #818181;
     display: block;
     height: 94.4px;
@@ -28,10 +28,20 @@
     border-color: #917681;
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 10px;
+    font-size: 9px;
     color: #818181;
     display: block;
-    height: 95.2px;
+    height: 205.2px;
+    text-transform: uppercase;
+}
+
+.inputsJuego{
+    border: 2px solid;
+    border-color: #917681;
+    border-radius: 10px;
+    width: 120px;
+    height: 20px;
+    font-size: 18px;
 }
 
 .elementoJuego {
@@ -52,26 +62,31 @@
     border-color: #917681;
 }
 
-#adicion {
+#operadores {
+    display: grid;
+    grid-template-columns: 55px 55px;
     color: #85046f;
     margin-left: 56vw;
     /* Same as the width of the sidenav */
     font-size: 28px;
     /* Increased text to enable scrolling */
-    background-color: #ffcdc1;
-    border-radius: 100px;
-    max-width: 50px;
+    margin-top: 10px;
 }
 
-#simbolo {
+.simbolo {
     margin-top: 0px;
     margin-bottom: 10px;
     text-align: center;
+    background-color: #ffcdc1;
+    border-radius: 100px;
+    max-width: 50px;
+    cursor: pointer;
 }
 
 .cargaImagen {
     width: 100px;
     height: 100px;
+    cursor: pointer;
 }
 
 .image-upload>input {

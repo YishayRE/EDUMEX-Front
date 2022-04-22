@@ -7,12 +7,15 @@ const html2 = `</div>
 
 let html3 = `<header class="stick" id="navBar">
 </header>
-<div id="contenidoJuego">`;
+<div id="contenidoJuego">
+<form id="juego">
+`;
 
 const generarHtml = () => {
     const formulario = dataForm(formJ);
     const size = Object.keys(formulario).length / 3;
     let arrayJ = [[]];
+    let respuestas = [];
     let j = 0;
     let i = 0;
 
@@ -39,9 +42,10 @@ const generarHtml = () => {
             <h3>Escribe la ${opcionJ[1]}</h3>
         `;
         html3 += `
-            <input type="text" name="resp${index}" id="${opcionJ[2]}">
+            <input type="text" name="resp${index}">
         </div>
         `;
+        respuestas.push(opcionJ[2]);
     });
 
     /*console.log(size);
@@ -52,6 +56,5 @@ const generarHtml = () => {
     }*/
     let body = html3;
     html3 = '';
-    return `${body}
-    </div>`;
+    return [`${body}</form></div>`,respuestas];
 }

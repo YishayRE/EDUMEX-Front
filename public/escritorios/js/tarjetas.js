@@ -139,10 +139,10 @@ const dibujarMateria = (materias = []) => {
 const dibujarActividad = (actividades = []) => {
     let actividadesHtml = '';
     let nombreTitulo = '';
+    let aux = null;
 
     const color = localStorage.getItem('color');
-
-    actividades.forEach(({ nombre, descripcion, objetivo },index) => {
+    actividades.forEach(({ nombre, descripcion, objetivo, juego},index) => {
         const fondo = hexToRgbA(color);
         actividadesHtml += `
 		<div class="tarjetaMateria" style="background-color: ${fondo}; border: 5px solid ${color};">
@@ -170,10 +170,25 @@ const dibujarActividad = (actividades = []) => {
                 <h5 style="color: ${color};">${objetivo}</h5>
             </div>
         <div class="botonesActividad">
-            <div name="${index}" id="entrar" class="tarjetaMateria_button"
-            style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
-                <h5>Abrir</h5>
-            </div>
+        `;
+        if(juego){
+            actividadesHtml += `
+                <div name="${index}" id="entrar" class="tarjetaMateria_button"
+                style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
+                    <h5>¡JUGAR!</h5>
+                </div>
+            `;
+            aux = juego;
+        }else{
+            actividadesHtml += `
+                <div name="${index}" id="entrar" class="tarjetaMateria_button"
+                style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
+                    <h5>Abrir</h5>
+                </div>
+            `;
+        }
+        actividadesHtml += `
+        
             <div name="${index}" id="comentarios" class="tarjetaMateria_button"
             style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
                 <h5>Comentarios</h5>
@@ -184,15 +199,34 @@ const dibujarActividad = (actividades = []) => {
 		`;
     });
     tarjetas.innerHTML = actividadesHtml;
-
-    const btnEntrar = document.querySelectorAll('#entrar');
-    btnEntrar.forEach((btn, index) => {
-        btn.addEventListener('click', () => {
-            localStorage.setItem('actividad',actividades[index]._id);
-            window.location.replace(`${baseUrl}escritorios/actividad/seleccion`);
+    
+    if(aux !== null){
+        const btnEntrar = document.querySelectorAll('#entrar');
+        switch (rol) {
+            case "PRO_ROLE":
+                btnEntrar.forEach((btn, index) => {
+                    btn.addEventListener('click', () => {
+                        localStorage.setItem('actividad',actividades[index]._id);
+                        window.location.replace(`${baseUrl}escritorios/actividad/seleccion`);
+                    });
+                });
+                break;
+            case "EST_ROLE":
+                
+                break;
+            default:
+                break;
+        }
+    }else{
+        const btnEntrar = document.querySelectorAll('#entrar');
+        btnEntrar.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                localStorage.setItem('actividad',actividades[index]._id);
+                window.location.replace(`${baseUrl}escritorios/actividad/seleccion`);
+            });
         });
-    });
-
+    }
+    
     const btnComentarios = document.querySelectorAll('#comentarios');
     btnComentarios.forEach((btn, index) => {
         btn.addEventListener('click', () => {

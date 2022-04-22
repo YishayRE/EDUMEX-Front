@@ -27,7 +27,7 @@ const dibujarNavBar = (accesos = [], titulo) => {
     `;
     accesos.forEach(({ nombre, referencia },index) => {
         navBarHtml += `
-            <li><a id="${role}${index}" href="${referencia}" class="botonesNav">${nombre}</a></li>
+            <li><a id="${role}${index}" class="botonesNav">${nombre}</a></li>
         `;
     });
     navBarHtml += `

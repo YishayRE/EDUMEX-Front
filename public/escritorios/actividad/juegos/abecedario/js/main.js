@@ -2,9 +2,10 @@ const btnJuego = document.querySelectorAll('#btnJuego');
 const materia = document.querySelector('#materia');
 const actividad = document.querySelector('#actividad');
 const tipoJ = document.querySelector('#tipoJ');
-const objetivo = document.querySelector('#objetivo');
-const descripcion = document.querySelector('#descripcion');
+//const objetivo = document.querySelector('#objetivo');
+//const descripcion = document.querySelector('#descripcion');
 const adicion = document.querySelector('#adicion');
+const resta = document.querySelector('#resta');
 const quitar = document.querySelector('#quitar');
 const select = document.querySelectorAll('#select');
 
@@ -25,6 +26,17 @@ let contadorEtiqueta = 0;
 
 adicion.addEventListener('click', () => {
     insertarCodigo(contadorEtiqueta++);
+    console.log(contadorEtiqueta);
+    if(contadorEtiqueta > 0)
+        resta.style.display = "block";
+});
+
+resta.style.display = "none";
+
+resta.addEventListener('click', () => {
+    eliminarCodigo(--contadorEtiqueta);
+    if(contadorEtiqueta == 0)
+        resta.style.display = "none";
 });
 
 const checarRol = async() => {

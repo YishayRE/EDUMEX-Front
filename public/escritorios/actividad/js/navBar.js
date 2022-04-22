@@ -56,9 +56,10 @@ const dibujarNavBar = (accesos = [], tipoJuego, url) => {
 
         probarJ.addEventListener('click', async(e) => {
             let formulario = generarHtml();
-
+            console.log(formulario);
             let idJuego = await actTarjeta({
-                codigo: formulario
+                codigo: formulario[0],
+                respuestas: formulario[1]
             }, 'juego/', juegoId, tipoJuego);
         });
 
@@ -66,7 +67,8 @@ const dibujarNavBar = (accesos = [], tipoJuego, url) => {
             let formulario = generarHtml();
 
             let idJuego = await terminarJuego({
-                codigo: formulario
+                codigo: formulario[0],
+                respuestas: formulario[1]
             }, 'juego/', juegoId, tipoJuego);
         });
     }

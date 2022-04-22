@@ -9,7 +9,7 @@
     width: fit-content;
     height: fit-content;
     padding-top: 50px;
-    padding-bottom: 40px;
+    padding-bottom: 50px;
 }
 
 .selectTipo{
@@ -18,14 +18,12 @@
     border-radius: 10px;
     border: 3px solid;
     font-size: 20px;
-
 }
 
 .selectTitulo{
-    padding-top: 40px;
-    padding-bottom: 40px;
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
+    margin-top: 60px;
 }
 
 .valorRespuesta{
@@ -36,9 +34,14 @@
     border: 3px solid;
 }
 
-.contenedorRespuesta{
-    padding-top: 50px;
-    padding-bottom: 40px;
+.opcionesRespuesta{
+    height: 150px;
+    padding-top: 10px;
+}
+
+#segundaImagen{
+    padding: 0px;
+    padding-left: 33px;
 }
 
 .elementoJuego {
@@ -46,6 +49,7 @@
     grid-template-columns: 90px 150px 130px 210px;
     gap: 10px 10px;
     width: 600px;
+    height: 150px;
     margin-left: 34vw;
     /* Same as the width of the sidenav */
     margin-top: 10px;

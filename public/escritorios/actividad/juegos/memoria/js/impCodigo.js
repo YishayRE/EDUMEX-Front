@@ -5,21 +5,24 @@ const insertarCodigo = (contadorEtiqueta) => {
     elementoJuego.className = 'elementoJuego';
     elementoJuego.id = `elementoJuego${contadorEtiqueta}`;
     elementoJuego.innerHTML = `
-        <div class="image-upload">
+        <div id="primeraImagen" class="image-upload">
             <label for="imagen${contadorEtiqueta}">
             <img class="cargaImagen" id="cargaImagen${contadorEtiqueta}" src="../../../../images/upload.png"/>
             </label>
             
             <input type="file" name="imagen${contadorEtiqueta}" id="imagen${contadorEtiqueta}" accept="image/png, image/jpeg">
         </div>
-        <select name="opcion${contadorEtiqueta}" id="opcion${contadorEtiqueta}">
-            <option value="Palabra">Palabra</option>
-            <option value="Imagen">Imagen</option>
-        </select>
-        <h5 id="select${contadorEtiqueta}">Palabra</h5>
-        <div>
-            <input type="text" name="opt${contadorEtiqueta}" id="opt${contadorEtiqueta}">
-            <div class="image-upload">
+        <div class="contenedorTipo">
+            <select class="selectTipo" name="opcion${contadorEtiqueta}" id="opcion${contadorEtiqueta}">
+                <option value="Palabra">Palabra</option>
+                <option value="Imagen">Imagen</option>
+            </select>
+        </div>
+        <h5 class="selectTitulo" id="select${contadorEtiqueta}">Palabra</h5>
+        <div class="opcionesRespuesta">
+            <input class="valorRespuesta" type="text" name="opt${contadorEtiqueta}" id="opt${contadorEtiqueta}">
+
+            <div id="segundaImagen" class="image-upload">
             <label for="imagen${contadorEtiqueta+1}">
                 <img class="cargaImagen" id="cargaImagen${contadorEtiqueta}" src="../../../../images/upload.png"/>
             </label>
@@ -39,4 +42,10 @@ const insertarCodigo = (contadorEtiqueta) => {
         else
             select.innerHTML = 'Palabra';
     });
+}
+
+const eliminarCodigo = (contadorEtiqueta) => {
+    const contenedor = document.querySelector('#contenedor');
+    const elementoJuego = document.getElementById(`elementoJuego${contadorEtiqueta}`);
+    contenedor.removeChild(elementoJuego);
 }

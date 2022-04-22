@@ -41,11 +41,27 @@
     padding-bottom: 40px;
 }
 
+.titulos{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    text-align: center;
+    margin: 0px;
+}
+
+.elementosRompecabezas{
+    width: fit-content;
+    height: fit-content;
+
+}
+
 .elementoJuego {
     display: grid;
-    grid-template-columns: 90px 150px 130px 210px;
+    grid-template-columns: 230px;
+    grid-template-rows: 100px 160px;
     gap: 10px 10px;
-    width: 600px;
+    width: 200px;
+    height: 500px;
     margin-left: 34vw;
     /* Same as the width of the sidenav */
     margin-top: 10px;

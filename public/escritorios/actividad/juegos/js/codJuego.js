@@ -15,3 +15,19 @@ const codigoJuego = async() => {
 
     codigo.innerHTML = respuesta;
 }
+
+const obtenerRespuestas = async() => {
+    const token = localStorage.getItem('token') || '';
+    const resp = await fetch(baseApi + 'juego/respuestas/', {
+        method: 'GET',
+        headers: { 'x-token': token, user: uid, id: localStorage.getItem('juego') }
+    });
+
+    const respuesta = await resp.json();
+    
+    if(respuesta.msg){
+        throw new Error(respuesta.msg);        
+    }
+    console.log(respuesta);
+    return respuesta;
+}

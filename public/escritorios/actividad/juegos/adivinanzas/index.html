@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="../css/generalJuego.css">
+    <link rel="stylesheet" type="text/css" href="./css/estiloCreacion.css">
     <link rel="stylesheet" type="text/css" href="../../../../css/generales/esc_general.css">
     <title>Document</title>
 </head>
@@ -27,7 +28,12 @@
             <h1 id="objetivo">Objetivo</h1>
         </div>
         <div class="cajaInfo2">
-            <h1 id="descripcion">Descripcion</h1>
+            <form>
+                <h1>Tiempo en minutos</h1>
+                <input class="inputsJuego" type="number" id="tiempoJ" name="tiempoJ">
+                <h1>Intentos</h1>
+                <input class="inputsJuego" type="number" id="intentosJ" name="intentosJ">
+            </form>
         </div>
     </div>
 
@@ -39,8 +45,9 @@
                 </div>
             </form>
             </div>
-            <div id="adicion">
-                <h1 id="simbolo">+</h1>
+            <div id="operadores">
+                <h1 class="simbolo" id="adicion">+</h1>
+                <h1 class="simbolo" id="resta">-</h1>
             </div>
     </div>
 

@@ -26,14 +26,17 @@ let contadorEtiqueta = 0;
 
 adicion.addEventListener('click', () => {
     insertarCodigo(contadorEtiqueta++);
+    if(contadorEtiqueta > 0)
+        resta.style.display = "block";
 });
 
-/*opcion.addEventListener('change', () => {
-    if(opcion.selectedIndex === 2)
-        select.innerHTML = 'Oración';
-    else
-        select.innerHTML = 'Palabra';
-});*/
+resta.style.display = "none";
+
+resta.addEventListener('click', () => {
+    eliminarCodigo(--contadorEtiqueta);
+    if(contadorEtiqueta == 0)
+        resta.style.display = "none";
+});
 
 const checarRol = async() => {
     if(rol == "PRO_ROLE"){

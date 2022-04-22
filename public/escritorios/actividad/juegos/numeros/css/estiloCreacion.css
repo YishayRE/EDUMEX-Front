@@ -28,6 +28,10 @@
     text-align: center;
 }
 
+.labelReactivo{
+    font-size: 20px;
+}
+
 .valorRespuesta{
     width: 150px;
     height: 40px;
@@ -41,12 +45,17 @@
     padding-bottom: 40px;
 }
 
+.centrarElementos{
+    text-align: center;
+    padding-bottom: 10px;
+}
+
 .elementoJuego {
     display: grid;
-    grid-template-columns: 90px 150px 130px 210px;
+    grid-template-columns: 150px 150px 190px 190px;
     gap: 10px 10px;
-    width: 600px;
-    margin-left: 34vw;
+    width: 740px;
+    margin-left: 30vw;
     /* Same as the width of the sidenav */
     margin-top: 10px;
     margin-right: 10px;

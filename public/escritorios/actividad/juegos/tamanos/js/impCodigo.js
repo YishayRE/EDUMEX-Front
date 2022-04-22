@@ -5,31 +5,31 @@ const insertarCodigo = (contadorEtiqueta) => {
     elementoJuego.className = 'elementoJuego';
     elementoJuego.id = `elementoJuego${contadorEtiqueta}`;
     elementoJuego.innerHTML = `
-        <div class="image-upload">
+        <div id="primeraImagen" class="image-upload">
             <label for="imagen${contadorEtiqueta}">
                 <img class="cargaImagen" id="cargaImagen${contadorEtiqueta}" src="../../../../images/upload.png"/>
             </label>
                 
             <input type="file" name="imagen${contadorEtiqueta}" id="imagen${contadorEtiqueta}" accept="image/png, image/jpeg">
         </div>
+        <div class="contenedorTipo">
+            <select class="selectTipo" name="opcion${contadorEtiqueta}" id="opcion${contadorEtiqueta}">
+                <option value="Tamano" selected>Tamaño</option>
+                <option value="Forma">Forma</option>
+            </select>
+        </div>
+        <h5 class="selectTitulo" id="select${contadorEtiqueta}">Tamaño</h5>
 
-        <select name="opcion${contadorEtiqueta}" id="opcion${contadorEtiqueta}">
-            <option value="Tamano" selected>Tamaño</option>
-            <option value="Forma">Forma</option>
-        </select>
+        <div class="opcionesRespuesta">
+            <input class="valorRespuesta" type="text" name="opt${contadorEtiqueta}" id="opt${contadorEtiqueta}">
 
-        <h1 id="select${contadorEtiqueta}">
-            Tamaño
-        </h1>
-
-        <input type="text" name="opt${contadorEtiqueta}" id="opt${contadorEtiqueta}">
-
-        <div class="image-upload">
-            <label for="imagen${contadorEtiqueta + 1}">
-                <img class="cargaImagen" id="cargaImagen${contadorEtiqueta + 1}" src="../../../../images/upload.png"/>
-            </label>
-                
-            <input type="file" name="imagen${contadorEtiqueta + 1}" id="imagen${contadorEtiqueta + 1}" accept="image/png, image/jpeg">
+            <div id="segundaImagen" class="image-upload">
+                <label for="imagen${contadorEtiqueta + 1}">
+                    <img class="cargaImagen" id="cargaImagen${contadorEtiqueta + 1}" src="../../../../images/upload.png"/>
+                </label>
+                    
+                <input type="file" name="imagen${contadorEtiqueta + 1}" id="imagen${contadorEtiqueta + 1}" accept="image/png, image/jpeg">
+            </div>
         </div>
     `;
 
@@ -44,4 +44,10 @@ const insertarCodigo = (contadorEtiqueta) => {
         else
             select.innerHTML = 'Tamaño';
     });
+}
+
+const eliminarCodigo = (contadorEtiqueta) => {
+    const contenedor = document.querySelector('#contenedor');
+    const elementoJuego = document.getElementById(`elementoJuego${contadorEtiqueta}`);
+    contenedor.removeChild(elementoJuego);
 }
