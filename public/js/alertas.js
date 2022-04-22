@@ -70,7 +70,7 @@ const dibujarPopAlerta = (err, route, idT) => {
                                     <h2>El código del grupo es:</h2>
                                     <h3>${route}</h3>
                                 </div>
-                                <div class="clipboard">
+                                <div id="copiarCodigo" class="clipboard">
                                     <img src="${baseUrl}/images/paste.png" alt="Activar grupo" class="logoBoton">
                                 </div>
                             </div>
@@ -129,6 +129,20 @@ const dibujarPopAlerta = (err, route, idT) => {
             });
             break;
         case 'codGrupo':
+            const copyTextareaBtn = document.querySelector('#');
+            copyTextareaBtn.addEventListener('click', function(event) {
+            var copyTextarea = document.querySelector('.js-copytextarea');
+            copyTextarea.focus();
+            copyTextarea.select();
+
+            try {
+                var successful = document.execCommand('copy');
+                var msg = successful ? 'successful' : 'unsuccessful';
+                console.log('Copying text command was ' + msg);
+            } catch (err) {
+                console.log('Oops, unable to copy');
+            }
+            });
             const btnAceptar = document.querySelector('#aceptarAct');
             btnAceptar.addEventListener('click', async(e) => {
                 e.preventDefault();

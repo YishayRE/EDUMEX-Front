@@ -68,7 +68,7 @@ const dibujarNavBar = (accesos = [], tipoJuego, url) => {
 
             let idJuego = await terminarJuego({
                 codigo: formulario[0],
-                respuesta: formulario[1],
+                respuestas: formulario[1],
                 tiempo: 1,
                 intentos: 1
             }, 'juego/', juegoId, tipoJuego);
