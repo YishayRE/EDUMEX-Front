@@ -100,14 +100,12 @@
     font-size: 1em;
   }
 
-  button {
-    width: 100%;
-  }
   button:hover, .btn-item:hover {
     background: #E5989B;
   }
 
   button {
+    width: 100%;
     padding: 10px 5px;
     margin-top: 20px;
     border-radius: 5px; 
@@ -119,4 +117,17 @@
     color: #fff;
     cursor: pointer;
     transition: all .5s;
+    text-transform: uppercase;
+    font-weight: bold;
   }
+
+  .centrarBotones{
+    text-align: center;
+  }
+
+  .botonesAfinados{
+    width: 60%;
+  }
+
+
+

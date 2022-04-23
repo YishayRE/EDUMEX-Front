@@ -8,8 +8,6 @@ const accesosPrueba = [{
 const dibujarJuego = async() => {
     dibujarNavBar(accesosPrueba, titulo);
     await codigoJuego();
-    /*let reactivos = await obtenerRespuestas();
-    console.log(reactivos.respuestas);*/
     await terminarJugar();
 }
 
@@ -39,7 +37,7 @@ const terminarJugar = async() => {
             }
         });
 
-        dibujarPopAlerta("Tienes " + contador + " aciertos, tu calificación es: " + enviarRespuestas.calificacion);
+        dibujarPopAlerta("aciertos", "Tienes " + contador + " aciertos, tu calificación es: " + enviarRespuestas.calificacion);
         console.log("Tienes " + contador + " aciertos");
     });
 }

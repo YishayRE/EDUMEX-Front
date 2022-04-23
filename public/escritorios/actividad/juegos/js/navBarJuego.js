@@ -39,9 +39,18 @@ const dibujarNavBar = (accesos = [], titulo) => {
     navBar.innerHTML = navBarHtml;
 
     const cerrar = document.querySelector("#cerrarPrueba");
-    cerrar.addEventListener('click', (event) => {
-        event.preventDefault();
-        window.close();
+
+    
+        cerrar.addEventListener('click', (event) => {
+            event.preventDefault();
+            if(rol == "PRO_ROLE"){
+                window.close();
+            }else{
+                window.location.replace(`${escritoriosUrl}materia`);
+            }
+        
     });
+    
+    
 
 }

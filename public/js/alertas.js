@@ -79,6 +79,15 @@ const dibujarPopAlerta = (err, route, idT) => {
                             </div>
                 `; 
                 break;
+            case 'aciertos':
+                popAlertaHtml += `
+                            <h2>${route}</h2>
+                            <div class="centrarBotones">
+                                <button class="botonesAfinados" id="continuarC" href="">Continuar</button>
+                                <button class="botonesAfinados" id="salirC" href="">Salir</button>
+                            </div>
+                `; 
+                break;
             default:
                 popAlertaHtml += `
                             <h2>${err}</h2>
@@ -147,6 +156,19 @@ const dibujarPopAlerta = (err, route, idT) => {
             btnAceptar.addEventListener('click', async(e) => {
                 e.preventDefault();
                 location.reload();
+            });
+            break;
+        case 'aciertos':
+            const btnContinuarC = document.querySelector('#continuarC');
+            const btnSalirC = document.querySelector('#salirC');
+            btnContinuarC.addEventListener('click', async(e) => {
+                e.preventDefault();
+                hiddenAlert();
+                console.log("hola");
+            });
+            btnSalirC.addEventListener('click', async(e) => {
+                e.preventDefault();
+                window.location.replace(`${escritoriosUrl}materia`);
             });
             break;
         default:

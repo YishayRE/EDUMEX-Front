@@ -142,7 +142,7 @@ const dibujarActividad = (actividades = []) => {
 
 
     const color = localStorage.getItem('color');
-    actividades.forEach(({ nombre, descripcion, objetivo, juego, disponible},index) => {
+    actividades.forEach(({ nombre, descripcion, objetivo, juego, disponible, intents, calificacion, realizada},index) => {
         const fondo = hexToRgbA(color);
 
         if(rol == "PRO_ROLE"){
@@ -211,12 +211,21 @@ const dibujarActividad = (actividades = []) => {
                 <div class="botonesActividad">
                 `;
 
-                actividadesHtml += `
+                if(intents > 0){
+                    actividadesHtml += `
                     <div name="${index}" id="entrar" class="tarjetaMateria_button"
                     style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
                         <h5>¡JUGAR!</h5>
                     </div>
-                `;
+                    `;
+                }else{
+                    actividadesHtml += `
+                    <div name="${index}" id="entrar" class="tarjetaMateria_button"
+                    style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
+                        <h5>${calificacion}</h5>
+                    </div>
+                    `;
+                }
 
                 actividadesHtml += `
                     <div name="${index}" id="comentarios" class="tarjetaMateria_button"
@@ -246,6 +255,25 @@ const dibujarActividad = (actividades = []) => {
                         window.location.replace(`${baseUrl}escritorios/actividad/seleccion`);
                     });
             });
+
+            const vistaTarjetas = document.querySelectorAll("#editar");
+
+            vistaTarjetas.forEach((edit, index) => {
+                edit.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    dibujarPopEditar(datosPop, actividades[index]._id);
+                    showEditar();
+                });
+            });
+
+            const vistaTarjetaEl = document.querySelectorAll("#eliminar");
+
+            vistaTarjetaEl.forEach((edit, index) => {
+                edit.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    dibujarPopAlerta('eliminar', `actividad/id/`, actividades[index]._id);
+                });
+            });
             break;
         case "EST_ROLE":
             btnEntrar.forEach((btn, index) => {
@@ -266,24 +294,4 @@ const dibujarActividad = (actividades = []) => {
         });
     });
 
-    if(rol == "PRO_ROLE"){
-        const vistaTarjetas = document.querySelectorAll("#editar");
-
-        vistaTarjetas.forEach((edit, index) => {
-            edit.addEventListener('click', (event) => {
-                event.preventDefault();
-                dibujarPopEditar(datosPop, actividades[index]._id);
-                showEditar();
-            });
-        });
-
-        const vistaTarjetaEl = document.querySelectorAll("#eliminar");
-
-        vistaTarjetaEl.forEach((edit, index) => {
-            edit.addEventListener('click', (event) => {
-                event.preventDefault();
-                dibujarPopAlerta('eliminar', `actividad/id/`, actividades[index]._id);
-            });
-        });
-    }
 }
