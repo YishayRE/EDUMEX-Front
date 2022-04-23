@@ -139,8 +139,7 @@ const dibujarMateria = (materias = []) => {
 const dibujarActividad = (actividades = []) => {
     let actividadesHtml = '';
     let nombreTitulo = '';
-    let aux = null;
-    let auxDisp = null; 
+
 
     const color = localStorage.getItem('color');
     actividades.forEach(({ nombre, descripcion, objetivo, juego, disponible},index) => {
@@ -235,18 +234,23 @@ const dibujarActividad = (actividades = []) => {
     tarjetas.innerHTML = actividadesHtml;
     
     const btnEntrar = document.querySelectorAll('#entrar');
+    const btnComentarios = document.querySelectorAll('#comentarios');
+
     switch (rol) {
         case "PRO_ROLE":
-            btnEntrar.forEach((btn, index) => {
-                btn.addEventListener('click', () => {
-                    localStorage.setItem('actividad',actividades[index]._id);
-                    window.location.replace(`${baseUrl}escritorios/actividad/seleccion`);
-                });
+            let aux = 0;
+            btnComentarios.forEach((btn, index) => {
+                if(!actividades[index].disponible)
+                    btnEntrar[aux++].addEventListener('click', () => {
+                        localStorage.setItem('actividad',actividades[index]._id);
+                        window.location.replace(`${baseUrl}escritorios/actividad/seleccion`);
+                    });
             });
             break;
         case "EST_ROLE":
             btnEntrar.forEach((btn, index) => {
                 btn.addEventListener('click', () => {
+                    localStorage.setItem('juego', actividades[index].juego);
                     localStorage.setItem('actividad',actividades[index]._id);
                     window.location.replace(`${juegosUrl}juegos/${actividades[index].tipoJuego}/jugar`);
                 });
@@ -256,7 +260,6 @@ const dibujarActividad = (actividades = []) => {
             break;
     }
         
-    const btnComentarios = document.querySelectorAll('#comentarios');
     btnComentarios.forEach((btn, index) => {
         btn.addEventListener('click', () => {
             showPopComentarios();

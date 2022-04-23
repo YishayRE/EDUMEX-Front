@@ -60,7 +60,7 @@ const dibujarNavBar = (accesos = [], tipoJuego, url) => {
             let idJuego = await actTarjeta({
                 codigo: formulario[0],
                 respuestas: formulario[1]
-            }, juegoId, tipoJuego);
+            }, "juego/", juegoId, tipoJuego);
         });
 
         terminarJ.addEventListener('click', async(e) => {

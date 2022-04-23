@@ -10,40 +10,36 @@ const dibujarJuego = async() => {
     await codigoJuego();
     /*let reactivos = await obtenerRespuestas();
     console.log(reactivos.respuestas);*/
-    terminarJugar(reactivos.respuestas);
+    await terminarJugar();
 }
 
-const terminarJugar = (respuestasValidas) => {
-    const finJuego = document.querySelector('#pro0');
+const terminarJugar = async() => {
+    const finJuego = document.querySelector('#est0');
     const datosJuego = document.querySelector('#contenidoJuego');
 
-    finJuego.addEventListener('click', (e) => {
+    finJuego.addEventListener('click', async(e) => {
         e.preventDefault();
         showLoad();
         let respuestasContestadas  = Object.values(dataForm(datosJuego));
 
-        const enviarRespuestas = jugarJuego(respuestasContestadas, 'juego/')
+        const enviarRespuestas = await jugarJuego(respuestasContestadas, 'juego/')
 
-        let aciertos = [];
+        console.log(enviarRespuestas);
+
         let contador = 0;
-
         
-        
-        /*respuestasContestadas.forEach((respuesta, index) => {
+        enviarRespuestas.respuestas.forEach((respuesta, index) => {
             let cajaReactivo = document.querySelector(`#elemento${index}`)
-            if(respuestasValidas[index] == respuesta){
+            if(respuesta == "o"){
                 cajaReactivo.style.borderColor = "green";
-                aciertos.push("o");
                 contador++;
             }
             else{
                 cajaReactivo.style.borderColor = "red";
-                aciertos.push("x");
             }
-        });*/
+        });
 
-        dibujarPopAlerta("Tienes " + contador + " aciertos");
-        console.log(aciertos);
+        dibujarPopAlerta("Tienes " + contador + " aciertos, tu calificación es: " + enviarRespuestas.calificacion);
         console.log("Tienes " + contador + " aciertos");
     });
 }

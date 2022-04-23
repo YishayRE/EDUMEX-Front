@@ -5,7 +5,7 @@ const crearJuego = async(idAct) => {
     myHeaders.append("user", uid);
     myHeaders.append("idAct", idAct);
     myHeaders.append("Content-Type", "application/json");
-    
+    console.log(myHeaders);
     let raw = JSON.stringify({});
 
     console.log(raw);
@@ -81,11 +81,10 @@ const jugarJuego = async(respuestas = []) => {
     let myHeaders = new Headers();
     myHeaders.append("x-token", token);
     myHeaders.append("user", uid);
-    myHeaders.append("idAct", localStorage.getItem('actividad'));
+    myHeaders.append("id", localStorage.getItem('actividad'));
     myHeaders.append("Content-Type", "application/json");
     
-    console.log(localStorage.getItem('actividad'));
-    let raw = JSON.stringify(formData);
+    let raw = JSON.stringify({respuestas});
     console.log(raw);
     
     let requestOptions = {
@@ -110,6 +109,8 @@ const jugarJuego = async(respuestas = []) => {
         dibujarPopAlerta(errores);
         throw new Error(errores);        
     }
+
+    return respuesta;   
 
    // window.location.replace(`${materiaUrl}`);
 }

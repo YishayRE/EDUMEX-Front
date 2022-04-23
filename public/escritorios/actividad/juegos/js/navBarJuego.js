@@ -44,12 +44,4 @@ const dibujarNavBar = (accesos = [], titulo) => {
         window.close();
     });
 
-    /*const lista = document.querySelector("#lista");
-
-    for(i = 0; i < (lista.children.length - 1); i++){
-        document.querySelector(`#${role}${i}`).addEventListener('click', (event) => {
-            event.preventDefault();
-            showPop();
-        });
-    }*/
 }
