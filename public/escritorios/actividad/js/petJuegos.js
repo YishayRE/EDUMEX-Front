@@ -17,7 +17,7 @@ const crearJuego = async(idAct) => {
       redirect: 'follow'
     };
     
-    const resp = await fetch(baseApi + 'juego/', requestOptions);
+    const resp = await fetch(juegosApi, requestOptions);
       
     const respuesta = await resp.json();
     console.log(respuesta);
@@ -36,7 +36,7 @@ const crearJuego = async(idAct) => {
     return respuesta;   
 }
 
-const terminarJuego = async(formData = {}, route = '', idT, esJuego = '') => {
+const terminarJuego = async(formData = {}, idT, esJuego = '') => {
     const token = localStorage.getItem('token') || '';
     let myHeaders = new Headers();
     myHeaders.append("x-token", token);
@@ -57,15 +57,53 @@ const terminarJuego = async(formData = {}, route = '', idT, esJuego = '') => {
       redirect: 'follow'
     };
     
-    const resp = await fetch(baseApi + route + 'id/terminar/', requestOptions);
+    const resp = await fetch(juegosApi + 'id/terminar/', requestOptions);
       
     const respuesta = await resp.json();
     console.log(respuesta);
 
     let errores = '';
     
-    if(respuesta.errors){
-        respuesta.errors.forEach((err, index) => {
+    if(respuesta.msg){
+        respuesta.msg.forEach((err, index) => {
+            errores += `${index}. ${err.msg}\n`;
+        });
+        hiddenLoad();
+        dibujarPopAlerta(errores);
+        throw new Error(errores);        
+    }
+
+   // window.location.replace(`${materiaUrl}`);
+}
+
+const jugarJuego = async(respuestas = []) => {
+    const token = localStorage.getItem('token') || '';
+    let myHeaders = new Headers();
+    myHeaders.append("x-token", token);
+    myHeaders.append("user", uid);
+    myHeaders.append("idAct", localStorage.getItem('actividad'));
+    myHeaders.append("Content-Type", "application/json");
+    
+    console.log(localStorage.getItem('actividad'));
+    let raw = JSON.stringify(formData);
+    console.log(raw);
+    
+    let requestOptions = {
+      method: 'PUT',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+    
+    const resp = await fetch(juegosApi + 'responder/', requestOptions);
+      
+    const respuesta = await resp.json();
+    console.log(respuesta);
+
+    let errores = '';
+    
+    if(respuesta.msg){
+        respuesta.msg.forEach((err, index) => {
             errores += `${index}. ${err.msg}\n`;
         });
         hiddenLoad();

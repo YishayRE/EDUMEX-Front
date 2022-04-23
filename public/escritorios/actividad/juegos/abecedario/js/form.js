@@ -1,13 +1,9 @@
 const formJ = document.querySelector('#formJ');
 
 
-const html2 = `</div>
-</body>
-</html>`;
+const html2 = `<form id="contenidoJuego">`;
 
-let html3 = `
-<form id="contenidoJuego">
-`;
+let html3 = ``;
 
 const generarHtml = () => {
     const formulario = dataForm(formJ);
@@ -46,13 +42,7 @@ const generarHtml = () => {
         respuestas.push(opcionJ[2]);
     });
 
-    /*console.log(size);
-    for (let x = 0; x < size; x++) {
-        for (let y = 0; y < 3; y++) {
-            console.log(arrayJ[x][y]);
-        }
-    }*/
     let body = html3;
     html3 = '';
-    return [`${body}</form>`,respuestas];
+    return [`<form id="contenidoJuego">${body}</form>`,respuestas];
 }

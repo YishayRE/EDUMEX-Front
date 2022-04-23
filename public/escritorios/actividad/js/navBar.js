@@ -60,18 +60,20 @@ const dibujarNavBar = (accesos = [], tipoJuego, url) => {
             let idJuego = await actTarjeta({
                 codigo: formulario[0],
                 respuestas: formulario[1]
-            }, 'juego/', juegoId, tipoJuego);
+            }, juegoId, tipoJuego);
         });
 
         terminarJ.addEventListener('click', async(e) => {
             let formulario = generarHtml();
+            const elementosCalif = dataForm(document.querySelector("#elementosCalif"));
 
             let idJuego = await terminarJuego({
                 codigo: formulario[0],
                 respuestas: formulario[1],
-                tiempo: 1,
-                intentos: 1
-            }, 'juego/', juegoId, tipoJuego);
+                tiempo: elementosCalif.tiempoJ,
+                intentos: elementosCalif.intentosJ,
+                tipoJuego: tipoJuego
+            }, juegoId);
         });
     }
 

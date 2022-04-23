@@ -57,6 +57,17 @@
     grid-template-columns: auto auto;
 }
 
+#codGrupo{
+    width: 666px;
+    height: 30px;
+    resize: none;
+    font-size: 18px;
+    text-align: center;
+    border: 2px solid;
+    border-radius: 20px;
+    border-color: #917681;
+}
+
 .clipboard{
-    padding-top: 15px;
+    padding-top: 39px;
 }

@@ -140,15 +140,18 @@ const dibujarActividad = (actividades = []) => {
     let actividadesHtml = '';
     let nombreTitulo = '';
     let aux = null;
+    let auxDisp = null; 
 
     const color = localStorage.getItem('color');
-    actividades.forEach(({ nombre, descripcion, objetivo, juego},index) => {
+    actividades.forEach(({ nombre, descripcion, objetivo, juego, disponible},index) => {
         const fondo = hexToRgbA(color);
-        actividadesHtml += `
-		<div class="tarjetaMateria" style="background-color: ${fondo}; border: 5px solid ${color};">
-			<div class="tarjeta_nombre" style="color: ${color};">
-        `;
+
         if(rol == "PRO_ROLE"){
+            actividadesHtml += `
+                <div class="tarjetaMateria" style="background-color: ${fondo}; border: 5px solid ${color};">
+                    <div class="tarjeta_nombre" style="color: ${color};">
+                `;
+
             actividadesHtml += `
             <div class="buttons_tarjetas">
                     <div name="${index}" id="eliminar">
@@ -159,74 +162,100 @@ const dibujarActividad = (actividades = []) => {
                     </div>
             </div>
             `;
-        }
-        actividadesHtml += `
-				<h3>${nombre}</h3>
-			</div>
-            <div>
-                <h5 style="color: ${color};">${descripcion}</h5>
-            </div>
-            <div>
-                <h5 style="color: ${color};">${objetivo}</h5>
-            </div>
-        <div class="botonesActividad">
-        `;
-        if(juego){
+    
             actividadesHtml += `
-                <div name="${index}" id="entrar" class="tarjetaMateria_button"
-                style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
-                    <h5>¡JUGAR!</h5>
+                <h3>${nombre}</h3>
                 </div>
-            `;
-            aux = juego;
-        }else{
-            actividadesHtml += `
-                <div name="${index}" id="entrar" class="tarjetaMateria_button"
-                style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
-                    <h5>Abrir</h5>
+                <div>
+                    <h5 style="color: ${color};">${descripcion}</h5>
                 </div>
+                <div>
+                    <h5 style="color: ${color};">${objetivo}</h5>
+                </div>
+            <div class="botonesActividad">
             `;
-        }
-        actividadesHtml += `
-        
-            <div name="${index}" id="comentarios" class="tarjetaMateria_button"
-            style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
-                <h5>Comentarios</h5>
-            </div>
-        </div>
+            
+            if(!juego){
+                actividadesHtml += `
+                    <div name="${index}" id="entrar" class="tarjetaMateria_button"
+                    style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
+                        <h5>Abrir</h5>
+                    </div>
+                `;
+            }
 
-        </div>
-		`;
+            actividadesHtml += `
+                <div name="${index}" id="comentarios" class="tarjetaMateria_button"
+                style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
+                    <h5>Comentarios</h5>
+                </div>
+            </div>
+
+            </div>
+            `;
+        }else{
+            if(disponible == true){
+                actividadesHtml += `
+                <div class="tarjetaMateria" style="background-color: ${fondo}; border: 5px solid ${color};">
+                    <div class="tarjeta_nombre" style="color: ${color};">
+                `;
+
+                actividadesHtml += `
+                    <h3>${nombre}</h3>
+                    </div>
+                    <div>
+                        <h5 style="color: ${color};">${descripcion}</h5>
+                    </div>
+                    <div>
+                        <h5 style="color: ${color};">${objetivo}</h5>
+                    </div>
+                <div class="botonesActividad">
+                `;
+
+                actividadesHtml += `
+                    <div name="${index}" id="entrar" class="tarjetaMateria_button"
+                    style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
+                        <h5>¡JUGAR!</h5>
+                    </div>
+                `;
+
+                actividadesHtml += `
+                    <div name="${index}" id="comentarios" class="tarjetaMateria_button"
+                    style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
+                        <h5>Comentarios</h5>
+                    </div>
+                </div>
+
+                </div>
+                `;
+            }
+        }
+
     });
     tarjetas.innerHTML = actividadesHtml;
     
-    if(aux !== null){
-        const btnEntrar = document.querySelectorAll('#entrar');
-        switch (rol) {
-            case "PRO_ROLE":
-                btnEntrar.forEach((btn, index) => {
-                    btn.addEventListener('click', () => {
-                        localStorage.setItem('actividad',actividades[index]._id);
-                        window.location.replace(`${baseUrl}escritorios/actividad/seleccion`);
-                    });
+    const btnEntrar = document.querySelectorAll('#entrar');
+    switch (rol) {
+        case "PRO_ROLE":
+            btnEntrar.forEach((btn, index) => {
+                btn.addEventListener('click', () => {
+                    localStorage.setItem('actividad',actividades[index]._id);
+                    window.location.replace(`${baseUrl}escritorios/actividad/seleccion`);
                 });
-                break;
-            case "EST_ROLE":
-                
-                break;
-            default:
-                break;
-        }
-    }else{
-        const btnEntrar = document.querySelectorAll('#entrar');
-        btnEntrar.forEach((btn, index) => {
-            btn.addEventListener('click', () => {
-                localStorage.setItem('actividad',actividades[index]._id);
-                window.location.replace(`${baseUrl}escritorios/actividad/seleccion`);
             });
-        });
+            break;
+        case "EST_ROLE":
+            btnEntrar.forEach((btn, index) => {
+                btn.addEventListener('click', () => {
+                    localStorage.setItem('actividad',actividades[index]._id);
+                    window.location.replace(`${juegosUrl}juegos/${actividades[index].tipoJuego}/jugar`);
+                });
+            });
+            break;
+        default:
+            break;
     }
-    
+        
     const btnComentarios = document.querySelectorAll('#comentarios');
     btnComentarios.forEach((btn, index) => {
         btn.addEventListener('click', () => {
