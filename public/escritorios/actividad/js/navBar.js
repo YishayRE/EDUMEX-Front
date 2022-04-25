@@ -55,12 +55,18 @@ const dibujarNavBar = (accesos = [], tipoJuego, url) => {
         const terminarJ = document.querySelector('#terminarJ');
 
         probarJ.addEventListener('click', async(e) => {
-            let formulario = generarHtml();
-            console.log(formulario);
-            let idJuego = await actTarjeta({
+            let formulario = "";
+            formulario = generarHtml();
+            console.log(formulario[1].length);
+
+            if(formulario[1].length <= 1){
+                dibujarPopAlerta("Debe agregar minimo dos reactivos");
+            }else{
+                let idJuego = await actTarjeta({
                 codigo: formulario[0],
                 respuestas: formulario[1]
-            }, "juego/", juegoId, tipoJuego);
+                }, "juego/", juegoId, tipoJuego);
+            }
         });
 
         terminarJ.addEventListener('click', async(e) => {

@@ -165,7 +165,6 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '', datosList
                     const estu = {estudiante: `${datos['estudiante']}`}
                     const gru = {codigo: `${datos['codigo']}`}
                     const finalResult = Object.assign(estu,gru);
-                    console.log(finalResult);
                     await inscripcion(finalResult, form);
                     break;
                 default:

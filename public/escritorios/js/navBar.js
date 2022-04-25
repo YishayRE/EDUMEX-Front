@@ -115,12 +115,25 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
             }
             else{
                 location.reload();
-            }
-            
+            } 
         });
+
+        calificaciones.addEventListener('click', async(event) =>{
+            event.preventDefault();
+            const archivoDescargado = await descargarArchivo(localStorage.getItem('grupo'), "grupo/");
+            console.log(archivoDescargado);
+        });
+
     }else if(titulo.startsWith('Materia') && rol === 'PRO_ROLE'){
         calificaciones = document.querySelector('#pro0');
         calificaciones.style.padding = "10px 60px 10px 70px";
+
+        calificaciones.addEventListener('click', async(event) =>{
+            event.preventDefault();
+            const archivoDescargado = await descargarArchivo(localStorage.getItem('materia'), "materia/");
+            console.log(archivoDescargado);
+        });
+
         i = 1;
     }else{
         i = 0;

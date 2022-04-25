@@ -30,6 +30,16 @@ const dibujarGrupo = (grupos = []) => {
         <div name="${index}" id="entrar" class="tarjeta_button">
             <h5>Abrir</h5>
         </div>
+		`;
+        if(rol == "PRO_ROLE"){
+            gruposHtml += `
+            <div name="${index}" id="listaEst" class="tarjeta_button">
+                <h5>Lista</h5>
+            </div>
+            </div>
+            `;
+        }
+        gruposHtml += `
         </div>
 		`;
     });
@@ -63,6 +73,16 @@ const dibujarGrupo = (grupos = []) => {
             edit.addEventListener('click', (event) => {
                 event.preventDefault();
                 dibujarPopAlerta('eliminar', `grupo/id/`, grupos[index]._id);
+            });
+        });
+
+        const vistaListaEst = document.querySelectorAll("#listaEst");
+
+        vistaListaEst.forEach((lista, index) => {
+            lista.addEventListener('click', (event) => {
+                event.preventDefault();
+                const listaEstudiantes = ["Javier Garcia Romero", "Pedro Romero Ruiz", "Fernando Luis Diaz Romero"]
+                dibujarPopAlerta('listaEst', `grupo/id/`, listaEstudiantes);
             });
         });
     }
@@ -139,7 +159,6 @@ const dibujarMateria = (materias = []) => {
 const dibujarActividad = (actividades = []) => {
     let actividadesHtml = '';
     let nombreTitulo = '';
-
 
     const color = localStorage.getItem('color');
     actividades.forEach(({ nombre, descripcion, objetivo, juego, disponible, intents, calificacion, realizada},index) => {

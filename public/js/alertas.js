@@ -65,7 +65,7 @@ const dibujarPopAlerta = (err, route, idT) => {
                 break;
             case 'codGrupo':
                 popAlertaHtml += `
-                            <div id="elementosCod">
+                            <div class="elementosBox" id="elementosCod">
                                 <div>
                                     <h2>El código del grupo es:</h2>
                                     <textarea id="codGrupo">${route}</textarea>
@@ -87,6 +87,25 @@ const dibujarPopAlerta = (err, route, idT) => {
                                 <button class="botonesAfinados" id="salirC" href="">Salir</button>
                             </div>
                 `; 
+                break;
+            case 'listaEst':
+                popAlertaHtml += `
+                    <h2>Inscritos</h2>
+                    <div id="listaCompleta">
+                `;
+                idT.forEach((alumno, index) => {
+                    popAlertaHtml += `
+                        <div class="elementosBox" id="estudianteLista">
+                            <label class="nomAlumno">${alumno}</label> 
+                            <div id="quitarEst">
+                                <img src="${baseUrl}/images/remove.png" alt="Quitar estudiante" class="logoBoton">
+                            </div>
+                        </div>
+                    `;
+                });
+                popAlertaHtml += `
+                    </div>  
+                `;
                 break;
             default:
                 popAlertaHtml += `
@@ -171,6 +190,17 @@ const dibujarPopAlerta = (err, route, idT) => {
                 window.location.replace(`${escritoriosUrl}materia`);
             });
             break;
+        case 'listaEst':
+            const btnQuitarEst = document.querySelectorAll('#quitarEst');
+            
+            btnQuitarEst.forEach((quitar, index) => {
+                quitar.addEventListener('click', async(e) => {
+                    e.preventDefault();
+                    console.log("hola" + index);
+                });
+            });
+            
+            break;
         default:
             break;
     }
@@ -179,10 +209,12 @@ const dibujarPopAlerta = (err, route, idT) => {
 function showAlert() {
     overlayAlert.style.opacity = "1";
     overlayAlert.style.visibility = "visible"
+    overlayAlert.style.display = "block"
 }
 
 function hiddenAlert() {
     overlayAlert.style.opacity = "0";
     overlayAlert.style.visibility = "hidden"
+    overlayAlert.style.display = "none"
 }
     

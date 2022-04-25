@@ -86,13 +86,14 @@ function validarFormulario() {
     return true;
 }
 
-/*const validarCampos = () => {
-    console.log("hola");
+const validarCampos = () => {
+    let c1 = document.querySelector("#Nom_registro").value;
+    let c2 = document.querySelector("#Pat_registro").value;
+    let c3 = document.querySelector("#Mat_registro").value;
     c1.onkeypress = function() {return soloLetras(event)};
     c2.onkeypress = function() {return soloLetras(event)};
     c3.onkeypress = function() {return soloLetras(event)};
-    console.log("adios");
-}*/
+}
 
 function valorRol(){
     var checkedValue = null;
@@ -108,6 +109,8 @@ function valorRol(){
 const main = async() => {
     dibujarNavBar(accesos, titulo);
     await tieneJWT();
+    console.log("hola");
+    validarCampos();
 }
 
 main();

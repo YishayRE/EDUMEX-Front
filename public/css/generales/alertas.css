@@ -52,9 +52,26 @@
     border-radius: 10px;
 }
 
-#elementosCod{
+.elementosBox{
     display: grid;
     grid-template-columns: auto auto;
+}
+
+.nomAlumno{
+    padding-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    width: 290px
+}
+
+.clipboard{
+    padding-top: 39px;
+}
+
+#listaCompleta{
+    overflow-y: scroll;
+    max-height: 250px;
 }
 
 #codGrupo{
@@ -66,8 +83,4 @@
     border: 2px solid;
     border-radius: 20px;
     border-color: #917681;
-}
-
-.clipboard{
-    padding-top: 39px;
 }

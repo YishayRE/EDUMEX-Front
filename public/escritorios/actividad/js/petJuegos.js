@@ -24,8 +24,8 @@ const crearJuego = async(idAct) => {
 
     let errores = '';
     
-    if(respuesta.errors){
-        respuesta.errors.forEach((err, index) => {
+    if(respuesta.msg){
+        respuesta.msg.forEach((err, index) => {
             errores += `${index}. ${err.msg}\n`;
         });
         hiddenLoad();
@@ -73,7 +73,7 @@ const terminarJuego = async(formData = {}, idT, esJuego = '') => {
         throw new Error(errores);        
     }
 
-   // window.location.replace(`${materiaUrl}`);
+    window.location.replace(`${materiaUrl}`);
 }
 
 const jugarJuego = async(respuestas = []) => {

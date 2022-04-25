@@ -38,6 +38,16 @@ const datosPop = [
     ]
 ];
 
+function validarCamposVacios(){
+    var c1 = document.getElementById("Nom_materia").value;
+    var c2 = document.getElementById("Desc_materia").value;
+
+    if (c1.length == 0 || c2.length == 0) {
+        return false;
+    }
+    return true;
+}
+
 const checarRol = async() => {
     const grupo = localStorage.getItem('grupo');
     if(rol == "PRO_ROLE"){
@@ -53,16 +63,6 @@ const checarRol = async() => {
         cerrarSesion();
         dibujarMateria(materias);
     }
-}
-
-function validarCamposVacios(){
-    var c1 = document.getElementById("Nom_materia").value;
-    var c2 = document.getElementById("Desc_materia").value;
-
-    if (c1.length == 0 || c2.length == 0) {
-        return false;
-    }
-    return true;
 }
 
 const main = async() => {

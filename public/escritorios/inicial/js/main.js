@@ -63,6 +63,10 @@ const checarRol = async() => {
         cerrarSesion();
         dibujarPopUp(datosPopE);
         const {grupos} = await obtenerArray(`inscrito/`, uid);
+        if(grupos.length > 0){
+            const btnUnir = document.querySelector("#est0");
+            btnUnir.style.display = "none";
+        }
         dibujarGrupo(grupos);
     }
 }
