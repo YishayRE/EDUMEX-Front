@@ -1,6 +1,7 @@
 const formUnir = document.querySelector('#form_unirGrupo');
 const formCrear = document.querySelector('#form_crearGrupo');
 const titulo = "Escritorio Principal"
+let infoGrupos = null;
 
 const accesoP = [
     {
@@ -57,6 +58,7 @@ const checarRol = async() => {
         cerrarSesion();
         dibujarPopUp(datosPopP);
         const {grupos} = await obtenerArray(`grupo/`, uid);
+        infoGrupos = grupos;
         dibujarGrupo(grupos);
     }else if(rol == "EST_ROLE"){
         dibujarNavBar(accesoE, titulo);

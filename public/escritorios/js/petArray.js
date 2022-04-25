@@ -35,3 +35,20 @@ const obtenerArray = async(arrayPath, idT) => {
     }
     return respuesta;
 }
+
+const obtenerEstudiantes = async(idG) => {
+    const token = localStorage.getItem('token') || '';
+    const resp = await fetch(baseApi + "inscrito/inscritos/", {
+        method: 'GET',
+        headers: { 'x-token': token, user: uid, id: idG }
+    });
+
+    const respuesta = await resp.json();
+    console.log(respuesta);
+    if(respuesta.msg){
+        hiddenLoad();
+        dibujarPopAlerta("No se pudo obtener a los estudiantes del grupo");
+        throw new Error(respuesta.msg);
+    }
+    return respuesta;
+}

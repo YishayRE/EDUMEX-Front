@@ -79,9 +79,10 @@ const dibujarGrupo = (grupos = []) => {
         const vistaListaEst = document.querySelectorAll("#listaEst");
 
         vistaListaEst.forEach((lista, index) => {
-            lista.addEventListener('click', (event) => {
+            lista.addEventListener('click', async(event) => {
                 event.preventDefault();
-                const listaEstudiantes = ["Javier Garcia Romero", "Pedro Romero Ruiz", "Fernando Luis Diaz Romero"]
+                console.log(grupos[index]._id)
+                const listaEstudiantes = await obtenerEstudiantes(grupos[index]._id);
                 dibujarPopAlerta('listaEst', `grupo/id/`, listaEstudiantes);
             });
         });

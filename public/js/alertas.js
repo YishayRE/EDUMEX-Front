@@ -96,7 +96,7 @@ const dibujarPopAlerta = (err, route, idT) => {
                 idT.forEach((alumno, index) => {
                     popAlertaHtml += `
                         <div class="elementosBox" id="estudianteLista">
-                            <label class="nomAlumno">${alumno}</label> 
+                            <label class="nomAlumno">${alumno.nombreC}</label> 
                             <div id="quitarEst">
                                 <img src="${baseUrl}/images/remove.png" alt="Quitar estudiante" class="logoBoton">
                             </div>
@@ -196,7 +196,7 @@ const dibujarPopAlerta = (err, route, idT) => {
             btnQuitarEst.forEach((quitar, index) => {
                 quitar.addEventListener('click', async(e) => {
                     e.preventDefault();
-                    console.log("hola" + index);
+                    
                 });
             });
             
