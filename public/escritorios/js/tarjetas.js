@@ -83,7 +83,7 @@ const dibujarGrupo = (grupos = []) => {
                 event.preventDefault();
                 console.log(grupos[index]._id)
                 const listaEstudiantes = await obtenerEstudiantes(grupos[index]._id);
-                dibujarPopAlerta('listaEst', `grupo/id/`, listaEstudiantes);
+                dibujarPopAlerta('listaEst', `inscrito/id/`, listaEstudiantes);
             });
         });
     }

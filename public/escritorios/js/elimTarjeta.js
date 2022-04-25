@@ -19,7 +19,6 @@ const elimTarjeta = async(route = '', idT) => {
     const resp = await fetch(baseApi + route, requestOptions);
       
     const respuesta = await resp.json();
-    console.log(respuesta);
     let errores = '';
     
     if(respuesta.errors){
@@ -30,6 +29,10 @@ const elimTarjeta = async(route = '', idT) => {
         dibujarPopAlerta(errores);
         throw new Error(errores);        
     }
+    if(route == "inscrito/id/"){
+        return respuesta;
+    }else{
+        location.reload();    
+    }
 
-    location.reload();    
 }
