@@ -57,29 +57,41 @@ const dibujarNavBar = (accesos = [], tipoJuego, url) => {
         probarJ.addEventListener('click', async(e) => {
             let formulario = "";
             formulario = generarHtml();
-            console.log(formulario[1].length);
-
-            if(formulario[1].length <= 1){
-                dibujarPopAlerta("Debe agregar minimo dos reactivos");
+            if(formulario == false){
+                console.log("No se generado el codigo del juego");
             }else{
-                let idJuego = await actTarjeta({
-                codigo: formulario[0],
-                respuestas: formulario[1]
-                }, "juego/", juegoId, tipoJuego);
+                if(formulario[1].length <= 1){
+                    dibujarPopAlerta("Debe agregar minimo dos reactivos");
+                }else{
+                    showLoad();
+                    let idJuego = await actTarjeta({
+                    codigo: formulario[0],
+                    respuestas: formulario[1]
+                    }, "juego/", juegoId, tipoJuego);
+                    hiddenLoad();
+                }
             }
         });
 
         terminarJ.addEventListener('click', async(e) => {
             let formulario = generarHtml();
             const elementosCalif = dataForm(document.querySelector("#elementosCalif"));
+            console.log(elementosCalif);
+            const valoresBien = validarVacios(elementosCalif);
 
-            let idJuego = await terminarJuego({
-                codigo: formulario[0],
-                respuestas: formulario[1],
-                tiempo: elementosCalif.tiempoJ,
-                intentos: elementosCalif.intentosJ,
-                tipoJuego: tipoJuego
-            }, juegoId);
+            if(valoresBien.estaCompleto){
+                showLoad();
+                let idJuego = await terminarJuego({
+                    codigo: formulario[0],
+                    respuestas: formulario[1],
+                    tiempo: elementosCalif.tiempo,
+                    intentos: elementosCalif.intentos,
+                    tipoJuego: tipoJuego
+                }, juegoId);
+                hiddenLoad();
+            }else{
+                dibujarPopAlerta("Los siguientes campos están vacios: " + valoresBien.camposVacios);
+            }
         });
     }
 

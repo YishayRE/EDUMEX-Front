@@ -150,6 +150,12 @@
 
 .botonesActividad{
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto;
+}
+
+.textoBox{
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-weight:900;
 }
 

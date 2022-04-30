@@ -38,10 +38,6 @@ const terminarJugar = async() => {
         });
 
         dibujarPopAlerta("aciertos", "Tienes " + contador + " aciertos, tu calificación es: " + enviarRespuestas.calificacion);
-        if(enviarRespuestas.calificacion === 10){
-            const btnContinuar = document.querySelector("#continuarC");
-            btnContinuar.style.display = "none";
-        };
         console.log("Tienes " + contador + " aciertos");
     });
 }

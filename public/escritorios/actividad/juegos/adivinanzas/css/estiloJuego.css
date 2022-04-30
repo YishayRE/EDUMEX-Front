@@ -1,3 +1,26 @@
 #contenidoJuego {
     color: black;
 }
+
+.reactivoAdivinanza{
+    margin: 20px;
+    text-align: center;
+    margin: 10px;
+    padding: 20px;
+    color: black;
+    background-color: #ffcdc1;
+    border: 5px solid;
+    border-color: #917681;
+    border-radius: 15px;
+    text-transform: uppercase;
+    height: 300px;
+    width: 300px;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    margin: 0 auto;
+}
+
+.textoAdivinanza{
+    inline-size: 300px;
+    overflow-wrap: break-word;
+}

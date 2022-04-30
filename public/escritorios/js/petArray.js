@@ -52,3 +52,20 @@ const obtenerEstudiantes = async(idG) => {
     }
     return respuesta;
 }
+
+const obtenerMensajes = async(idAct) => {
+    const token = localStorage.getItem('token') || '';
+    const resp = await fetch(baseApi + "mensaje/", {
+        method: 'GET',
+        headers: { 'x-token': token, user: uid, id: idAct }
+    });
+
+    const respuesta = await resp.json();
+    console.log(respuesta);
+    if(respuesta.msg){
+        hiddenLoad();
+        dibujarPopAlerta("No se pudo obtener los comentarios de la actividad");
+        throw new Error(respuesta.msg);
+    }
+    return respuesta;
+}

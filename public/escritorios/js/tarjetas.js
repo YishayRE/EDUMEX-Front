@@ -162,7 +162,7 @@ const dibujarActividad = (actividades = []) => {
     let nombreTitulo = '';
 
     const color = localStorage.getItem('color');
-    actividades.forEach(({ nombre, descripcion, objetivo, juego, disponible, intents, calificacion, realizada},index) => {
+    actividades.forEach(({ nombre, descripcion, objetivo, juego, disponible, calificacion, intentos},index) => {
         const fondo = hexToRgbA(color);
 
         if(rol == "PRO_ROLE"){
@@ -228,25 +228,26 @@ const dibujarActividad = (actividades = []) => {
                     <div>
                         <h5 style="color: ${color};">${objetivo}</h5>
                     </div>
+                    <div><h5 style="color: ${color};" class="textoBox">Intentos restantes: ${calificacion.intentos}</h5></div>
                 <div class="botonesActividad">
                 `;
 
-                if(intents > 0){
+                if(calificacion.intentos !== intentos){
+                    actividadesHtml += `
+                    <div><h5 style="color: ${color};" class="textoBox">Tu calificación final es: ${calificacion.calificacion}</h5></div>
+                    `;
+                }
+                if(calificacion.intentos > 0 && calificacion.calificacion !== 10){
                     actividadesHtml += `
                     <div name="${index}" id="entrar" class="tarjetaMateria_button"
                     style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
                         <h5>¡JUGAR!</h5>
                     </div>
                     `;
-                }else{
-                    actividadesHtml += `
-                    <div name="${index}" id="entrar" class="tarjetaMateria_button"
-                    style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
-                        <h5>${calificacion}</h5>
-                    </div>
-                    `;
-                }
+                console.log(calificacion.calificacion);
 
+                }
+                    
                 actividadesHtml += `
                     <div name="${index}" id="comentarios" class="tarjetaMateria_button"
                     style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
@@ -263,11 +264,12 @@ const dibujarActividad = (actividades = []) => {
     tarjetas.innerHTML = actividadesHtml;
     
     const btnEntrar = document.querySelectorAll('#entrar');
+    console.log(btnEntrar);
     const btnComentarios = document.querySelectorAll('#comentarios');
+    let aux = 0;
 
     switch (rol) {
         case "PRO_ROLE":
-            let aux = 0;
             btnComentarios.forEach((btn, index) => {
                 if(!actividades[index].disponible)
                     btnEntrar[aux++].addEventListener('click', () => {
@@ -296,12 +298,14 @@ const dibujarActividad = (actividades = []) => {
             });
             break;
         case "EST_ROLE":
-            btnEntrar.forEach((btn, index) => {
-                btn.addEventListener('click', () => {
-                    localStorage.setItem('juego', actividades[index].juego);
-                    localStorage.setItem('actividad',actividades[index]._id);
-                    window.location.replace(`${juegosUrl}juegos/${actividades[index].tipoJuego}/jugar`);
-                });
+            btnComentarios.forEach((btn, index) => {
+                console.log(aux);
+                if(actividades[index].calificacion.intentos > 0 && actividades[index].calificacion.calificacion !== 10)
+                    btnEntrar[aux++].addEventListener('click', () => {
+                            localStorage.setItem('juego', actividades[index].juego);
+                            localStorage.setItem('actividad',actividades[index]._id);
+                            window.location.replace(`${juegosUrl}juegos/${actividades[index].tipoJuego}/jugar`);
+                    });
             });
             break;
         default:
@@ -309,7 +313,9 @@ const dibujarActividad = (actividades = []) => {
     }
         
     btnComentarios.forEach((btn, index) => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', async() => {
+            const mensajesAct = await obtenerMensajes(actividades[index]._id);
+            console.log(mensajesAct);
             showPopComentarios();
         });
     });

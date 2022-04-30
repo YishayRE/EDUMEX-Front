@@ -12,6 +12,7 @@ const accesos = [
 ];
 
 const main = async() => {
+	localStorage.clear();
 	dibujarNavBar(accesos, titulo);
 	dibujarFooter();
 	dibujarPopFooter();

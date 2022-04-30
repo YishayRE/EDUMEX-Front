@@ -1,16 +1,16 @@
-const inscripcion = async(formData = {}, route = '') => {
+const verTarjeta = async(route = '', idT) => {
     const token = localStorage.getItem('token') || '';
     let myHeaders = new Headers();
     myHeaders.append("x-token", token);
     myHeaders.append("user", uid);
+    myHeaders.append("id", idT);
     myHeaders.append("Content-Type", "application/json");
-    
-    let raw = JSON.stringify(formData);
+    console.log(idT);
+    let raw = '';
 
-    console.log(raw);
     
     let requestOptions = {
-      method: 'POST',
+      method: 'PATCH',
       headers: myHeaders,
       body: raw,
       redirect: 'follow'
@@ -20,16 +20,19 @@ const inscripcion = async(formData = {}, route = '') => {
       
     const respuesta = await resp.json();
     let errores = '';
-
-    console.log(respuesta);
     
-    if(respuesta.msg){
+    if(respuesta.errors){
+        respuesta.errors.forEach((err, index) => {
+            errores += `${index}. ${err.msg}\n`;
+        });
         hiddenLoad();
-        dibujarPopAlerta(respuesta.msg);
-        throw new Error(respuesta.msg);        
+        dibujarPopAlerta(errores);
+        throw new Error(errores);        
+    }
+    if(route == "inscrito/id/"){
+        return respuesta;
+    }else{
+        location.reload();    
     }
 
-    localStorage.setItem(route, respuesta);
-    //window.location = `../${route}`;
-    location.reload();
 }

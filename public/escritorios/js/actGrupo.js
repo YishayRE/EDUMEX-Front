@@ -25,13 +25,10 @@ const activarGrupo = async(datoGrupo = {}, grupoId = '') => {
 
     let errores = '';
     
-    if(respuesta.errors){
-        respuesta.errors.forEach((err, index) => {
-            errores += `${index}. ${err.msg}\n`;
-        });
+    if(respuesta.msg){
         hiddenLoad();
-        dibujarPopAlerta(errores);
-        throw new Error(errores);        
+        dibujarPopAlerta(respuesta.msg);
+        throw new Error(respuesta.msg);        
     }
 
     //location.reload(); 

@@ -8,18 +8,10 @@
     justify-content: center;
 }
 
-.reactivoAbecedario{
-    margin: 20px;
-    text-align: center;
-    margin: 10px;
-    padding: 20px;
-    color: black;
-    background-color: #ffcdc1;
-    border: 5px solid;
-    border-color: #917681;
-    border-radius: 15px;
-    text-transform: uppercase;
-    height: 300px;
-    width: 300px;
+.campoRespuesta{
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 3px solid;
 }
-

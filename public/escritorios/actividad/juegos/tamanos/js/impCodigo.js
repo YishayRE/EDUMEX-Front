@@ -1,9 +1,19 @@
 const insertarCodigo = (contadorEtiqueta) => {
+    console.log(contadorEtiqueta);
+    let auxContador = 0;
     const contenedor = document.querySelector('#contenedor');
 
     const elementoJuego = document.createElement('div');
     elementoJuego.className = 'elementoJuego';
-    elementoJuego.id = `elementoJuego${contadorEtiqueta}`;
+
+    if(contadorEtiqueta === 0){
+        auxContador = contadorEtiqueta;
+        elementoJuego.id = `elementoJuego${contadorEtiqueta}`;
+    }else if(contadorEtiqueta > 0){
+        auxContador = contadorEtiqueta;
+        --auxContador;
+        elementoJuego.id = `elementoJuego${contadorEtiqueta - 1}`;
+    }
     elementoJuego.innerHTML = `
         <div id="primeraImagen" class="image-upload">
             <label for="imagen${contadorEtiqueta}">
@@ -13,7 +23,7 @@ const insertarCodigo = (contadorEtiqueta) => {
             <input type="file" name="imagen${contadorEtiqueta}" id="imagen${contadorEtiqueta}" accept="image/png, image/jpeg">
         </div>
         <div class="contenedorTipo">
-            <select class="selectTipo" name="opcion${contadorEtiqueta}" id="opcion${contadorEtiqueta}">
+            <select class="selectTipo" name="opcion${auxContador}" id="opcion${auxContador}">
                 <option value="Tamano" selected>Tamaño</option>
                 <option value="Forma">Forma</option>
             </select>
@@ -21,7 +31,7 @@ const insertarCodigo = (contadorEtiqueta) => {
         <h5 class="selectTitulo" id="select${contadorEtiqueta}">Tamaño</h5>
 
         <div class="opcionesRespuesta">
-            <input class="valorRespuesta" type="text" name="opt${contadorEtiqueta}" id="opt${contadorEtiqueta}">
+            <input class="valorRespuesta" type="text" name="opt${auxContador}" id="opt${auxContador}">
 
             <div id="segundaImagen" class="image-upload">
                 <label for="imagen${contadorEtiqueta + 1}">
@@ -35,8 +45,8 @@ const insertarCodigo = (contadorEtiqueta) => {
 
     contenedor.appendChild(elementoJuego);
 
-    const opcion = document.querySelector(`#opcion${contadorEtiqueta}`);
-    const select = document.querySelector(`#select${contadorEtiqueta}`);
+    const opcion = document.querySelector(`#opcion${auxContador}`);
+    const select = document.querySelector(`#select${auxContador}`);
 
     opcion.addEventListener('change', () => {
         if (opcion.selectedIndex === 1)
@@ -48,6 +58,7 @@ const insertarCodigo = (contadorEtiqueta) => {
 
 const eliminarCodigo = (contadorEtiqueta) => {
     const contenedor = document.querySelector('#contenedor');
+    console.log(`elementoJuego${contadorEtiqueta}`)
     const elementoJuego = document.getElementById(`elementoJuego${contadorEtiqueta}`);
     contenedor.removeChild(elementoJuego);
 }

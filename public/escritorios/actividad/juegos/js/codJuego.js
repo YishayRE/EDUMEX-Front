@@ -12,7 +12,7 @@ const codigoJuego = async() => {
     }
 
     const codigo = document.querySelector('#codigo');
-
+    console.log(codigo);
     codigo.innerHTML = respuesta;
 }
 

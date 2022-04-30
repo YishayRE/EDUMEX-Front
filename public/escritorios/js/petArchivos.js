@@ -28,15 +28,21 @@ const descargarArchivo = async(idT, route) => {
             throw new Error(errores);        
         }
     } catch (error) {*/
-        const file = await resp.blob();
-        const url = window.URL.createObjectURL(file);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = "Calificaciones.xlsx"
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-
-        return "Tu documento está listo";
-    
+        const respuesta = await resp.status;
+        console.log(respuesta);
+        if(respuesta === 200){
+            const file = await resp.blob();
+            const url = window.URL.createObjectURL(file);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = "Calificaciones.xlsx"
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            return "Tu documento está listo";
+        }else if(respuesta === 406){
+            return "Fallo al crear el archivo";
+        }else{
+            return "Se ha caido el servidor";
+        }
 }

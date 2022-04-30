@@ -57,6 +57,7 @@ function validarFormulario() {
 }
 
 const main = async() => {
+    localStorage.clear();
     dibujarNavBar(accesos, titulo);
     await tieneJWT();
 }

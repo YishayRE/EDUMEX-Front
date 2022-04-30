@@ -120,8 +120,10 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
 
         calificaciones.addEventListener('click', async(event) =>{
             event.preventDefault();
+            showLoad();
             const archivoDescargado = await descargarArchivo(localStorage.getItem('grupo'), "grupo/");
             console.log(archivoDescargado);
+            hiddenLoad();
         });
 
     }else if(titulo.startsWith('Materia') && rol === 'PRO_ROLE'){
@@ -130,8 +132,10 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
 
         calificaciones.addEventListener('click', async(event) =>{
             event.preventDefault();
+            showLoad();
             const archivoDescargado = await descargarArchivo(localStorage.getItem('materia'), "materia/");
             console.log(archivoDescargado);
+            hiddenLoad();
         });
 
         i = 1;

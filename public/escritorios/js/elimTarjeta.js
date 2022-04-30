@@ -10,7 +10,7 @@ const elimTarjeta = async(route = '', idT) => {
 
     
     let requestOptions = {
-      method: 'PATCH',
+      method: 'DELETE',
       headers: myHeaders,
       body: raw,
       redirect: 'follow'
@@ -21,13 +21,13 @@ const elimTarjeta = async(route = '', idT) => {
     const respuesta = await resp.json();
     let errores = '';
     
-    if(respuesta.errors){
-        respuesta.errors.forEach((err, index) => {
+    if(respuesta.msg){
+        /*respuesta.error.forEach((err, index) => {
             errores += `${index}. ${err.msg}\n`;
-        });
+        });*/
         hiddenLoad();
-        dibujarPopAlerta(errores);
-        throw new Error(errores);        
+        dibujarPopAlerta(respuesta.msg);
+        throw new Error(respuesta.msg);        
     }
     if(route == "inscrito/id/"){
         return respuesta;

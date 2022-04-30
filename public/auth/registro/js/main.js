@@ -107,9 +107,9 @@ function valorRol(){
 }
 
 const main = async() => {
+    localStorage.clear();
     dibujarNavBar(accesos, titulo);
     await tieneJWT();
-    console.log("hola");
     validarCampos();
 }
 

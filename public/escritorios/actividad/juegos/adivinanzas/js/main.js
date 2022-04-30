@@ -40,11 +40,10 @@ resta.addEventListener('click', () => {
 
 const checarRol = async() => {
     if(rol == "PRO_ROLE"){
-        dibujarNavBar(accesoP, 'adivinanzas', 'materia');
+        dibujarNavBar(accesoP, localStorage.getItem("tipoJ"), 'materia');
         cerrarSesion();
     }else if(rol == "EST_ROLE"){
-        dibujarNavBar();
-        cerrarSesion();
+        window.location.replace(`${baseUrl}`);
     }
 }
 
@@ -52,7 +51,7 @@ const main = async() => {
     showLoad();
     await validarJWT();
     await checarRol();
-    //await obtenerInfo();
+    await obtenerInfo();
     checarExpiracion(fecha);
     hiddenLoad();
 }

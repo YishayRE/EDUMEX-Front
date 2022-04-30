@@ -28,12 +28,22 @@ adicion.addEventListener('click', () => {
     insertarCodigo(contadorEtiqueta++);
     if(contadorEtiqueta > 0)
         resta.style.display = "block";
+    contadorEtiqueta++;
+    console.log("Suma"+contadorEtiqueta);
 });
 
 resta.style.display = "none";
 
 resta.addEventListener('click', () => {
-    eliminarCodigo(--contadorEtiqueta);
+    console.log(contadorEtiqueta);
+    if(contadorEtiqueta === 2){
+        eliminarCodigo(contadorEtiqueta - 2);
+        --contadorEtiqueta;
+    }else{
+        eliminarCodigo(contadorEtiqueta - 3);
+        --contadorEtiqueta;
+    }
+    --contadorEtiqueta;
     if(contadorEtiqueta == 0)
         resta.style.display = "none";
 });
@@ -52,7 +62,7 @@ const main = async() => {
     showLoad();
     await validarJWT();
     await checarRol();
-    //await obtenerInfo();
+    await obtenerInfo();
     checarExpiracion(fecha);
     hiddenLoad();
 }
