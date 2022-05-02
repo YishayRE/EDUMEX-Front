@@ -162,8 +162,8 @@ const dibujarActividad = (actividades = []) => {
     let nombreTitulo = '';
 
     const color = localStorage.getItem('color');
+    const fondo = hexToRgbA(color);
     actividades.forEach(({ nombre, descripcion, objetivo, juego, disponible, calificacion, intentos},index) => {
-        const fondo = hexToRgbA(color);
 
         if(rol == "PRO_ROLE"){
             actividadesHtml += `
@@ -302,7 +302,7 @@ const dibujarActividad = (actividades = []) => {
                 console.log(aux);
                 if(actividades[index].calificacion.intentos > 0 && actividades[index].calificacion.calificacion !== 10)
                     btnEntrar[aux++].addEventListener('click', () => {
-                            localStorage.setItem('juego', actividades[index].juego);
+                            localStorage.setItem('juego', actividades[index].juego._id);
                             localStorage.setItem('actividad',actividades[index]._id);
                             window.location.replace(`${juegosUrl}juegos/${actividades[index].tipoJuego}/jugar`);
                     });
@@ -314,8 +314,11 @@ const dibujarActividad = (actividades = []) => {
         
     btnComentarios.forEach((btn, index) => {
         btn.addEventListener('click', async() => {
-            const mensajesAct = await obtenerMensajes(actividades[index]._id);
+            const mensajesAct = await obtenerMensajes();
             console.log(mensajesAct);
+            dibujarPopComentarios(mensajesAct);
+            /*const popC = document.querySelector("#popComentarios");
+            popC.style.background = fondo;*/
             showPopComentarios();
         });
     });

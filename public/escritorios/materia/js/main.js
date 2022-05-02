@@ -37,18 +37,6 @@ const datosPop = [
     'Crear'
 ];
 
-const datosPopComentarios = [
-    'comentarAct',
-    [
-        {
-            'type': 'text',
-            'name': 'nombre',
-            'titulo': 'Escribe tu comentario:'
-        }
-    ],
-    'Enviar'
-];
-
 function validarCamposVacios(){
     var c1 = document.getElementById("Nom_materia").value;
     var c2 = document.getElementById("Desc_materia").value;
@@ -68,14 +56,12 @@ const checarRol = async() => {
         colorNav(color);
         cerrarSesion();
         dibujarPopUp(datosPop);
-        dibujarPopComentarios(datosPopComentarios);
         const {actividades} = await obtenerArray(`actividad/`, materia);
         dibujarActividad(actividades);
     }else if(rol == "EST_ROLE"){
         dibujarNavBar([], titulo, 'grupo');
         colorNav(color);
         cerrarSesion();
-        dibujarPopComentarios(datosPopComentarios);
         const {actividades} = await obtenerArray(`actividad/`, materia);
         dibujarActividad(actividades);
     }

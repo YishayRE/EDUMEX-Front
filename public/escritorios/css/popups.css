@@ -129,5 +129,28 @@
     width: 60%;
   }
 
+  .comentariosLista{
+    height: 250px;
+    overflow-y: scroll;
+  }
+
+  .conversacionIndividual{
+    border: 3px solid #E5989B;
+    border-radius: 7px;
+    padding: 5px;
+    overflow-y: scroll !important;
+    margin-bottom: 5px;
+    max-height: 100px;
+  }
+
+  .textoComentario{
+    border: 3px solid #b9797c;
+    border-radius: 6px;
+  }
+
+  .inputsComentario{
+    display: grid;
+    
+  }
 
 

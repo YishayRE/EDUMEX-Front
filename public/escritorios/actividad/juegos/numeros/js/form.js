@@ -1,57 +1,62 @@
 const formJ = document.querySelector('#formJ');
 
+const html2 = `<form id="contenidoJuego">`;
 
-const html2 = `</div>
-</body>
-</html>`;
-
-let html3 = `<header class="stick" id="navBar">
-</header>
-<div id="contenidoJuego">`;
+let html3 = ``;
 
 const generarHtml = () => {
+    const imagenes = formJ.querySelectorAll("img");
     const formulario = dataForm(formJ);
-    const size = Object.keys(formulario).length / 3;
-    let arrayJ = [[]];
-    let j = 0;
-    let i = 0;
+    console.log(formulario);
+    const valoresBien = validarVacios(formulario);
 
-    for (const el in formulario) {
-        if(i === 3){
-            i = 0;
-            j++;
-            arrayJ[j] = [];
-        }
-        if (Object.hasOwnProperty.call(formulario, el)) {
-            const element = formulario[el];
-            arrayJ[j][i] = element; 
-            i++;
-        }
-    }
+    if(!valoresBien.estaCompleto){
+        dibujarPopAlerta("Falta ingresar valores en los campos de los reactivos")
+    }else{
+        console.log("Ya esta lleno todo");
+        const size = Object.keys(formulario).length / 3;
+        let arrayJ = [[]];
+        let respuestas = [];
+        let j = 0;
+        let i = 0;
 
-    arrayJ.forEach((opcionJ, index) => {
-        html3 += `<div id="$elemento${index}" class="reactivoAbecedario">`;
-        if(opcionJ[0])
+        for (const el in formulario) {
+            if(i === 3){
+                i = 0;
+                j++;
+                arrayJ[j] = [];
+            }
+            if (Object.hasOwnProperty.call(formulario, el)) {
+                const element = formulario[el];
+                arrayJ[j][i] = element; 
+                i++;
+            }
+        }
+
+        arrayJ.forEach((opcionJ, index) => {
+            html3 += `<div id="elemento${index}" class="reactivoNumeros">`;
             html3 += `
-            <img src="${opcionJ[0]}" alt="imagenJ" class="logo">
+                <h3>La ${opcionJ[0]} es ${opcionJ[1]}</h3>
             `;
-        html3 += `
-            <h3>Escribe la ${opcionJ[1]}</h3>
-        `;
-        html3 += `
-            <input type="text" name="resp${index}" id="${opcionJ[2]}">
-        </div>
-        `;
-    });
-
-    /*console.log(size);
-    for (let x = 0; x < size; x++) {
-        for (let y = 0; y < 3; y++) {
-            console.log(arrayJ[x][y]);
-        }
-    }*/
-    let body = html3;
-    html3 = '';
-    return `${body}
-    </div>`;
+            if(opcionJ[0] == "Operacion"){
+                html3 += `
+                <h3>¿Cuál es su resultado?</h3>
+                `;
+            }else{
+                html3 += `
+                <h3>¿Qué numeros siguen?</h3>
+                `;
+            }
+            html3 += `
+                <input type="text" class="campoRespuesta" name="resp${index}">
+            </div>
+            `;
+            respuestas.push(opcionJ[2]);
+        });
+        console.log(respuestas);
+        let body = html3;
+        html3 = '';
+        return [`<form id="contenidoJuego">${body}</form>`,respuestas];
+    } 
+    return false; 
 }

@@ -35,14 +35,14 @@ const generarHtml = () => {
 
         arrayJ.forEach((opcionJ, index) => {
             html3 += `<div id="elemento${index}" class="reactivoAbecedario">`;
-                html3 += `
-                <img src="${imagenes[index].currentSrc}" alt="imagenJ" class="logo">
-                `;
+            html3 += `
+            <img src="${imagenes[index].currentSrc}" alt="imagenJ" class="imagenReactivo">
+            `;
             html3 += `
                 <h3>Escribe la ${opcionJ[1]}</h3>
             `;
             html3 += `
-                <input type="text" name="resp${index}">
+                <input type="text" class="campoRespuesta" name="resp${index}">
             </div>
             `;
             respuestas.push(opcionJ[2]);
@@ -52,5 +52,5 @@ const generarHtml = () => {
         html3 = '';
         return [`<form id="contenidoJuego">${body}</form>`,respuestas];
         } 
-        return false; 
+    return false; 
 }

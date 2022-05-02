@@ -55,7 +55,7 @@ const obtenerEstudiantes = async(idG) => {
 
 const obtenerMensajes = async(idAct) => {
     const token = localStorage.getItem('token') || '';
-    const resp = await fetch(baseApi + "mensaje/", {
+    const resp = await fetch(baseApi + "comentario/", {
         method: 'GET',
         headers: { 'x-token': token, user: uid, id: idAct }
     });
@@ -67,5 +67,6 @@ const obtenerMensajes = async(idAct) => {
         dibujarPopAlerta("No se pudo obtener los comentarios de la actividad");
         throw new Error(respuesta.msg);
     }
+    console.log(respuesta);
     return respuesta;
 }

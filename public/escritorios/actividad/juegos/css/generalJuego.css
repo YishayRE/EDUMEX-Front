@@ -21,6 +21,7 @@
     color: #818181;
     display: block;
     height: 94.4px;
+    overflow-y: hidden;
 }
 
 .cajaInfo2 {
@@ -33,6 +34,7 @@
     display: block;
     height: 205.2px;
     text-transform: uppercase;
+    overflow-y: hidden;
 }
 
 .inputsJuego{

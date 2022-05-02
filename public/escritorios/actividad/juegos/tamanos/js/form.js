@@ -5,6 +5,8 @@ const html2 = `<form id="contenidoJuego">`;
 let html3 = ``;
 
 const generarHtml = () => {
+    const imagenes = formJ.querySelectorAll("img");
+    console.log(imagenes);
     const formulario = dataForm(formJ);
     console.log(formulario);
     const valoresBien = validarVacios(formulario);
@@ -20,7 +22,7 @@ const generarHtml = () => {
         let i = 0;
 
         for (const el in formulario) {
-            if(i === 3){
+            if(i === 4){
                 i = 0;
                 j++;
                 arrayJ[j] = [];
@@ -31,23 +33,39 @@ const generarHtml = () => {
                 i++;
             }
         }
-
+        console.log(arrayJ);
         arrayJ.forEach((opcionJ, index) => {
-            html3 += `<div id="elemento${index}" class="reactivoAdivinanza">`;
+            html3 += `<div id="elemento${index}" class="reactivoTamano">`;
             html3 += `
-                <h3 class="textoAdivinanza">Adivinanza ${index+1}: ${opcionJ[1]}</h3>
+                <h3 class="textoAdivinanza">¿Cuál es su ${opcionJ[1]}?</h3>
             `;
-            if(opcionJ[0])
+            if(index === 0){
                 html3 += `
-                <img src="${opcionJ[0]}" alt="imagenJ" class="logo">
+                <div>
+                    <img src="${imagenes[index].currentSrc}" alt="imagenJ" class="imagenReactivo">
+                    <img src="${imagenes[index + 1].currentSrc}" alt="imagenJ" class="imagenReactivo">
+                </div>
                 `;
+                
+            }else{
+                console.log(index);
+                html3 += `
+                <div>
+                    <img src="${imagenes[index + 1].currentSrc}" alt="imagenJ" class="imagenReactivo">
+                    <img src="${imagenes[index + 2].currentSrc}" alt="imagenJ" class="imagenReactivo">
+                </div>
+                `;
+            }
             html3 += `
-                <input class="campoRespuesta" type="text" name="resp${index}">
+                <div>
+                    <input class="campoRespuesta" type="text" name="resp${index}">
+                </div>
             </div>
             `;
             respuestas.push(opcionJ[2]);
         });
-    
+        
+        console.log(respuestas);
         let body = html3;
         html3 = '';
         return [`<form id="contenidoJuego">${body}</form>`,respuestas];

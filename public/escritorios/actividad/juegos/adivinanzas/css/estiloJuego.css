@@ -5,8 +5,7 @@
 .reactivoAdivinanza{
     margin: 20px;
     text-align: center;
-    margin: 10px;
-    padding: 20px;
+    padding: 10px;
     color: black;
     background-color: #ffcdc1;
     border: 5px solid;
@@ -17,10 +16,14 @@
     width: 300px;
     display: grid;
     grid-template-rows: auto auto auto;
-    margin: 0 auto;
 }
 
 .textoAdivinanza{
     inline-size: 300px;
     overflow-wrap: break-word;
+}
+
+.imagenReactivo{
+    width: 150px;
+    height: 150px;
 }
