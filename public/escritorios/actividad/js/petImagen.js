@@ -1,4 +1,5 @@
 const subirImagen = async(urlImagen, fileInput) => {
+    showLoad();
     console.log(urlImagen);
     console.log(fileInput);
 
@@ -16,7 +17,7 @@ const subirImagen = async(urlImagen, fileInput) => {
     formdata.append("imagen", fileInput);
 
     let requestOptions = {
-        method: 'PATCH',
+        method: 'POST',
         headers: myHeaders,
         body: formdata,
         redirect: 'follow'
@@ -30,5 +31,6 @@ const subirImagen = async(urlImagen, fileInput) => {
       throw new Error (respuesta.msg);
     
     console.log(respuesta);
+    hiddenLoad();
     return respuesta;
 }

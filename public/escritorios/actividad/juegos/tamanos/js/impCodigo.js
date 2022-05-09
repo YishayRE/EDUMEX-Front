@@ -1,4 +1,5 @@
 const insertarCodigo = (contadorEtiqueta) => {
+    console.log("hola");
     let auxContador = 0;
     const contenedor = document.querySelector('#contenedor');
 
@@ -30,7 +31,13 @@ const insertarCodigo = (contadorEtiqueta) => {
         <h5 class="selectTitulo" id="select${auxContador}">Tamaño</h5>
 
         <div class="opcionesRespuesta">
-            <input class="valorRespuesta" type="text" name="opt${auxContador}" id="opt${auxContador}">
+            <div class="respuestaCambiar" id="respuestaCambiar${auxContador}">
+                <select class="valorRespuesta" name="opt${auxContador}" id="opt${auxContador}">
+                    <option value="Mayor que" selected>Mayor que</option>
+                    <option value="Menor que">Menor que</option>
+                    <option value="Igual">Igual</option>
+                </select>
+            </div>
 
             <div id="segundaImagen" class="image-upload">
                 <label for="imagen${contadorEtiqueta + 1}">
@@ -46,13 +53,36 @@ const insertarCodigo = (contadorEtiqueta) => {
 
     const opcion = document.querySelector(`#opcion${auxContador}`);
     const select = document.querySelector(`#select${auxContador}`);
+    const respuestaCambiar = document.querySelector(`#respuestaCambiar${auxContador}`);
 
 
     opcion.addEventListener('change', () => {
-        if (opcion.selectedIndex === 1)
+        const valorRespuesta = document.querySelector(`#opt${auxContador}`);
+        if(opcion.selectedIndex === 1){
             select.innerHTML = 'Forma';
-        else
+            respuestaCambiar.removeChild(valorRespuesta);
+            let campoForma = document.createElement("input");
+            campoForma.type = "text";
+            campoForma.className = "valorRespuesta";
+            campoForma.id = `opt${auxContador}`;
+            campoForma.name = `opt${auxContador}`;
+            respuestaCambiar.appendChild(campoForma);
+        }else{
             select.innerHTML = 'Tamaño';
+            respuestaCambiar.removeChild(valorRespuesta);
+            let campoTamaño = document.createElement("select");
+            campoTamaño.className = "valorRespuesta";
+            campoTamaño.id = `opt${auxContador}`;
+            campoTamaño.name = `opt${auxContador}`;
+            respuestaCambiar.appendChild(campoTamaño);
+            let arrayValores = ["Mayor que","Menor que","Igual"];
+            for (let i = 0; i < arrayValores.length; i++) {
+                let option = document.createElement("option");
+                option.value = arrayValores[i];
+                option.text = arrayValores[i];
+                campoTamaño.appendChild(option);
+            }
+        }
     });
 
     const inputImagen = document.querySelector(`#imagen${contadorEtiqueta}`);

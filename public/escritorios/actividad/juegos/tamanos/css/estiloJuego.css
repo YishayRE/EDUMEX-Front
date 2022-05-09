@@ -5,11 +5,11 @@
 .reactivoTamano{
     display: grid;
     grid-template-rows: auto auto auto;
-    margin: 20px;
+    margin: 30px;
     text-align: center;
     margin: 10px;
     padding: 20px;
-    color: black;
+    color: #68555c;
     background-color: #ffcdc1;
     border: 5px solid;
     border-color: #917681;
@@ -17,4 +17,70 @@
     text-transform: uppercase;
     height: 300px;
     width: 300px;
+}
+
+.elementosTamanos{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.textoTamano{
+    font-size: 18px;
+    color: #68555c;
+}
+
+.imgTam{
+    display: grid;
+    grid-template-rows: 100px 50px;
+    justify-items: center;
+}
+
+.divSelect{
+    margin-top: 60px;
+}
+
+.selectTamano{
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 3px solid;
+    border-color: #917681;
+}
+
+.imagenReactivoTamano{
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.imagenReactivoForma{
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.elementosFormas{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.textoForma{
+    font-size: 16px;
+    color: #68555c;
+}
+
+.valorRespuesta{
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 3px solid;
+    border-color: #917681;
+    margin-bottom: 5px;
+}
+
+.divRespuesta{
+    align-items: center;
+    margin-top: 10px;
 }

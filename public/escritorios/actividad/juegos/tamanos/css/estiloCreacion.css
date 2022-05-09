@@ -10,6 +10,7 @@
     height: fit-content;
     padding-top: 50px;
     padding-bottom: 50px;
+    margin-left: 15px;
 }
 
 .selectTipo{
@@ -21,7 +22,7 @@
 }
 
 .selectTitulo{
-    font-size: 20px;
+    font-size: 30px;
     text-align: center;
     margin-top: 60px;
 }
@@ -32,6 +33,7 @@
     font-size: 20px;
     border-radius: 10px;
     border: 3px solid;
+    margin-bottom: 5px;
 }
 
 .opcionesRespuesta{
@@ -57,7 +59,7 @@
     margin-bottom: 10px;
     font-size: 28px;
     /* Increased text to enable scrolling */
-    padding: 0px 0px 0px 35px;
+    padding: 0px 0px 20px 35px;
     color: #85046f;
     border: 3px dashed;
     border-radius: 30px;

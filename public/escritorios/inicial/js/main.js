@@ -64,12 +64,12 @@ const checarRol = async() => {
         dibujarNavBar(accesoE, titulo);
         cerrarSesion();
         dibujarPopUp(datosPopE);
-        const {grupos} = await obtenerArray(`inscrito/`, uid);
-        if(grupos.length > 0){
+        const {grupo} = await obtenerArray(`inscrito/`, uid);
+        if(grupo){
             const btnUnir = document.querySelector("#est0");
             btnUnir.style.display = "none";
         }
-        dibujarGrupo(grupos);
+        dibujarGrupo([grupo]);
     }
 }
 

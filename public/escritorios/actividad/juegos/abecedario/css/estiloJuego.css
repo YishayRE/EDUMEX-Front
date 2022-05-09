@@ -16,3 +16,21 @@
     height: 300px;
     width: 300px;
 }
+
+.imagenReactivo{
+    width: 170px;
+    height: 170px;
+    border-radius: 10px;
+}
+
+.textoTitulo{
+    font-size: 18px;
+    color: #68555c;
+}
+
+.textoOracion{
+    font-size: 14px;
+    color: #68555c;
+    overflow-y: scroll;
+    max-height: 17px;
+}

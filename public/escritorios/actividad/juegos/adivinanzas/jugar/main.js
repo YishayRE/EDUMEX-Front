@@ -1,4 +1,5 @@
 const titulo = "60:00";
+let intentosEst = parseInt(localStorage.getItem("intentos"));
 
 const accesosPrueba = [{
     'nombre': 'Finalizar Juego',
@@ -18,27 +19,39 @@ const terminarJugar = async() => {
     finJuego.addEventListener('click', async(e) => {
         e.preventDefault();
         showLoad();
-        let respuestasContestadas  = Object.values(dataForm(datosJuego));
+        if(intentosEst === 0){
+            dibujarPopAlerta("Ya no tienes más intentos");
+        }else if(intentosEst > 0){
+            let respuestasContestadas  = Object.values(dataForm(datosJuego));
 
-        const enviarRespuestas = await jugarJuego(respuestasContestadas, 'juego/')
+            const enviarRespuestas = await jugarJuego(respuestasContestadas, 'juego/')
 
-        console.log(enviarRespuestas);
+            console.log(enviarRespuestas);
 
-        let contador = 0;
-        
-        enviarRespuestas.respuestas.forEach((respuesta, index) => {
-            let cajaReactivo = document.querySelector(`#elemento${index}`)
-            if(respuesta == "o"){
-                cajaReactivo.style.borderColor = "green";
-                contador++;
-            }
-            else{
-                cajaReactivo.style.borderColor = "red";
-            }
-        });
+            let contador = 0;
+            
+            enviarRespuestas.respuestas.forEach((respuesta, index) => {
+                let cajaReactivo = document.querySelector(`#elemento${index}`)
+                if(respuesta == "o"){
+                    cajaReactivo.style.borderColor = "green";
+                    contador++;
+                }
+                else{
+                    cajaReactivo.style.borderColor = "red";
+                }
+            });
 
-        dibujarPopAlerta("aciertos", "Tienes " + contador + " aciertos, tu calificación es: " + enviarRespuestas.calificacion);
-        console.log("Tienes " + contador + " aciertos");
+            --intentosEst;
+                
+            hiddenLoad();
+
+            dibujarPopAlerta("aciertos", "Tienes " + contador + " aciertos, tu calificación es: " + enviarRespuestas.calificacion);
+            if(enviarRespuestas.calificacion === 10){
+                const btnContinuar = document.querySelector("#continuarC");
+                btnContinuar.style.display = "none";
+            };
+            console.log("Tienes " + contador + " aciertos");
+        }
     });
 }
 

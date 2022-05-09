@@ -4,12 +4,42 @@ const alertas = document.querySelector("#alertas");
 const titulo = "";
 let tipo = null;
 
+console.log("hola");
+
+
 const accesos = [
 	{
 		'nombre': 'Iniciar Sesión',
 		'referencia': `auth/inicio_sesion/`
 	}
 ];
+
+const inputEst = document.querySelector("#cb1");
+const inputPro = document.querySelector("#cb2");
+
+let auxCont = 0;
+let auxCont2 = 0;
+
+inputEst.addEventListener('click', () => {
+    
+    if(auxCont === 0){
+        inputPro.disabled = true;
+        auxCont = 1;
+    }else if(auxCont === 1){
+        inputPro.disabled = false;
+        auxCont = 0;
+    }
+});
+
+inputPro.addEventListener('click', () => {
+    if(auxCont2 === 0){
+        inputEst.disabled = true;
+        auxCont2 = 1;
+    }else if(auxCont2 === 1){
+        inputEst.disabled = false;
+        auxCont2 = 0;
+    }
+});
 
 miFormulario.addEventListener('submit', async (ev) => {
     ev.preventDefault();
@@ -27,8 +57,9 @@ miFormulario.addEventListener('submit', async (ev) => {
     }
 
     formData["rol"] = valorRol();
+    
 
-    await registrar(formData);
+    //await registrar(formData);
 
     hiddenLoad();
 });
@@ -87,6 +118,8 @@ function validarFormulario() {
 }
 
 const validarCampos = () => {
+    console.log("hola");
+
     let c1 = document.querySelector("#Nom_registro").value;
     let c2 = document.querySelector("#Pat_registro").value;
     let c3 = document.querySelector("#Mat_registro").value;
@@ -96,11 +129,14 @@ const validarCampos = () => {
 }
 
 function valorRol(){
-    var checkedValue = null;
-    var inputElements = document.getElementsByClassName("rolCheckbox");
-    for(var i=0; inputElements[i]; ++i){
-        if(inputElements[i].checked){
+    let auxValor;
+    let checkedValue = null;
+    const inputElements = document.getElementsByClassName("rolCheckbox");
+    
+    for(let i=0; inputElements[i]; ++i){
+        if(inputElements[i].checked){            
             checkedValue = inputElements[i].value;
+            console.log(checkedValue);
             return checkedValue;
         }
     }

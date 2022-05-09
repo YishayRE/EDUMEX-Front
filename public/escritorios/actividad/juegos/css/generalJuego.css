@@ -88,7 +88,10 @@
 .cargaImagen {
     width: 100px;
     height: 100px;
+    border-radius: 10px;
     cursor: pointer;
+    border: 3px dotted;
+    border-color: #917681;
 }
 
 .image-upload>input {

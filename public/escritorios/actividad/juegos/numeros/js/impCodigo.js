@@ -8,7 +8,7 @@ const insertarCodigo = (contadorEtiqueta) => {
     <div class="contenedorTipo">
         <select class="selectTipo" name="opcion${contadorEtiqueta}" id="opcion${contadorEtiqueta}">
             <option value="Operacion">Operación</option>
-            <option value="Secuencia">Secuencia</option>
+            <option value="Sucesion">Sucesion</option>
         </select>
     </div>
 
@@ -36,8 +36,8 @@ const insertarCodigo = (contadorEtiqueta) => {
 
         opcion.addEventListener('change', () => {
             if (opcion.selectedIndex === 1){
-                select.innerHTML = 'Secuencia';
-                tituloOpcion.innerHTML = "Escribe la secuencia";
+                select.innerHTML = 'Sucesión';
+                tituloOpcion.innerHTML = "Escribe la sucesion";
                 tituloRespuesta.innerHTML = "¿Qué números siguen?"; 
             }else{
                 select.innerHTML = 'Operación';

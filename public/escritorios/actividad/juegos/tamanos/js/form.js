@@ -15,9 +15,20 @@ const generarHtml = () => {
     if(!valoresBien.estaCompleto){
         dibujarPopAlerta("Falta ingresar valores en los campos de los reactivos")
     }else{
+        let respuestas = [];
+        let flag = true;
+
+        elementosForm = Object.entries(formulario);
+
+        elementosForm.forEach((elemento, index) => {
+            if(elemento[1] == "Tamaño"){
+                
+            }else if(elemento[1] == "Forma"){
+
+            }
+        });
         const size = Object.keys(formulario).length / 3;
         let arrayJ = [[]];
-        let respuestas = [];
         let j = 0;
         let i = 0;
 
@@ -37,29 +48,103 @@ const generarHtml = () => {
         arrayJ.forEach((opcionJ, index) => {
             html3 += `<div id="elemento${index}" class="reactivoTamano">`;
             html3 += `
-                <h3 class="textoAdivinanza">¿Cuál es su ${opcionJ[1]}?</h3>
+                <div>
+                    <h3 class="tituloPregunta">${opcionJ[1]}</h3>
+                </div>
             `;
-            if(index === 0){
+            if(opcionJ[1] == "Tamaño"){
+                if(index === 0){
+                    html3 += `
+                    <div class="elementosTamanos">
+                    <div class="imgTam">
+                        <h3 class="textoTamano">La imagen de la izquierda es</h3>
+                        <img src="${imagenes[index].currentSrc}" alt="imagenJ" class="imagenReactivoTamano">
+                    </div>
+                    `;
+                    
+                    html3 += `
+                    <div class="imgTam">
+                        <h3 class="textoTamano">Respecto a la imagen de la derecha</h3>
+                        <img src="${imagenes[index + 1].currentSrc}" alt="imagenJ" class="imagenReactivoTamano">
+                    </div>
+                    </div>
+                    `;
+
+                    html3 += `
+                    <div class="divSelect">
+                        <select class="selectTamano" name="opcion${index}" id="opcion${index}">
+                            <option value="Mayor que" selected>Mayor que</option>
+                            <option value="Menor que">Menor que</option>
+                            <option value="Igual">Igual</option>
+                        </select>
+                    </div>
+                    `;
+                }else{
+                    console.log(index);
+                    html3 += `
+                    <div class="elementosTamanos">
+                        <div class="imgTam">
+                            <h3 class="textoTamano">La imagen de la izquierda es</h3>
+                            <img src="${imagenes[index + 1].currentSrc}" alt="imagenJ" class="imagenReactivoTamano">
+                        </div>
+                    `;
+                    
+                    html3 += `
+                        <div class="imgTam">
+                            <h3 class="textoTamano">Respecto a la imagen de la derecha</h3>
+                            <img src="${imagenes[index + 2].currentSrc}" alt="imagenJ" class="imagenReactivoTamano">
+                        </div>
+                    </div>
+                    `;
+
+                    html3 += `
+                    <div class="divSelect">
+                        <select class="selectTamano" name="opcion${index}" id="opcion${index}">
+                            <option value="Mayor que" selected>Mayor que</option>
+                            <option value="Menor que">Menor que</option>
+                            <option value="Igual">Igual</option>
+                        </select>
+                    </div>
+                    `;
+                }
+            }else if(opcionJ[1] == "Forma"){
                 html3 += `
-                <div>
-                    <img src="${imagenes[index].currentSrc}" alt="imagenJ" class="imagenReactivo">
-                    <img src="${imagenes[index + 1].currentSrc}" alt="imagenJ" class="imagenReactivo">
+                <div class="textoForma">
+                    <h3 class="textoAdivinanza">La forma de las imágenes    ¿Qué figura geométrica representa?</h3>
                 </div>
                 `;
-                
-            }else{
-                console.log(index);
-                html3 += `
-                <div>
-                    <img src="${imagenes[index + 1].currentSrc}" alt="imagenJ" class="imagenReactivo">
-                    <img src="${imagenes[index + 2].currentSrc}" alt="imagenJ" class="imagenReactivo">
-                </div>
-                `;
+                if(index === 0){
+                    html3 += `
+                    <div class="elementosFormas">
+                        <div>
+                            <img src="${imagenes[index].currentSrc}" alt="imagenJ" class="imagenReactivoForma">
+                        </div>
+                        <div>
+                            <img src="${imagenes[index + 1].currentSrc}" alt="imagenJ" class="imagenReactivoForma">
+                        </div>
+                    </div>
+                    <div class="divRespuesta">
+                        <input class="valorRespuesta" type="text" name="opt${index}" id="opt${index}">
+                    </div>
+                    `;
+                }else{
+                    console.log(index);
+                    html3 += `
+                    <div class="elementosFormas">
+                        <div>
+                            <img src="${imagenes[index + 1].currentSrc}" alt="imagenJ" class="imagenReactivoForma">
+                        </div>
+                        <div>
+                            <img src="${imagenes[index + 2].currentSrc}" alt="imagenJ" class="imagenReactivoForma">
+                        </div>
+                    </div>
+                    <div class="divRespuesta">
+                        <input class="valorRespuesta" type="text" name="opt${index + 1}" id="opt${index + 1}">
+                    </div>
+                    `;
+                }
             }
             html3 += `
-                <div>
-                    <input class="campoRespuesta" type="text" name="resp${index}">
-                </div>
             </div>
             `;
             respuestas.push(opcionJ[2]);

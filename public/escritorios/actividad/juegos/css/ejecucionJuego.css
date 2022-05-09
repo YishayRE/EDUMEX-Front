@@ -1,11 +1,14 @@
 #contenidoJuego{
-    display: flex;
+    display: grid;
+    grid-template-columns: auto auto auto;
     justify-content: center;
 }
 
 #codigo{
     display: flex;
     justify-content: center;
+    overflow-y: scroll !important;
+    max-height: 550px;
 }
 
 .campoRespuesta{
@@ -14,26 +17,10 @@
     font-size: 20px;
     border-radius: 10px;
     border: 3px solid;
-}
-
-.reactivoTamano{
-    display: grid;
-    grid-template-rows: auto auto auto;
-    margin: 20px;
-    text-align: center;
-    margin: 10px;
-    padding: 20px;
-    color: black;
-    background-color: #ffcdc1;
-    border: 5px solid;
     border-color: #917681;
-    border-radius: 15px;
-    text-transform: uppercase;
-    height: 300px;
-    width: 300px;
 }
 
-.imagenReactivo{
-    width: 50px;
-    height: 50px;
+.tituloPregunta{
+    font-size: 20px;
+    margin: 5px;
 }
