@@ -59,7 +59,7 @@ miFormulario.addEventListener('submit', async (ev) => {
     formData["rol"] = valorRol();
     
 
-    //await registrar(formData);
+    await registrar(formData);
 
     hiddenLoad();
 });

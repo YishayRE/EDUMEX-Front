@@ -1,6 +1,6 @@
 const codigoJuego = async() => {
     const token = localStorage.getItem('token') || '';
-    const resp = await fetch(baseApi + 'juego/id/', {
+    const resp = await fetch(baseApi + 'juego/codigo/', {
         method: 'GET',
         headers: { 'x-token': token, user: uid, id: localStorage.getItem('juego') }
     });

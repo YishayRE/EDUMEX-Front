@@ -29,8 +29,8 @@ const generarHtml = () => {
                 }
                 arrayCadena.forEach((elemento, index) => {
                     if(elemento == ""){
-                        dibujarPopAlerta(`El elemento ${index + 1} no fue escrito`);
-                        throw new Error(`El elemento ${index + 1} no fue escrito`);
+                        dibujarPopAlerta(`El elemento ${index + 1} no fue escrito en la sucesión`);
+                        throw new Error(`El elemento ${index + 1} no fue escrito en la sucesión`);
                     }
                 });
 
@@ -40,57 +40,61 @@ const generarHtml = () => {
                 }
                 arrayRespuesta.forEach((elemento, index) => {
                     if(elemento == ""){
-                        dibujarPopAlerta(`El elemento ${index + 1}  de la respuesta no fue escrito`);
-                        throw new Error(`El elemento ${index + 1} de la respuesta no fue escrito`);
+                        dibujarPopAlerta(`El elemento ${index + 1}  de la respuesta no fue escrito en la sucesión`);
+                        throw new Error(`El elemento ${index + 1} de la respuesta no fue escrito en la sucesión`);
                     }
                 });
+            }if(elemento[1] == "Operacion"){
+                let comasEncontradas = (elementosForm[index + 1][1].match(/\,/g) || []).length;
+                if(comasEncontradas > 0){
+                    dibujarPopAlerta("Una operacion no debe tener comas");
+                    throw new Error("Una operacion no debe tener comas");
+                }
             }
         });
-        if(flag == true){
-            const size = Object.keys(formulario).length / 3;
-            let arrayJ = [[]];
-            let respuestas = [];
-            let j = 0;
-            let i = 0;
+        const size = Object.keys(formulario).length / 3;
+        let arrayJ = [[]];
+        let respuestas = [];
+        let j = 0;
+        let i = 0;
 
-            for (const el in formulario) {
-                if(i === 3){
-                    i = 0;
-                    j++;
-                    arrayJ[j] = [];
-                }
-                if (Object.hasOwnProperty.call(formulario, el)) {
-                    const element = formulario[el];
-                    arrayJ[j][i] = element; 
-                    i++;
-                }
+        for (const el in formulario) {
+            if(i === 3){
+                i = 0;
+                j++;
+                arrayJ[j] = [];
             }
-
-            arrayJ.forEach((opcionJ, index) => {
-                html3 += `<div id="elemento${index}" class="reactivoNumeros">`;
-                html3 += `
-                    <h3>La ${opcionJ[0]} es ${opcionJ[1]}</h3>
-                `;
-                if(opcionJ[0] == "Operacion"){
-                    html3 += `
-                    <h3>¿Cuál es su resultado?</h3>
-                    `;
-                }else{
-                    html3 += `
-                    <h3>¿Qué numeros siguen?</h3>
-                    `;
-                }
-                html3 += `
-                    <input type="text" class="campoRespuesta" name="resp${index}">
-                </div>
-                `;
-                respuestas.push(opcionJ[2]);
-            });
-            console.log(respuestas);
-            let body = html3;
-            html3 = '';
-            return [`<form id="contenidoJuego">${body}</form>`,respuestas];
+            if (Object.hasOwnProperty.call(formulario, el)) {
+                const element = formulario[el];
+                arrayJ[j][i] = element; 
+                i++;
+            }
         }
+
+        arrayJ.forEach((opcionJ, index) => {
+            html3 += `<div id="elemento${index}" class="reactivoNumeros">`;
+            html3 += `
+                <h3>La ${opcionJ[0]} es ${opcionJ[1]}</h3>
+            `;
+            if(opcionJ[0] == "Operacion"){
+                html3 += `
+                <h3>¿Cuál es su resultado?</h3>
+                `;
+            }else{
+                html3 += `
+                <h3>¿Qué numeros siguen?</h3>
+                `;
+            }
+            html3 += `
+                <input type="text" class="campoRespuesta" name="resp${index}">
+            </div>
+            `;
+            respuestas.push(opcionJ[2]);
+        });
+        console.log(respuestas);
+        let body = html3;
+        html3 = '';
+        return [`<form id="contenidoJuego">${body}</form>`,respuestas];
     } 
     return false; 
 }

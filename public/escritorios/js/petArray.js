@@ -1,6 +1,6 @@
 const obtenerArray = async(arrayPath, idT) => {
     const token = localStorage.getItem('token') || '';
-    const resp = await fetch(baseApi + arrayPath + 'id', {
+    const resp = await fetch(baseApi + arrayPath + 'id/', {
         method: 'GET',
         headers: { 'x-token': token, user: uid, id: idT }
     });
