@@ -20,7 +20,7 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
     `;
         if(titulo == 'Escritorio Principal'){
             navBarHtml += `
-            <div class="enlace">
+            <div class="enlace" id="menuEditar">
                 <img src="${baseUrl}/images/logoPNG.png" alt="EDUMEX" class="logo">
             </div>
             `;
@@ -90,7 +90,17 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
 
     navBar.innerHTML = navBarHtml;
 
-    if(titulo != 'Escritorio Principal'){
+    if(titulo == 'Escritorio Principal'){
+        const btnMenuEditar = document.querySelector('#menuEditar');
+        btnMenuEditar.addEventListener('click', e => {
+            dibujarPopEditarUser();
+            showPopEditarUser();
+        });
+    }else{
+        if(titulo.length > 25){
+            const tituloEsc = document.querySelector("#titulo");
+            tituloEsc.style.marginTop = "0px"
+        }
         const btnRegresar = document.querySelector('#regresar');
         btnRegresar.addEventListener('click', e => {
             window.location.replace(`${escritoriosUrl}${url}`);

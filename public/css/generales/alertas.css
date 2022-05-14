@@ -12,13 +12,13 @@
 }
 
 .popupAlerta {
-    margin: 70px 10px;
+    margin: 150px auto;
     padding: 20px;
     background: #B5838D;
     border-radius: 5px;
     width: fit-content;
     max-height:fit-content;
-    position: fixed;
+    position: relative;
     transition: all 5s ease-in-out;
 }
 .popupAlerta h2 {

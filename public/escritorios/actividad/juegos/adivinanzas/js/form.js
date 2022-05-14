@@ -6,9 +6,11 @@ let html3 = ``;
 
 const generarHtml = () => {
     const imagenes = formJ.querySelectorAll("img");
+    console.log(imagenes[1].currentSrc);
     const formulario = dataForm(formJ);
     console.log(formulario);
-    const valoresBien = validarVacios(formulario);
+
+    const valoresBien = validarVaciosAdivinanza(formulario);
 
     if(!valoresBien.estaCompleto){
         dibujarPopAlerta("Falta ingresar valores en los campos de los reactivos")
@@ -33,15 +35,23 @@ const generarHtml = () => {
         }
 
         arrayJ.forEach((opcionJ, index) => {
-            html3 += `<div id="elemento${index}" class="reactivoAdivinanza">`;
+            let htmlAux1 = "";
+            let htmlAux2 = "";
+            if(imagenes[index].currentSrc.includes("cloudinary")){
+                htmlAux1 = `<div id="elemento${index}" class="reactivoAdivinanza">`;
+                htmlAux2 = `
+                    <div>
+                        <img src="${imagenes[index].currentSrc}" alt="imagenJ" class="imagenReactivo">
+                    </div>
+                `;
+            }else{
+                htmlAux1 = `<div id="elemento${index}" style="height: 150px;" class="reactivoAdivinanza">`;
+            }
+            html3 += htmlAux1;
             html3 += `
                 <h3 class="textoAdivinanza">Adivinanza ${index+1}: ${opcionJ[1]}</h3>
             `;
-            html3 += `
-            <div>
-                <img src="${imagenes[index].currentSrc}" alt="imagenJ" class="imagenReactivo">
-            </div>
-            `;
+            html3 += htmlAux2;
             html3 += `
                 <div>
                     <input class="campoRespuesta" type="text" name="resp${index}">
@@ -55,5 +65,5 @@ const generarHtml = () => {
         html3 = '';
         return [`<form id="contenidoJuego">${body}</form>`,respuestas];
         }
-    return false; 
+    return false;
 }

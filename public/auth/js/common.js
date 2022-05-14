@@ -20,7 +20,7 @@ const iniciar = async(formData) => {
 }
 
 const registrar = async(formData) => {
-    const resp = await fetch(baseApi + 'usuarios', {
+    const resp = await fetch(baseApi + 'usuario', {
         method: 'POST',
         body: JSON.stringify(formData),
         headers: {'Content-Type': 'application/json'}

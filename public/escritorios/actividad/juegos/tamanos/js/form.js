@@ -124,7 +124,22 @@ const generarHtml = () => {
                         </div>
                     </div>
                     <div class="divRespuesta">
-                        <input class="valorRespuesta" type="text" name="opt${index}" id="opt${index}">
+                        <select class="selectTamano" name="opcion${index}" id="opcion${index}">
+                            <option value="Cuadrado">Cuadrado</option>
+                            <option value="Circulo">Circulo</option>
+                            <option value="Triángulo">Triángulo</option>
+                            <option value="Rectángulo">Rectángulo</option>
+                            <option value="Trapecio">Trapecio</option>
+                            <option value="Paralelogramo">Paralelogramo</option>
+                            <option value="Pentágono">Pentágono</option>
+                            <option value="Hexágono">Hexágono</option>
+                            <option value="Rombo">Rombo</option>
+                            <option value="Cubo">Cubo</option>
+                            <option value="Pirámide">Pirámide</option>
+                            <option value="Cono">Cono</option>
+                            <option value="Cilindro">Cilindro</option>
+                            <option value="Esfera">Esfera</option>
+                        </select>
                     </div>
                     `;
                 }else{
@@ -139,7 +154,22 @@ const generarHtml = () => {
                         </div>
                     </div>
                     <div class="divRespuesta">
-                        <input class="valorRespuesta" type="text" name="opt${index + 1}" id="opt${index + 1}">
+                        <select class="selectTamano" name="opcion${index + 1}" id="opcion${index + 1}">
+                            <option value="Cuadrado">Cuadrado</option>
+                            <option value="Circulo">Circulo</option>
+                            <option value="Triángulo">Triángulo</option>
+                            <option value="Rectángulo">Rectángulo</option>
+                            <option value="Trapecio">Trapecio</option>
+                            <option value="Paralelogramo">Paralelogramo</option>
+                            <option value="Pentágono">Pentágono</option>
+                            <option value="Hexágono">Hexágono</option>
+                            <option value="Rombo">Rombo</option>
+                            <option value="Cubo">Cubo</option>
+                            <option value="Pirámide">Pirámide</option>
+                            <option value="Cono">Cono</option>
+                            <option value="Cilindro">Cilindro</option>
+                            <option value="Esfera">Esfera</option>
+                        </select>
                     </div>
                     `;
                 }

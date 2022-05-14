@@ -30,3 +30,31 @@ body {
     justify-content: center;
     flex-wrap: wrap;
 }
+
+/* Estilos para motores Webkit y blink (Chrome, Safari, Opera... )*/
+
+*::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+*::-webkit-scrollbar:vertical {
+    width:7px;
+}
+
+*::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+    display: none;
+} 
+
+*::-webkit-scrollbar:horizontal {
+    height: 7px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #FFB4A2;
+    border-radius: 20px;
+    border: 2px solid #E5989B;
+}
+
+*::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}

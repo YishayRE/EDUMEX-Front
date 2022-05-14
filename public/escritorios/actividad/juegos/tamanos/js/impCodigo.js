@@ -1,5 +1,4 @@
 const insertarCodigo = (contadorEtiqueta) => {
-    console.log("hola");
     let auxContador = 0;
     const contenedor = document.querySelector('#contenedor');
 
@@ -61,12 +60,19 @@ const insertarCodigo = (contadorEtiqueta) => {
         if(opcion.selectedIndex === 1){
             select.innerHTML = 'Forma';
             respuestaCambiar.removeChild(valorRespuesta);
-            let campoForma = document.createElement("input");
-            campoForma.type = "text";
+            let campoForma = document.createElement("select");
             campoForma.className = "valorRespuesta";
             campoForma.id = `opt${auxContador}`;
             campoForma.name = `opt${auxContador}`;
             respuestaCambiar.appendChild(campoForma);
+            let arrayValores = ["Cuadrado","Círculo","Triangulo","Rectángulo","Trapecio","Paralelogramo",
+            "Pentágono","Hexágono","Rombo","Cubo","Pirámide","Cono","Cilindro","Esfera"];
+            for (let i = 0; i < arrayValores.length; i++) {
+                let option = document.createElement("option");
+                option.value = arrayValores[i];
+                option.text = arrayValores[i];
+                campoForma.appendChild(option);
+            }
         }else{
             select.innerHTML = 'Tamaño';
             respuestaCambiar.removeChild(valorRespuesta);

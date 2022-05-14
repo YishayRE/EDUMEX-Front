@@ -23,7 +23,7 @@ const subirImagen = async(urlImagen, fileInput) => {
         redirect: 'follow'
       };
 
-    const resp = await fetch(baseApi + "uploads/", requestOptions);
+    const resp = await fetch(baseApi + "upload/", requestOptions);
 
     const respuesta = await resp.json();
 

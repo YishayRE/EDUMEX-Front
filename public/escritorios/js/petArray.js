@@ -55,7 +55,7 @@ const obtenerEstudiantes = async(idG) => {
 
 const obtenerMensajes = async(idAct) => {
     const token = localStorage.getItem('token') || '';
-    const resp = await fetch(baseApi + "comentario/", {
+    const resp = await fetch(baseApi + "comentario/id/", {
         method: 'GET',
         headers: { 'x-token': token, user: uid, id: idAct }
     });

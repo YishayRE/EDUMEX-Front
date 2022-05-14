@@ -330,7 +330,7 @@ const dibujarActividad = (actividades = []) => {
         btn.addEventListener('click', async() => {
             const mensajesAct = await obtenerMensajes();
             console.log(mensajesAct);
-            dibujarPopComentarios(mensajesAct);
+            dibujarPopComentarios(mensajesAct, index);
             /*const popC = document.querySelector("#popComentarios");
             popC.style.background = fondo;*/
             showPopComentarios();

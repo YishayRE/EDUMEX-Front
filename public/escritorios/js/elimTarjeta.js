@@ -2,6 +2,7 @@ const elimTarjeta = async(route = '', idT) => {
     const token = localStorage.getItem('token') || '';
     let myHeaders = new Headers();
     myHeaders.append("x-token", token);
+    console.log(uid);
     myHeaders.append("user", uid);
     myHeaders.append("id", idT);
     myHeaders.append("Content-Type", "application/json");
