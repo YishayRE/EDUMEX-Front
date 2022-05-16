@@ -23,12 +23,12 @@ const accesoP = [
 ];
 
 let contadorEtiqueta = 0;
+console.log(contadorEtiqueta)
 
 adicion.addEventListener('click', () => {
-    insertarCodigo(contadorEtiqueta++);
+    insertarCodigo(contadorEtiqueta = contadorEtiqueta+2);
     if(contadorEtiqueta > 0)
         resta.style.display = "block";
-    contadorEtiqueta++;
     console.log("Suma"+contadorEtiqueta);
 });
 
@@ -36,14 +36,7 @@ resta.style.display = "none";
 
 resta.addEventListener('click', () => {
     console.log(contadorEtiqueta);
-    if(contadorEtiqueta === 2){
-        eliminarCodigo(contadorEtiqueta - 2);
-        --contadorEtiqueta;
-    }else{
-        eliminarCodigo(contadorEtiqueta - 3);
-        --contadorEtiqueta;
-    }
-    --contadorEtiqueta;
+    eliminarCodigo(contadorEtiqueta = contadorEtiqueta - 2);
     if(contadorEtiqueta == 0)
         resta.style.display = "none";
 });

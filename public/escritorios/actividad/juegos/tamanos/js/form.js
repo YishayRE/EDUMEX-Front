@@ -17,6 +17,7 @@ const generarHtml = () => {
     }else{
         let respuestas = [];
         let flag = true;
+        let auxImagenes = 0;
 
         elementosForm = Object.entries(formulario);
 
@@ -53,126 +54,68 @@ const generarHtml = () => {
                 </div>
             `;
             if(opcionJ[1] == "Tamaño"){
-                if(index === 0){
-                    html3 += `
-                    <div class="elementosTamanos">
-                    <div class="imgTam">
-                        <h3 class="textoTamano">La imagen de la izquierda es</h3>
-                        <img src="${imagenes[index].currentSrc}" alt="imagenJ" class="imagenReactivoTamano">
-                    </div>
-                    `;
-                    
-                    html3 += `
-                    <div class="imgTam">
-                        <h3 class="textoTamano">Respecto a la imagen de la derecha</h3>
-                        <img src="${imagenes[index + 1].currentSrc}" alt="imagenJ" class="imagenReactivoTamano">
-                    </div>
-                    </div>
-                    `;
-
-                    html3 += `
-                    <div class="divSelect">
-                        <select class="selectTamano" name="opcion${index}" id="opcion${index}">
-                            <option value="Mayor que" selected>Mayor que</option>
-                            <option value="Menor que">Menor que</option>
-                            <option value="Igual">Igual</option>
-                        </select>
-                    </div>
-                    `;
-                }else{
-                    console.log(index);
-                    html3 += `
-                    <div class="elementosTamanos">
-                        <div class="imgTam">
-                            <h3 class="textoTamano">La imagen de la izquierda es</h3>
-                            <img src="${imagenes[index + 1].currentSrc}" alt="imagenJ" class="imagenReactivoTamano">
-                        </div>
-                    `;
-                    
-                    html3 += `
-                        <div class="imgTam">
-                            <h3 class="textoTamano">Respecto a la imagen de la derecha</h3>
-                            <img src="${imagenes[index + 2].currentSrc}" alt="imagenJ" class="imagenReactivoTamano">
-                        </div>
-                    </div>
-                    `;
-
-                    html3 += `
-                    <div class="divSelect">
-                        <select class="selectTamano" name="opcion${index}" id="opcion${index}">
-                            <option value="Mayor que" selected>Mayor que</option>
-                            <option value="Menor que">Menor que</option>
-                            <option value="Igual">Igual</option>
-                        </select>
-                    </div>
-                    `;
-                }
+                html3 += `
+                <div class="elementosTamanos">
+                <div class="imgTam">
+                    <h3 class="textoTamano">La imagen de la izquierda es</h3>
+                    <img src="${imagenes[index + auxImagenes].currentSrc}" alt="imagenJ" class="imagenReactivoTamano">
+                </div>
+                `;
+                auxImagenes++;
+                html3 += `
+                <div class="imgTam">
+                    <h3 class="textoTamano">Respecto a la imagen de la derecha</h3>
+                    <img src="${imagenes[index + auxImagenes].currentSrc}" alt="imagenJ" class="imagenReactivoTamano">
+                </div>
+                </div>
+                `;
+                html3 += `
+                <div class="divSelect">
+                    <select class="selectTamano" name="opcion${index}" id="opcion${index}">
+                        <option value="Mayor que" selected>Mayor que</option>
+                        <option value="Menor que">Menor que</option>
+                        <option value="Igual">Igual</option>
+                    </select>
+                </div>
+                `;
+                console.log(`index final: ${auxImagenes}`)
             }else if(opcionJ[1] == "Forma"){
                 html3 += `
                 <div class="textoForma">
                     <h3 class="textoAdivinanza">La forma de las imágenes    ¿Qué figura geométrica representa?</h3>
                 </div>
                 `;
-                if(index === 0){
-                    html3 += `
-                    <div class="elementosFormas">
-                        <div>
-                            <img src="${imagenes[index].currentSrc}" alt="imagenJ" class="imagenReactivoForma">
-                        </div>
-                        <div>
-                            <img src="${imagenes[index + 1].currentSrc}" alt="imagenJ" class="imagenReactivoForma">
-                        </div>
+                html3 += `
+                <div class="elementosFormas">
+                    <div>
+                        <img src="${imagenes[index + auxImagenes].currentSrc}" alt="imagenJ" class="imagenReactivoForma">
                     </div>
-                    <div class="divRespuesta">
-                        <select class="selectTamano" name="opcion${index}" id="opcion${index}">
-                            <option value="Cuadrado">Cuadrado</option>
-                            <option value="Circulo">Circulo</option>
-                            <option value="Triángulo">Triángulo</option>
-                            <option value="Rectángulo">Rectángulo</option>
-                            <option value="Trapecio">Trapecio</option>
-                            <option value="Paralelogramo">Paralelogramo</option>
-                            <option value="Pentágono">Pentágono</option>
-                            <option value="Hexágono">Hexágono</option>
-                            <option value="Rombo">Rombo</option>
-                            <option value="Cubo">Cubo</option>
-                            <option value="Pirámide">Pirámide</option>
-                            <option value="Cono">Cono</option>
-                            <option value="Cilindro">Cilindro</option>
-                            <option value="Esfera">Esfera</option>
-                        </select>
+                `;
+                auxImagenes++;
+                html3 += `
+                    <div>
+                        <img src="${imagenes[index + auxImagenes].currentSrc}" alt="imagenJ" class="imagenReactivoForma">
                     </div>
-                    `;
-                }else{
-                    console.log(index);
-                    html3 += `
-                    <div class="elementosFormas">
-                        <div>
-                            <img src="${imagenes[index + 1].currentSrc}" alt="imagenJ" class="imagenReactivoForma">
-                        </div>
-                        <div>
-                            <img src="${imagenes[index + 2].currentSrc}" alt="imagenJ" class="imagenReactivoForma">
-                        </div>
-                    </div>
-                    <div class="divRespuesta">
-                        <select class="selectTamano" name="opcion${index + 1}" id="opcion${index + 1}">
-                            <option value="Cuadrado">Cuadrado</option>
-                            <option value="Circulo">Circulo</option>
-                            <option value="Triángulo">Triángulo</option>
-                            <option value="Rectángulo">Rectángulo</option>
-                            <option value="Trapecio">Trapecio</option>
-                            <option value="Paralelogramo">Paralelogramo</option>
-                            <option value="Pentágono">Pentágono</option>
-                            <option value="Hexágono">Hexágono</option>
-                            <option value="Rombo">Rombo</option>
-                            <option value="Cubo">Cubo</option>
-                            <option value="Pirámide">Pirámide</option>
-                            <option value="Cono">Cono</option>
-                            <option value="Cilindro">Cilindro</option>
-                            <option value="Esfera">Esfera</option>
-                        </select>
-                    </div>
-                    `;
-                }
+                </div>
+                <div class="divRespuesta">
+                    <select class="selectTamano" name="opcion${index}" id="opcion${index}">
+                        <option value="Cuadrado">Cuadrado</option>
+                        <option value="Circulo">Circulo</option>
+                        <option value="Triángulo">Triángulo</option>
+                        <option value="Rectángulo">Rectángulo</option>
+                        <option value="Trapecio">Trapecio</option>
+                        <option value="Paralelogramo">Paralelogramo</option>
+                        <option value="Pentágono">Pentágono</option>
+                        <option value="Hexágono">Hexágono</option>
+                        <option value="Rombo">Rombo</option>
+                        <option value="Cubo">Cubo</option>
+                        <option value="Pirámide">Pirámide</option>
+                        <option value="Cono">Cono</option>
+                        <option value="Cilindro">Cilindro</option>
+                        <option value="Esfera">Esfera</option>
+                    </select>
+                </div>
+                `;
             }
             html3 += `
             </div>

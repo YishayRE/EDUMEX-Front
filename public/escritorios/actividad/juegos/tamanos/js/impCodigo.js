@@ -4,34 +4,27 @@ const insertarCodigo = (contadorEtiqueta) => {
 
     const elementoJuego = document.createElement('div');
     elementoJuego.className = 'elementoJuego';
+    elementoJuego.id = `elementoJuego${contadorEtiqueta}`;
 
-    if(contadorEtiqueta === 0){
-        auxContador = contadorEtiqueta;
-        elementoJuego.id = `elementoJuego${contadorEtiqueta}`;
-    }else if(contadorEtiqueta > 0){
-        auxContador = contadorEtiqueta;
-        --auxContador;
-        elementoJuego.id = `elementoJuego${contadorEtiqueta - 1}`;
-    }
     elementoJuego.innerHTML = `
         <div id="primeraImagen" class="image-upload">
-            <label for="imagen${contadorEtiqueta}">
-                <img class="cargaImagen" id="cargaImagen${contadorEtiqueta}" src="../../../../images/upload.png"/>
+            <label for="imagen${contadorEtiqueta - 2}">
+                <img class="cargaImagen" id="cargaImagen${contadorEtiqueta - 2}" src="../../../../images/upload.png"/>
             </label>
                 
-            <input type="file" name="imagen${contadorEtiqueta}" id="imagen${contadorEtiqueta}" accept="image/png, image/jpeg">
+            <input type="file" name="imagen${contadorEtiqueta - 2}" id="imagen${contadorEtiqueta  - 2}" accept="image/png, image/jpeg">
         </div>
         <div class="contenedorTipo">
-            <select class="selectTipo" name="opcion${auxContador}" id="opcion${auxContador}">
+            <select class="selectTipo" name="opcion${contadorEtiqueta - 2}" id="opcion${contadorEtiqueta - 2}">
                 <option value="Tamaño" selected>Tamaño</option>
                 <option value="Forma">Forma</option>
             </select>
         </div>
-        <h5 class="selectTitulo" id="select${auxContador}">Tamaño</h5>
+        <h5 class="selectTitulo" id="select${contadorEtiqueta - 2}">Tamaño</h5>
 
         <div class="opcionesRespuesta">
-            <div class="respuestaCambiar" id="respuestaCambiar${auxContador}">
-                <select class="valorRespuesta" name="opt${auxContador}" id="opt${auxContador}">
+            <div class="respuestaCambiar" id="respuestaCambiar${contadorEtiqueta - 2}">
+                <select class="valorRespuesta" name="opt${contadorEtiqueta - 2}" id="opt${contadorEtiqueta - 2}">
                     <option value="Mayor que" selected>Mayor que</option>
                     <option value="Menor que">Menor que</option>
                     <option value="Igual">Igual</option>
@@ -39,31 +32,31 @@ const insertarCodigo = (contadorEtiqueta) => {
             </div>
 
             <div id="segundaImagen" class="image-upload">
-                <label for="imagen${contadorEtiqueta + 1}">
-                    <img class="cargaImagen" id="cargaImagen${contadorEtiqueta + 1}" src="../../../../images/upload.png"/>
+                <label for="imagen${contadorEtiqueta - 1}">
+                    <img class="cargaImagen" id="cargaImagen${contadorEtiqueta - 1}" src="../../../../images/upload.png"/>
                 </label>
                     
-                <input type="file" name="imagen${contadorEtiqueta + 1}" id="imagen${contadorEtiqueta + 1}" accept="image/png, image/jpeg">
+                <input type="file" name="imagen${contadorEtiqueta - 1}" id="imagen${contadorEtiqueta - 1}" accept="image/png, image/jpeg">
             </div>
         </div>
     `;
 
     contenedor.appendChild(elementoJuego);
 
-    const opcion = document.querySelector(`#opcion${auxContador}`);
-    const select = document.querySelector(`#select${auxContador}`);
-    const respuestaCambiar = document.querySelector(`#respuestaCambiar${auxContador}`);
+    const opcion = document.querySelector(`#opcion${contadorEtiqueta - 2}`);
+    const select = document.querySelector(`#select${contadorEtiqueta - 2}`);
+    const respuestaCambiar = document.querySelector(`#respuestaCambiar${contadorEtiqueta - 2}`);
 
 
     opcion.addEventListener('change', () => {
-        const valorRespuesta = document.querySelector(`#opt${auxContador}`);
+        const valorRespuesta = document.querySelector(`#opt${contadorEtiqueta - 2}`);
         if(opcion.selectedIndex === 1){
             select.innerHTML = 'Forma';
             respuestaCambiar.removeChild(valorRespuesta);
             let campoForma = document.createElement("select");
             campoForma.className = "valorRespuesta";
-            campoForma.id = `opt${auxContador}`;
-            campoForma.name = `opt${auxContador}`;
+            campoForma.id = `opt${contadorEtiqueta - 2}`;
+            campoForma.name = `opt${contadorEtiqueta - 2}`;
             respuestaCambiar.appendChild(campoForma);
             let arrayValores = ["Cuadrado","Círculo","Triangulo","Rectángulo","Trapecio","Paralelogramo",
             "Pentágono","Hexágono","Rombo","Cubo","Pirámide","Cono","Cilindro","Esfera"];
@@ -78,8 +71,8 @@ const insertarCodigo = (contadorEtiqueta) => {
             respuestaCambiar.removeChild(valorRespuesta);
             let campoTamaño = document.createElement("select");
             campoTamaño.className = "valorRespuesta";
-            campoTamaño.id = `opt${auxContador}`;
-            campoTamaño.name = `opt${auxContador}`;
+            campoTamaño.id = `opt${contadorEtiqueta - 2}`;
+            campoTamaño.name = `opt${contadorEtiqueta - 2}`;
             respuestaCambiar.appendChild(campoTamaño);
             let arrayValores = ["Mayor que","Menor que","Igual"];
             for (let i = 0; i < arrayValores.length; i++) {
@@ -91,11 +84,11 @@ const insertarCodigo = (contadorEtiqueta) => {
         }
     });
 
-    const inputImagen = document.querySelector(`#imagen${contadorEtiqueta}`);
-    const cargaImagen = document.querySelector(`#cargaImagen${contadorEtiqueta}`);
+    const inputImagen = document.querySelector(`#imagen${contadorEtiqueta - 2}`);
+    const cargaImagen = document.querySelector(`#cargaImagen${contadorEtiqueta - 2}`);
 
-    const inputImagenDos = document.querySelector(`#imagen${contadorEtiqueta + 1}`);
-    const cargaImagenDos = document.querySelector(`#cargaImagen${contadorEtiqueta + 1}`);
+    const inputImagenDos = document.querySelector(`#imagen${contadorEtiqueta - 1}`);
+    const cargaImagenDos = document.querySelector(`#cargaImagen${contadorEtiqueta - 1}`);
 
     inputImagen.addEventListener('change', async(event) => {
         const file = inputImagen.files[0];

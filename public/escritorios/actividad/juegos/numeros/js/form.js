@@ -48,45 +48,8 @@ const generarHtml = () => {
                         throw new Error(`El elemento ${index + 1} de la respuesta no fue escrito en la sucesión`);
                     }
                 });
-            }if(elemento[1] == "Operacion"){
-                let resultadosOperaciones = [];
-                let comasEncontradas = (elementosForm[index + 1][1].match(/\,/g) || []).length;
-                if(comasEncontradas > 0){
-                    dibujarPopAlerta("Una operacion no debe tener comas");
-                    throw new Error("Una operacion no debe tener comas");
-                }
-                let operacion = elementosForm[index + 1][1];
-                const opBasicas = ["+","-","*","/"];
-                opBasicas.forEach(operador => {
-                    let resultado;
-                    const numeros = operacion.split(`${operador}`);
-                    if(numeros.length >= 2){
-                        switch (operador) {
-                            case "+":
-                                resultado = parseInt(numeros[0]) + parseInt(numeros[1]);
-                                resultadosOperaciones.push(resultado);
-                                break;
-                            case "-":
-                                resultado = parseInt(numeros[0]) - parseInt(numeros[1]);
-                                resultadosOperaciones.push(resultado);
-                                break;
-                            case "*":
-                                resultado = parseInt(numeros[0]) * parseInt(numeros[1]);
-                                resultadosOperaciones.push(resultado);
-                                break;
-                            case "/":
-                                resultado = parseInt(numeros[0]) / parseInt(numeros[1]);
-                                resultadosOperaciones.push(resultado);
-                                break;
-                            default:
-                                throw new Error("No se pudo realizar la operación");
-                        }
-                    }
-                });
-                console.log(resultadosOperaciones);
             }
         });
-        /*
         const size = Object.keys(formulario).length / 3;
         let arrayJ = [[]];
         let respuestas = [];
@@ -129,7 +92,7 @@ const generarHtml = () => {
         console.log(respuestas);
         let body = html3;
         html3 = '';
-        return [`<form id="contenidoJuego">${body}</form>`,respuestas];*/
+        return [`<form id="contenidoJuego">${body}</form>`,respuestas];
     } 
     return false; 
 }

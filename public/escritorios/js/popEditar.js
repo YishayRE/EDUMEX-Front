@@ -13,13 +13,28 @@ const dibujarPopEditarUser = () => {
                 <a class="close" id="cerrarEditarUser" href="">&times;</a>
 
                 <div class="content">
-                    <form class="center" style="padding: 10px;">
+                    <form class="center">
                         <div id="contenidoDatosUser" class="contenidoDatosUser">
-                        <input name="nombre" type="text" class="textoComentario" id="nombre">
-                        <input name="apPat" type="text" class="textoComentario" id="apPat">
-                        <input name="apMat" type="text" class="textoComentario" id="apMat">
-                        <input name="password" type="password" class="textoComentario" id="password">
-                        <input name="passwordC" type="password" class="textoComentario" id="passwordC">
+                            <div class="inputbox">
+                                <input type="text" name="nombre" id="nombre">
+                                <span>Nombre</span>
+                            </div>
+                            <div class="inputbox">
+                                <input type="text" name="nombre" id="apPat">
+                                <span>Apellido Paterno</span>
+                            </div>
+                            <div class="inputbox">
+                                <input type="text" name="nombre" id="apMat">
+                                <span>Apellido Materno</span>
+                            </div>  
+                            <div class="inputbox">
+                                <input type="password" name="nombre" id="password">
+                                <span>Contraseña</span>
+                            </div>  
+                            <div class="inputbox">
+                                <input type="password" name="nombre" id="passwordC">
+                                <span>Confirmar Contraseña</span>
+                            </div>      
         `;
     popUpHtml += `
                         </div>

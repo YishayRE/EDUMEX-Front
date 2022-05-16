@@ -19,14 +19,7 @@ const descargarArchivo = async(idT, route) => {
 
         let errores = '';
         
-        if(respuesta.msg){
-            respuesta.msg.forEach((err, index) => {
-                errores += `${index}. ${err.msg}\n`;
-            });
-            hiddenLoad();
-            dibujarPopAlerta(errores);
-            throw new Error(errores);        
-        }
+        
     } catch (error) {*/
         const respuesta = await resp.status;
         console.log(respuesta);
@@ -42,7 +35,10 @@ const descargarArchivo = async(idT, route) => {
             return "Tu documento está listo";
         }else if(respuesta === 406){
             return "Fallo al crear el archivo";
-        }else{
-            return "Se ha caido el servidor";
+        }
+        if(respuesta.msg){
+            hiddenLoad();
+            dibujarPopAlerta(respuesta.msg);
+            throw new Error(respuesta.msg);        
         }
 }

@@ -21,7 +21,7 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
         if(titulo == 'Escritorio Principal'){
             navBarHtml += `
             <div class="enlace" id="menuEditar">
-                <img src="${baseUrl}/images/logoPNG.png" alt="EDUMEX" class="logo">
+                <img src="${baseUrl}/images/edit.png" alt="EDUMEX" class="logo">
             </div>
             `;
         }else{

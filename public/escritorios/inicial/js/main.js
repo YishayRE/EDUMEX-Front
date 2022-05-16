@@ -70,6 +70,7 @@ const checarRol = async() => {
             btnUnir.style.display = "none";
         }
         dibujarGrupo([grupo]);
+        estiloAlumno();
     }
 }
 
@@ -84,3 +85,24 @@ const main = async() => {
 main();
 
 window.history.length = 0;
+
+const estiloAlumno = () => {
+    const tarjetaGrupo = document.querySelector(".tarjeta");
+    const tarjetaNombre = document.querySelector(".tarjeta_nombre");
+    const tarjetaBienvenida = document.querySelector(".tarjeta_bienvenida");
+    const textoTarjetas = document.querySelector(".textoTarjetas");
+    const tarjetaBoton = document.querySelector(".tarjeta_button");
+
+    tarjetaGrupo.style.width = "300px";
+    tarjetaGrupo.style.height = "300px";
+    tarjetaGrupo.style.fontSize = "25px";
+    tarjetaNombre.style.fontSize = "35px";
+    tarjetaBienvenida.style.maxWidth = "300px";
+    tarjetaBienvenida.style.fontSize = "30px";
+    textoTarjetas.style.overflowY = "hidden";
+    textoTarjetas.style.maxHeight = "40px";
+    textoTarjetas.style.maxWidth = "300px";
+    tarjetaBoton.style.width = "100px";
+    tarjetaBoton.style.marginTop = "auto";
+    tarjetaBoton.style.borderWidth = "8px";
+}
