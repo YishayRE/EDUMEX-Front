@@ -26,21 +26,13 @@ const dibujarPopEditarUser = () => {
                             <div class="inputbox">
                                 <input type="text" name="nombre" id="apMat">
                                 <span>Apellido Materno</span>
-                            </div>  
-                            <div class="inputbox">
-                                <input type="password" name="nombre" id="password">
-                                <span>Contraseña</span>
-                            </div>  
-                            <div class="inputbox">
-                                <input type="password" name="nombre" id="passwordC">
-                                <span>Confirmar Contraseña</span>
                             </div>      
         `;
     popUpHtml += `
                         </div>
-                        <div class="inputsDatosUser">
-                            <button class="enviarComentario" id="nuevoComentario0" type="submit">Editar Usuario</button>
-                            <button class="enviarComentario" id="nuevoComentario0" type="submit">Eliminar Usuario</button>
+                        <div class="botonesDatosUser">
+                            <button class="botonUser" id="editarUser" type="submit">Editar Usuario</button>
+                            <button class="botonUser" id="eliminarUser">Eliminar Usuario</button>
                         </div>
                     </form>
                 </div>

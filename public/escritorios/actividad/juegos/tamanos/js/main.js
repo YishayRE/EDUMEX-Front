@@ -43,7 +43,7 @@ resta.addEventListener('click', () => {
 
 const checarRol = async() => {
     if(rol == "PRO_ROLE"){
-        dibujarNavBar(accesoP, 'Tamanos', 'materia');
+        dibujarNavBar(accesoP, 'tamanos', 'materia');
         cerrarSesion();
     }else if(rol == "EST_ROLE"){
         dibujarNavBar();

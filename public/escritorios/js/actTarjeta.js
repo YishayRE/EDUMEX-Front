@@ -23,13 +23,10 @@ const actTarjeta = async(formData = {}, route = '', idT, esJuego = '') => {
     console.log(respuesta);
     let errores = '';
     
-    if(respuesta.errors){
-        respuesta.errors.forEach((err, index) => {
-            errores += `${index}. ${err.msg}\n`;
-        });
+    if(respuesta.msg){
         hiddenLoad();
-        dibujarPopAlerta(errores);
-        throw new Error(errores);        
+        dibujarPopAlerta(respuesta.msg);
+        throw new Error(respuesta.msg);        
     }
     if(esJuego){
         window.open(`${juegosUrl}juegos/${esJuego}/prueba/`);

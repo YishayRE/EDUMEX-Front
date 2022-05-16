@@ -93,16 +93,25 @@ const dibujarPopAlerta = (err, route, idT) => {
                     <h2>Inscritos</h2>
                     <div id="listaCompleta">
                 `;
-                idT.forEach((alumno, index) => {
-                    popAlertaHtml += `
-                        <div class="elementosBox" id="estudianteLista${alumno.inscripcion}">
-                            <label class="nomAlumno">${alumno.nombreC}</label> 
-                            <div id="quitarEst">
-                                <img src="${baseUrl}/images/remove.png" alt="Quitar estudiante" class="logoBoton">
+                console.log(idT.length);
+                if(idT.length > 0){
+                    idT.forEach((alumno, index) => {
+                        popAlertaHtml += `
+                            <div class="elementosBox" id="estudianteLista${alumno.inscripcion}">
+                                <label class="nomAlumno">${alumno.nombreC}</label> 
+                                <div id="quitarEst">
+                                    <img src="${baseUrl}/images/remove.png" alt="Quitar estudiante" class="logoBoton">
+                                </div>
                             </div>
-                        </div>
+                        `;
+                    });
+                }else{
+                    popAlertaHtml += `
+                            <div class="elementosBox">
+                                <h2>Este grupo no tiene estudiantes inscritos</h2> 
+                            </div>
                     `;
-                });
+                }
                 popAlertaHtml += `
                     </div>  
                 `;

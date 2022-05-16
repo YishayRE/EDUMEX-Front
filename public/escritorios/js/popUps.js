@@ -173,6 +173,7 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '', datosList
             }
         else{
             console.log("Faltan Datos");  
+            dibujarPopAlerta("Faltan campos por llenar"); 
             hiddenLoad();
         }  
     });
@@ -193,8 +194,11 @@ const dibujarPopEditar = ([nombre = '', form = '', datos = [], boton = '', datos
         `;
     datos.forEach(({ type, name, titulo }) => {
         if(type == "list"){
+            if(name != "grado"){
             popEditarHtml += `
-            <div class="inputbox">
+                <div class="inputbox">
+            `;
+            popEditarHtml += `
                 <input list="${type}${name}" name="${name}" id="le${name}">
 
                 <span>${titulo}</span>
@@ -233,6 +237,7 @@ const dibujarPopEditar = ([nombre = '', form = '', datos = [], boton = '', datos
                 </datalist>
             </div>       
             `;
+        }
         }else{
             popEditarHtml += `
             <div class="inputbox">
@@ -270,10 +275,7 @@ const dibujarPopEditar = ([nombre = '', form = '', datos = [], boton = '', datos
 
     switch (form) {
         case 'grupo':
-            const grado = document.querySelector('#legrado');
             const grupo = document.querySelector('#legrupo');
-
-            grado.onkeypress = function() {return soloNumeros(event)};
             grupo.onkeypress = function() {return soloLetras(event)};
 
             break;
@@ -308,7 +310,8 @@ const dibujarPopEditar = ([nombre = '', form = '', datos = [], boton = '', datos
         if(valForm(datos))
             await actTarjeta(datos, `${form}/`, editarId);
         else{
-            console.log("Faltan Datos");  
+            console.log("Faltan Datos");
+            dibujarPopAlerta("Faltan campos por llenar"); 
             hiddenLoad();
         }  
     });

@@ -9,7 +9,17 @@ const dibujarNavBar = (accesos = [], tipoJuego, url) => {
             <input type="checkbox" id="check">
 
             <div id="titulo">
+    `;
+    if(tipoJuego == "tamanos"){
+        navBarHtml += `
+                <h3>Tamaños y Formas</h3>
+        `;
+    }else{
+        navBarHtml += `
                 <h3>${tipoJuego}</h3>
+        `;
+    }
+    navBarHtml += `
             </div>
 
             <label for="check" class="checkbtn" id="barras">
