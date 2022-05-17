@@ -1,6 +1,7 @@
 const formUnir = document.querySelector('#form_unirGrupo');
 const formCrear = document.querySelector('#form_crearGrupo');
 const titulo = "Escritorio Principal"
+let infoGrupos = null;
 
 const accesoP = [
     {
@@ -57,13 +58,19 @@ const checarRol = async() => {
         cerrarSesion();
         dibujarPopUp(datosPopP);
         const {grupos} = await obtenerArray(`grupo/`, uid);
+        infoGrupos = grupos;
         dibujarGrupo(grupos);
     }else if(rol == "EST_ROLE"){
         dibujarNavBar(accesoE, titulo);
         cerrarSesion();
         dibujarPopUp(datosPopE);
-        const {grupos} = await obtenerArray(`inscrito/`, uid);
-        dibujarGrupo(grupos);
+        const {grupo} = await obtenerArray(`inscrito/`, uid);
+        if(grupo){
+            const btnUnir = document.querySelector("#est0");
+            btnUnir.style.display = "none";
+        }
+        dibujarGrupo([grupo]);
+        estiloAlumno();
     }
 }
 
@@ -78,4 +85,24 @@ const main = async() => {
 main();
 
 window.history.length = 0;
-console.dir(window.history);
+
+const estiloAlumno = () => {
+    const tarjetaGrupo = document.querySelector(".tarjeta");
+    const tarjetaNombre = document.querySelector(".tarjeta_nombre");
+    const tarjetaBienvenida = document.querySelector(".tarjeta_bienvenida");
+    const textoTarjetas = document.querySelector(".textoTarjetas");
+    const tarjetaBoton = document.querySelector(".tarjeta_button");
+
+    tarjetaGrupo.style.width = "300px";
+    tarjetaGrupo.style.height = "300px";
+    tarjetaGrupo.style.fontSize = "25px";
+    tarjetaNombre.style.fontSize = "35px";
+    tarjetaBienvenida.style.maxWidth = "300px";
+    tarjetaBienvenida.style.fontSize = "30px";
+    textoTarjetas.style.overflowY = "hidden";
+    textoTarjetas.style.maxHeight = "40px";
+    textoTarjetas.style.maxWidth = "300px";
+    tarjetaBoton.style.width = "100px";
+    tarjetaBoton.style.marginTop = "auto";
+    tarjetaBoton.style.borderWidth = "8px";
+}

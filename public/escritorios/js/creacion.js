@@ -1,10 +1,11 @@
-const creacion = async(formData = {}, route = '') => {
+const creacion = async(formData = {}, route = '', idT) => {
     const token = localStorage.getItem('token') || '';
     let myHeaders = new Headers();
     myHeaders.append("x-token", token);
     myHeaders.append("user", uid);
+    myHeaders.append("id", idT);
     myHeaders.append("Content-Type", "application/json");
-    
+    console.log(formData);
     let raw = JSON.stringify(formData);
     console.log('Estoy en creacion');
     console.log(raw);
@@ -36,7 +37,6 @@ const creacion = async(formData = {}, route = '') => {
     }
 
     localStorage.setItem(route, respuesta);
-    //window.location = `../${route}`;
     location.reload();
 }
 

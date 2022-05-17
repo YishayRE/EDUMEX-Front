@@ -20,8 +20,8 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
     `;
         if(titulo == 'Escritorio Principal'){
             navBarHtml += `
-            <div class="enlace">
-                <img src="${baseUrl}/images/logoPNG.png" alt="EDUMEX" class="logo">
+            <div class="enlace" id="menuEditar">
+                <img src="${baseUrl}/images/edit.png" alt="EDUMEX" class="logo">
             </div>
             `;
         }else{
@@ -34,9 +34,19 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
         navBarHtml += `
             <ul id="lista">
         `;
-
     accesos.forEach(({ nombre, referencia },index) => {
-        if(titulo.startsWith('Grupo') && nombre == "Activar Grupo" && rol === 'PRO_ROLE'){
+        if(nombre == "Calificaciones"){
+            navBarHtml += `
+                <li>
+                    <a id="${role}${index}" href class="botonesNav">
+                        <div class="activar">
+                            <img src="${baseUrl}/images/calificaciones.png" alt="Calificaciones" class="logoBoton">
+                        </div>
+                    </a>
+                </li>
+            `;
+        }
+        else if(titulo.startsWith('Grupo') && nombre == "Activar Grupo" && rol === 'PRO_ROLE'){
             switch (disponibleGrupo) {
                 case true:
                     extraHtml += `
@@ -62,8 +72,8 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
                     break;
                 default:
                     break;
+                    
             }
-            
             navBarHtml += extraHtml;
         }else{
             navBarHtml += `
@@ -80,22 +90,32 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
 
     navBar.innerHTML = navBarHtml;
 
-    if(titulo != 'Escritorio Principal'){
+    if(titulo == 'Escritorio Principal'){
+        const btnMenuEditar = document.querySelector('#menuEditar');
+        btnMenuEditar.addEventListener('click', e => {
+            dibujarPopEditarUser();
+            showPopEditarUser();
+        });
+    }else{
+        if(titulo.length > 25){
+            const tituloEsc = document.querySelector("#titulo");
+            tituloEsc.style.marginTop = "0px"
+        }
         const btnRegresar = document.querySelector('#regresar');
         btnRegresar.addEventListener('click', e => {
             window.location.replace(`${escritoriosUrl}${url}`);
         });
     }
-
-    const lista = document.querySelector("#lista");
-
-    if(titulo.startsWith('Grupo')){
-        i = 1;
+    
+    if(titulo.startsWith('Grupo') && rol === 'PRO_ROLE'){
+        i = 2;
         let grupoActual = new Object();
         grupoActual.disponible = !disponibleGrupo;
 
-        activar = document.querySelector('#pro0');
+        activar = document.querySelector('#pro1');
         activar.style.padding = "10px 70px";
+        calificaciones = document.querySelector('#pro0');
+        calificaciones.style.padding = "10px 60px 10px 70px";
         
         activar.addEventListener('click', async(event) =>{
             event.preventDefault();
@@ -105,12 +125,35 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
             }
             else{
                 location.reload();
-            }
-            
+            } 
         });
+
+        calificaciones.addEventListener('click', async(event) =>{
+            event.preventDefault();
+            showLoad();
+            const archivoDescargado = await descargarArchivo(localStorage.getItem('grupo'), "grupo/");
+            console.log(archivoDescargado);
+            hiddenLoad();
+        });
+
+    }else if(titulo.startsWith('Materia') && rol === 'PRO_ROLE'){
+        calificaciones = document.querySelector('#pro0');
+        calificaciones.style.padding = "10px 60px 10px 70px";
+
+        calificaciones.addEventListener('click', async(event) =>{
+            event.preventDefault();
+            showLoad();
+            const archivoDescargado = await descargarArchivo(localStorage.getItem('materia'), "materia/");
+            console.log(archivoDescargado);
+            hiddenLoad();
+        });
+
+        i = 1;
     }else{
         i = 0;
     }
+
+    const lista = document.querySelector("#lista");
 
     for(i; i < (lista.children.length - 1); i++){
         document.querySelector(`#${role}${i}`).addEventListener('click', (event) => {

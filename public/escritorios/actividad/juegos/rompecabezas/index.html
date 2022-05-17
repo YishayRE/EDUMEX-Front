@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="../css/generalJuego.css">
+    <link rel="stylesheet" type="text/css" href="./css/estiloCreacion.css">
     <link rel="stylesheet" type="text/css" href="../../../../css/generales/esc_general.css">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/popups.css">
+    <title>Crear juego: Rompecabezas</title>
 </head>
 <body> 
     <div id="blocker"></div>
     <div id="loader"></div>
+    <div id="popAlert"></div>
+
     <header class="stick" id="navBar">
     </header>
 
@@ -25,7 +29,12 @@
             <h1 id="objetivo">Objetivo</h1>
         </div>
         <div class="cajaInfo2">
-            <h1 id="descripcion">Descripcion</h1>
+            <form>
+                <h1>Tiempo en minutos</h1>
+                <input class="inputsJuego" type="number" id="tiempoJ" name="tiempoJ">
+                <h1>Intentos</h1>
+                <input class="inputsJuego" type="number" id="intentosJ" name="intentosJ">
+            </form>
         </div>
     </div>
 
@@ -34,16 +43,18 @@
             <form id="formJ">
                 <div id="contenedor">
                     <div class="elementoJuego">
-                        <div class="image-upload">
-                            <h5>Carga tu Imagen</h5>
-                            <label for="imagen0">
-                            <img id="cargaImagen" src="../../../../images/upload.png"/>
-                            </label>
-                            <input type="file" name="imagen0" id="imagen0" accept="image/png, image/jpeg">
-                        </div>
-                        <div>
-                            <h5>Numero de piezas</h5>
-                            <input type="text" name="opt0" id="opt0">
+                        <div class="elementosRompecabezas">
+                            <div class="image-upload">
+                                <h5>Carga tu Imagen</h5>
+                                <label for="imagen0">
+                                <img class="cargaImagen" src="../../../../images/upload.png"/>
+                                </label>
+                                <input type="file" name="imagen0" id="imagen0" accept="image/png, image/jpeg">
+                            </div>
+                            <div>
+                                <h5>Numero de piezas</h5>
+                                <input type="text" name="opt0" id="opt0">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -59,9 +70,14 @@
     <script src="../../../../js/validarJWT.js"></script>
     <script src="../../../../escritorios/js/renovarJWT.js"></script>
     <script src="../../../../js/loaders.js"></script>
+    <script src="../../../../js/formularios.js"></script>
+    <script src="js/form.js"></script>
+    <script src="../../../js/actTarjeta.js"></script>
+    <script src="../../js/petJuegos.js"></script>
     <script src="../../js/navBar.js"></script>
     <script src="../../../../js/alertas.js"></script>
     <script src="../js/actividad.js"></script>
     <script src="../js/common.js"></script>
+    <script src="js/impCodigo.js"></script>
     <script src="js/main.js"></script>
 </html>

@@ -1,0 +1,26 @@
+#contenidoJuego{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+}
+
+#codigo{
+    display: flex;
+    justify-content: center;
+    overflow-y: scroll !important;
+    max-height: 550px;
+}
+
+.campoRespuesta{
+    width: 150px;
+    height: 40px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 3px solid;
+    border-color: #917681;
+}
+
+.tituloPregunta{
+    font-size: 20px;
+    margin: 5px;
+}

@@ -9,41 +9,38 @@ const iniciar = async(formData) => {
     if(msg){
         console.error(msg);            
         dibujarPopAlerta(msg);
-        return;
+        return; 
     }
 
     if(token){
         localStorage.setItem('token', token);
         window.location = `${baseUrl}/escritorios/inicial`;
     }
-
-    console.error('No se pudo iniciar sesión, reintente por favor');
     return;
 }
 
 const registrar = async(formData) => {
-    const resp = await fetch(baseApi + 'usuarios', {
+    const resp = await fetch(baseApi + 'usuario', {
         method: 'POST',
         body: JSON.stringify(formData),
         headers: {'Content-Type': 'application/json'}
     });
-    const {errors, usuario} = await resp.json();
+    const respuesta = await resp.json();
+
+    console.log(respuesta);
     let errores = '';
+    let errors = [];
+
     
-    if(errors){
-        errors.forEach((err, index) => {
-            errores += `${index}. ${err.msg}\n`;
-        });
-        console.error(errores);        
-        dibujarPopAlerta(errores);
-        return;
+    if(respuesta.msg){
+        dibujarPopAlerta(respuesta.msg);
+        throw new Error (respuesta.msg);
     }
 
-    if(usuario){
+    if(respuesta){
         await iniciar(formData);
     }
 
-    console.error('No se pudo crear el usuario, reintenta por favor');
     return;
 }
 

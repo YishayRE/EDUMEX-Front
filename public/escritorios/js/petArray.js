@@ -1,12 +1,12 @@
 const obtenerArray = async(arrayPath, idT) => {
     const token = localStorage.getItem('token') || '';
-    const resp = await fetch(baseApi + arrayPath + 'id', {
+    const resp = await fetch(baseApi + arrayPath + 'id/', {
         method: 'GET',
         headers: { 'x-token': token, user: uid, id: idT }
     });
 
     const respuesta = await resp.json();
-    
+    console.log(respuesta);
     if(respuesta.msg){
         hiddenLoad();
         switch (rol) {
@@ -31,7 +31,71 @@ const obtenerArray = async(arrayPath, idT) => {
             default:
                 break;
         }
-        throw new Error(respuesta.msg);        
+        throw new Error(respuesta.msg);
     }
+    return respuesta;
+}
+
+const obtenerEstudiantes = async(idG) => {
+    const token = localStorage.getItem('token') || '';
+    const resp = await fetch(baseApi + "inscrito/inscritos/", {
+        method: 'GET',
+        headers: { 'x-token': token, user: uid, id: idG }
+    });
+
+    const respuesta = await resp.json();
+    console.log(respuesta);
+    if(respuesta.msg){
+        hiddenLoad();
+        dibujarPopAlerta("No se pudo obtener a los estudiantes del grupo");
+        throw new Error(respuesta.msg);
+    }
+    return respuesta;
+}
+
+const obtenerMensajes = async(idAct) => {
+    const token = localStorage.getItem('token') || '';
+    const resp = await fetch(baseApi + "comentario/id/", {
+        method: 'GET',
+        headers: { 'x-token': token, user: uid, id: idAct }
+    });
+
+    const respuesta = await resp.json();
+    console.log(respuesta);
+    if(respuesta.msg){
+        hiddenLoad();
+        dibujarPopAlerta(respuesta.msg);
+        throw new Error(respuesta.msg);
+    }
+    console.log(respuesta);
+    return respuesta;
+}
+
+const mandarComentario = async(formData) =>{
+    const token = localStorage.getItem('token') || '';
+    let myHeaders = new Headers();
+    myHeaders.append("x-token", token);
+    myHeaders.append("user", uid);
+    myHeaders.append("Content-Type", "application/json");
+    let raw = JSON.stringify(formData);
+
+    let requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+
+    const resp = await fetch(baseApi + "comentario/", requestOptions);
+
+    const respuesta = await resp.json();
+    console.log(respuesta);
+
+    if(respuesta.msg){
+        hiddenLoad();
+        dibujarPopAlerta(respuesta.msg);
+        throw new Error(respuesta.msg);
+    }
+
     return respuesta;
 }

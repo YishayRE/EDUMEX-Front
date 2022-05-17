@@ -1,28 +1,25 @@
 const navBar = document.querySelector('#navBar');
-
-
-let html1 = `
-    <title>EDUMEX INICIO</title>
-    <link rel="stylesheet" type="text/css" href="${baseUrl}css/style_inicio.css">
-    <link rel="stylesheet" type="text/css" href="${baseUrl}css/generales/esc_general.css">
-    <link rel="stylesheet" type="text/css" href="${baseUrl}css/generales/footer.css">
-    <link rel="stylesheet" type="text/css" href="${baseUrl}escritorios/css/popups.css">
-    `;
-let htmlJs = `
-    <script src="${baseUrl}escritorios/actividad/js/navBar.js"></script>
-    <script>window.locaction.reload()</script>
-`;
+const juegoId = localStorage.getItem('juego');
 
 const dibujarNavBar = (accesos = [], tipoJuego, url) => {
     let navBarHtml = '';
-    let tipo = '';
 
     navBarHtml += `
         <nav id="barraNav">
             <input type="checkbox" id="check">
 
             <div id="titulo">
+    `;
+    if(tipoJuego == "tamanos"){
+        navBarHtml += `
+                <h3>Tamaños y Formas</h3>
+        `;
+    }else{
+        navBarHtml += `
                 <h3>${tipoJuego}</h3>
+        `;
+    }
+    navBarHtml += `
             </div>
 
             <label for="check" class="checkbtn" id="barras">
@@ -37,15 +34,18 @@ const dibujarNavBar = (accesos = [], tipoJuego, url) => {
 
         <ul>
     `;
-    
+
     accesos.forEach(({ nombre, referencia }, index) => {
-        if((accesos.length - 1) === index){
+        if (nombre == 'Probar') {
             navBarHtml += `
                 <li><a id="probarJ">${nombre}</a></li>
             `;
-            tipo = nombre;
-        }
-        else
+
+        } else if (nombre == 'Terminar Juego') {
+            navBarHtml += `
+                <li><a id="terminarJ">${nombre}</a></li>
+            `;
+        } else
             navBarHtml += `
                 <li><a href="${baseUrl}${referencia}">${nombre}</a></li>
             `;
@@ -60,17 +60,48 @@ const dibujarNavBar = (accesos = [], tipoJuego, url) => {
 
     navBar.innerHTML = navBarHtml;
 
-    if(tipo == 'Probar'){
+    if (tipoJuego !== "Seleccion de juego") {
         const probarJ = document.querySelector('#probarJ');
+        const terminarJ = document.querySelector('#terminarJ');
+
         probarJ.addEventListener('click', async(e) => {
+            let formulario = "";
+            formulario = generarHtml();
+            if(formulario == false){
+                console.log("No se generado el codigo del juego");
+            }else{
+                if(formulario[1].length <= 1){
+                    dibujarPopAlerta("Debe agregar minimo dos reactivos");
+                }else{
+                    showLoad();
+                    let idJuego = await actTarjeta({
+                    codigo: formulario[0],
+                    respuestas: formulario[1]
+                    }, "juego/", juegoId, tipoJuego);
+                    hiddenLoad();
+                }
+            }
+        });
+
+        terminarJ.addEventListener('click', async(e) => {
             let formulario = generarHtml();
-            let cssJuego = `<link rel="stylesheet" type="text/css" href="${baseUrl}escritorios/actividad/juegos/${tipoJuego}/css/estiloJuego.css">`;
-            let jsJuego = `<script src="${baseUrl}escritorios/actividad/juegos/${tipoJuego}/js/logicaJuego.js"></script>`;
-            html1 += cssJuego;
-            htmlJs += jsJuego;
-            formulario += htmlJs;
-            let htmlContent = html1 + formulario;
-            await fs.writeFile('./my-page.html', htmlContent, (error) => { console.log('No se pudo crear la pagina'); });
+            const elementosCalif = dataForm(document.querySelector("#elementosCalif"));
+            console.log(elementosCalif);
+            const valoresBien = validarVacios(elementosCalif);
+
+            if(valoresBien.estaCompleto){
+                showLoad();
+                let idJuego = await terminarJuego({
+                    codigo: formulario[0],
+                    respuestas: formulario[1],
+                    tiempo: elementosCalif.tiempo,
+                    intentos: elementosCalif.intentos,
+                    tipoJuego: tipoJuego
+                }, juegoId);
+                hiddenLoad();
+            }else{
+                dibujarPopAlerta("Los siguientes campos están vacios: " + valoresBien.camposVacios);
+            }
         });
     }
 

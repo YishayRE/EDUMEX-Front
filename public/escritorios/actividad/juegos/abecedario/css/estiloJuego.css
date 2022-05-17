@@ -1,3 +1,36 @@
-#contenidoJuego{
+#contenidoJuego {
     color: black;
+}
+
+.reactivoAbecedario{
+    margin: 20px;
+    text-align: center;
+    margin: 10px;
+    padding: 20px;
+    color: black;
+    background-color: #ffcdc1;
+    border: 5px solid;
+    border-color: #917681;
+    border-radius: 15px;
+    text-transform: uppercase;
+    height: 300px;
+    width: 300px;
+}
+
+.imagenReactivo{
+    width: 170px;
+    height: 170px;
+    border-radius: 10px;
+}
+
+.textoTitulo{
+    font-size: 18px;
+    color: #68555c;
+}
+
+.textoOracion{
+    font-size: 14px;
+    color: #68555c;
+    overflow-y: scroll;
+    max-height: 17px;
 }

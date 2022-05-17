@@ -20,17 +20,16 @@ const inscripcion = async(formData = {}, route = '') => {
       
     const respuesta = await resp.json();
     let errores = '';
+
+    console.log(respuesta);
     
-    if(respuesta.errors){
-        respuesta.errors.forEach((err, index) => {
-            errores += `${index}. ${err.msg}\n`;
-        });
+    if(respuesta.msg){
         hiddenLoad();
-        dibujarPopAlerta(errores);
-        throw new Error(errores);        
+        dibujarPopAlerta(respuesta.msg);
+        throw new Error(respuesta.msg);        
     }
 
     localStorage.setItem(route, respuesta);
     //window.location = `../${route}`;
-    //location.reload();
+    location.reload();
 }

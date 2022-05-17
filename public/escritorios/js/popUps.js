@@ -165,15 +165,15 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '', datosList
                     const estu = {estudiante: `${datos['estudiante']}`}
                     const gru = {codigo: `${datos['codigo']}`}
                     const finalResult = Object.assign(estu,gru);
-                    console.log(finalResult);
                     await inscripcion(finalResult, form);
                     break;
                 default:
-                    await creacion(datos, form);
+                    await creacion(datos, form, vId);
                     break;
             }
         else{
             console.log("Faltan Datos");  
+            dibujarPopAlerta("Faltan campos por llenar"); 
             hiddenLoad();
         }  
     });
@@ -194,8 +194,11 @@ const dibujarPopEditar = ([nombre = '', form = '', datos = [], boton = '', datos
         `;
     datos.forEach(({ type, name, titulo }) => {
         if(type == "list"){
+            if(name != "grado"){
             popEditarHtml += `
-            <div class="inputbox">
+                <div class="inputbox">
+            `;
+            popEditarHtml += `
                 <input list="${type}${name}" name="${name}" id="le${name}">
 
                 <span>${titulo}</span>
@@ -234,6 +237,7 @@ const dibujarPopEditar = ([nombre = '', form = '', datos = [], boton = '', datos
                 </datalist>
             </div>       
             `;
+        }
         }else{
             popEditarHtml += `
             <div class="inputbox">
@@ -271,10 +275,7 @@ const dibujarPopEditar = ([nombre = '', form = '', datos = [], boton = '', datos
 
     switch (form) {
         case 'grupo':
-            const grado = document.querySelector('#legrado');
             const grupo = document.querySelector('#legrupo');
-
-            grado.onkeypress = function() {return soloNumeros(event)};
             grupo.onkeypress = function() {return soloLetras(event)};
 
             break;
@@ -307,9 +308,10 @@ const dibujarPopEditar = ([nombre = '', form = '', datos = [], boton = '', datos
         showLoad();
         const datos = dataForm(formulario);
         if(valForm(datos))
-            await actTarjeta(datos, `${form}/${editarId}`);
+            await actTarjeta(datos, `${form}/`, editarId);
         else{
-            console.log("Faltan Datos");  
+            console.log("Faltan Datos");
+            dibujarPopAlerta("Faltan campos por llenar"); 
             hiddenLoad();
         }  
     });

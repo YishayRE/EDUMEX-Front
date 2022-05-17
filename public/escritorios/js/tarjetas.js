@@ -25,11 +25,21 @@ const dibujarGrupo = (grupos = []) => {
 			</div>
 
 			<div class="tarjeta_bienvenida">
-				<h5>${saludo}</h5>
+				<h5 class="textoTarjetas">${saludo}</h5>
 			</div>
         <div name="${index}" id="entrar" class="tarjeta_button">
             <h5>Abrir</h5>
         </div>
+		`;
+        if(rol == "PRO_ROLE"){
+            gruposHtml += `
+            <div name="${index}" id="listaEst" class="tarjeta_button">
+                <h5>Lista</h5>
+            </div>
+            </div>
+            `;
+        }
+        gruposHtml += `
         </div>
 		`;
     });
@@ -62,7 +72,18 @@ const dibujarGrupo = (grupos = []) => {
         vistaTarjetaEl.forEach((edit, index) => {
             edit.addEventListener('click', (event) => {
                 event.preventDefault();
-                dibujarPopAlerta('eliminar', `grupo/${grupos[index]._id}`);
+                dibujarPopAlerta('eliminar', `grupo/id/`, grupos[index]._id);
+            });
+        });
+
+        const vistaListaEst = document.querySelectorAll("#listaEst");
+
+        vistaListaEst.forEach((lista, index) => {
+            lista.addEventListener('click', async(event) => {
+                event.preventDefault();
+                console.log(grupos[index]._id)
+                const listaEstudiantes = await obtenerEstudiantes(grupos[index]._id);
+                dibujarPopAlerta('listaEst', `inscrito/id/`, listaEstudiantes);
             });
         });
     }
@@ -130,7 +151,7 @@ const dibujarMateria = (materias = []) => {
         vistaTarjetaEl.forEach((edit, index) => {
             edit.addEventListener('click', (event) => {
                 event.preventDefault();
-                dibujarPopAlerta('eliminar', `materia/${materias[index]._id}`);
+                dibujarPopAlerta('eliminar', `materia/id/`, materias[index]._id);
             });
         });
     }
@@ -141,14 +162,15 @@ const dibujarActividad = (actividades = []) => {
     let nombreTitulo = '';
 
     const color = localStorage.getItem('color');
+    const fondo = hexToRgbA(color);
+    actividades.forEach(({ nombre, descripcion, objetivo, juego, disponible, calificacion, intentos},index) => {
 
-    actividades.forEach(({ nombre, descripcion, objetivo },index) => {
-        const fondo = hexToRgbA(color);
-        actividadesHtml += `
-		<div class="tarjetaMateria" style="background-color: ${fondo}; border: 5px solid ${color};">
-			<div class="tarjeta_nombre" style="color: ${color};">
-        `;
         if(rol == "PRO_ROLE"){
+            actividadesHtml += `
+                <div class="tarjetaMateria" style="background-color: ${fondo}; border: 5px solid ${color};">
+                    <div class="tarjeta_nombre" style="color: ${color};">
+                `;
+
             actividadesHtml += `
             <div class="buttons_tarjetas">
                     <div name="${index}" id="eliminar">
@@ -159,50 +181,159 @@ const dibujarActividad = (actividades = []) => {
                     </div>
             </div>
             `;
+    
+            actividadesHtml += `
+                <div class="tituloTarjetas" style="color: ${color};">
+                        <h3 class="tituloAct">${nombre}</h3>
+                </div>
+                </div>
+                <div>
+                    <h5 class="textoTarjetas" style="color: ${color};">${descripcion}</h5>
+                </div>
+                <div>
+                    <h5 class="textoTarjetas" style="color: ${color};">${objetivo}</h5>
+                </div>
+            <div class="botonesActividad">
+            `;
+            
+            if(!juego){
+                actividadesHtml += `
+                    <div name="${index}" id="entrar" class="tarjetaMateria_button"
+                    style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
+                        <h5>Abrir</h5>
+                    </div>
+                `;
+            }
+            actividadesHtml += `
+                <div name="${index}" id="comentarios" class="tarjetaMateria_button"
+                style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
+                    <h5>Comentarios</h5>
+                </div>
+            `;
+            
+            actividadesHtml += `
+                </div>
+            </div>
+            `;
+        }else{
+            if(disponible == true){
+                actividadesHtml += `
+                <div class="tarjetaMateria" style="background-color: ${fondo}; border: 5px solid ${color};">
+                    <div class="tarjeta_nombre" style="color: ${color};">
+                `;
+
+                actividadesHtml += `
+                    <div class="tituloTarjetas">
+                        <h3>${nombre}</h3>
+                    </div>
+                    </div>
+                    <div>
+                        <h5 class="textoTarjetas" style="color: ${color};">${descripcion}</h5>
+                    </div>
+                    <div>
+                        <h5 class="textoTarjetas" style="color: ${color};">${objetivo}</h5>
+                    </div>
+                    <div><h5 style="color: ${color};" class="textoBox">Intentos restantes: ${calificacion.intentos}</h5></div>
+                <div class="botonesActividad">
+                `;
+
+                if(calificacion.intentos !== intentos){
+                    actividadesHtml += `
+                    <div><h5 style="color: ${color};" class="textoBox">Tu calificación final es: ${calificacion.calificacion}</h5></div>
+                    `;
+                }
+                
+                if(calificacion.intentos > 0 && calificacion.calificacion !== 10){
+                    actividadesHtml += `
+                    <div name="${index}" id="entrar" class="tarjetaMateria_button"
+                    style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
+                        <h5>¡JUGAR!</h5>
+                    </div>
+                    `;
+
+                }else if(calificacion.intentos === 0 || calificacion.calificacion === 10){
+                    actividadesHtml += `
+                    <div><h5 style="color: ${color};" class="textoBox">Gracias por Jugar</h5></div>
+                    `;
+                }
+                    
+                actividadesHtml += `
+                    <div name="${index}" id="comentarios" class="tarjetaMateria_button"
+                    style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
+                        <h5>Comentarios</h5>
+                    </div>
+                </div>
+
+                </div>
+                `;
+            }
         }
-        actividadesHtml += `
-				<h3>${nombre}</h3>
-			</div>
-            <div>
-                <h5>${descripcion}</h5>
-            </div>
-            <div>
-                <h5>${objetivo}</h5>
-            </div>
-        <div name="${index}" id="entrar" class="tarjetaMateria_button"
-        style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
-            <h5>Abrir</h5>
-        </div>
-        </div>
-		`;
+
     });
     tarjetas.innerHTML = actividadesHtml;
+    
     const btnEntrar = document.querySelectorAll('#entrar');
-    btnEntrar.forEach((btn, index) => {
-        btn.addEventListener('click', () => {
-            localStorage.setItem('actividad',actividades[index]._id);
-            window.location.replace(`${baseUrl}escritorios/actividad/seleccion`);
+    console.log(btnEntrar);
+    const btnComentarios = document.querySelectorAll('#comentarios');
+    let aux = 0;
+
+    switch (rol) {
+        case "PRO_ROLE":
+            actividades.forEach(({juego},index) => {
+                if(!juego){
+                    btnComentarios[index].style.visibility = "hidden";
+                }
+            });
+            btnComentarios.forEach((btn, index) => {
+                if(!actividades[index].disponible)
+                    btnEntrar[aux++].addEventListener('click', () => {
+                        localStorage.setItem('actividad',actividades[index]._id);
+                        window.location.replace(`${baseUrl}escritorios/actividad/seleccion`);
+                    });
+            });
+
+            const vistaTarjetas = document.querySelectorAll("#editar");
+
+            vistaTarjetas.forEach((edit, index) => {
+                edit.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    dibujarPopEditar(datosPop, actividades[index]._id);
+                    showEditar();
+                });
+            });
+
+            const vistaTarjetaEl = document.querySelectorAll("#eliminar");
+
+            vistaTarjetaEl.forEach((edit, index) => {
+                edit.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    dibujarPopAlerta('eliminar', `actividad/id/`, actividades[index]._id);
+                });
+            });
+            break;
+        case "EST_ROLE":
+            btnComentarios.forEach((btn, index) => {
+                if(actividades[index].calificacion.intentos > 0 && actividades[index].calificacion.calificacion !== 10)
+                    btnEntrar[aux++].addEventListener('click', () => {
+                            localStorage.setItem('juego', actividades[index].juego._id);
+                            localStorage.setItem('actividad',actividades[index]._id);
+                            localStorage.setItem('intentos',actividades[index].calificacion.intentos);
+                            window.location.replace(`${juegosUrl}juegos/${actividades[index].tipoJuego}/jugar`);
+                    });
+            });
+            break;
+        default:
+            break;
+    }
+        
+    btnComentarios.forEach((btn, index) => {
+        btn.addEventListener('click', async() => {
+            console.log(actividades[index]._id);
+            const mensajesAct = await obtenerMensajes(actividades[index]._id);
+            console.log(mensajesAct);
+            dibujarPopComentarios(mensajesAct, index);
+            showPopComentarios();
         });
     });
 
-    if(rol == "PRO_ROLE"){
-        const vistaTarjetas = document.querySelectorAll("#editar");
-
-        vistaTarjetas.forEach((edit, index) => {
-            edit.addEventListener('click', (event) => {
-                event.preventDefault();
-                dibujarPopEditar(datosPop, actividades[index]._id);
-                showEditar();
-            });
-        });
-
-        const vistaTarjetaEl = document.querySelectorAll("#eliminar");
-
-        vistaTarjetaEl.forEach((edit, index) => {
-            edit.addEventListener('click', (event) => {
-                event.preventDefault();
-                dibujarPopAlerta('eliminar', `actividad/${actividades[index]._id}`);
-            });
-        });
-    }
 }

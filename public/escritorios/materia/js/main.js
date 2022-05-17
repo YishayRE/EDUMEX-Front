@@ -5,6 +5,10 @@ const titulo = localStorage.getItem('tituloM');
 
 const accesoP = [
     {
+        'nombre': 'Calificaciones',
+		'referencia': ``
+	},
+    {
         'nombre': 'Crear Actividad',
         'referencia': ``
     }
@@ -33,6 +37,16 @@ const datosPop = [
     'Crear'
 ];
 
+function validarCamposVacios(){
+    var c1 = document.getElementById("Nom_materia").value;
+    var c2 = document.getElementById("Desc_materia").value;
+
+    if (c1.length == 0 || c2.length == 0) {
+        return false;
+    }
+    return true;
+}
+
 const checarRol = async() => {
     const materia = localStorage.getItem('materia');
     const color = localStorage.getItem('color');
@@ -51,16 +65,6 @@ const checarRol = async() => {
         const {actividades} = await obtenerArray(`actividad/`, materia);
         dibujarActividad(actividades);
     }
-}
-
-function validarCamposVacios(){
-    var c1 = document.getElementById("Nom_materia").value;
-    var c2 = document.getElementById("Desc_materia").value;
-
-    if (c1.length == 0 || c2.length == 0) {
-        return false;
-    }
-    return true;
 }
 
 const main = async() => {

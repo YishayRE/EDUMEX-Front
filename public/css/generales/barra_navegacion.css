@@ -18,7 +18,17 @@
   
   .enlace {
     position: absolute;
-    padding: 10px 30px;
+    margin: 10px 30px;
+    border-radius: 20px;
+    transition: .5s;
+    background: #E5989B;
+  }
+
+  .enlace:hover {
+    color: #68555c;
+    background: #917681;
+    transition: .5s;
+    font-size: 16px;
   }
 
   .activar{
@@ -48,6 +58,7 @@
     max-width: 200px;
     overflow: hidden;
     font-size: 12px;
+    margin-top: 8px;
   }
   
   nav ul {
@@ -83,7 +94,6 @@
     color: #68555c;
     background: #917681;
     transition: .5s;
-    font-size: 16px;
   }
   
   .checkbtn {

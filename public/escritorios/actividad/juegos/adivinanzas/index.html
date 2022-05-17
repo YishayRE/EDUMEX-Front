@@ -2,12 +2,16 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="../css/generalJuego.css">
+    <link rel="stylesheet" type="text/css" href="./css/estiloCreacion.css">
     <link rel="stylesheet" type="text/css" href="../../../../css/generales/esc_general.css">
-    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/popups.css">
+    <title>Crear juego: Adivinanzas</title>
 </head>
 <body> 
     <div id="blocker"></div>
     <div id="loader"></div>
+    <div id="popAlert"></div>
+
     <header class="stick" id="navBar">
     </header>
 
@@ -21,11 +25,13 @@
         <div class="cajaInfo">
             <h1 id="tipoJ">Tipo Juego</h1>
         </div>
-        <div class="cajaInfo">
-            <h1 id="objetivo">Objetivo</h1>
-        </div>
         <div class="cajaInfo2">
-            <h1 id="descripcion">Descripcion</h1>
+            <form id="elementosCalif">
+                <h1>Tiempo en minutos</h1>
+                <input class="inputsJuego" value="5" type="number" id="tiempoJ" name="tiempo">
+                <h1>Intentos</h1>
+                <input class="inputsJuego" value="3" type="number" id="intentosJ" name="intentos">
+            </form>
         </div>
     </div>
 
@@ -33,29 +39,15 @@
         <div id="content">
             <form id="formJ">
                 <div id="contenedor">
-                    <div class="elementoJuego">
-                        <div class="image-upload">
-                            <label for="imagen0">
-                            <img id="cargaImagen" src="../../../../images/upload.png"/>
-                            </label>
-                            
-                            <input type="file" name="imagen0" id="imagen0" accept="image/png, image/jpeg">
-                        </div>
-                        <div>
-                            <h5>Ingresa la sentencia</h5>
-                            <input type="text" name="sentencia0" id="sentencia0">
-                        </div>
-                        <div>
-                            <h5>Escribe la respuesta</h5>
-                            <input type="text" name="respuesta0" id="respuesta0">
-                        </div>
-                    </div>
+                    
                 </div>
             </form>
-            </div>
-            <div id="adicion">
-                <h1 id="simbolo">+</h1>
-            </div>
+        </div>
+
+        <div id="operadores">
+            <h1 class="simbolo" id="adicion">+</h1>
+            <h1 class="simbolo" id="resta">-</h1>
+        </div>
     </div>
 
 
@@ -63,14 +55,21 @@
     <script src="../../../../js/const.js"></script>
     <script src="../../../js/const.js"></script>
     <script src="../../js/const.js"></script>
+    <script src="../../js/validarCampos.js"></script>
     <script src="../../../js/common.js"></script>
     <script src="../../../../js/cabecera.js"></script>
     <script src="../../../../js/validarJWT.js"></script>
     <script src="../../../../escritorios/js/renovarJWT.js"></script>
     <script src="../../../../js/loaders.js"></script>
+    <script src="../../../../js/formularios.js"></script>
+    <script src="js/form.js"></script>
+    <script src="../../../js/actTarjeta.js"></script>
+    <script src="../../js/petImagen.js"></script>
+    <script src="../../js/petJuegos.js"></script>
     <script src="../../js/navBar.js"></script>
     <script src="../../../../js/alertas.js"></script>
     <script src="../js/actividad.js"></script>
     <script src="../js/common.js"></script>
+    <script src="js/impCodigo.js"></script>
     <script src="js/main.js"></script>
 </html>

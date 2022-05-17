@@ -1,7 +1,7 @@
 function soloLetras(e) {
     let key = e.keyCode || e.which,
       tecla = String.fromCharCode(key).toLowerCase(),
-      letras = " abcdef",
+      letras = " abcdefABCDEF",
       especiales = [8, 37, 39, 46],
       tecla_especial = false;
 
@@ -41,7 +41,7 @@ function soloNumeros(e) {
 function sinEspeciales(e) {
     let key = e.keyCode || e.which,
       tecla = String.fromCharCode(key),
-      especiales1 = " 0123456789áéíóúabcdefghijklmnñopqrstuvwxyz",
+      especiales1 = " 0123456789áéíóúabcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ",
       especiales2 = [8, 37, 39, 46],
       tecla_especial = false;
 

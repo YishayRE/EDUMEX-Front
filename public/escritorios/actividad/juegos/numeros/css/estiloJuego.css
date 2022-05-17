@@ -1,0 +1,18 @@
+#contenidoJuego {
+    color: black;
+}
+
+.reactivoNumeros{
+    margin: 20px;
+    text-align: center;
+    margin: 10px;
+    padding: 20px;
+    color: black;
+    background-color: #ffcdc1;
+    border: 5px solid;
+    border-color: #917681;
+    border-radius: 15px;
+    text-transform: uppercase;
+    height: 150px;
+    width: 300px;
+}

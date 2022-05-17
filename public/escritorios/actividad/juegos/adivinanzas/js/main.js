@@ -25,35 +25,25 @@ const accesoP = [
 let contadorEtiqueta = 0;
 
 adicion.addEventListener('click', () => {
-    contadorEtiqueta++;
-    contenedor.innerHTML += `
-        <div class="elementoJuego">
-            <div class="image-upload">
-                <label for="imagen${contadorEtiqueta}">
-                <img id="cargaImagen" src="../../../../images/upload.png"/>
-                </label>
-                
-                <input type="file" name="imagen${contadorEtiqueta}" id="imagen${contadorEtiqueta}" accept="image/png, image/jpeg">
-            </div>
-            <div>
-                <h5>Ingresa la sentencia</h5>
-                <input type="text" name="sentencia${contadorEtiqueta}" id="sentencia${contadorEtiqueta}">
-            </div>
-            <div>
-                <h5>Escribe la respuesta</h5>
-                <input type="text" name="respuesta${contadorEtiqueta}" id="respuesta${contadorEtiqueta}">
-            </div>
-        </div>
-    `;
+    insertarCodigo(contadorEtiqueta++);
+    if(contadorEtiqueta > 0)
+        resta.style.display = "block";
+});
+
+resta.style.display = "none";
+
+resta.addEventListener('click', () => {
+    eliminarCodigo(--contadorEtiqueta);
+    if(contadorEtiqueta == 0)
+        resta.style.display = "none";
 });
 
 const checarRol = async() => {
     if(rol == "PRO_ROLE"){
-        dibujarNavBar(accesoP, 'adivinanzas', 'materia');
+        dibujarNavBar(accesoP, localStorage.getItem("tipoJ"), 'materia');
         cerrarSesion();
     }else if(rol == "EST_ROLE"){
-        dibujarNavBar();
-        cerrarSesion();
+        window.location.replace(`${baseUrl}`);
     }
 }
 
@@ -61,7 +51,7 @@ const main = async() => {
     showLoad();
     await validarJWT();
     await checarRol();
-    //await obtenerInfo();
+    await obtenerInfo();
     checarExpiracion(fecha);
     hiddenLoad();
 }
