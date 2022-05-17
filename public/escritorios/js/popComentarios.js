@@ -19,10 +19,10 @@ const dibujarPopComentarios = (conversacionesAct, numTarjeta) => {
                 <a class="close" id="cerrarComentarios" href="">&times;</a>
 
                 <div class="content">
-                    <form class="center" style="padding: 10px;">
+                    <form class="center" style="padding: 10px; width:700px;">
                         <div id="comentariosLista" class="comentariosLista" style="border-color: ${color};">
         `;
-    conversacionesAct.forEach((conversacion,index) => {
+    conversacionesAct.comentarios.comentarios.forEach((conversacion,index) => {
         popUpHtml += `
         <div class="conversacionIndividual" style="background-color: ${fondo}; border: 3px solid ${color};">
             <div class="mensajesConversacion">
@@ -35,11 +35,6 @@ const dibujarPopComentarios = (conversacionesAct, numTarjeta) => {
                     <h4 class="mensajePrincipal">${mensaje[1]}</h4>
                 `;
             else
-                popUpHtml += `
-                <div class="mensajeConversacion">
-                    <h5 class="mensajeSecundario">${mensaje[0]}: ${mensaje[1]}</h5>
-                </div>
-                `;
                 popUpHtml += `
                 <div class="mensajeConversacion">
                     <h5 class="mensajeSecundario">${mensaje[0]}: ${mensaje[1]}</h5>
@@ -67,7 +62,6 @@ const dibujarPopComentarios = (conversacionesAct, numTarjeta) => {
             </div>
         </div>
     `;  
-    console.log(popUpHtml);
     emergentesComentarios.innerHTML = popUpHtml;
 
     overlayComentarios = document.querySelector("#formComentarios");
@@ -98,12 +92,16 @@ const dibujarPopComentarios = (conversacionesAct, numTarjeta) => {
                 e.preventDefault();
                 const cerrarComentarios = document.querySelector("#cerrarComentarios");
                 const abrirComentarios = document.querySelectorAll("#comentarios");
-                //console.log(cerrarComentarios);
-                //console.log(input.value, index);
+
                 console.log(numTarjeta);
-                //await mandarComentario(input.value, index);
-                //idUsuario
-                //body: mensaje, conversación(index) y idAct
+                const data = {
+                    mensaje: input.value,
+                    conversacion: index,
+                    actividad: conversacionesAct.comentarios.actividad
+                }
+
+                await mandarComentario(data);
+
                 cerrarComentarios.click();
                 abrirComentarios[numTarjeta].click();
             }

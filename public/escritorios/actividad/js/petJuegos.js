@@ -65,12 +65,9 @@ const terminarJuego = async(formData = {}, idT, esJuego = '') => {
     let errores = '';
     
     if(respuesta.msg){
-        respuesta.msg.forEach((err, index) => {
-            errores += `${index}. ${err.msg}\n`;
-        });
         hiddenLoad();
-        dibujarPopAlerta(errores);
-        throw new Error(errores);        
+        dibujarPopAlerta(respuesta.msg);
+        throw new Error(respuesta.msg);        
     }
 
     window.location.replace(`${materiaUrl}`);

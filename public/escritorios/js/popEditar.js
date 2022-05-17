@@ -13,18 +13,18 @@ const dibujarPopEditarUser = () => {
                 <a class="close" id="cerrarEditarUser" href="">&times;</a>
 
                 <div class="content">
-                    <form class="center">
+                    <form class="center" id="eUser">
                         <div id="contenidoDatosUser" class="contenidoDatosUser">
                             <div class="inputbox">
                                 <input type="text" name="nombre" id="nombre">
                                 <span>Nombre</span>
                             </div>
                             <div class="inputbox">
-                                <input type="text" name="nombre" id="apPat">
+                                <input type="text" name="apellidoP" id="apPat">
                                 <span>Apellido Paterno</span>
                             </div>
                             <div class="inputbox">
-                                <input type="text" name="nombre" id="apMat">
+                                <input type="text" name="apellidoM" id="apMat">
                                 <span>Apellido Materno</span>
                             </div>      
         `;
@@ -43,6 +43,27 @@ const dibujarPopEditarUser = () => {
 
     overlayEditarUser = document.querySelector("#formEditarUser");
     cerrarEditarUser = document.querySelector("#cerrarEditarUser");
+
+    const formulario = document.querySelector(`#eUser`);
+    formulario.addEventListener('submit', async(e) => {
+        e.preventDefault();
+        showLoad();
+        const datos = dataForm(formulario);
+        if(valForm(datos))
+            await actTarjeta(datos, `usuario/`);
+        else{
+            console.log("Faltan Datos");
+            dibujarPopAlerta("Faltan campos por llenar"); 
+            hiddenLoad();
+        }  
+    });
+
+    const elminarUser = document.querySelector("#eliminarUser");
+    elminarUser.addEventListener('click', async(e) => {
+        e.preventDefault();
+        showLoad();
+        await elimTarjeta(`usuario/id/`);
+    });
     
     cerrarEditarUser.addEventListener('click', (event) => {
         event.preventDefault();
@@ -54,6 +75,8 @@ const dibujarPopEditarUser = () => {
             hiddenPopEditarUser();
         }
     });
+
+
 }
 
 function showPopEditarUser() {

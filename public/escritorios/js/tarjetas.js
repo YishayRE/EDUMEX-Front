@@ -328,11 +328,10 @@ const dibujarActividad = (actividades = []) => {
         
     btnComentarios.forEach((btn, index) => {
         btn.addEventListener('click', async() => {
-            const mensajesAct = await obtenerMensajes();
+            console.log(actividades[index]._id);
+            const mensajesAct = await obtenerMensajes(actividades[index]._id);
             console.log(mensajesAct);
             dibujarPopComentarios(mensajesAct, index);
-            /*const popC = document.querySelector("#popComentarios");
-            popC.style.background = fondo;*/
             showPopComentarios();
         });
     });

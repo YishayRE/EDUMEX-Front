@@ -26,6 +26,7 @@ const insertarCodigo = (contadorEtiqueta) => {
         
         <div class="contenedorRespuesta"> 
             <input class="valorRespuesta" type="text" name="opt${contadorEtiqueta}" id="opt${contadorEtiqueta}">
+            <h5 class="error" id="error${contadorEtiqueta}"></h5>
         </div>
     `;
 
@@ -33,13 +34,20 @@ const insertarCodigo = (contadorEtiqueta) => {
 
     const opcion = document.querySelector(`#opcion${contadorEtiqueta}`);
     const select = document.querySelector(`#select${contadorEtiqueta}`);
+    const opt = document.querySelector(`#opt${contadorEtiqueta}`);
+    const error = document.querySelector(`#error${contadorEtiqueta}`);
 
     opcion.addEventListener('change', () => {
-        if (opcion.selectedIndex === 1)
+        if (opcion.selectedIndex === 1){
             select.innerHTML = 'Oración';
-        else
+            validarPalabra(false, opt, error);
+        }else{
             select.innerHTML = 'Palabra';
+            validarPalabra(true, opt, error);
+        }
     });
+
+    validarPalabra(true, opt, error);
 
     const inputImagen = document.querySelector(`#imagen${contadorEtiqueta}`);
     const cargaImagen = document.querySelector(`#cargaImagen${contadorEtiqueta}`);
@@ -62,4 +70,25 @@ const eliminarCodigo = (contadorEtiqueta) => {
     const contenedor = document.querySelector('#contenedor');
     const elementoJuego = document.getElementById(`elementoJuego${contadorEtiqueta}`);
     contenedor.removeChild(elementoJuego);
+}
+
+const validarPalabra = (validarActivo, opt, error) => {
+    if(!validarActivo){
+        opt.value = "";
+        error.innerHTML = "";
+        opt.oninput = (e) => {
+        }
+    }else{
+        opt.value = "";
+        opt.oninput = (e) => {
+            const palabra = opt.value;
+            const caracter = palabra.charCodeAt(palabra.length - 1);
+            if(caracter === 32){
+                opt.value = opt.value.substring(0, opt.value.length - 1);
+                error.innerHTML = `No puede haber espacios`;
+            }else{
+                error.innerHTML = "";
+            }
+        }
+    }
 }

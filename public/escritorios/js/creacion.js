@@ -5,7 +5,7 @@ const creacion = async(formData = {}, route = '', idT) => {
     myHeaders.append("user", uid);
     myHeaders.append("id", idT);
     myHeaders.append("Content-Type", "application/json");
-    
+    console.log(formData);
     let raw = JSON.stringify(formData);
     console.log('Estoy en creacion');
     console.log(raw);
