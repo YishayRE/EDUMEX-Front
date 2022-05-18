@@ -100,7 +100,8 @@ const estiloAlumno = () => {
     tarjetaBienvenida.style.maxWidth = "300px";
     tarjetaBienvenida.style.fontSize = "30px";
     textoTarjetas.style.overflowY = "hidden";
-    textoTarjetas.style.maxHeight = "40px";
+    textoTarjetas.style.maxHeight = "85px";
+    textoTarjetas.style.marginBottom = "15px";
     textoTarjetas.style.maxWidth = "300px";
     tarjetaBoton.style.width = "100px";
     tarjetaBoton.style.marginTop = "auto";

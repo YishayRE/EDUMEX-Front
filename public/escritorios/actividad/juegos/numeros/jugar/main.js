@@ -41,11 +41,13 @@ const terminarJugar = async() => {
                 }
             });
 
-            dibujarPopAlerta("aciertos", "Tienes " + contador + " aciertos, tu calificación es: " + enviarRespuestas.calificacion);
-            if(enviarRespuestas.calificacion === 10){
+            if(enviarRespuestas.calificacion == "10.00"){
+                dibujarPopAlerta("aciertos", "Tienes " + contador + " aciertos, tu calificación es: " + enviarRespuestas.calificacion + " <br>Intentos restantes: " + intentosEst, "desactivarOverlay");
                 const btnContinuar = document.querySelector("#continuarC");
                 btnContinuar.style.display = "none";
-            };
+            }else{
+                dibujarPopAlerta("aciertos", "Tienes " + contador + " aciertos, tu calificación es: " + enviarRespuestas.calificacion + " <br>Intentos restantes: " + intentosEst);
+            }
             console.log("Tienes " + contador + " aciertos");
         }
     });

@@ -313,13 +313,15 @@ const dibujarActividad = (actividades = []) => {
             break;
         case "EST_ROLE":
             btnComentarios.forEach((btn, index) => {
-                if(actividades[index].calificacion.intentos > 0 && actividades[index].calificacion.calificacion !== 10)
+                if(actividades[index].disponible == true){
+                    if(actividades[index].calificacion.intentos > 0 && actividades[index].calificacion.calificacion !== 10)
                     btnEntrar[aux++].addEventListener('click', () => {
                             localStorage.setItem('juego', actividades[index].juego._id);
                             localStorage.setItem('actividad',actividades[index]._id);
                             localStorage.setItem('intentos',actividades[index].calificacion.intentos);
                             window.location.replace(`${juegosUrl}juegos/${actividades[index].tipoJuego}/jugar`);
                     });
+                }
             });
             break;
         default:

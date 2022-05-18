@@ -121,7 +121,7 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
             event.preventDefault();
             const {codigo} = await activarGrupo(grupoActual, localStorage.getItem('grupo'));
             if(disponibleGrupo == false){
-                dibujarPopAlerta("codGrupo", codigo);
+                dibujarPopAlerta("codGrupo", codigo, "desactivarOverlay");
             }
             else{
                 location.reload();

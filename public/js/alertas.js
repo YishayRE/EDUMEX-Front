@@ -131,19 +131,24 @@ const dibujarPopAlerta = (err, route, idT) => {
         `;  
         aux=1;
     alertPop.innerHTML = popAlertaHtml;
+
     overlayAlert = document.getElementById('popError');
     botonClose = document.querySelector(".close");
 
-    botonClose.addEventListener('click', (event) => {
-        event.preventDefault();
-        hiddenAlert();
-    });
-
-    overlayAlert.addEventListener('click', (event) => {
-        if(event.target == overlayAlert){
+    if(idT == "desactivarOverlay"){
+        botonClose.style.visibility = "hidden";
+    }else{
+        botonClose.addEventListener('click', (event) => {
+            event.preventDefault();
             hiddenAlert();
-        }
-    });
+        });
+
+        overlayAlert.addEventListener('click', (event) => {
+            if(event.target == overlayAlert){
+                hiddenAlert();
+            }
+        });
+    }
     
     showAlert();
 
@@ -212,7 +217,6 @@ const dibujarPopAlerta = (err, route, idT) => {
                     hiddenLoad();
                 });
             });
-            
             break;
         default:
             break;
