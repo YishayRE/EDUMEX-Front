@@ -45,7 +45,7 @@ const terminarJugar = async() => {
                 
             hiddenLoad();
 
-            if(enviarRespuestas.calificacion == "10.00"){
+            if(enviarRespuestas.calificacion == "10.00" || intentosEst === 0){
                 dibujarPopAlerta("aciertos", "Tienes " + contador + " aciertos, tu calificación es: " + enviarRespuestas.calificacion + " <br>Intentos restantes: " + intentosEst, "desactivarOverlay");
                 const btnContinuar = document.querySelector("#continuarC");
                 btnContinuar.style.display = "none";
