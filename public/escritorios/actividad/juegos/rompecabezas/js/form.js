@@ -1,16 +1,3 @@
-const formJ = document.querySelector('#formJ');
-
-
-const html2 = `</div>
-</body>
-</html>`;
-
-/*let html3 = `<header class="stick" id="navBar">
-</header>
-<div id="contenidoJuego">`;*/
-
-
-
 const generarHtml = () => {
     const ejeX = document.querySelector("#ejeX");
     const ejeY = document.querySelector("#ejeY");
@@ -26,14 +13,32 @@ const generarHtml = () => {
     const ancho = cargaImage.naturalWidth;
     const piezasX = parseInt(ejeX.value);
     const piezasY = parseInt(ejeY.value);
-    const numPiezas = piezasX * piezasY;
     const avanceX = Math.floor(ancho / piezasX);
     const avanceY = Math.floor(alto / piezasY);
     const urlDiv = urlImagen.split("/");
     const imagesDiv = [];
+
+    let altoPieza = avanceY;
+    let anchoPieza = avanceX;
+    const altMax = Math.floor(600 / piezasY);
+    const anchMax = Math.floor(1000 / piezasX);
+
+    while (altoPieza > altMax || anchoPieza > anchMax){
+        altoPieza = Math.floor(altoPieza / 2);
+        anchoPieza = Math.floor(anchoPieza / 2);
+    }
+
+    while (altoPieza < (altMax / 2) && anchoPieza < (anchMax / 2)){
+        altoPieza = altoPieza * 2;
+        anchoPieza = anchoPieza * 2;
+    }
+
+    const altoImg = altoPieza * piezasY;
+    const anchoImg = anchoPieza * piezasX;
+
     let html3 = `
-    <svg width="${(ancho + avanceX)}" height="${(alto + avanceY)}" id="entorno">
-    <g id="fondo"><image xlink:href="${urlImagen}" width="${ancho}" height="${alto}" x="${avanceX}" y="${avanceY}"></g>`;
+    <svg width="${(anchoPieza + anchoImg)}" height="${(altoImg + 50)}" id="entorno">
+    <g id="fondo"><image xlink:href="${urlImagen}" width="${anchoImg}" height="${altoImg}" x="${anchoPieza}" y="50"></g>`;
     //../../../../../images/fondoRompe.jpg
     for (let i = 0; i < piezasY; i++)
         for (let j = 0; j < piezasX; j++) {
@@ -47,43 +52,29 @@ const generarHtml = () => {
             imagesDiv.push(urlPieza.substring(0, urlPieza.length - 1));
         }
 
-    imagesDiv.forEach((url, index) => {
-        html3 += `
-            <g class="padre" id="${index}"><image xlink:href="${url}" class="movil" style="width:${avanceX}; height:${avanceY};"></g>
-        `;
+    let respuesta = "";
+    let atributos = [];
+
+    imagesDiv.forEach(url => {
+        let uId = uuid.v4();
+        respuesta += uId;
+        atributos.push(`<g class="padre" id="${uId}"><image xlink:href="${url}" class="movil" style="width:${anchoPieza}; height:${altoPieza};"></g>`);
     });
+
+    while(atributos.length !== 1){
+        let posicion = Math.floor((Math.random() * (atributos.length)));
+
+        html3 += atributos[posicion];
+
+        atributos.splice(posicion, 1);
+    }
+
+    html3 += atributos[0];
 
     html3 += `
     </svg>
     <audio id="win" src="https://raw.githubusercontent.com/NestorPlasencia/PikaPuzzle/master/media/win.mp3"></audio>`;
 
+    console.log(respuesta);
     console.log(html3);
-
-    // window.open(``);
-
-    /*arrayJ.forEach((opcionJ, index) => {
-        html3 += `<div id="$elemento${index}" class="reactivoAbecedario">`;
-        if(opcionJ[0])
-            html3 += `
-            <img src="${opcionJ[0]}" alt="imagenJ" class="logo">
-            `;
-        html3 += `
-            <h3>Escribe la ${opcionJ[1]}</h3>
-        `;
-        html3 += `
-            <input type="text" name="resp${index}" id="${opcionJ[2]}">
-        </div>
-        `;
-    });*/
-
-    /*console.log(size);
-    for (let x = 0; x < size; x++) {
-        for (let y = 0; y < 3; y++) {
-            console.log(arrayJ[x][y]);
-        }
-    }*/
-    let body = html3;
-    html3 = '';
-    return `${body}
-    </div>`;
 }
