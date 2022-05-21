@@ -46,14 +46,29 @@
                         <div class="elementosRompecabezas">
                             <div class="image-upload">
                                 <h5>Carga tu Imagen</h5>
-                                <label for="imagen0">
-                                <img class="cargaImagen" src="../../../../images/upload.png"/>
+                                <label for="imagen">
+                                <img class="cargaImagen" id="cargaImagen" src="../../../../images/upload.png"/>
                                 </label>
-                                <input type="file" name="imagen0" id="imagen0" accept="image/png, image/jpeg">
+                                <input type="file" name="imagen" id="imagen" accept="image/png, image/jpeg">
                             </div>
                             <div>
-                                <h5>Numero de piezas</h5>
-                                <input type="text" name="opt0" id="opt0">
+                                <h5>EJE Y</h5>
+                                <div class="respuestaCambiar" id="divEjeY">
+                                    <select class="valorRespuesta" name="" id="ejeY">
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                </div>
+                                <h5>EJE X</h5>
+                                <div class="respuestaCambiar" id="divEjeX">
+                                    <select class="valorRespuesta" name="" id="ejeX">
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -62,22 +77,24 @@
         </div>
     </div>
 </body>
-    <script src="../../../../js/const.js"></script>
-    <script src="../../../js/const.js"></script>
-    <script src="../../js/const.js"></script>
-    <script src="../../../js/common.js"></script>
-    <script src="../../../../js/cabecera.js"></script>
-    <script src="../../../../js/validarJWT.js"></script>
-    <script src="../../../../escritorios/js/renovarJWT.js"></script>
-    <script src="../../../../js/loaders.js"></script>
-    <script src="../../../../js/formularios.js"></script>
-    <script src="js/form.js"></script>
-    <script src="../../../js/actTarjeta.js"></script>
-    <script src="../../js/petJuegos.js"></script>
-    <script src="../../js/navBar.js"></script>
-    <script src="../../../../js/alertas.js"></script>
-    <script src="../js/actividad.js"></script>
-    <script src="../js/common.js"></script>
-    <script src="js/impCodigo.js"></script>
-    <script src="js/main.js"></script>
+<script src="../../../../js/const.js"></script>
+<script src="../../../js/const.js"></script>
+<script src="../../js/const.js"></script>
+<script src="../../js/validarCampos.js"></script>
+<script src="../../../js/common.js"></script>
+<script src="../../../../js/cabecera.js"></script>
+<script src="../../../../js/validarJWT.js"></script>
+<script src="../../../../escritorios/js/renovarJWT.js"></script>
+<script src="../../../../js/loaders.js"></script>
+<script src="../../../../js/formularios.js"></script>
+<script src="js/form.js"></script>
+<script src="../../../js/actTarjeta.js"></script>
+<script src="../../js/petImagen.js"></script>
+<script src="../../js/petJuegos.js"></script>
+<script src="../../js/navBar.js"></script>
+<script src="../../../../js/alertas.js"></script>
+<script src="../js/actividad.js"></script>
+<script src="../js/common.js"></script>
+<script src="js/impCodigo.js"></script>
+<script src="js/main.js"></script>
 </html>

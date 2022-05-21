@@ -26,7 +26,7 @@ let contadorEtiqueta = 0;
 
 const checarRol = async() => {
     if(rol == "PRO_ROLE"){
-        dibujarNavBar(accesoP, 'numeros', 'materia');
+        dibujarNavBar(accesoP, 'rompecabezas', 'materia');
         cerrarSesion();
     }else if(rol == "EST_ROLE"){
         dibujarNavBar();

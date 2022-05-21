@@ -99,11 +99,11 @@ const dibujarPopComentarios = (conversacionesAct, numTarjeta) => {
                     conversacion: index,
                     actividad: conversacionesAct.comentarios.actividad
                 }
-
+                showLoad();
                 await mandarComentario(data);
-
                 cerrarComentarios.click();
                 abrirComentarios[numTarjeta].click();
+                hiddenLoad();
             }
         });
     });
