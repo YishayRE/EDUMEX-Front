@@ -70,7 +70,7 @@ const terminarJuego = async(formData = {}, idT, esJuego = '') => {
         throw new Error(respuesta.msg);
     }
 
-    //window.location.replace(`${materiaUrl}`);
+    window.location.replace(`${materiaUrl}`);
 }
 
 const jugarJuego = async(respuestas = []) => {

@@ -327,15 +327,11 @@ const dibujarActividad = (actividades = []) => {
             });
             break;
         case "EST_ROLE":
-            console.log("Entro aqui");
-            console.log(btnComentarios);
             btnComentarios.forEach((btn, index) => {
                 console.log(actividades[index]);
                 if (actividades[index].disponible == true) {
-                    console.log("Despues aqui");
                     if (actividades[index].calificacion.intentos > 0 && actividades[index].calificacion.calificacion !== 10)
                         btnEntrar[aux++].addEventListener('click', () => {
-                            console.log("por ultimo aqui");
                             localStorage.setItem('juego', actividades[index].juego._id);
                             localStorage.setItem('actividad', actividades[index]._id);
                             localStorage.setItem('intentos', actividades[index].calificacion.intentos);
