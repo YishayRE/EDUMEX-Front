@@ -23,12 +23,12 @@ const generarHtml = () => {
     const altMax = Math.floor(600 / piezasY);
     const anchMax = Math.floor(1000 / piezasX);
 
-    while (altoPieza > altMax || anchoPieza > anchMax){
+    while (altoPieza > altMax || anchoPieza > anchMax) {
         altoPieza = Math.floor(altoPieza / 2);
         anchoPieza = Math.floor(anchoPieza / 2);
     }
 
-    while (altoPieza < (altMax / 2) && anchoPieza < (anchMax / 2)){
+    while (altoPieza < (altMax / 2) && anchoPieza < (anchMax / 2)) {
         altoPieza = altoPieza * 2;
         anchoPieza = anchoPieza * 2;
     }
@@ -58,10 +58,10 @@ const generarHtml = () => {
     imagesDiv.forEach(url => {
         let uId = uuid.v4();
         respuesta += uId;
-        atributos.push(`<g class="padre" id="${uId}"><image xlink:href="${url}" class="movil" style="width:${anchoPieza}; height:${altoPieza};"></g>`);
+        atributos.push(`<g class="padre" id="${uId}"><image xlink:href="${url}" class="movil" style="width:${anchoPieza}px; height:${altoPieza}px;"></g>`);
     });
 
-    while(atributos.length !== 1){
+    while (atributos.length !== 1) {
         let posicion = Math.floor((Math.random() * (atributos.length)));
 
         html3 += atributos[posicion];
@@ -75,6 +75,7 @@ const generarHtml = () => {
     </svg>
     <audio id="win" src="https://raw.githubusercontent.com/NestorPlasencia/PikaPuzzle/master/media/win.mp3"></audio>`;
 
+    return [html3, [respuesta]];
     console.log(respuesta);
     console.log(html3);
 }

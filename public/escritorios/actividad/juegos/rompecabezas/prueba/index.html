@@ -4,12 +4,16 @@
 
 <head>
     <title>EDUMEX INICIO</title>
+    <link rel="stylesheet" type="text/css" href="../../../../../css/generales/alertas.css">
     <link rel="stylesheet" type="text/css" href="../../../../../css/style_inicio.css">
     <link rel="stylesheet" type="text/css" href="../../../../../css/generales/esc_general.css">
     <link rel="stylesheet" type="text/css" href="../../../../../css/generales/footer.css">
     <link rel="stylesheet" type="text/css" href="../../../../../css/generales/barra_navegacion.css">
     <link rel="stylesheet" type="text/css" href="../../../../../escritorios/css/popups.css">
+    <link rel="stylesheet" type="text/css" href="../../../../../css/generales/loader.css">
+    <link rel="stylesheet" type="text/css" href="../../../../../css/generales/blocker.css">
     <link rel="stylesheet" type="text/css" href="../../css/ejecucionJuego.css">
+    <link rel="stylesheet" type="text/css" href="../css/estiloJuego.css">
     <link rel="stylesheet" type="text/css" href="../css/drag.css">
 
 </head>
@@ -20,22 +24,18 @@
 
     <header class="stick" id="navBar">
     </header>
+    <div id="popAlert"></div>
 
     <div id="codigo">
-        <svg width="675" height="500" id="entorno">
-            <g id="fondo"><image xlink:href="https://res.cloudinary.com/nodecafe/image/upload/v1653174474/ROMPE/jnpl3jqemmmxqwjyoate.jpg" width="450" height="450" x="225" y="50"></g>
-            <g class="padre" id="a02d243e-e678-425d-9e6e-7a407972747b"><image xlink:href="https://res.cloudinary.com/nodecafe/image/upload/x_225,y_0,w_225,h_225,c_crop/v1653174474/ROMPE/jnpl3jqemmmxqwjyoate.jpg" class="movil" style="width:225; height:225;"></g>
-            <g class="padre" id="cc190012-4bef-472f-86be-0e38d6d15f2f"><image xlink:href="https://res.cloudinary.com/nodecafe/image/upload/x_0,y_0,w_225,h_225,c_crop/v1653174474/ROMPE/jnpl3jqemmmxqwjyoate.jpg" class="movil" style="width:225; height:225;"></g>
-            <g class="padre" id="319e8219-c290-4fd5-add0-857a5ece3a54"><image xlink:href="https://res.cloudinary.com/nodecafe/image/upload/x_225,y_225,w_225,h_225,c_crop/v1653174474/ROMPE/jnpl3jqemmmxqwjyoate.jpg" class="movil" style="width:225; height:225;"></g>
-            <g class="padre" id="e02bcd20-8ef0-4283-ba38-1e3d5b60553e"><image xlink:href="https://res.cloudinary.com/nodecafe/image/upload/x_0,y_225,w_225,h_225,c_crop/v1653174474/ROMPE/jnpl3jqemmmxqwjyoate.jpg" class="movil" style="width:225; height:225;"></g>
-        </svg>
-        <audio id="win" src="https://raw.githubusercontent.com/NestorPlasencia/PikaPuzzle/master/media/win.mp3"></audio>
+
     </div>
 
     <script src="../../../../../js/const.js"></script>
     <script src="../../../../../js/loaders.js"></script>
     <script src="../../../../js/renovarJWT.js"></script>
     <script src="../../../../../js/validarJWT.js"></script>
+    <script src="../../../../../js/alertas.js"></script>
+    <script src="../../../../../js/formularios.js"></script>
     <script src="../../js/navBarJuego.js"></script>
     <script src="../js/drag.js"></script>
     <script src="../../js/codJuego.js"></script>

@@ -1,10 +1,9 @@
 let overlayPop = "";
 let botonPop = "";
-const emergentes =  document.querySelector("#emergentes");
+const emergentes = document.querySelector("#emergentes");
 const footerDiv = document.querySelector("#footer");
 
-const datosPop = [
-    {
+const datosPop = [{
         'nombre': 'Nosotros',
     },
     {
@@ -33,6 +32,7 @@ const dibujarFooter = () => {
             <li><a id="nosotros" href>Nosotros</a></li>
             <li><a id="contacto" href>Contactanos</a></li>
             <li><a id="manual" href>Manual</a></li>
+            <li><a id="manual" href="https://forms.gle/74Xdpbq1trxSF7de9">Encuesta</a></li>
         </ul>
     `;
     footerDiv.innerHTML = footerHtml;
@@ -40,8 +40,8 @@ const dibujarFooter = () => {
 
 const dibujarPopFooter = () => {
     let popFooterHtml = '';
-    
-    datosPop.forEach(({ nombre },index) => {
+
+    datosPop.forEach(({ nombre }, index) => {
         popFooterHtml += `
         <div id="popFooter${index+1}" class="overlay">
             <div class="popup">
@@ -51,8 +51,8 @@ const dibujarPopFooter = () => {
 
                 <div class="content">
         `;
-    if(nombre === "Nosotros"){
-        popFooterHtml += `
+        if (nombre === "Nosotros") {
+            popFooterHtml += `
                         <div class="center">
                             <div class="contTexto">
                                 <div>
@@ -61,8 +61,8 @@ const dibujarPopFooter = () => {
                             </div>
                         </div>    
         `;
-    }else if(nombre === "Contáctanos"){
-        popFooterHtml += `
+        } else if (nombre === "Contáctanos") {
+            popFooterHtml += `
                         <div class="center">
                             <div>
                                 <div class="elementFooter">
@@ -76,8 +76,8 @@ const dibujarPopFooter = () => {
                             </div>
                         </div>
     `;
-    }else if(nombre === "Manual"){
-        popFooterHtml += `
+        } else if (nombre === "Manual") {
+            popFooterHtml += `
                         <div class="center">
                             <div class="opcionesManual">
                                 <div class="elementFooter2">
@@ -91,8 +91,8 @@ const dibujarPopFooter = () => {
                             </div>
                         </div>
     `;
-    }else if(nombre === "T&C"){
-        popFooterHtml += `
+        } else if (nombre === "T&C") {
+            popFooterHtml += `
                         <div class="center">
                             <div>
                                 <div class="elementFooter">
@@ -102,8 +102,8 @@ const dibujarPopFooter = () => {
                             </div>
                         </div>
     `;
-    }else if(nombre === "Políticas"){
-        popFooterHtml += `
+        } else if (nombre === "Políticas") {
+            popFooterHtml += `
                         <div class="center">
                             <div>
                                 <div class="elementFooter2">
@@ -113,14 +113,14 @@ const dibujarPopFooter = () => {
                             </div>
                         </div>
     `;
-    }
-    
-    popFooterHtml += `
+        }
+
+        popFooterHtml += `
                 </div>
             </div>
         </div>
-    `;  
-        aux=1;
+    `;
+        aux = 1;
     });
 
     emergentes.innerHTML = popFooterHtml;
@@ -202,10 +202,10 @@ const dibujarPopFooter = () => {
     });
 
     overlay.addEventListener('click', (event) => {
-        if(event.target == overlayPop){
+        if (event.target == overlayPop) {
             hiddenPop();
         }
-    });    
+    });
 }
 
 function showPop(overlayPop) {
@@ -213,7 +213,7 @@ function showPop(overlayPop) {
     overlayPop.style.visibility = "visible";
 }
 
-function hiddenPop(overlayPop){
+function hiddenPop(overlayPop) {
     overlayPop.style.opacity = "0";
     overlayPop.style.visibility = "hidden";
 }

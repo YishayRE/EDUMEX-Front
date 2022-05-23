@@ -12,36 +12,37 @@ const generarHtml = () => {
     const valoresBien = validarVacios(formulario);
     console.log(valoresBien);
 
-    if(!valoresBien.estaCompleto){
+    if (!valoresBien.estaCompleto) {
         dibujarPopAlerta("Falta ingresar valores en los campos de los reactivos")
-    }else{
+    } else {
         let respuestas = [];
         let flag = true;
         let auxImagenes = 0;
 
-        elementosForm = Object.entries(formulario);
-
+        /*elementosForm = Object.entries(formulario);
         elementosForm.forEach((elemento, index) => {
             if(elemento[1] == "Tamaño"){
                 
             }else if(elemento[1] == "Forma"){
 
             }
-        });
+        });*/
         const size = Object.keys(formulario).length / 3;
-        let arrayJ = [[]];
+        let arrayJ = [
+            []
+        ];
         let j = 0;
         let i = 0;
 
         for (const el in formulario) {
-            if(i === 4){
+            if (i === 4) {
                 i = 0;
                 j++;
                 arrayJ[j] = [];
             }
             if (Object.hasOwnProperty.call(formulario, el)) {
                 const element = formulario[el];
-                arrayJ[j][i] = element; 
+                arrayJ[j][i] = element;
                 i++;
             }
         }
@@ -53,7 +54,7 @@ const generarHtml = () => {
                     <h3 class="tituloPregunta">${opcionJ[1]}</h3>
                 </div>
             `;
-            if(opcionJ[1] == "Tamaño"){
+            if (opcionJ[1] == "Tamaño") {
                 html3 += `
                 <div class="elementosTamanos">
                 <div class="imgTam">
@@ -79,7 +80,7 @@ const generarHtml = () => {
                 </div>
                 `;
                 console.log(`index final: ${auxImagenes}`)
-            }else if(opcionJ[1] == "Forma"){
+            } else if (opcionJ[1] == "Forma") {
                 html3 += `
                 <div class="textoForma">
                     <h3 class="textoAdivinanza">La forma de las imágenes    ¿Qué figura geométrica representa?</h3>
@@ -122,11 +123,11 @@ const generarHtml = () => {
             `;
             respuestas.push(opcionJ[2]);
         });
-        
+
         console.log(respuestas);
         let body = html3;
         html3 = '';
-        return [`<form id="contenidoJuego">${body}</form>`,respuestas];
-        }
-    return false; 
+        return [`<form id="contenidoJuego">${body}</form>`, respuestas];
+    }
+    return false;
 }

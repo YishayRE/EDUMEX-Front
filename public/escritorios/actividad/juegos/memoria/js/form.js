@@ -10,48 +10,90 @@ let html3 = `<header class="stick" id="navBar">
 <div id="contenidoJuego">`;
 
 const generarHtml = () => {
+    const imagenes = formJ.querySelectorAll("img");
+    console.log(imagenes);
     const formulario = dataForm(formJ);
-    const size = Object.keys(formulario).length / 3;
-    let arrayJ = [[]];
-    let j = 0;
-    let i = 0;
+    console.log(formulario);
+    const valoresBien = validarVaciosMemoria(formulario);
+    console.log(valoresBien);
 
-    for (const el in formulario) {
-        if(i === 3){
-            i = 0;
-            j++;
-            arrayJ[j] = [];
-        }
-        if (Object.hasOwnProperty.call(formulario, el)) {
-            const element = formulario[el];
-            arrayJ[j][i] = element; 
-            i++;
-        }
-    }
+    if (!valoresBien.estaCompleto) {
+        dibujarPopAlerta("Falta ingresar valores en los campos de los reactivos")
+    } else {
+        let auxImagenes = 0;
+        let respuestas = [];
 
-    arrayJ.forEach((opcionJ, index) => {
-        html3 += `<div id="$elemento${index}" class="reactivoAbecedario">`;
-        if(opcionJ[0])
+        const size = Object.keys(formulario).length / 4;
+        let arrayJ = [
+            []
+        ];
+        let j = 0;
+        let i = 0;
+
+        for (const el in formulario) {
+            if (i === 4) {
+                i = 0;
+                j++;
+                arrayJ[j] = [];
+            }
+            if (Object.hasOwnProperty.call(formulario, el)) {
+                const element = formulario[el];
+                arrayJ[j][i] = element;
+                i++;
+            }
+        }
+
+        console.log(arrayJ);
+        arrayJ.forEach((opcionJ, index) => {
+            html3 += `<div id="elemento${index}" class="reactivoTamano">`;
+            if (opcionJ[1] == "Palabra") {
+                html3 += `
+                <div class="elementosMemorama">
+                    <div class="imgMemorama">
+                        <div class="fondoMemo">
+                            <img src="${imagenes[index + auxImagenes].currentSrc}" alt="imagenJ" class="imagenParMemorama">
+                        </div>
+                    </div>
+                `;
+                auxImagenes++;
+                //if(imagenes[index + auxImagenes].currentSrc.includes("upload.png"))
+                html3 += `
+                    <div class="txtMemorama">
+                        <div class="fondoMemo">
+                            <label class="textoMemorama">${opcionJ[2]}</label>
+                        </div>
+                    </div>
+                </div>
+                `;
+                // respuestas.push(opcionJ[2]);
+            } else if (opcionJ[1] == "Imagen") {
+                html3 += `
+                <div class="elementosMemorama">
+                    <div class="imgMemorama">
+                        <div class="fondoMemo">
+                            <img src="${imagenes[index + auxImagenes].currentSrc}" alt="imagenJ" class="imagenParMemorama">
+                        </div>
+                    </div>
+                `;
+                auxImagenes++;
+                html3 += `
+                    <div class="imgMemorama">
+                        <div class="fondoMemo">
+                            <img src="${imagenes[index + auxImagenes].currentSrc}" alt="imagenJ" class="imagenParMemorama">
+                        </div>
+                    </div>
+                </div>
+                `;
+            }
             html3 += `
-            <img src="${opcionJ[0]}" alt="imagenJ" class="logo">
+            </div>
             `;
-        html3 += `
-            <h3>Escribe la ${opcionJ[1]}</h3>
-        `;
-        html3 += `
-            <input type="text" name="resp${index}" id="${opcionJ[2]}">
-        </div>
-        `;
-    });
+            respuestas.push(opcionJ[2]);
+        });
 
-    /*console.log(size);
-    for (let x = 0; x < size; x++) {
-        for (let y = 0; y < 3; y++) {
-            console.log(arrayJ[x][y]);
-        }
-    }*/
-    let body = html3;
-    html3 = '';
-    return `${body}
-    </div>`;
+        let body = html3;
+        html3 = '';
+        return [`<form id="contenidoJuego">${body}</form>`, respuestas];
+    }
+    return false;
 }

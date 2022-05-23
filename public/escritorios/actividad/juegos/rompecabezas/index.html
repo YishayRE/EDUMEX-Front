@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="stylesheet" type="text/css" href="../css/generalJuego.css">
     <link rel="stylesheet" type="text/css" href="./css/estiloCreacion.css">
@@ -7,7 +8,8 @@
     <link rel="stylesheet" type="text/css" href="../../../css/popups.css">
     <title>Crear juego: Rompecabezas</title>
 </head>
-<body> 
+
+<body>
     <div id="blocker"></div>
     <div id="loader"></div>
     <div id="popAlert"></div>
@@ -25,15 +27,12 @@
         <div class="cajaInfo">
             <h1 id="tipoJ">Tipo Juego</h1>
         </div>
-        <div class="cajaInfo">
-            <h1 id="objetivo">Objetivo</h1>
-        </div>
         <div class="cajaInfo2">
-            <form>
+            <form id="elementosCalif">
                 <h1>Tiempo en minutos</h1>
-                <input class="inputsJuego" type="number" id="tiempoJ" name="tiempoJ">
+                <input class="inputsJuego" type="number" value="5" id="tiempoJ" name="tiempo">
                 <h1>Intentos</h1>
-                <input class="inputsJuego" type="number" id="intentosJ" name="intentosJ">
+                <input class="inputsJuego" type="number" value="3" id="intentosJ" name="intentos">
             </form>
         </div>
     </div>
@@ -99,4 +98,5 @@
 <script src="../js/common.js"></script>
 <script src="js/impCodigo.js"></script>
 <script src="js/main.js"></script>
+
 </html>

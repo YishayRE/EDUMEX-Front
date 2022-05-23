@@ -1,4 +1,4 @@
-const btnJuego = document.querySelectorAll('#btnJuego'); 
+const btnJuego = document.querySelectorAll('#btnJuego');
 const materia = document.querySelector('#materia');
 const actividad = document.querySelector('#actividad');
 const tipoJ = document.querySelector('#tipoJ');
@@ -11,8 +11,7 @@ const select = document.querySelector('#select0');
 
 const titulo = localStorage.getItem('tituloJ');
 
-const accesoP = [
-    {
+const accesoP = [{
         'nombre': 'Terminar Juego',
         'referencia': ``
     },
@@ -25,10 +24,10 @@ const accesoP = [
 let contadorEtiqueta = 0;
 
 const checarRol = async() => {
-    if(rol == "PRO_ROLE"){
+    if (rol == "PRO_ROLE") {
         dibujarNavBar(accesoP, 'rompecabezas', 'materia');
         cerrarSesion();
-    }else if(rol == "EST_ROLE"){
+    } else if (rol == "EST_ROLE") {
         dibujarNavBar();
         cerrarSesion();
     }
@@ -38,7 +37,7 @@ const main = async() => {
     showLoad();
     await validarJWT();
     await checarRol();
-    //await obtenerInfo();
+    await obtenerInfo();
     checarExpiracion(fecha);
     hiddenLoad();
 }
