@@ -32,7 +32,7 @@ const dibujarFooter = () => {
             <li><a id="nosotros" href>Nosotros</a></li>
             <li><a id="contacto" href>Contactanos</a></li>
             <li><a id="manual" href>Manual</a></li>
-            <li><a id="manual" href="https://forms.gle/74Xdpbq1trxSF7de9">Encuesta</a></li>
+            <li><a id="manual" href="https://forms.gle/qC8cJJaqiEU9JnT18">Encuesta Estudiantes</a></li>
         </ul>
     `;
     footerDiv.innerHTML = footerHtml;
