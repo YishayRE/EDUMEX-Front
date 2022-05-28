@@ -5,24 +5,31 @@ const insertarCodigo = (contadorEtiqueta) => {
     elementoJuego.className = 'elementoJuego';
     elementoJuego.id = `elementoJuego${contadorEtiqueta}`;
     elementoJuego.innerHTML = `
-        <div id="primeraImagen" class="image-upload">
-            <label for="imagen${contadorEtiqueta - 2}">
-            <img class="cargaImagen" id="cargaImagen${contadorEtiqueta - 2}" src="../../../../images/upload.png"/>
-            </label>
-            
-            <input type="file" name="imagen${contadorEtiqueta - 2}" id="imagen${contadorEtiqueta - 2}" accept="image/png, image/jpeg">
-        </div>
         <div class="contenedorTipo">
             <select class="selectTipo" name="opcion${contadorEtiqueta - 2}" id="opcion${contadorEtiqueta - 2}">
-                <option value="Palabra">Palabra</option>
-                <option value="Imagen">Imagen</option>
+                <option value="PP">Palabra-Palabra</option>
+                <option value="PI">Palabra-Imagen</option>
+                <option value="II">Imagen-Imagen</option>
             </select>
         </div>
-        <h5 class="selectTitulo" id="select${contadorEtiqueta - 2}">Palabra</h5>
         <div class="opcionesRespuesta">
             <div class="respuestaCambiar" id="respuestaCambiar${contadorEtiqueta - 2}">
-            <input class="valorRespuesta" type="text" name="txt${contadorEtiqueta - 2}" id="txt${contadorEtiqueta - 2}">
-                <div style="visibility: hidden;" class="image-upload segundaImagen" id="img${contadorEtiqueta - 2}">
+                <div id="primeraImagen" class="image-upload">
+                    <input class="valorRespuesta" type="text" name="txt${contadorEtiqueta - 1}" id="txt${contadorEtiqueta - 2}">
+                    <div style="visibility: hidden;" class="image-upload segundaImagen" id="img${contadorEtiqueta - 1}">
+                        <label for="imagen${contadorEtiqueta - 1}" id="labelImg">
+                            <img class="cargaImagen" id="cargaImagen${contadorEtiqueta - 1}" src="../../../../images/upload.png"/>
+                        </label>
+                        <input type="file" name="imagen${contadorEtiqueta - 1}" id="imagen${contadorEtiqueta - 1}" value="noImagen" accept="image/png, image/jpeg">
+                    </div>
+                    <input type="file" name="imagen${contadorEtiqueta - 2}" id="imagen${contadorEtiqueta - 2}" accept="image/png, image/jpeg">
+                </div>
+            </div>
+        </div>
+        <div class="opcionesRespuesta">
+            <div class="respuestaCambiar" id="respuestaCambiar${contadorEtiqueta - 1}">
+                <input class="valorRespuesta" type="text" name="txt${contadorEtiqueta - 1}" id="txt${contadorEtiqueta - 2}">
+                <div style="visibility: hidden;" class="image-upload segundaImagen" id="img${contadorEtiqueta - 1}">
                     <label for="imagen${contadorEtiqueta - 1}" id="labelImg">
                         <img class="cargaImagen" id="cargaImagen${contadorEtiqueta - 1}" src="../../../../images/upload.png"/>
                     </label>

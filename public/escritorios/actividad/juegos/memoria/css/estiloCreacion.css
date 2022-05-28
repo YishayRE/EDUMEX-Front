@@ -49,7 +49,7 @@
 
 .elementoJuego {
     display: grid;
-    grid-template-columns: 90px 150px 130px 210px;
+    grid-template-columns: 215px 155px 200px;
     gap: 10px 10px;
     width: 600px;
     height: 150px;
