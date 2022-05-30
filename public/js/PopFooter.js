@@ -11,12 +11,6 @@ const datosPop = [{
     },
     {
         'nombre': 'Manual',
-    },
-    {
-        'nombre': 'T&C',
-    },
-    {
-        'nombre': 'Políticas',
     }
 ];
 
@@ -31,8 +25,7 @@ const dibujarFooter = () => {
         <ul class="opciones">
             <li><a id="nosotros" href>Nosotros</a></li>
             <li><a id="contacto" href>Contactanos</a></li>
-            <li><a id="manual" href>Manual</a></li>
-            <li><a id="manual" href="https://forms.gle/qC8cJJaqiEU9JnT18">Encuesta Estudiantes</a></li>
+            <li><a id="manual" href>¿Cómo usar la plataforma?</a></li>
         </ul>
     `;
     footerDiv.innerHTML = footerHtml;
@@ -81,40 +74,13 @@ const dibujarPopFooter = () => {
                         <div class="center">
                             <div class="opcionesManual">
                                 <div class="elementFooter2">
-                                    <h2>Manual</h2>
-                                    <img src="${baseUrl}/images/manual.png" alt="Manual" class="imgFooter2">
-                                </div>
-                                <div class="elementFooter2">
                                     <h2>Video explicativo</h2>
                                     <img src="${baseUrl}/images/video.png" alt="Video" class="imgFooter2">
                                 </div>
                             </div>
                         </div>
-    `;
-        } else if (nombre === "T&C") {
-            popFooterHtml += `
-                        <div class="center">
-                            <div>
-                                <div class="elementFooter">
-                                    <h2>Terminos y Condiciones</h2>
-                                    <img src="${baseUrl}/images/download-pdf.png" alt="T&C" class="imgFooter2">
-                                </div>
-                            </div>
-                        </div>
-    `;
-        } else if (nombre === "Políticas") {
-            popFooterHtml += `
-                        <div class="center">
-                            <div>
-                                <div class="elementFooter2">
-                                    <h2>Politicas de privacidad</h2>
-                                    <img src="${baseUrl}/images/download-pdf.png" alt="Politicas" class="imgFooter2">
-                                </div>
-                            </div>
-                        </div>
-    `;
+            `;
         }
-
         popFooterHtml += `
                 </div>
             </div>
@@ -126,86 +92,67 @@ const dibujarPopFooter = () => {
     emergentes.innerHTML = popFooterHtml;
 
     const overlay = document.querySelector(".overlay");
+    const overlayPop1 = document.querySelector("#popFooter1");
+    const overlayPop2 = document.querySelector("#popFooter2");
+    const overlayPop3 = document.querySelector("#popFooter3");
 
     const botonClose1 = document.querySelector("#close1");
     const botonClose2 = document.querySelector("#close2");
     const botonClose3 = document.querySelector("#close3");
-    const botonClose4 = document.querySelector("#close4");
-    const botonClose5 = document.querySelector("#close5");
-
 
     const botonPop1 = document.querySelector("#nosotros");
     const botonPop2 = document.querySelector("#contacto");
     const botonPop3 = document.querySelector("#manual");
-    const botonPop4 = document.querySelector("#tc");
-    const botonPop5 = document.querySelector("#politics");
 
 
     botonPop1.addEventListener('click', (event) => {
         event.preventDefault();
-        overlayPop = document.querySelector("#popFooter1");
-        showPop(overlayPop);
+        showPop(overlayPop1);
     });
 
     botonPop2.addEventListener('click', (event) => {
         event.preventDefault();
-        overlayPop = document.querySelector("#popFooter2");
-        showPop(overlayPop);
+        showPop(overlayPop2);
     });
 
     botonPop3.addEventListener('click', (event) => {
         event.preventDefault();
-        overlayPop = document.querySelector("#popFooter3");
-        showPop(overlayPop);
-    });
-
-    botonPop4.addEventListener('click', (event) => {
-        event.preventDefault();
-        overlayPop = document.querySelector("#popFooter4");
-        showPop(overlayPop);
-    });
-
-    botonPop5.addEventListener('click', (event) => {
-        event.preventDefault();
-        overlayPop = document.querySelector("#popFooter5");
-        showPop(overlayPop);
+        showPop(overlayPop3);
     });
 
     botonClose1.addEventListener('click', (event) => {
         event.preventDefault();
-        overlayPop = document.querySelector("#popFooter1");
-        hiddenPop(overlayPop);
+        hiddenPop(overlayPop1);
     });
 
     botonClose2.addEventListener('click', (event) => {
         event.preventDefault();
-        overlayPop = document.querySelector("#popFooter2");
-        hiddenPop(overlayPop);
+        hiddenPop(overlayPop2);
     });
 
     botonClose3.addEventListener('click', (event) => {
         event.preventDefault();
-        overlayPop = document.querySelector("#popFooter3");
-        hiddenPop(overlayPop);
+        hiddenPop(overlayPop3);
     });
 
-    botonClose4.addEventListener('click', (event) => {
-        event.preventDefault();
-        overlayPop = document.querySelector("#popFooter4");
-        hiddenPop(overlayPop);
-    });
-
-    botonClose5.addEventListener('click', (event) => {
-        event.preventDefault();
-        overlayPop = document.querySelector("#popFooter5");
-        hiddenPop(overlayPop);
-    });
-
-    overlay.addEventListener('click', (event) => {
-        if (event.target == overlayPop) {
-            hiddenPop();
+    overlayPop1.addEventListener('click', (event) => {
+        if (event.target == overlayPop1) {
+            hiddenPop(overlayPop1);
         }
     });
+
+    overlayPop2.addEventListener('click', (event) => {
+        if (event.target == overlayPop2) {
+            hiddenPop(overlayPop2);
+        }
+    });
+
+    overlayPop3.addEventListener('click', (event) => {
+        if (event.target == overlayPop3) {
+            hiddenPop(overlayPop3);
+        }
+    });
+
 }
 
 function showPop(overlayPop) {

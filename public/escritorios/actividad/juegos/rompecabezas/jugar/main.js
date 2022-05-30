@@ -1,4 +1,4 @@
-const titulo = "60:00";
+const titulo = "00:00";
 let intentosEst = parseInt(localStorage.getItem("intentos"));
 
 
@@ -9,7 +9,8 @@ const accesosPrueba = [{
 
 const dibujarJuego = async() => {
     dibujarNavBar(accesosPrueba, titulo);
-    await codigoJuego();
+    const tiempoJuego = await codigoJuego();
+    prepararConteo(tiempoJuego);
     await terminarJugar();
 }
 
@@ -28,7 +29,7 @@ const terminarJugar = () => {
         if (intentosEst < 1)
             dibujarPopAlerta("Ya no tienes más intentos");
         else if (acomodados === 1) {
-            const enviarRespuestas = await jugarJuego([respuestas], 'juego/')
+            const enviarRespuestas = await jugarJuego([respuestas]);
 
             console.log(enviarRespuestas);
 

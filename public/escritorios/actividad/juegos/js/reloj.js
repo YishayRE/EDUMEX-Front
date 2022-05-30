@@ -5,7 +5,7 @@ const obtenerTiempo = dateTo => {
         minutes = ('0' + Math.floor(time / 60 % 60)).slice(-2),
         hours = ('0' + Math.floor(time / 3600 % 24)).slice(-2),
         days = Math.floor(time / (3600 * 24));
- 
+
     return {
         seconds,
         minutes,
@@ -14,46 +14,33 @@ const obtenerTiempo = dateTo => {
         time
     }
 };
- 
-const cuentaRegresiva = (dateTo, element) => {
-    const item = document.getElementById(element);
- 
-    const timerUpdate = setInterval( () => {
+
+const cuentaRegresiva = (dateTo) => {
+    const item = document.getElementById("tiempo");
+
+    const timerUpdate = setInterval(() => {
         let currenTime = obtenerTiempo(dateTo);
         item.innerHTML = `
-            <div class="row">
-                <div class="col-lg-2">
-                    <div class="countdown-container">
-                        <div class="number">
+                        <label class="number">
                             ${currenTime.minutes}
-                        </div>
-                        <div class="concept">
-                            Minutos
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2">
-                    <div class="countdown-container">
-                        <div class="number">
+                        </label>
+                        <label class="number">
                             ${currenTime.seconds}
-                        </div>
-                        <div class="concept">
-                            Segundos
-                        </div>
-                    </div>
-                </div>
-            </div>`;
- 
+                        </label>
+                        `;
+
         if (currenTime.time <= 1) {
             clearInterval(timerUpdate);
-            alert('Fin de la cuenta '+ element);
+            const btnTerminar = document.querySelector("#est0");
+            btnTerminar.click();
         }
     }, 1000);
 };
-var date = new Date();
-var new_date3 = new Date(date);
-new_date3.setMinutes(date.getMinutes() + 1);
 
-document.getElementById('new_date3').innerHTML = new_date3;
+const prepararConteo = (minutosCuenta) => {
+    let date = new Date();
+    let nuevaFecha = new Date(date);
+    nuevaFecha.setMinutes(date.getMinutes() + minutosCuenta);
 
-cuentaRegresiva(new_date3, 'countdown1');
+    cuentaRegresiva(nuevaFecha);
+};

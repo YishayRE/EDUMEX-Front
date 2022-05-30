@@ -14,6 +14,7 @@ const codigoJuego = async() => {
     const codigo = document.querySelector('#codigo');
     console.log(codigo);
     codigo.innerHTML = respuesta.codigo;
+    return respuesta.tiempo;
 }
 
 const obtenerRespuestas = async() => {

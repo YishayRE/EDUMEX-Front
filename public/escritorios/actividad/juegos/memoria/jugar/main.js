@@ -1,5 +1,6 @@
-const titulo = "60:00";
+const titulo = "00:00";
 let intentosEst = parseInt(localStorage.getItem("intentos"));
+
 
 const accesosPrueba = [{
     'nombre': 'Finalizar Juego',
@@ -8,51 +9,46 @@ const accesosPrueba = [{
 
 const dibujarJuego = async() => {
     dibujarNavBar(accesosPrueba, titulo);
-    await codigoJuego();
-    await terminarJugar();
+    const tiempoJuego = await codigoJuego();
+    prepararConteo(tiempoJuego);
+    botonesPar();
+    funcTarjetas();
+    terminarJugar();
 }
 
-const terminarJugar = async() => {
+const terminarJugar = () => {
     const finJuego = document.querySelector('#est0');
-    const datosJuego = document.querySelector('#contenidoJuego');
 
     finJuego.addEventListener('click', async(e) => {
         e.preventDefault();
         showLoad();
-        if(intentosEst === 0){
+        console.log(tarjetasElegidas);
+
+        if (intentosEst === 0) {
             dibujarPopAlerta("Ya no tienes más intentos");
-        }else if(intentosEst > 0){
-            let respuestasContestadas  = Object.values(dataForm(datosJuego));
+        } else {
 
-            const enviarRespuestas = await jugarJuego(respuestasContestadas, 'juego/')
+            const enviarRespuestas = await jugarJuego(tarjetasElegidas, "memorama/");
 
-            console.log(enviarRespuestas);
+            const califNum = parseFloat(enviarRespuestas.calificacion);
 
-            let contador = 0;
-            
-            enviarRespuestas.respuestas.forEach((respuesta, index) => {
-                let cajaReactivo = document.querySelector(`#elemento${index}`)
-                if(respuesta == "o"){
-                    cajaReactivo.style.borderColor = "green";
-                    contador++;
-                }
-                else{
-                    cajaReactivo.style.borderColor = "red";
-                }
-            });
+            if (califNum >= 8) {
+                dibujarPopAlerta("aciertos", "Tienes " + contador + " aciertos, Lo has hecho excelente <br>Intentos restantes: " + enviarRespuestas.intentos, "desactivarOverlay");
+            }
+            if (califNum > 5 && califNum < 8) {
+                dibujarPopAlerta("aciertos", "Tienes " + contador + " aciertos, Lo has hecho bien, sigue estudiando <br>Intentos restantes: " + enviarRespuestas.intentos);
+            }
+            if (califNum <= 5) {
+                dibujarPopAlerta("aciertos", "Tienes " + contador + " aciertos, Puedes mejorar, no dejes de intentarlo <br>Intentos restantes: " + enviarRespuestas.intentos);
+            }
 
-            --intentosEst;
-                
-            hiddenLoad();
-
-            if(enviarRespuestas.calificacion == "10.00" || intentosEst === 0 ){
-                dibujarPopAlerta("aciertos", "Tienes " + contador + " aciertos, tu calificación es: " + enviarRespuestas.calificacion + " <br>Intentos restantes: " + intentosEst, "desactivarOverlay");
+            if (enviarRespuestas.intentos === 0 || califNum === 10.00) {
                 const btnContinuar = document.querySelector("#continuarC");
                 btnContinuar.style.display = "none";
-            }else{
-                dibujarPopAlerta("aciertos", "Tienes " + contador + " aciertos, tu calificación es: " + enviarRespuestas.calificacion + " <br>Intentos restantes: " + intentosEst);
             }
+
             console.log("Tienes " + contador + " aciertos");
+
         }
     });
 }

@@ -9,42 +9,49 @@ const dibujarJuego = async() => {
     dibujarNavBar(accesosPrueba, titulo);
     await codigoJuego();
     let reactivos = await obtenerRespuestas();
-    console.log(reactivos.respuestas);
-    terminarProbar(reactivos.respuestas);
+    botonesPar();
+    funcTarjetas();
+    terminarProbar(reactivos.respuestas[0]);
 }
 
-const terminarProbar = (respuestasValidas) => {
+const terminarProbar = (respuestasBien) => {
     const finJuego = document.querySelector('#pro0');
     const datosJuego = document.querySelector('#contenidoJuego');
+    const strRespuestas = respuestasBien.split("/?");
+    const arrRespuestas = [];
+
+    strRespuestas.forEach(respuesta => {
+        arrRespuestas.push(respuesta.split(","));
+    });
+
     finJuego.addEventListener('click', (e) => {
         e.preventDefault();
         showLoad();
-        let respuestasContestadas  = Object.values(dataForm(datosJuego));
-        let aciertos = [];
-        let contador = 0;
+        let bandera = 0;
+        let resultado = 0;
 
-        respuestasContestadas.forEach((respuesta, index) => {
-            let cajaReactivo = document.querySelector(`#elemento${index}`)
-            if(respuestasValidas[index] == respuesta){
-                cajaReactivo.style.borderColor = "green";
-                aciertos.push("o");
-                contador++;
-            }
-            else{
-                cajaReactivo.style.borderColor = "red";
-                aciertos.push("x");
+        arrRespuestas.forEach(respuesta => {
+            let i = 0;
+            bandera = 0;
+            console.log(tarjetasElegidas.length);
+            while (i < tarjetasElegidas.length && bandera === 0) {
+                if (tarjetasElegidas[i][0] == respuesta[0])
+                    if (tarjetasElegidas[i][1] == respuesta[1]) {
+                        resultado++;
+                        bandera = 1;
+                    }
+                if (tarjetasElegidas[i][0] == respuesta[1])
+                    if (tarjetasElegidas[i][1] == respuesta[0]) {
+                        resultado++;
+                        bandera = 1;
+                    }
+                if (bandera === 1)
+                    tarjetasElegidas.splice(i, 1);
+
+                i++;
             }
         });
-
-        aciertos.forEach((respuesta, index) => {
-            /*if(respuesta == "o")
-
-            else*/
-        });
-        dibujarPopAlerta("Tienes " + contador + " aciertos");
-        console.log(aciertos);
-        console.log("Tienes " + contador + " aciertos");
-
+        dibujarPopAlerta(`Pares de tarjetas seleccionados correctamente: ${resultado}`);
     });
 }
 

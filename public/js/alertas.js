@@ -4,7 +4,7 @@ let overlayAlert = "";
 const dibujarPopAlertas = (errors = []) => {
     let popAlertaHtml = '';
 
-        popAlertaHtml += `
+    popAlertaHtml += `
         <div id="popError" class="overlayAlerta">
             <div class="popupAlerta">
                 <h2>Aviso</h2>
@@ -15,19 +15,19 @@ const dibujarPopAlertas = (errors = []) => {
                     <div class="centerAlerta" id="infoAlerta">
                         <div class="alertas">
         `;
-        errors.forEach((err,index) => { 
-            popAlertaHtml += `
+    errors.forEach((err, index) => {
+        popAlertaHtml += `
                     <h2>${err}</h2>
             `;
-        });
-        popAlertaHtml += `
+    });
+    popAlertaHtml += `
                         </div>    
                     </div>
                 </div>
             </div>
         </div>
-        `;  
-        aux=1;
+        `;
+    aux = 1;
     alertPop.innerHTML = popAlertaHtml;
     porError = document.getElementById('popError');
     showAlert();
@@ -35,7 +35,7 @@ const dibujarPopAlertas = (errors = []) => {
 
 const dibujarPopAlerta = (err, route, idT) => {
     let popAlertaHtml = '';
-        popAlertaHtml += `
+    popAlertaHtml += `
         <div id="popError" class="overlayAlerta">
             <div class="popupAlerta">
                 <h2>Aviso</h2>
@@ -46,25 +46,25 @@ const dibujarPopAlerta = (err, route, idT) => {
                     <div class="centerAlerta" id="infoAlerta">
                         <div class="alertas">
         `;
-        switch (err) {
-            case 'salir':
-                popAlertaHtml += `
+    switch (err) {
+        case 'salir':
+            popAlertaHtml += `
                             <h2>¿Seguro que quieres salir?</h2>
                             <div>
                                 <button id="logoutC" href="">Salir</button>
                             </div>
-                `; 
-                break;
-            case 'eliminar':
-                popAlertaHtml += `
+                `;
+            break;
+        case 'eliminar':
+            popAlertaHtml += `
                             <h2>¿Seguro que quieres eliminarlo?</h2>
                             <div>
                                 <button id="eliminarC" href="">Eliminar</button>
                             </div>
-                `; 
-                break;
-            case 'codGrupo':
-                popAlertaHtml += `
+                `;
+            break;
+        case 'codGrupo':
+            popAlertaHtml += `
                             <div class="elementosBox" id="elementosCod">
                                 <div>
                                     <h2>El código del grupo es:</h2>
@@ -77,26 +77,26 @@ const dibujarPopAlerta = (err, route, idT) => {
                             <div>
                                 <button id="aceptarAct" href="">Aceptar</button>
                             </div>
-                `; 
-                break;
-            case 'aciertos':
-                popAlertaHtml += `
+                `;
+            break;
+        case 'aciertos':
+            popAlertaHtml += `
                             <h2>${route}</h2>
                             <div class="centrarBotones">
                                 <button class="botonesAfinados" id="continuarC" href="">Continuar</button>
                                 <button class="botonesAfinados" id="salirC" href="">Salir</button>
                             </div>
-                `; 
-                break;
-            case 'listaEst':
-                popAlertaHtml += `
+                `;
+            break;
+        case 'listaEst':
+            popAlertaHtml += `
                     <h2>Inscritos</h2>
                     <div id="listaCompleta">
                 `;
-                console.log(idT.length);
-                if(idT.length > 0){
-                    idT.forEach((alumno, index) => {
-                        popAlertaHtml += `
+            console.log(idT.length);
+            if (idT.length > 0) {
+                idT.forEach((alumno, index) => {
+                    popAlertaHtml += `
                             <div class="elementosBox" id="estudianteLista${alumno.inscripcion}">
                                 <label class="nomAlumno">${alumno.nombreC}</label> 
                                 <div id="quitarEst">
@@ -104,52 +104,52 @@ const dibujarPopAlerta = (err, route, idT) => {
                                 </div>
                             </div>
                         `;
-                    });
-                }else{
-                    popAlertaHtml += `
+                });
+            } else {
+                popAlertaHtml += `
                             <div class="elementosBox">
                                 <h2>Este grupo no tiene estudiantes inscritos</h2> 
                             </div>
                     `;
-                }
-                popAlertaHtml += `
+            }
+            popAlertaHtml += `
                     </div>  
                 `;
-                break;
-            default:
-                popAlertaHtml += `
+            break;
+        default:
+            popAlertaHtml += `
                             <h2>${err}</h2>
-                `; 
-                break;
-        }
-        popAlertaHtml += `
+                `;
+            break;
+    }
+    popAlertaHtml += `
                         </div>    
                     </div>
                 </div>
             </div>
         </div>
-        `;  
-        aux=1;
+        `;
+    aux = 1;
     alertPop.innerHTML = popAlertaHtml;
 
     overlayAlert = document.getElementById('popError');
     botonClose = document.querySelector(".close");
 
-    if(idT == "desactivarOverlay"){
+    if (idT == "desactivarOverlay") {
         botonClose.style.visibility = "hidden";
-    }else{
+    } else {
         botonClose.addEventListener('click', (event) => {
             event.preventDefault();
             hiddenAlert();
         });
 
         overlayAlert.addEventListener('click', (event) => {
-            if(event.target == overlayAlert){
+            if (event.target == overlayAlert) {
                 hiddenAlert();
             }
         });
     }
-    
+
     showAlert();
 
     switch (err) {
@@ -173,17 +173,17 @@ const dibujarPopAlerta = (err, route, idT) => {
         case 'codGrupo':
             const copiarCodigo = document.querySelector('#copiarCodigo');
             copiarCodigo.addEventListener('click', function(event) {
-            let copytextCod = document.querySelector('#codGrupo');
-            copytextCod.focus();
-            copytextCod.select();
+                let copytextCod = document.querySelector('#codGrupo');
+                copytextCod.focus();
+                copytextCod.select();
 
-            try {
-                let successful = document.execCommand('copy');
-                let msg = successful ? 'successful' : 'unsuccessful';
-                console.log('Copying text command was ' + msg);
-            } catch (err) {
-                console.log('Oops, unable to copy');
-            }
+                try {
+                    let successful = document.execCommand('copy');
+                    let msg = successful ? 'successful' : 'unsuccessful';
+                    console.log('Copying text command was ' + msg);
+                } catch (err) {
+                    console.log('Oops, unable to copy');
+                }
             });
             const btnAceptar = document.querySelector('#aceptarAct');
             btnAceptar.addEventListener('click', async(e) => {
@@ -197,7 +197,7 @@ const dibujarPopAlerta = (err, route, idT) => {
             btnContinuarC.addEventListener('click', async(e) => {
                 e.preventDefault();
                 hiddenAlert();
-                console.log("hola");
+                location.reload();
             });
             btnSalirC.addEventListener('click', async(e) => {
                 e.preventDefault();
@@ -206,7 +206,7 @@ const dibujarPopAlerta = (err, route, idT) => {
             break;
         case 'listaEst':
             const btnQuitarEst = document.querySelectorAll('#quitarEst');
-            
+
             btnQuitarEst.forEach((quitar, index) => {
                 quitar.addEventListener('click', async(e) => {
                     e.preventDefault();
@@ -234,4 +234,3 @@ function hiddenAlert() {
     overlayAlert.style.visibility = "hidden"
     overlayAlert.style.display = "none"
 }
-    

@@ -73,7 +73,7 @@ const terminarJuego = async(formData = {}, idT, esJuego = '') => {
     window.location.replace(`${materiaUrl}`);
 }
 
-const jugarJuego = async(respuestas = []) => {
+const jugarJuego = async(respuestas = [], ruta = "responder/") => {
     const token = localStorage.getItem('token') || '';
     let myHeaders = new Headers();
     myHeaders.append("x-token", token);
@@ -91,7 +91,7 @@ const jugarJuego = async(respuestas = []) => {
         redirect: 'follow'
     };
 
-    const resp = await fetch(juegosApi + 'responder/', requestOptions);
+    const resp = await fetch(juegosApi + ruta, requestOptions);
 
     const respuesta = await resp.json();
     console.log(respuesta);

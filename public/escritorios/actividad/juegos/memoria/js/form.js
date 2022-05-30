@@ -5,95 +5,116 @@ const html2 = `</div>
 </body>
 </html>`;
 
-let html3 = `<header class="stick" id="navBar">
-</header>
-<div id="contenidoJuego">`;
-
 const generarHtml = () => {
+    let html3 = "";
     const imagenes = formJ.querySelectorAll("img");
-    console.log(imagenes);
     const formulario = dataForm(formJ);
-    console.log(formulario);
+    if (Object.keys(formulario).length < 10) {
+        dibujarPopAlerta("Debe agregar minimo dos reactivos");
+        throw new Error("Debe agregar minimo dos reactivos");
+    }
     const valoresBien = validarVaciosMemoria(formulario);
-    console.log(valoresBien);
 
-    if (!valoresBien.estaCompleto) {
-        dibujarPopAlerta("Falta ingresar valores en los campos de los reactivos")
+    if (valoresBien.length == 0) {
+        dibujarPopAlerta("Falta ingresar valores en los campos de los reactivos");
     } else {
-        let auxImagenes = 0;
-        let respuestas = [];
-
-        const size = Object.keys(formulario).length / 4;
-        let arrayJ = [
-            []
-        ];
-        let j = 0;
-        let i = 0;
-
-        for (const el in formulario) {
-            if (i === 4) {
-                i = 0;
-                j++;
-                arrayJ[j] = [];
+        const htmlAux = [];
+        const respuesta = [];
+        for (let i = 0; i < valoresBien.length / 3; i++) {
+            const triple = i * 3;
+            const doble = i * 2;
+            const uIdUno = uuid.v4();
+            const uIdDos = uuid.v4();
+            let cod = "";
+            respuesta.push([uIdUno, uIdDos]);
+            console.log(valoresBien[triple]);
+            switch (valoresBien[triple]) {
+                case "PP":
+                    cod = `<div class="elementosMemorama" id="${uIdUno}">
+                        <div class="txtMemorama">
+                            <div class="fondoMemo" id="fondo${doble}"></div>
+                            <div class="caraMemo" id="elemento${doble}">
+                                <label class="textoMemorama">${valoresBien[triple + 1]}</label>
+                            </div>
+                        </div>
+                    </div>`;
+                    htmlAux.push(cod);
+                    cod = `<div class="elementosMemorama" id="${uIdDos}">
+                        <div class="txtMemorama">
+                            <div class="fondoMemo" id="fondo${doble + 1}"></div>
+                            <div class="caraMemo" id="elemento${doble + 1}">
+                                <label class="textoMemorama">${valoresBien[triple + 2]}</label>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                    htmlAux.push(cod);
+                    console.log(htmlAux.length);
+                    break;
+                case "PI":
+                    cod = `<div class="elementosMemorama" id="${uIdUno}">
+                        <div class="txtMemorama">
+                            <div class="fondoMemo" id="fondo${doble}"></div>
+                            <div class="caraMemo" id="elemento${doble}">
+                                <label class="textoMemorama">${valoresBien[triple + 1]}</label>
+                            </div>
+                        </div>
+                    </div>`;
+                    htmlAux.push(cod);
+                    cod = `<div class="elementosMemorama" id="${uIdDos}">
+                        <div class="imgMemorama">
+                            <div class="fondoMemo" id="fondo${doble + 1}"></div>
+                            <div class="caraMemo" id="elemento${doble + 1}">
+                                <img src="${valoresBien[triple + 2]}" alt="imagenJ" class="imagenParMemorama">
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                    htmlAux.push(cod);
+                    break;
+                case "II":
+                    cod = `<div class="elementosMemorama" id="${uIdUno}">
+                    <div class="imgMemorama">
+                        <div class="fondoMemo" id="fondo${doble}"></div>
+                        <div class="caraMemo" id="elemento${doble}">
+                            <img src="${valoresBien[triple + 1]}" alt="imagenJ" class="imagenParMemorama">
+                        </div>
+                    </div>
+                    </div>
+                    `;
+                    htmlAux.push(cod);
+                    cod = `<div class="elementosMemorama" id="${uIdDos}">
+                    <div class="imgMemorama">
+                        <div class="fondoMemo" id="fondo${doble + 1}"></div>
+                        <div class="caraMemo" id="elemento${doble + 1}">
+                            <img src="${valoresBien[triple + 2]}" alt="imagenJ" class="imagenParMemorama">
+                        </div>
+                    </div>
+                    </div>
+                    `;
+                    htmlAux.push(cod);
+                    break;
             }
-            if (Object.hasOwnProperty.call(formulario, el)) {
-                const element = formulario[el];
-                arrayJ[j][i] = element;
-                i++;
-            }
+
+        }
+        while (htmlAux.length !== 1) {
+            let posicion = Math.floor((Math.random() * (htmlAux.length)));
+
+            html3 += htmlAux[posicion];
+
+            htmlAux.splice(posicion, 1);
         }
 
-        console.log(arrayJ);
-        arrayJ.forEach((opcionJ, index) => {
-            html3 += `<div id="elemento${index}" class="reactivoTamano">`;
-            if (opcionJ[1] == "Palabra") {
-                html3 += `
-                <div class="elementosMemorama">
-                    <div class="imgMemorama">
-                        <div class="fondoMemo">
-                            <img src="${imagenes[index + auxImagenes].currentSrc}" alt="imagenJ" class="imagenParMemorama">
-                        </div>
-                    </div>
-                `;
-                auxImagenes++;
-                //if(imagenes[index + auxImagenes].currentSrc.includes("upload.png"))
-                html3 += `
-                    <div class="txtMemorama">
-                        <div class="fondoMemo">
-                            <label class="textoMemorama">${opcionJ[2]}</label>
-                        </div>
-                    </div>
-                </div>
-                `;
-                // respuestas.push(opcionJ[2]);
-            } else if (opcionJ[1] == "Imagen") {
-                html3 += `
-                <div class="elementosMemorama">
-                    <div class="imgMemorama">
-                        <div class="fondoMemo">
-                            <img src="${imagenes[index + auxImagenes].currentSrc}" alt="imagenJ" class="imagenParMemorama">
-                        </div>
-                    </div>
-                `;
-                auxImagenes++;
-                html3 += `
-                    <div class="imgMemorama">
-                        <div class="fondoMemo">
-                            <img src="${imagenes[index + auxImagenes].currentSrc}" alt="imagenJ" class="imagenParMemorama">
-                        </div>
-                    </div>
-                </div>
-                `;
-            }
-            html3 += `
-            </div>
-            `;
-            respuestas.push(opcionJ[2]);
-        });
+        html3 += htmlAux[0];
+
+        console.log(html3);
+        console.log(respuesta);
 
         let body = html3;
         html3 = '';
-        return [`<form id="contenidoJuego">${body}</form>`, respuestas];
+        const respuestaString = respuesta.join("/?");
+        console.log(respuestaString);
+        return [`<form id="contenidoJuego">${body}</form>`, [respuestaString]];
     }
     return false;
 }

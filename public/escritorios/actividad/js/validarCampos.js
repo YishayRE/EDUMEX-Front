@@ -26,30 +26,69 @@ const validarVaciosAdivinanza = (valoresForm) => {
 }
 
 const validarVaciosMemoria = (valoresForm) => {
-    let estaCompleto = true;
-    let camposVacios = [];
+    const campos = [];
 
-    for (const [index, valor] of Object.entries(valoresForm).entries()) {
-        console.log(index, valor);
-        if (Math.abs(index % 2) == 1) {
-            if (valor[0].startsWith("imagen") && valor[1] == "")
-                console.log("La segunda imagen es opcional");
-            else if (!valor[0].startsWith("imagen") && valor[1] == "") {
-                console.log("Este campo no puede estar vacío");
-                estaCompleto = false;
-            }
-        } else {
-            if (valor[1] == "") {
-                camposVacios.push(`${valor[0]}`);
-                estaCompleto = false;
+    for (const [nombre, valor] of Object.entries(valoresForm)) {
+        if (nombre.startsWith("opcion")) {
+            switch (valor) {
+                case "PP":
+                    campos.push("PP");
+                    const numeroPP = parseInt(nombre.charAt(nombre.length - 1));
+                    for (const [palabra, texto] of Object.entries(valoresForm)) {
+                        if (palabra == `txt${numeroPP}` || palabra == `txt${numeroPP + 1}`) {
+                            if (texto == "") {
+                                return [];
+                            }
+
+                            campos.push(texto);
+                        }
+                    }
+                    break;
+                case "PI":
+                    campos.push("PI");
+                    const numeroPI = parseInt(nombre.charAt(nombre.length - 1));
+                    for (const [palabra, texto] of Object.entries(valoresForm)) {
+                        if (palabra == `txt${numeroPI}`) {
+                            if (texto == "") {
+                                return [];
+                            }
+
+                            campos.push(texto);
+                        }
+                        if (palabra == `imagen${numeroPI + 1}`) {
+                            const imagenUrl = document.querySelector(`#cargaImagen${numeroPI + 1}`)
+                            if (!imagenUrl.currentSrc.includes("cloudinary")) {
+                                return [];
+                            }
+
+                            campos.push(imagenUrl.currentSrc);
+                        }
+                    }
+                    break;
+                case "II":
+                    campos.push("II");
+                    const numeroII = parseInt(nombre.charAt(nombre.length - 1));
+                    for (const [palabra, texto] of Object.entries(valoresForm)) {
+                        if (palabra == `imagen${numeroII}`) {
+                            const imagenUrl = document.querySelector(`#cargaImagen${numeroII}`)
+                            if (!imagenUrl.currentSrc.includes("cloudinary")) {
+                                return [];
+                            }
+
+                            campos.push(imagenUrl.currentSrc);
+                        }
+                        if (palabra == `imagen${numeroII + 1}`) {
+                            const imagenUrl = document.querySelector(`#cargaImagen${numeroII + 1}`)
+                            if (!imagenUrl.currentSrc.includes("cloudinary")) {
+                                return [];
+                            }
+
+                            campos.push(imagenUrl.currentSrc);
+                        }
+                    }
+                    break;
             }
         }
-        /*if (nombre.startsWith("imagen") && valor == "") {
-            console.log("Las imagenes son opcionales");
-        } else if (!(nombre.startsWith("imagen")) && valor == "") {
-            camposVacios.push(`${nombre}`);
-            estaCompleto = false;
-        }*/
     }
-    return { estaCompleto, camposVacios };
+    return campos;
 }

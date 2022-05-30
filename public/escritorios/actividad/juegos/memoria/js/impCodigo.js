@@ -14,21 +14,18 @@ const insertarCodigo = (contadorEtiqueta) => {
         </div>
         <div class="opcionesRespuesta">
             <div class="respuestaCambiar" id="respuestaCambiar${contadorEtiqueta - 2}">
-                <div id="primeraImagen" class="image-upload">
-                    <input class="valorRespuesta" type="text" name="txt${contadorEtiqueta - 1}" id="txt${contadorEtiqueta - 2}">
-                    <div style="visibility: hidden;" class="image-upload segundaImagen" id="img${contadorEtiqueta - 1}">
-                        <label for="imagen${contadorEtiqueta - 1}" id="labelImg">
-                            <img class="cargaImagen" id="cargaImagen${contadorEtiqueta - 1}" src="../../../../images/upload.png"/>
-                        </label>
-                        <input type="file" name="imagen${contadorEtiqueta - 1}" id="imagen${contadorEtiqueta - 1}" value="noImagen" accept="image/png, image/jpeg">
-                    </div>
-                    <input type="file" name="imagen${contadorEtiqueta - 2}" id="imagen${contadorEtiqueta - 2}" accept="image/png, image/jpeg">
+                <input class="valorRespuesta" type="text" name="txt${contadorEtiqueta - 2}" id="txt${contadorEtiqueta - 2}">
+                <div style="visibility: hidden;" class="image-upload segundaImagen" id="img${contadorEtiqueta - 2}">
+                    <label for="imagen${contadorEtiqueta - 2}" id="labelImg">
+                        <img class="cargaImagen" id="cargaImagen${contadorEtiqueta - 2}" src="../../../../images/upload.png"/>
+                    </label>
+                    <input type="file" name="imagen${contadorEtiqueta - 2}" id="imagen${contadorEtiqueta - 2}" value="noImagen" accept="image/png, image/jpeg">
                 </div>
             </div>
         </div>
         <div class="opcionesRespuesta">
             <div class="respuestaCambiar" id="respuestaCambiar${contadorEtiqueta - 1}">
-                <input class="valorRespuesta" type="text" name="txt${contadorEtiqueta - 1}" id="txt${contadorEtiqueta - 2}">
+                <input class="valorRespuesta" type="text" name="txt${contadorEtiqueta - 1}" id="txt${contadorEtiqueta - 1}">
                 <div style="visibility: hidden;" class="image-upload segundaImagen" id="img${contadorEtiqueta - 1}">
                     <label for="imagen${contadorEtiqueta - 1}" id="labelImg">
                         <img class="cargaImagen" id="cargaImagen${contadorEtiqueta - 1}" src="../../../../images/upload.png"/>
@@ -42,24 +39,33 @@ const insertarCodigo = (contadorEtiqueta) => {
     contenedor.appendChild(elementoJuego);
 
     const opcion = document.querySelector(`#opcion${contadorEtiqueta - 2}`);
-    const select = document.querySelector(`#select${contadorEtiqueta - 2}`);
-    const respuestaCambiar = document.querySelector(`#respuestaCambiar${contadorEtiqueta - 2}`);
-    const campoImagen = document.querySelector(`#img${contadorEtiqueta - 2}`);
-    const campoTexto = document.querySelector(`#txt${contadorEtiqueta - 2}`);
+    const campoImagenUno = document.querySelector(`#img${contadorEtiqueta - 2}`);
+    const campoTextoUno = document.querySelector(`#txt${contadorEtiqueta - 2}`);
+    const campoImagenDos = document.querySelector(`#img${contadorEtiqueta - 1}`);
+    const campoTextoDos = document.querySelector(`#txt${contadorEtiqueta - 1}`);
 
 
 
     opcion.addEventListener('change', () => {
-        if (opcion.selectedIndex === 1) {
-            select.innerHTML = 'Imagen';
-            campoTexto.style.visibility = "hidden";
-            campoTexto.value = "noTexto";
-            campoImagen.style.visibility = "visible";
-        } else {
-            select.innerHTML = 'Palabra';
-            campoImagen.style.visibility = "hidden";
-            campoTexto.style.visibility = "visible";
+        console.log(opcion.selectedIndex)
+        if (opcion.selectedIndex === 0) {
+            campoTextoUno.style.visibility = "visible";
+            campoTextoDos.style.visibility = "visible";
+            campoImagenUno.style.visibility = "hidden";
+            campoImagenDos.style.visibility = "hidden";
 
+        }
+        if (opcion.selectedIndex === 1) {
+            campoImagenUno.style.visibility = "hidden";
+            campoTextoUno.style.visibility = "visible";
+            campoTextoDos.style.visibility = "hidden";
+            campoImagenDos.style.visibility = "visible";
+        }
+        if (opcion.selectedIndex === 2) {
+            campoTextoUno.style.visibility = "hidden";
+            campoTextoDos.style.visibility = "hidden";
+            campoImagenUno.style.visibility = "visible";
+            campoImagenDos.style.visibility = "visible";
         }
     });
 

@@ -2,58 +2,58 @@
 <html>
 
 <head>
-  <title>Inicio de Sesión</title>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
-    integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="./css/style_iniciosesion.css">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/style_iniciosesion.css">
 </head>
 
 <body style="margin:0;">
 
-  <div id="blocker"></div>
-  <div id="loader"></div>
+    <div id="blocker"></div>
+    <div id="loader"></div>
 
-  <header class="stick" id="navBar">
-  </header>
+    <header class="stick" id="navBar">
+    </header>
 
-  <div class="main-block">
-    <div id="popAlert"></div>
-    <div class="left-part">
-      <i class="fas fa-graduation-cap"></i>
+    <div class="main-block">
+        <div id="popAlert"></div>
+        <div class="left-part">
+            <i class="fas fa-graduation-cap"></i>
 
-      <h1>EDUMEX</h1>
-      <h1>Ingresa tus datos para iniciar sesión</h1>
+            <h1>EDUMEX</h1>
+            <h1>Ingresa tus datos para iniciar sesión</h1>
+        </div>
+
+        <form id="form_inicio">
+            <div class="title">
+                <i class="fas fa-pencil-alt"></i>
+
+                <h2>Tus datos</h2>
+            </div>
+
+            <div id="alertas"></div>
+
+            <div id="datos_inicio" class="info">
+                <input id="Correo_inicio" type="email" name="correo" placeholder="*Correo Electrónico">
+                <input id="Contra_inicio" type="password" name="password" placeholder="*Contraseña">
+            </div>
+
+            <div class="botonEnvioForm">
+                <button id="enviar_inicio" type="submit">Iniciar Sesión</button>
+            </div </form>
     </div>
 
-    <form id="form_inicio">
-      <div class="title">
-        <i class="fas fa-pencil-alt"></i>
-
-        <h2>Tus datos</h2>
-      </div>
-
-      <div id="alertas"></div>
-
-      <div id="datos_inicio" class="info">
-        <input id="Correo_inicio" type="email" name="correo" placeholder="*Correo Electrónico">
-        <input id="Contra_inicio" type="password" name="password" placeholder="*Contraseña">
-      </div>
-
-      <div class="botonEnvioForm">
-        <button id="enviar_inicio" type="submit">Iniciar Sesión</button>
-      </div
-    </form>
-  </div>
-  
-  <script src="../../js/const.js"></script>
-  <script src="../../js/cabecera.js"></script>
-  <script src="../../js/navBar.js"></script>
-  <script src="../../js/validarJWT.js"></script>
-  <script src="../../js/loaders.js"></script>
-  <script src="../../js/alertas.js"></script>
-  <script src="../js/common.js"></script>
-  <script src="js/main.js"></script>
+    <script src="../../js/const.js"></script>
+    <script src="../../js/valForm.js"></script>
+    <script src="../../js/cabecera.js"></script>
+    <script src="../../js/navBar.js"></script>
+    <script src="../../js/validarJWT.js"></script>
+    <script src="../../js/formularios.js"></script>
+    <script src="../../js/loaders.js"></script>
+    <script src="../../js/alertas.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

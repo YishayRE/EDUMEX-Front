@@ -72,7 +72,7 @@ const dibujarNavBar = (accesos = [], tipoJuego, url) => {
             if (formulario == false)
                 console.log("No se generado el codigo del juego");
             else {
-                if (tipoJuego !== "rompecabezas")
+                if (tipoJuego !== "rompecabezas" && tipoJuego !== "memoria")
                     if (formulario[1].length <= 1) {
                         dibujarPopAlerta("Debe agregar minimo dos reactivos");
                         bandera = 0;
