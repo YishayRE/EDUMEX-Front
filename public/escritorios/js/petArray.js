@@ -37,12 +37,12 @@ const obtenerArray = async(arrayPath, idT) => {
 }
 
 const obtenerEstudiantes = async(idG) => {
+    showLoad();
     const token = localStorage.getItem('token') || '';
     const resp = await fetch(baseApi + "inscrito/inscritos/", {
         method: 'GET',
         headers: { 'x-token': token, user: uid, id: idG }
     });
-
     const respuesta = await resp.json();
     console.log(respuesta);
     if(respuesta.msg){
@@ -50,6 +50,7 @@ const obtenerEstudiantes = async(idG) => {
         dibujarPopAlerta("No se pudo obtener a los estudiantes del grupo");
         throw new Error(respuesta.msg);
     }
+    hiddenLoad();
     return respuesta;
 }
 
@@ -80,13 +81,13 @@ const mandarComentario = async(formData) =>{
     let raw = JSON.stringify(formData);
 
     let requestOptions = {
-        method: 'POST',
+        method: 'PUT',
         headers: myHeaders,
         body: raw,
         redirect: 'follow'
       };
 
-    const resp = await fetch(baseApi + "comentario/", requestOptions);
+    const resp = await fetch(baseApi + "comentario/id/", requestOptions);
 
     const respuesta = await resp.json();
     console.log(respuesta);

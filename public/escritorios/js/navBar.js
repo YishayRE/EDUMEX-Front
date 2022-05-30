@@ -2,13 +2,20 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
     let navBarHtml = '';
     let extraHtml = '';
     let i = null;
-    const role = (rol === 'PRO_ROLE')
-        ? 'pro'
-        : 'est';
+    const role = (rol === 'PRO_ROLE') ?
+        'pro' :
+        'est';
+    const tituloUsuario = (rol === 'PRO_ROLE') ?
+        'PROFESOR' :
+        'ESTUDIANTE';
 
     navBarHtml += `
         <nav id=barraNav>
             <input type="checkbox" id="check">
+
+            <div id="tituloUser">
+                <h3>${tituloUsuario}</h3>
+            </div>
 
             <div id="titulo">
                 <h3>${titulo}</h3>
@@ -18,24 +25,24 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
                     <i class="fas fa-bars"></i>
             </label>
     `;
-        if(titulo == 'Escritorio Principal'){
-            navBarHtml += `
+    if (titulo == 'Escritorio Principal') {
+        navBarHtml += `
             <div class="enlace" id="menuEditar">
                 <img src="${baseUrl}/images/edit.png" alt="EDUMEX" class="logo">
             </div>
             `;
-        }else{
-            navBarHtml += `
+    } else {
+        navBarHtml += `
             <div class="enlace" id="regresar">
                 <img src="${baseUrl}/images/atras.png" alt="Regresar" class="logo">
             </div>
             `;
-        }
-        navBarHtml += `
+    }
+    navBarHtml += `
             <ul id="lista">
         `;
-    accesos.forEach(({ nombre, referencia },index) => {
-        if(nombre == "Calificaciones"){
+    accesos.forEach(({ nombre, referencia }, index) => {
+        if (nombre == "Calificaciones") {
             navBarHtml += `
                 <li>
                     <a id="${role}${index}" href class="botonesNav">
@@ -45,8 +52,7 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
                     </a>
                 </li>
             `;
-        }
-        else if(titulo.startsWith('Grupo') && nombre == "Activar Grupo" && rol === 'PRO_ROLE'){
+        } else if (titulo.startsWith('Grupo') && nombre == "Activar Grupo" && rol === 'PRO_ROLE') {
             switch (disponibleGrupo) {
                 case true:
                     extraHtml += `
@@ -72,16 +78,16 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
                     break;
                 default:
                     break;
-                    
+
             }
             navBarHtml += extraHtml;
-        }else{
+        } else {
             navBarHtml += `
                 <li><a id="${role}${index}" href="${referencia}" class="botonesNav">${nombre}</a></li>
             `;
         }
     });
-    
+
     navBarHtml += `
                 <li><a id="logout" href class="botonesNav">Salir</a></li>
             </ul>
@@ -90,14 +96,14 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
 
     navBar.innerHTML = navBarHtml;
 
-    if(titulo == 'Escritorio Principal'){
+    if (titulo == 'Escritorio Principal') {
         const btnMenuEditar = document.querySelector('#menuEditar');
         btnMenuEditar.addEventListener('click', e => {
             dibujarPopEditarUser();
             showPopEditarUser();
         });
-    }else{
-        if(titulo.length > 25){
+    } else {
+        if (titulo.length > 25) {
             const tituloEsc = document.querySelector("#titulo");
             tituloEsc.style.marginTop = "0px"
         }
@@ -106,8 +112,8 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
             window.location.replace(`${escritoriosUrl}${url}`);
         });
     }
-    
-    if(titulo.startsWith('Grupo') && rol === 'PRO_ROLE'){
+
+    if (titulo.startsWith('Grupo') && rol === 'PRO_ROLE') {
         i = 2;
         let grupoActual = new Object();
         grupoActual.disponible = !disponibleGrupo;
@@ -116,19 +122,18 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
         activar.style.padding = "10px 70px";
         calificaciones = document.querySelector('#pro0');
         calificaciones.style.padding = "10px 60px 10px 70px";
-        
-        activar.addEventListener('click', async(event) =>{
+
+        activar.addEventListener('click', async(event) => {
             event.preventDefault();
-            const {codigo} = await activarGrupo(grupoActual, localStorage.getItem('grupo'));
-            if(disponibleGrupo == false){
-                dibujarPopAlerta("codGrupo", codigo);
-            }
-            else{
+            const { codigo } = await activarGrupo(grupoActual, localStorage.getItem('grupo'));
+            if (disponibleGrupo == false) {
+                dibujarPopAlerta("codGrupo", codigo, "desactivarOverlay");
+            } else {
                 location.reload();
-            } 
+            }
         });
 
-        calificaciones.addEventListener('click', async(event) =>{
+        calificaciones.addEventListener('click', async(event) => {
             event.preventDefault();
             showLoad();
             const archivoDescargado = await descargarArchivo(localStorage.getItem('grupo'), "grupo/");
@@ -136,11 +141,11 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
             hiddenLoad();
         });
 
-    }else if(titulo.startsWith('Materia') && rol === 'PRO_ROLE'){
+    } else if (titulo.startsWith('Materia') && rol === 'PRO_ROLE') {
         calificaciones = document.querySelector('#pro0');
         calificaciones.style.padding = "10px 60px 10px 70px";
 
-        calificaciones.addEventListener('click', async(event) =>{
+        calificaciones.addEventListener('click', async(event) => {
             event.preventDefault();
             showLoad();
             const archivoDescargado = await descargarArchivo(localStorage.getItem('materia'), "materia/");
@@ -149,13 +154,13 @@ const dibujarNavBar = (accesos = [], titulo, url) => {
         });
 
         i = 1;
-    }else{
+    } else {
         i = 0;
     }
 
     const lista = document.querySelector("#lista");
 
-    for(i; i < (lista.children.length - 1); i++){
+    for (i; i < (lista.children.length - 1); i++) {
         document.querySelector(`#${role}${i}`).addEventListener('click', (event) => {
             event.preventDefault();
             showPop();

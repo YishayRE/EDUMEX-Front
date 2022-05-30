@@ -10,11 +10,11 @@ const dibujarNavBar = (accesos = [], tipoJuego, url) => {
 
             <div id="titulo">
     `;
-    if(tipoJuego == "tamanos"){
+    if (tipoJuego == "tamanos") {
         navBarHtml += `
                 <h3>Tamaños y Formas</h3>
         `;
-    }else{
+    } else {
         navBarHtml += `
                 <h3>${tipoJuego}</h3>
         `;
@@ -65,18 +65,24 @@ const dibujarNavBar = (accesos = [], tipoJuego, url) => {
         const terminarJ = document.querySelector('#terminarJ');
 
         probarJ.addEventListener('click', async(e) => {
+            let bandera = 1;
             let formulario = "";
             formulario = generarHtml();
-            if(formulario == false){
+
+            if (formulario == false)
                 console.log("No se generado el codigo del juego");
-            }else{
-                if(formulario[1].length <= 1){
-                    dibujarPopAlerta("Debe agregar minimo dos reactivos");
-                }else{
+            else {
+                if (tipoJuego !== "rompecabezas" && tipoJuego !== "memoria")
+                    if (formulario[1].length <= 1) {
+                        dibujarPopAlerta("Debe agregar minimo dos reactivos");
+                        bandera = 0;
+                    }
+
+                if (bandera === 1) {
                     showLoad();
                     let idJuego = await actTarjeta({
-                    codigo: formulario[0],
-                    respuestas: formulario[1]
+                        codigo: formulario[0],
+                        respuestas: formulario[1]
                     }, "juego/", juegoId, tipoJuego);
                     hiddenLoad();
                 }
@@ -85,11 +91,11 @@ const dibujarNavBar = (accesos = [], tipoJuego, url) => {
 
         terminarJ.addEventListener('click', async(e) => {
             let formulario = generarHtml();
+            console.log("Aqui estoy");
             const elementosCalif = dataForm(document.querySelector("#elementosCalif"));
-            console.log(elementosCalif);
             const valoresBien = validarVacios(elementosCalif);
 
-            if(valoresBien.estaCompleto){
+            if (valoresBien.estaCompleto) {
                 showLoad();
                 let idJuego = await terminarJuego({
                     codigo: formulario[0],
@@ -99,7 +105,7 @@ const dibujarNavBar = (accesos = [], tipoJuego, url) => {
                     tipoJuego: tipoJuego
                 }, juegoId);
                 hiddenLoad();
-            }else{
+            } else {
                 dibujarPopAlerta("Los siguientes campos están vacios: " + valoresBien.camposVacios);
             }
         });

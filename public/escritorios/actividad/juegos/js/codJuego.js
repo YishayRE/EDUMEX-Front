@@ -7,13 +7,14 @@ const codigoJuego = async() => {
 
     const respuesta = await resp.json();
     console.log(respuesta);
-    if(respuesta.msg){
-        throw new Error(respuesta.msg);        
+    if (respuesta.msg) {
+        throw new Error(respuesta.msg);
     }
 
     const codigo = document.querySelector('#codigo');
     console.log(codigo);
-    codigo.innerHTML = respuesta;
+    codigo.innerHTML = respuesta.codigo;
+    return respuesta.tiempo;
 }
 
 const obtenerRespuestas = async() => {
@@ -24,9 +25,9 @@ const obtenerRespuestas = async() => {
     });
 
     const respuesta = await resp.json();
-    
-    if(respuesta.msg){
-        throw new Error(respuesta.msg);        
+
+    if (respuesta.msg) {
+        throw new Error(respuesta.msg);
     }
     return respuesta;
 }

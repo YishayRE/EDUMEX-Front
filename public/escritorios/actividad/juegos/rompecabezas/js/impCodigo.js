@@ -1,4 +1,4 @@
-const insertarCodigo = (contadorEtiqueta) => {
+/*const insertarCodigo = (contadorEtiqueta) => {
     const contenedor = document.querySelector('#contenedor');
 
     const elementoJuego = document.createElement('div');
@@ -36,4 +36,20 @@ const insertarCodigo = (contadorEtiqueta) => {
         else
             select.innerHTML = 'Palabra';
     });
-}
+}*/
+
+const inputImagen = document.querySelector(`#imagen`);
+const cargaImagen = document.querySelector(`#cargaImagen`);
+
+inputImagen.addEventListener('change', async(event) => {
+    const file = inputImagen.files[0];
+    console.log(file);
+
+    if (file.type && !file.type.startsWith('image/')) {
+        console.log('File is not an image.', file.type, file);
+    }else{
+        const respuestaImagen = await subirImagen(cargaImagen.src, file);
+        console.log(respuestaImagen);
+        cargaImagen.src = respuestaImagen.url;
+    }
+});

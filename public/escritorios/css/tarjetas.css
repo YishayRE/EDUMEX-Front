@@ -1,175 +1,175 @@
 /*--------------------------------------TARJETAS PARA GRUPO, MATERIA Y ACTIVIDAD---------------------------------*/
-.container{
+
+.container {
     display: flex;
     flex-wrap: wrap;
-    overflow: hidden;
-  }
+    overflow-y: scroll;
+    max-height: 86vh;
+}
 
 .tarjeta {
-  margin: 1.5vw;
-  background-color: #FFB4A2;
-  border: 5px solid #E5989B;
-  width: 180px;
-  text-align: center;
-  border-radius: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  transition: all .5s;
+    margin: 1.5vw;
+    background-color: #FFB4A2;
+    border: 5px solid #E5989B;
+    width: 180px;
+    text-align: center;
+    border-radius: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s;
 }
 
 .tarjetaMateria {
-  margin-top: 300px;
-  margin: 1.5vw;
-  width: 180px;
-  text-align: center;
-  border-radius: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  transition: all .5s;
-  color: black;
+    margin-top: 300px;
+    margin: 1.5vw;
+    width: 180px;
+    text-align: center;
+    border-radius: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    transition: all .5s;
+    color: black;
 }
 
 .tarjetaMateria:hover {
-  color: black;
-  border: 7px solid #E5989B;
-  transition: .5s;
-  font-size: 16px;
+    color: black;
+    border: 7px solid #E5989B;
+    transition: .5s;
+    font-size: 16px;
 }
 
 .tarjeta:hover {
-  color: black;
-  background: rgb(255,180,162);
-  background: radial-gradient(circle, rgba(255,180,162,1) 36%, rgba(229,152,155,1) 94%, rgba(181,131,141,1) 100%);
-  border: 7px solid #E5989B;
-  transition: .5s;
-  font-size: 16px;
+    color: black;
+    background: rgb(255, 180, 162);
+    background: radial-gradient(circle, rgba(255, 180, 162, 1) 36%, rgba(229, 152, 155, 1) 94%, rgba(181, 131, 141, 1) 100%);
+    border: 7px solid #E5989B;
+    transition: .5s;
+    font-size: 16px;
 }
 
 .tarjeta_nombre {
-  color: #707070
+    color: #707070
 }
 
 .tarjeta_bienvenida {
-  color: #B5838D;
+    color: #B5838D;
 }
 
-.textoTarjetas{
-  overflow-x: hidden;
-  max-width: 180px;
+.textoTarjetas {
+    overflow-x: hidden;
+    max-width: 180px;
 }
 
-.tituloTarjetas{
-  overflow-x: hidden;
-  max-width: 180px;
+.tituloTarjetas {
+    overflow-x: hidden;
+    max-width: 180px;
 }
 
-.tituloAct{
-  font-size: 16px;
+.tituloAct {
+    font-size: 16px;
 }
 
 .tarjeta_button {
-  background-color: #FFB4A2;
-  width: 50px;
-  align-content: center;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  display:flex;
-  border-radius:47%;
-  border: 5px solid #E5989B;
-  margin:auto;
-  cursor: pointer;
+    background-color: #FFB4A2;
+    width: 50px;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 47%;
+    border: 5px solid #E5989B;
+    margin: auto;
+    cursor: pointer;
 }
 
 .tarjetaMateria_button {
-  background-color: #FFB4A2;
-  width: 77px;
-  align-content: center;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  display:flex;
-  border-radius:47%;
-  border: 5px solid #E5989B;
-  margin:auto;
-  cursor: pointer;
-  margin-bottom: 5px;
+    background-color: #FFB4A2;
+    width: 77px;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 47%;
+    border: 5px solid #E5989B;
+    margin: auto;
+    cursor: pointer;
+    margin-bottom: 5px;
 }
 
 .buttons_tarjetas {
-  width:fit-content;
-  align-content: center;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  display:flex;
-  margin-top: 3px;
-  margin-left: 5px;
+    width: fit-content;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 3px;
+    margin-left: 5px;
 }
 
-#eliminar{
-  margin-right: 132px;
-
+#eliminar {
+    margin-right: 132px;
 }
 
-.imgEditar{
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
+.imgEditar {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
 }
 
-.imgEliminar{
-  width: 17px;
-  height: 17px;
-  cursor: pointer;
+.imgEliminar {
+    width: 17px;
+    height: 17px;
+    cursor: pointer;
 }
 
-.tarjeta_button h5{
-  margin-block-end: 0px;
-  margin-block-start: 0px;
-  width: min-content;
-  color: #B5838D;
-  border-radius: 20px;
-  padding: 3px;
+.tarjeta_button h5 {
+    margin-block-end: 0px;
+    margin-block-start: 0px;
+    width: min-content;
+    color: #B5838D;
+    border-radius: 20px;
+    padding: 3px;
 }
 
-.tarjetaMateria_button h5{
-  margin-block-end: 0px;
-  margin-block-start: 0px;
-  width: min-content;
-  border-radius: 20px;
-  padding: 3px;
+.tarjetaMateria_button h5 {
+    margin-block-end: 0px;
+    margin-block-start: 0px;
+    width: min-content;
+    border-radius: 20px;
+    padding: 3px;
 }
 
 .tarjeta_button--btn {
-  font-size: 22px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 1;
+    font-size: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
 }
 
-.tituloTarjetas{
-  color: #68555c;
-  margin: 0px;
-  font-size: 20px;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 19px;
+.tituloTarjetas {
+    color: #68555c;
+    margin: 0px;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 19px;
 }
 
-.botonesActividad{
-  display: grid;
-  grid-template-columns: auto;
+.botonesActividad {
+    display: grid;
+    grid-template-columns: auto;
 }
 
-.textoBox{
-  margin-top: 5px;
-  margin-bottom: 10px;
-  font-weight:900;
+.textoBox {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-weight: 900;
 }
-

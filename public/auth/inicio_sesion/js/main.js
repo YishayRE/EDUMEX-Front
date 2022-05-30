@@ -2,50 +2,47 @@ document.cookie = " ";
 const miFormulario = document.querySelector('#form_inicio');
 const alertas = document.querySelector("#alertas");
 const titulo = "";
-const accesos = [
-	{
-		'nombre': 'Registrar',
-		'referencia': `auth/registro/`
-	}
-];
+const accesos = [{
+    'nombre': 'Registrar',
+    'referencia': `auth/registro/`
+}];
 
 miFormulario.addEventListener('submit', async(ev) => {
     ev.preventDefault();
     showLoad();
 
-    if(!validarFormulario())
+    const formData = dataForm(miFormulario);
+
+    const arrayInicio = Object.entries(formData);
+
+    arrayInicio.forEach(campo => {
+        if (campo[1] == "") {
+            switch (campo[0]) {
+                case "correo":
+                    dibujarPopAlerta(`No has ingresado tu correo`);
+                    hiddenLoad();
+                    throw new Error(`El campo correo está vacío`);
+                    break;
+                case "password":
+                    dibujarPopAlerta(`No has ingresado tu contraseña`);
+                    hiddenLoad();
+                    throw new Error(`El campo password está vacío`);
+                    break;
+            }
+        }
+    });
+
+    if (!validarFormulario())
         throw new Error("Hubo un error en los datos del formulario");
 
-    const formData = {};
-
-    for(let el of miFormulario.elements){
-        if(el.name.length > 0){
-            formData[el.name] = el.value;
-        }
-    }
-
     await iniciar(formData);
-    
+
     hiddenLoad();
 });
-  
+
 function validarFormulario() {
     let c1 = document.getElementById("Correo_inicio").value;
     let c2 = document.getElementById("Contra_inicio").value;
-
-    if(c1.length === 0 && c2.length === 0) {
-        hiddenLoad();
-        dibujarPopAlerta("No has ingresado ningún dato");
-        return false;
-    }else if(c1.length === 0){
-        hiddenLoad();
-        dibujarPopAlerta("No has ingresado el correo");
-        return false;
-    }else if(c2.length === 0){
-        hiddenLoad();
-        dibujarPopAlerta("No has ingresado la contraseña");
-        return false;
-    }
 
     if (c2.length != 6) {
         hiddenLoad();
@@ -56,9 +53,18 @@ function validarFormulario() {
     return true;
 }
 
+/*const validarCampos = () => {
+    let c1 = document.getElementById("Correo_inicio").value;
+    let c2 = document.getElementById("Contra_inicio").value;
+
+    c1.onkeypress = function() { return sinEspecialesLetras(event) };
+    c2.onkeypress = function() { return sinEspecialesLetras(event) };
+}*/
+
 const main = async() => {
     localStorage.clear();
     dibujarNavBar(accesos, titulo);
+    validarCampos();
     await tieneJWT();
 }
 

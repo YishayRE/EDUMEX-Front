@@ -1,16 +1,16 @@
 const dibujarNavBar = (accesos = [], titulo) => {
     let navBarHtml = '';
 
-    const role = (rol === 'PRO_ROLE')
-        ? 'pro'
-        : 'est';
+    const role = (rol === 'PRO_ROLE') ?
+        'pro' :
+        'est';
 
     navBarHtml += `
         <nav id=barraNav>
             <input type="checkbox" id="check">
 
             <div id="titulo">
-                <h1>${titulo}</h1>
+                <h1 id="tiempo">${titulo}</h1>
             </div>
 
             <label for="check" class="checkbtn" id="barras">
@@ -25,7 +25,7 @@ const dibujarNavBar = (accesos = [], titulo) => {
     navBarHtml += `
             <ul id="lista">
     `;
-    accesos.forEach(({ nombre, referencia },index) => {
+    accesos.forEach(({ nombre, referencia }, index) => {
         navBarHtml += `
             <li><a id="${role}${index}" class="botonesNav">${nombre}</a></li>
         `;
@@ -40,17 +40,17 @@ const dibujarNavBar = (accesos = [], titulo) => {
 
     const cerrar = document.querySelector("#cerrarPrueba");
 
-    
-        cerrar.addEventListener('click', (event) => {
-            event.preventDefault();
-            if(rol == "PRO_ROLE"){
-                window.close();
-            }else{
-                window.location.replace(`${escritoriosUrl}materia`);
-            }
-        
+
+    cerrar.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (rol == "PRO_ROLE") {
+            window.close();
+        } else {
+            window.location.replace(`${escritoriosUrl}materia`);
+        }
+
     });
-    
-    
+
+
 
 }

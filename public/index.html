@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>EDUMEX INICIO</title>
     <link rel="stylesheet" type="text/css" href="./css/style_inicio.css">
@@ -9,13 +10,46 @@
 
 
 </head>
+
 <body>
     <header class="stick" id="navBar">
     </header>
-    
+
     <div id="content">
-        <div id="emergentes">
-            
+        <div id="emergentes"></div>
+
+        <div class="slide">
+            <div class="slide-inner">
+                <input class="slide-open" type="radio" id="slide-1" name="slide" aria-hidden="true" hidden="" checked="checked">
+                <div class="slide-item">
+                    <img src="./images/1.png">
+                </div>
+                <input class="slide-open" type="radio" id="slide-2" name="slide" aria-hidden="true" hidden="">
+                <div class="slide-item">
+                    <img src="./images/2.png">
+                </div>
+                <input class="slide-open" type="radio" id="slide-3" name="slide" aria-hidden="true" hidden="">
+                <div class="slide-item">
+                    <img src="./images/3.png">
+                </div>
+                <label for="slide-3" class="slide-control prev control-1">‹</label>
+                <label for="slide-2" class="slide-control next control-1">›</label>
+                <label for="slide-1" class="slide-control prev control-2">‹</label>
+                <label for="slide-3" class="slide-control next control-2">›</label>
+                <label for="slide-2" class="slide-control prev control-3">‹</label>
+                <label for="slide-1" class="slide-control next control-3">›</label>
+                <ol class="slide-indicador">
+                    <li>
+                        <label for="slide-1" class="slide-circulo">•</label>
+                    </li>
+                    <li>
+                        <label for="slide-2" class="slide-circulo">•</label>
+                    </li>
+                    <li>
+                        <label for="slide-3" class="slide-circulo">•</label>
+                    </li>
+                </ol>
+            </div>
         </div>
 
     </div>
@@ -29,4 +63,5 @@
     <script src="js/PopFooter.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>

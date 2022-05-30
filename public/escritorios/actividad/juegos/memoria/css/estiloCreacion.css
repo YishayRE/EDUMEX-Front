@@ -1,18 +1,19 @@
-.image-upload{
+.image-upload {
     width: fit-content;
     height: fit-content;
     padding-top: 30px;
     padding-bottom: 30px;
 }
 
-.contenedorTipo{
+.contenedorTipo {
     width: fit-content;
     height: fit-content;
     padding-top: 50px;
     padding-bottom: 50px;
+    padding-left: 15px;
 }
 
-.selectTipo{
+.selectTipo {
     width: 150px;
     height: 49px;
     border-radius: 10px;
@@ -20,33 +21,35 @@
     font-size: 20px;
 }
 
-.selectTitulo{
+.selectTitulo {
     font-size: 20px;
     text-align: center;
     margin-top: 60px;
 }
 
-.valorRespuesta{
+.valorRespuesta {
     width: 150px;
     height: 40px;
     font-size: 20px;
     border-radius: 10px;
     border: 3px solid;
+    margin-top: 40px;
 }
 
-.opcionesRespuesta{
+.opcionesRespuesta {
     height: 150px;
     padding-top: 10px;
 }
 
-#segundaImagen{
+.segundaImagen {
     padding: 0px;
+    margin-top: -75px;
     padding-left: 33px;
 }
 
 .elementoJuego {
     display: grid;
-    grid-template-columns: 90px 150px 130px 210px;
+    grid-template-columns: 215px 155px 200px;
     gap: 10px 10px;
     width: 600px;
     height: 150px;

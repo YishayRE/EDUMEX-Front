@@ -1,3 +1,47 @@
 #contenidoJuego {
     color: black;
 }
+
+.imgMemorama {
+    margin: 15px;
+}
+
+.txtMemorama {
+    margin: 15px;
+}
+
+.fondoMemo {
+    background-color: black;
+    border-radius: 10px;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    border: 8px solid;
+    border-radius: 10px;
+    border-color: black;
+}
+
+.caraMemo {
+    width: 150px;
+    height: 150px;
+    display: none;
+    border: 8px solid;
+    border-radius: 10px;
+    border-color: #68555c;
+}
+
+.imagenParMemorama {
+    width: 150px;
+    height: 150px;
+}
+
+.textoMemorama {
+    width: 150px;
+    height: 150px;
+    margin: 15px;
+    font-size: 30px;
+}
+
+#botonesMemo {
+    display: none;
+}

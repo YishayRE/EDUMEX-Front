@@ -1,12 +1,13 @@
 /*-------------------------------------------BARRA DE NAVEGACION---------------------------------------*/
+
 .stick {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 100;
-  }
-  
-  nav {
+}
+
+nav {
     font-family: Gill Sans, sans-serif;
     background: #ffb4a2;
     height: 60px;
@@ -14,40 +15,40 @@
     border: 3px solid;
     border-color: #ffb4a2;
     text-transform: uppercase;
-  }
-  
-  .enlace {
+}
+
+.enlace {
     position: absolute;
     margin: 10px 30px;
     border-radius: 20px;
     transition: .5s;
     background: #E5989B;
-  }
+}
 
-  .enlace:hover {
+.enlace:hover {
     color: #68555c;
     background: #917681;
     transition: .5s;
     font-size: 16px;
-  }
+}
 
-  .activar{
+.activar {
     position: absolute;
     margin-left: 17px;
     margin-top: -3px;
-  }
+}
 
-  .logoBoton{
+.logoBoton {
     height: 35px;
-    cursor:pointer;
-  }
-  
-  .logo {
-    height: 40px;
-    cursor:pointer;
-  }
+    cursor: pointer;
+}
 
-  #titulo{
+.logo {
+    height: 40px;
+    cursor: pointer;
+}
+
+#titulo {
     position: fixed;
     margin-left: 30%;
     color: #68555c;
@@ -59,20 +60,34 @@
     overflow: hidden;
     font-size: 12px;
     margin-top: 8px;
-  }
-  
-  nav ul {
+}
+
+#tituloUser {
+    position: fixed;
+    margin-left: 15%;
+    color: #68555c;
+    max-width: 450px;
+    background: #E5989B;
+    border-radius: 15px;
+    max-height: 60px;
+    max-width: 200px;
+    overflow: hidden;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+nav ul {
     float: right;
     margin-right: 5%;
     margin-bottom: 0rem;
-  }
-  
-  nav ul li {
+}
+
+nav ul li {
     display: inline-block;
     line-height: 30px;
-  }
-  
-  nav ul li a {
+}
+
+nav ul li a {
     text-decoration: none;
     color: #68555c;
     font-size: 14px;
@@ -82,21 +97,21 @@
     background: #E5989B;
     transition: all .5s;
     font-weight: bold;
-  }
-  
-  li a.active {
+}
+
+li a.active {
     color: #68555c;
     transition: all .5s;
     font-size: 16px;
-  }
-  
-  li a:hover {
+}
+
+li a:hover {
     color: #68555c;
     background: #917681;
     transition: .5s;
-  }
-  
-  .checkbtn {
+}
+
+.checkbtn {
     font-size: 30px;
     color: black;
     float: right;
@@ -105,22 +120,25 @@
     margin-top: 15px;
     cursor: pointer;
     display: none;
-  }
-  
-  #check {
+}
+
+#check {
     display: none;
-  }
-  /*-------------------------------------------ESTILOS PAGINA RESPONSIVA-----------------------------------*/
-  @media (max-width: 952px) {
+}
+
+
+/*-------------------------------------------ESTILOS PAGINA RESPONSIVA-----------------------------------*/
+
+@media (max-width: 952px) {
     .enlace {
         padding-left: 20px;
     }
     nav ul li a {
         font-size: 16px;
     }
-  }
-  
-  @media (max-width: 858px) {
+}
+
+@media (max-width: 858px) {
     .checkbtn {
         display: block;
     }
@@ -128,7 +146,8 @@
         position: fixed;
         width: 100%;
         height: 100vh;
-        background: #FFF2EB;;
+        background: #FFF2EB;
+        ;
         top: 40px;
         left: -130%;
         text-align: center;
@@ -151,4 +170,4 @@
     #check:checked~ul {
         left: 0;
     }
-  }
+}

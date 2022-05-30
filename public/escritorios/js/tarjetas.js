@@ -3,12 +3,12 @@ const dibujarGrupo = (grupos = []) => {
     let gruposHtml = '';
     let nombreTitulo = '';
 
-    grupos.forEach(({ grado, grupo, saludo },index) => {
+    grupos.forEach(({ grado, grupo, saludo }, index) => {
         gruposHtml += `
 		<div class="tarjeta">
 			<div class="tarjeta_nombre">
         `;
-        if(rol == "PRO_ROLE"){
+        if (rol == "PRO_ROLE") {
             gruposHtml += `
                 <div class="buttons_tarjetas">
                     <div name="${index}" id="eliminar">
@@ -31,7 +31,7 @@ const dibujarGrupo = (grupos = []) => {
             <h5>Abrir</h5>
         </div>
 		`;
-        if(rol == "PRO_ROLE"){
+        if (rol == "PRO_ROLE") {
             gruposHtml += `
             <div name="${index}" id="listaEst" class="tarjeta_button">
                 <h5>Lista</h5>
@@ -50,13 +50,13 @@ const dibujarGrupo = (grupos = []) => {
     btnEntrar.forEach((btn, index) => {
         btn.addEventListener('click', () => {
             localStorage.setItem('grupo', grupos[index]._id);
-            nombreTitulo = 'Grupo: ' +  grupos[index].grado + '°' + grupos[index].grupo;
+            nombreTitulo = 'Grupo: ' + grupos[index].grado + '°' + grupos[index].grupo;
             localStorage.setItem('tituloG', nombreTitulo);
             window.location.replace(`${escritoriosUrl}grupo`);
         });
     });
 
-    if(rol == "PRO_ROLE"){
+    if (rol == "PRO_ROLE") {
         const vistaTarjetaEd = document.querySelectorAll("#editar");
 
         vistaTarjetaEd.forEach((edit, index) => {
@@ -93,13 +93,13 @@ const dibujarMateria = (materias = []) => {
     let materiasHtml = '';
     let nombreTitulo = '';
 
-    materias.forEach(({ nombre, color },index) => {
+    materias.forEach(({ nombre, color }, index) => {
         const fondo = hexToRgbA(color);
         materiasHtml += `
 		<div class="tarjetaMateria" style="background-color: ${fondo}; border: 5px solid ${color};">
 			<div class="tarjeta_nombre" style="color: ${color};">
         `;
-        if(rol == "PRO_ROLE"){
+        if (rol == "PRO_ROLE") {
             materiasHtml += `
             <div class="buttons_tarjetas">
                     <div name="${index}" id="eliminar">
@@ -124,18 +124,18 @@ const dibujarMateria = (materias = []) => {
     tarjetas.innerHTML = materiasHtml;
 
     const btnEntrar = document.querySelectorAll('#entrar');
-    
+
     btnEntrar.forEach((btn, index) => {
         btn.addEventListener('click', () => {
-            localStorage.setItem('materia',materias[index]._id);
-            localStorage.setItem('color',materias[index].color);
-            nombreTitulo = 'Materia: ' +  materias[index].nombre;
+            localStorage.setItem('materia', materias[index]._id);
+            localStorage.setItem('color', materias[index].color);
+            nombreTitulo = 'Materia: ' + materias[index].nombre;
             localStorage.setItem('tituloM', nombreTitulo);
             window.location.replace(`${escritoriosUrl}materia`);
         });
     });
 
-    if(rol == "PRO_ROLE"){
+    if (rol == "PRO_ROLE") {
         const vistaTarjetas = document.querySelectorAll("#editar");
 
         vistaTarjetas.forEach((edit, index) => {
@@ -163,9 +163,9 @@ const dibujarActividad = (actividades = []) => {
 
     const color = localStorage.getItem('color');
     const fondo = hexToRgbA(color);
-    actividades.forEach(({ nombre, descripcion, objetivo, juego, disponible, calificacion, intentos},index) => {
+    actividades.forEach(({ nombre, descripcion, objetivo, juego, disponible, calificacion, intentos }, index) => {
 
-        if(rol == "PRO_ROLE"){
+        if (rol == "PRO_ROLE") {
             actividadesHtml += `
                 <div class="tarjetaMateria" style="background-color: ${fondo}; border: 5px solid ${color};">
                     <div class="tarjeta_nombre" style="color: ${color};">
@@ -181,7 +181,7 @@ const dibujarActividad = (actividades = []) => {
                     </div>
             </div>
             `;
-    
+
             actividadesHtml += `
                 <div class="tituloTarjetas" style="color: ${color};">
                         <h3 class="tituloAct">${nombre}</h3>
@@ -195,8 +195,8 @@ const dibujarActividad = (actividades = []) => {
                 </div>
             <div class="botonesActividad">
             `;
-            
-            if(!juego){
+
+            if (!juego) {
                 actividadesHtml += `
                     <div name="${index}" id="entrar" class="tarjetaMateria_button"
                     style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
@@ -210,13 +210,13 @@ const dibujarActividad = (actividades = []) => {
                     <h5>Comentarios</h5>
                 </div>
             `;
-            
+
             actividadesHtml += `
                 </div>
             </div>
             `;
-        }else{
-            if(disponible == true){
+        } else {
+            if (disponible == true) {
                 actividadesHtml += `
                 <div class="tarjetaMateria" style="background-color: ${fondo}; border: 5px solid ${color};">
                     <div class="tarjeta_nombre" style="color: ${color};">
@@ -237,13 +237,13 @@ const dibujarActividad = (actividades = []) => {
                 <div class="botonesActividad">
                 `;
 
-                if(calificacion.intentos !== intentos){
+                if (calificacion.intentos !== intentos) {
                     actividadesHtml += `
                     <div><h5 style="color: ${color};" class="textoBox">Tu calificación final es: ${calificacion.calificacion}</h5></div>
                     `;
                 }
-                
-                if(calificacion.intentos > 0 && calificacion.calificacion !== 10){
+
+                if (calificacion.intentos > 0 && calificacion.calificacion !== 10) {
                     actividadesHtml += `
                     <div name="${index}" id="entrar" class="tarjetaMateria_button"
                     style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
@@ -251,13 +251,28 @@ const dibujarActividad = (actividades = []) => {
                     </div>
                     `;
 
-                }else if(calificacion.intentos === 0 || calificacion.calificacion === 10){
+                } else if (calificacion.intentos === 0 || calificacion.calificacion === 10) {
                     actividadesHtml += `
                     <div><h5 style="color: ${color};" class="textoBox">Gracias por Jugar</h5></div>
                     `;
                 }
-                    
+
                 actividadesHtml += `
+                    <div name="${index}" id="comentarios" class="tarjetaMateria_button"
+                    style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
+                        <h5>Comentarios</h5>
+                    </div>
+                </div>
+
+                </div>
+                `;
+            } else {
+                actividadesHtml += `
+                <div class="tarjetaMateria" style="background-color: ${fondo}; border: 5px solid ${color}; display: none;">
+                `;
+
+                actividadesHtml += `
+                <div class="botonesActividad">
                     <div name="${index}" id="comentarios" class="tarjetaMateria_button"
                     style="background-color: ${fondo}; border: 5px solid ${color}; color:${color};">
                         <h5>Comentarios</h5>
@@ -271,7 +286,7 @@ const dibujarActividad = (actividades = []) => {
 
     });
     tarjetas.innerHTML = actividadesHtml;
-    
+
     const btnEntrar = document.querySelectorAll('#entrar');
     console.log(btnEntrar);
     const btnComentarios = document.querySelectorAll('#comentarios');
@@ -279,15 +294,15 @@ const dibujarActividad = (actividades = []) => {
 
     switch (rol) {
         case "PRO_ROLE":
-            actividades.forEach(({juego},index) => {
-                if(!juego){
+            actividades.forEach(({ juego }, index) => {
+                if (!juego) {
                     btnComentarios[index].style.visibility = "hidden";
                 }
             });
             btnComentarios.forEach((btn, index) => {
-                if(!actividades[index].disponible)
+                if (!actividades[index].disponible)
                     btnEntrar[aux++].addEventListener('click', () => {
-                        localStorage.setItem('actividad',actividades[index]._id);
+                        localStorage.setItem('actividad', actividades[index]._id);
                         window.location.replace(`${baseUrl}escritorios/actividad/seleccion`);
                     });
             });
@@ -313,19 +328,22 @@ const dibujarActividad = (actividades = []) => {
             break;
         case "EST_ROLE":
             btnComentarios.forEach((btn, index) => {
-                if(actividades[index].calificacion.intentos > 0 && actividades[index].calificacion.calificacion !== 10)
-                    btnEntrar[aux++].addEventListener('click', () => {
+                console.log(actividades[index]);
+                if (actividades[index].disponible == true) {
+                    if (actividades[index].calificacion.intentos > 0 && actividades[index].calificacion.calificacion !== 10)
+                        btnEntrar[aux++].addEventListener('click', () => {
                             localStorage.setItem('juego', actividades[index].juego._id);
-                            localStorage.setItem('actividad',actividades[index]._id);
-                            localStorage.setItem('intentos',actividades[index].calificacion.intentos);
+                            localStorage.setItem('actividad', actividades[index]._id);
+                            localStorage.setItem('intentos', actividades[index].calificacion.intentos);
                             window.location.replace(`${juegosUrl}juegos/${actividades[index].tipoJuego}/jugar`);
-                    });
+                        });
+                }
             });
             break;
         default:
             break;
     }
-        
+
     btnComentarios.forEach((btn, index) => {
         btn.addEventListener('click', async() => {
             console.log(actividades[index]._id);

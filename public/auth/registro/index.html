@@ -2,76 +2,77 @@
 <html>
 
 <head>
-  <title>Registro de Usuario</title>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
-    integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="./css/style_registro.css">
-  <link rel="stylesheet" type="text/css" href="../../css/generales/barra_navegacion.css">
-  <link rel="stylesheet" type="text/css" href="../../css/generales/loader.css">
-  <link rel="stylesheet" type="text/css" href="../../css/generales/blocker.css">
+    <title>Registro de Usuario</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/style_registro.css">
+    <link rel="stylesheet" type="text/css" href="../../css/generales/barra_navegacion.css">
+    <link rel="stylesheet" type="text/css" href="../../css/generales/loader.css">
+    <link rel="stylesheet" type="text/css" href="../../css/generales/blocker.css">
 </head>
 
 <body style="margin:0;">
-  
-  <div id="blocker"></div>
-  <div id="loader"></div>
 
-  <header class="stick" id="navBar">
-  </header>
-  
-  <div class="main-block">
-    <div id="popAlert"></div>
-    <div class="left-part">
-      <i class="fas fa-graduation-cap"></i>
+    <div id="blocker"></div>
+    <div id="loader"></div>
 
-      <h1>Registrate para tener acceso a la plataforma EDUMEX</h1>
-    </div>
+    <header class="stick" id="navBar">
+    </header>
 
-    <form id="form_registro" action="/">
-      <div class="title">
-        <i class="fas fa-pencil-alt"></i>
+    <div class="main-block">
+        <div id="popAlert"></div>
+        <div class="left-part">
+            <i class="fas fa-graduation-cap"></i>
 
-        <h2>Tu información</h2>
-      </div>
-
-      <div id="alertas"></div>
-
-      <div id="datos_registro" class="info">
-        <input id="Nom_registro" type="text" name="nombre" placeholder="*Nombre(s)">
-        <input id="Pat_registro" type="text" name="apellidoP" placeholder="*Apellido Paterno">
-        <input id="Mat_registro" type="text" name="apellidoM" placeholder="Apellido Materno">
-        <input id="Correo_registro" type="email" name="correo" placeholder="*Correo Electrónico">
-        <input id="Contra_registro" type="password" name="password" placeholder="*Contraseña">
-        <input id="ContraC_registro" type="password" name="passwordC" placeholder="*Confirmar contraseña">
-
-        <div class="centrarSelectores">
-          <ul id=selectorRol>
-            <li class="elemento"><input id="cb1" type="checkbox" class="rolCheckbox" value="EST_ROLE" />
-              <label for="cb1" class="imagenOpcion"><img src="../../images/alumno.png" /></label>
-            </li>
-
-            <li class="elemento"><input id="cb2" type="checkbox" class="rolCheckbox" value="PRO_ROLE" />
-              <label for="cb2" class="imagenOpcion"><img src="../../images/profesor.png" /></label>
-            </li>
-          </ul>
+            <h1>Registrate para tener acceso a la plataforma EDUMEX</h1>
         </div>
-      </div>
-      
-      <div class="botonEnvioForm">
-        <button id="enviar_registro" type="submit">Registrarme</button>
-      </div>
-    </form>
-  </div>
-  <script src="../../js/const.js"></script>
-  <script src="../../js/valForm.js"></script>
-  <script src="../../js/cabecera.js"></script>
-  <script src="../../js/navBar.js"></script>
-  <script src="../../js/validarJWT.js"></script>
-  <script src="../../js/loaders.js"></script>
-  <script src="../../js/alertas.js"></script>
-  <script src="../js/common.js"></script>
-  <script src="js/main.js"></script>
+
+        <form id="form_registro" action="/">
+            <div class="title">
+                <i class="fas fa-pencil-alt"></i>
+
+                <h2>Tu información</h2>
+            </div>
+
+            <div id="alertas"></div>
+
+            <div id="datos_registro" class="info">
+                <input id="Nom_registro" type="text" name="nombre" placeholder="*Nombre(s)">
+                <input id="Pat_registro" type="text" name="apellidoP" placeholder="*Apellido Paterno">
+                <input id="Mat_registro" type="text" name="apellidoM" placeholder="Apellido Materno">
+                <input id="Correo_registro" type="email" name="correo" placeholder="*Correo Electrónico">
+                <input id="Contra_registro" type="password" name="password" placeholder="*Contraseña">
+                <input id="ContraC_registro" type="password" name="passwordC" placeholder="*Confirmar contraseña">
+
+                <div class="centrarSelectores">
+                    <ul id=selectorRol>
+                        <li class="elemento"><input id="cb1" type="checkbox" class="rolCheckbox" value="EST_ROLE" />
+                            <label for="cb1" class="imagenOpcion"><img src="../../images/alumno.png" /></label>
+                        </li>
+
+                        <li class="elemento"><input id="cb2" type="checkbox" class="rolCheckbox" value="PRO_ROLE" />
+                            <label for="cb2" class="imagenOpcion"><img src="../../images/profesor.png" /></label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="botonEnvioForm">
+                <button id="enviar_registro" type="submit">Registrarme</button>
+            </div>
+        </form>
+    </div>
+    <script src="../../js/const.js"></script>
+    <script src="../../js/valForm.js"></script>
+    <script src="../../js/cabecera.js"></script>
+    <script src="../../js/navBar.js"></script>
+    <script src="../../js/validarJWT.js"></script>
+    <script src="../../js/formularios.js"></script>
+    <script src="../../js/loaders.js"></script>
+    <script src="../../js/alertas.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="js/main.js"></script>
 </body>
+
 </html>
