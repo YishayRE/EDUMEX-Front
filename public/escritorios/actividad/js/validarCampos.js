@@ -10,6 +10,18 @@ const validarVacios = (valoresForm) => {
     return { estaCompleto, camposVacios };
 }
 
+const validarVaciosTam = (valoresForm) => {
+    let estaCompleto = true;
+    let camposVacios = [];
+    for (const [nombre, valor] of Object.entries(valoresForm)) {
+        if (valor == "") {
+            camposVacios.push(`${nombre}`);
+            estaCompleto = false;
+        }
+    }
+    return { estaCompleto, camposVacios };
+}
+
 const validarVaciosAdivinanza = (valoresForm) => {
     let estaCompleto = true;
     let camposVacios = [];

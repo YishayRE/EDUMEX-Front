@@ -32,7 +32,7 @@ const insertarCodigo = (contadorEtiqueta) => {
             </div>
 
             <div id="segundaImagen" class="image-upload">
-                <label for="imagen${contadorEtiqueta - 1}">
+                <label id="imgLabel${contadorEtiqueta - 1}" for="imagen${contadorEtiqueta - 1}">
                     <img class="cargaImagen" id="cargaImagen${contadorEtiqueta - 1}" src="../../../../images/upload.png"/>
                 </label>
                     
@@ -50,7 +50,12 @@ const insertarCodigo = (contadorEtiqueta) => {
 
     opcion.addEventListener('change', () => {
         const valorRespuesta = document.querySelector(`#opt${contadorEtiqueta - 2}`);
-        if(opcion.selectedIndex === 1){
+        const inputImg = document.querySelector(`#imagen${contadorEtiqueta - 1}`);
+        const labelImg = document.querySelector(`#imgLabel${contadorEtiqueta - 1}`);
+        if (opcion.selectedIndex === 1) {
+            inputImg.type = "text";
+            inputImg.value = "imgOpcional";
+            labelImg.style.visibility = "hidden";
             select.innerHTML = 'Forma';
             respuestaCambiar.removeChild(valorRespuesta);
             let campoForma = document.createElement("select");
@@ -58,15 +63,20 @@ const insertarCodigo = (contadorEtiqueta) => {
             campoForma.id = `opt${contadorEtiqueta - 2}`;
             campoForma.name = `opt${contadorEtiqueta - 2}`;
             respuestaCambiar.appendChild(campoForma);
-            let arrayValores = ["Cuadrado","Círculo","Triangulo","Rectángulo","Trapecio","Paralelogramo",
-            "Pentágono","Hexágono","Rombo","Cubo","Pirámide","Cono","Cilindro","Esfera"];
+            valorRespuestaForma = document.querySelector(`#opt${contadorEtiqueta - 2}`);
+            valorRespuestaForma.style.marginTop = "47px";
+            let arrayValores = ["Cuadrado", "Círculo", "Triangulo", "Rectángulo", "Trapecio", "Paralelogramo",
+                "Pentágono", "Hexágono", "Rombo", "Cubo", "Pirámide", "Cono", "Cilindro", "Esfera"
+            ];
             for (let i = 0; i < arrayValores.length; i++) {
                 let option = document.createElement("option");
                 option.value = arrayValores[i];
                 option.text = arrayValores[i];
                 campoForma.appendChild(option);
             }
-        }else{
+        } else {
+            inputImg.type = "file";
+            labelImg.style.visibility = "visible"
             select.innerHTML = 'Tamaño';
             respuestaCambiar.removeChild(valorRespuesta);
             let campoTamaño = document.createElement("select");
@@ -74,7 +84,8 @@ const insertarCodigo = (contadorEtiqueta) => {
             campoTamaño.id = `opt${contadorEtiqueta - 2}`;
             campoTamaño.name = `opt${contadorEtiqueta - 2}`;
             respuestaCambiar.appendChild(campoTamaño);
-            let arrayValores = ["Mayor que","Menor que","Igual"];
+
+            let arrayValores = ["Mayor que", "Menor que", "Igual"];
             for (let i = 0; i < arrayValores.length; i++) {
                 let option = document.createElement("option");
                 option.value = arrayValores[i];
@@ -96,7 +107,7 @@ const insertarCodigo = (contadorEtiqueta) => {
 
         if (file.type && !file.type.startsWith('image/')) {
             console.log('File is not an image.', file.type, file);
-        }else{
+        } else {
             const respuestaImagen = await subirImagen(cargaImagen.src, file);
             console.log(respuestaImagen);
             cargaImagen.src = respuestaImagen.url;
@@ -109,7 +120,7 @@ const insertarCodigo = (contadorEtiqueta) => {
 
         if (file.type && !file.type.startsWith('image/')) {
             console.log('File is not an image.', file.type, file);
-        }else{
+        } else {
             const respuestaImagen = await subirImagen(cargaImagenDos.src, file);
             console.log(respuestaImagen);
             cargaImagenDos.src = respuestaImagen.url;

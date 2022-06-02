@@ -14,15 +14,14 @@ const generarHtml = () => {
         throw new Error("Debe agregar minimo dos reactivos");
     }
     const valoresBien = validarVaciosMemoria(formulario);
-
-    if (valoresBien.length == 0) {
+    console.log(valoresBien);
+    if (valoresBien.length === 0) {
         dibujarPopAlerta("Falta ingresar valores en los campos de los reactivos");
     } else {
         const htmlAux = [];
         const respuesta = [];
         for (let i = 0; i < valoresBien.length / 3; i++) {
             const triple = i * 3;
-            const doble = i * 2;
             const uIdUno = uuid.v4();
             const uIdDos = uuid.v4();
             let cod = "";
@@ -32,8 +31,10 @@ const generarHtml = () => {
                 case "PP":
                     cod = `<div class="elementosMemorama" id="${uIdUno}">
                         <div class="txtMemorama">
-                            <div class="fondoMemo" id="fondo${doble}"></div>
-                            <div class="caraMemo" id="elemento${doble}">
+                            <div class="fondoMemo"  >
+                                <img src="${baseUrl}images/logoPNG.png" alt="imagenJ" class="imagenParMemorama">
+                            </div>
+                            <div class="caraMemo"  >
                                 <label class="textoMemorama">${valoresBien[triple + 1]}</label>
                             </div>
                         </div>
@@ -41,8 +42,10 @@ const generarHtml = () => {
                     htmlAux.push(cod);
                     cod = `<div class="elementosMemorama" id="${uIdDos}">
                         <div class="txtMemorama">
-                            <div class="fondoMemo" id="fondo${doble + 1}"></div>
-                            <div class="caraMemo" id="elemento${doble + 1}">
+                            <div class="fondoMemo" >
+                                <img src="${baseUrl}images/logoPNG.png" alt="imagenJ" class="imagenParMemorama">
+                            </div>
+                            <div class="caraMemo"  >
                                 <label class="textoMemorama">${valoresBien[triple + 2]}</label>
                             </div>
                         </div>
@@ -54,8 +57,10 @@ const generarHtml = () => {
                 case "PI":
                     cod = `<div class="elementosMemorama" id="${uIdUno}">
                         <div class="txtMemorama">
-                            <div class="fondoMemo" id="fondo${doble}"></div>
-                            <div class="caraMemo" id="elemento${doble}">
+                            <div class="fondoMemo"  >
+                                <img src="${baseUrl}images/logoPNG.png" alt="imagenJ" class="imagenParMemorama">
+                            </div>
+                            <div class="caraMemo">
                                 <label class="textoMemorama">${valoresBien[triple + 1]}</label>
                             </div>
                         </div>
@@ -63,8 +68,10 @@ const generarHtml = () => {
                     htmlAux.push(cod);
                     cod = `<div class="elementosMemorama" id="${uIdDos}">
                         <div class="imgMemorama">
-                            <div class="fondoMemo" id="fondo${doble + 1}"></div>
-                            <div class="caraMemo" id="elemento${doble + 1}">
+                            <div class="fondoMemo" >
+                                <img src="${baseUrl}images/logoPNG.png" alt="imagenJ" class="imagenParMemorama">
+                            </div>
+                            <div class="caraMemo"  >
                                 <img src="${valoresBien[triple + 2]}" alt="imagenJ" class="imagenParMemorama">
                             </div>
                         </div>
@@ -75,8 +82,10 @@ const generarHtml = () => {
                 case "II":
                     cod = `<div class="elementosMemorama" id="${uIdUno}">
                     <div class="imgMemorama">
-                        <div class="fondoMemo" id="fondo${doble}"></div>
-                        <div class="caraMemo" id="elemento${doble}">
+                        <div class="fondoMemo">
+                            <img src="${baseUrl}images/logoPNG.png" alt="imagenJ" class="imagenParMemorama">
+                        </div>
+                        <div class="caraMemo"  >
                             <img src="${valoresBien[triple + 1]}" alt="imagenJ" class="imagenParMemorama">
                         </div>
                     </div>
@@ -85,8 +94,10 @@ const generarHtml = () => {
                     htmlAux.push(cod);
                     cod = `<div class="elementosMemorama" id="${uIdDos}">
                     <div class="imgMemorama">
-                        <div class="fondoMemo" id="fondo${doble + 1}"></div>
-                        <div class="caraMemo" id="elemento${doble + 1}">
+                        <div class="fondoMemo" >
+                            <img src="${baseUrl}images/logoPNG.png" alt="imagenJ" class="imagenParMemorama">
+                        </div>
+                        <div class="caraMemo"  >
                             <img src="${valoresBien[triple + 2]}" alt="imagenJ" class="imagenParMemorama">
                         </div>
                     </div>

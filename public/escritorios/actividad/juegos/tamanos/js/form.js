@@ -58,16 +58,13 @@ const generarHtml = () => {
                 html3 += `
                 <div class="elementosTamanos">
                 <div class="imgTam">
-                    <h3 class="textoTamano">La imagen de la izquierda es</h3>
                     <img src="${imagenes[index + auxImagenes].currentSrc}" alt="imagenJ" class="imagenReactivoTamano">
+                    <img src="${imagenes[index + auxImagenes + 1].currentSrc}" alt="imagenJ" class="imagenReactivoTamano">
                 </div>
                 `;
-                auxImagenes++;
                 html3 += `
                 <div class="imgTam">
-                    <h3 class="textoTamano">Respecto a la imagen de la derecha</h3>
-                    <img src="${imagenes[index + auxImagenes].currentSrc}" alt="imagenJ" class="imagenReactivoTamano">
-                </div>
+                    <h3 class="textoTamano">Lo que se ve en la imagen de la izquierda es:</h3>
                 </div>
                 `;
                 html3 += `
@@ -79,11 +76,18 @@ const generarHtml = () => {
                     </select>
                 </div>
                 `;
+                auxImagenes++;
+                html3 += `
+                <div class="imgTam">
+                    <h3 class="textoTamano">Respecto a la imagen de la derecha</h3>
+                </div>
+                </div>
+                `;
                 console.log(`index final: ${auxImagenes}`)
             } else if (opcionJ[1] == "Forma") {
                 html3 += `
                 <div class="textoForma">
-                    <h3 class="textoAdivinanza">La forma de las imágenes    ¿Qué figura geométrica representa?</h3>
+                    <h3 class="textoAdivinanza">La forma de la imagen      ¿Qué figura geométrica representa?</h3>
                 </div>
                 `;
                 html3 += `
@@ -94,9 +98,6 @@ const generarHtml = () => {
                 `;
                 auxImagenes++;
                 html3 += `
-                    <div>
-                        <img src="${imagenes[index + auxImagenes].currentSrc}" alt="imagenJ" class="imagenReactivoForma">
-                    </div>
                 </div>
                 <div class="divRespuesta">
                     <select class="selectTamano" name="opcion${index}" id="opcion${index}">

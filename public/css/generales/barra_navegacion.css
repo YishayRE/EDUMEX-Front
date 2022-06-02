@@ -97,6 +97,7 @@ nav ul li a {
     background: #E5989B;
     transition: all .5s;
     font-weight: bold;
+    cursor: pointer;
 }
 
 li a.active {

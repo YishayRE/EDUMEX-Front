@@ -33,6 +33,9 @@ const generarHtml = () => {
         anchoPieza = anchoPieza * 2;
     }
 
+    console.log(altMax, anchMax);
+    console.log(altoPieza, anchoPieza);
+
     const altoImg = altoPieza * piezasY;
     const anchoImg = anchoPieza * piezasX;
 

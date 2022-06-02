@@ -1,4 +1,4 @@
-const btnJuego = document.querySelectorAll('#btnJuego'); 
+const btnJuego = document.querySelectorAll('#btnJuego');
 const materia = document.querySelector('#materia');
 const actividad = document.querySelector('#actividad');
 const tipoJ = document.querySelector('#tipoJ');
@@ -11,8 +11,7 @@ const select = document.querySelector('#select0');
 
 const titulo = localStorage.getItem('tituloJ');
 
-const accesoP = [
-    {
+const accesoP = [{
         'nombre': 'Terminar Juego',
         'referencia': ``
     },
@@ -27,9 +26,8 @@ console.log(contadorEtiqueta)
 
 adicion.addEventListener('click', () => {
     insertarCodigo(contadorEtiqueta = contadorEtiqueta + 2);
-    if(contadorEtiqueta > 0)
+    if (contadorEtiqueta > 0)
         resta.style.display = "block";
-    console.log("Suma"+contadorEtiqueta);
 });
 
 resta.style.display = "none";
@@ -38,15 +36,15 @@ resta.addEventListener('click', () => {
     console.log(contadorEtiqueta);
     eliminarCodigo(contadorEtiqueta);
     contadorEtiqueta = contadorEtiqueta - 2;
-    if(contadorEtiqueta == 0)
+    if (contadorEtiqueta == 0)
         resta.style.display = "none";
 });
 
 const checarRol = async() => {
-    if(rol == "PRO_ROLE"){
+    if (rol == "PRO_ROLE") {
         dibujarNavBar(accesoP, 'tamanos', 'materia');
         cerrarSesion();
-    }else if(rol == "EST_ROLE"){
+    } else if (rol == "EST_ROLE") {
         dibujarNavBar();
         cerrarSesion();
     }
