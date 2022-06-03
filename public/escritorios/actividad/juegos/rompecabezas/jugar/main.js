@@ -31,8 +31,6 @@ const terminarJugar = () => {
         else if (acomodados === 1) {
             const enviarRespuestas = await jugarJuego([respuestas]);
 
-            console.log(enviarRespuestas);
-
             if (enviarRespuestas.calificacion == "10.00" || intentosEst === 0) {
                 dibujarPopAlerta("aciertos", "Lo armaste correctamente, tu calificación es: " + enviarRespuestas.calificacion + " <br>Intentos restantes: " + enviarRespuestas.intentos, "desactivarOverlay");
                 const btnContinuar = document.querySelector("#continuarC");
@@ -40,7 +38,6 @@ const terminarJugar = () => {
             } else {
                 dibujarPopAlerta("aciertos", "Lo armaste incorrectamente, tu calificación es: " + enviarRespuestas.calificacion + " <br>Intentos restantes: " + enviarRespuestas.intentos);
             }
-            console.log("Tienes " + enviarRespuestas.intentos + " aciertos");
         } else
             dibujarPopAlerta("No has acabado de armar el rompecabezas");
         hiddenLoad();

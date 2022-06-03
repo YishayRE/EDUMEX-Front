@@ -27,8 +27,6 @@ const terminarJugar = async() => {
 
             const enviarRespuestas = await jugarJuego(respuestasContestadas);
 
-            console.log(enviarRespuestas);
-
             let contador = 0;
 
             enviarRespuestas.respuestas.forEach((respuesta, index) => {
@@ -61,8 +59,6 @@ const terminarJugar = async() => {
                 const btnContinuar = document.querySelector("#continuarC");
                 btnContinuar.style.display = "none";
             }
-
-            console.log("Tienes " + contador + " aciertos");
         }
     });
 }

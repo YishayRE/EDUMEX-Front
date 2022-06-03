@@ -172,7 +172,6 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '', datosList
                     break;
             }
         else {
-            console.log("Faltan Datos");
             dibujarPopAlerta("Faltan campos por llenar");
             hiddenLoad();
         }
@@ -310,7 +309,6 @@ const dibujarPopEditar = ([nombre = '', form = '', datos = [], boton = '', datos
         if (valForm(datos))
             await actTarjeta(datos, `${form}/`, editarId);
         else {
-            console.log("Faltan Datos");
             dibujarPopAlerta("Faltan campos por llenar");
             hiddenLoad();
         }

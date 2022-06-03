@@ -1,5 +1,3 @@
-console.log("Bienvenido a Rompecabezas");
-
 const titulo = "60:00";
 
 const accesosPrueba = [{
@@ -11,7 +9,6 @@ const dibujarJuego = async() => {
     dibujarNavBar(accesosPrueba, titulo);
     await codigoJuego();
     let reactivos = await obtenerRespuestas();
-    console.log(reactivos.respuestas[0]);
     terminarProbar(reactivos.respuestas[0]);
 }
 
@@ -21,7 +18,6 @@ const terminarProbar = (respuestasValidas) => {
         draggable();
         hiddenLoad();
     }, 2000);
-    console.log(respuestas, acomodados);
     const finJuego = document.querySelector('#pro0');
     const datosJuego = document.querySelector('#contenidoJuego');
     finJuego.addEventListener('click', (e) => {
