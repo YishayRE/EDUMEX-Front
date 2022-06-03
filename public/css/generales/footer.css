@@ -94,7 +94,7 @@ li a:hover {
 .elementFooter2 {
     justify-items: center;
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto;
 }
 
 .imgFooter {

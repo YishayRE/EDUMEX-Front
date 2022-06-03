@@ -10,7 +10,7 @@ const datosPop = [{
         'nombre': 'Contáctanos',
     },
     {
-        'nombre': 'Manual',
+        'nombre': 'Video Explicativo',
     }
 ];
 
@@ -69,14 +69,14 @@ const dibujarPopFooter = () => {
                             </div>
                         </div>
     `;
-        } else if (nombre === "Manual") {
+        } else if (nombre === "Video Explicativo") {
             popFooterHtml += `
                         <div class="center">
                             <div class="opcionesManual">
-                                <div class="elementFooter2">
+                                <a href="https://youtu.be/Sd_VYM9Uilc" class="elementFooter2">
                                     <h2>Video explicativo</h2>
                                     <img src="${baseUrl}/images/video.png" alt="Video" class="imgFooter2">
-                                </div>
+                                </a>
                             </div>
                         </div>
             `;
