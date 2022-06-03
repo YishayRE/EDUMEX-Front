@@ -69,9 +69,7 @@ const dibujarNavBar = (accesos = [], tipoJuego, url) => {
             let formulario = "";
             formulario = generarHtml();
 
-            if (formulario == false)
-                console.log("No se generado el codigo del juego");
-            else {
+            if (formulario !== false) {
                 if (tipoJuego !== "rompecabezas" && tipoJuego !== "memoria")
                     if (formulario[1].length <= 1) {
                         dibujarPopAlerta("Debe agregar minimo dos reactivos");
@@ -91,7 +89,6 @@ const dibujarNavBar = (accesos = [], tipoJuego, url) => {
 
         terminarJ.addEventListener('click', async(e) => {
             let formulario = generarHtml();
-            console.log("Aqui estoy");
             const elementosCalif = dataForm(document.querySelector("#elementosCalif"));
             const valoresBien = validarVacios(elementosCalif);
 

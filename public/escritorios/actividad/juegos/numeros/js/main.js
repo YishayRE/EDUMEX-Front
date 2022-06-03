@@ -6,8 +6,6 @@ const objetivo = document.querySelector('#objetivo');
 const descripcion = document.querySelector('#descripcion');
 const contenedor = document.querySelector('#contenedor');
 const adicion = document.querySelector('#adicion');
-//const opcion = document.querySelector('#opcion0');
-//const select = document.querySelector('#select0');
 
 const titulo = localStorage.getItem('tituloJ');
 
@@ -25,7 +23,7 @@ let contadorEtiqueta = 0;
 
 adicion.addEventListener('click', () => {
     insertarCodigo(contadorEtiqueta++);
-    if(contadorEtiqueta > 0)
+    if (contadorEtiqueta > 0)
         resta.style.display = "block";
 });
 
@@ -33,7 +31,7 @@ resta.style.display = "none";
 
 resta.addEventListener('click', () => {
     eliminarCodigo(--contadorEtiqueta);
-    if(contadorEtiqueta == 0)
+    if (contadorEtiqueta == 0)
         resta.style.display = "none";
 });
 

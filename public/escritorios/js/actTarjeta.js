@@ -8,8 +8,6 @@ const actTarjeta = async(formData = {}, route = '', idT, esJuego = '') => {
 
     let raw = JSON.stringify(formData);
 
-    console.log(raw);
-
     let requestOptions = {
         method: 'PUT',
         headers: myHeaders,
@@ -19,7 +17,7 @@ const actTarjeta = async(formData = {}, route = '', idT, esJuego = '') => {
     const resp = await fetch(baseApi + route + 'id/', requestOptions);
 
     const respuesta = await resp.json();
-    console.log(respuesta);
+
     let errores = '';
 
     if (respuesta.msg) {

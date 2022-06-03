@@ -14,15 +14,8 @@ const descargarArchivo = async(idT, route) => {
 
     const resp = await fetch(baseApi + route + "calificaciones/", requestOptions);
 
-    /*try {
-        const respuesta = await resp.json();
-
-        let errores = '';
-        
-        
-    } catch (error) {*/
     const respuesta = await resp.status;
-    console.log(respuesta);
+
     if (respuesta === 200) {
         const file = await resp.blob();
         const url = window.URL.createObjectURL(file);

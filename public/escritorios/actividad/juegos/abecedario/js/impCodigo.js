@@ -38,10 +38,10 @@ const insertarCodigo = (contadorEtiqueta) => {
     const error = document.querySelector(`#error${contadorEtiqueta}`);
 
     opcion.addEventListener('change', () => {
-        if (opcion.selectedIndex === 1){
+        if (opcion.selectedIndex === 1) {
             select.innerHTML = 'Oración';
             validarPalabra(false, opt, error);
-        }else{
+        } else {
             select.innerHTML = 'Palabra';
             validarPalabra(true, opt, error);
         }
@@ -54,13 +54,11 @@ const insertarCodigo = (contadorEtiqueta) => {
 
     inputImagen.addEventListener('change', async(event) => {
         const file = inputImagen.files[0];
-        console.log(file);
 
         if (file.type && !file.type.startsWith('image/')) {
-            console.log('File is not an image.', file.type, file);
-        }else{
+            throw new Error('File is not an image.');
+        } else {
             const respuestaImagen = await subirImagen(cargaImagen.src, file);
-            console.log(respuestaImagen);
             cargaImagen.src = respuestaImagen.url;
         }
     });
@@ -73,20 +71,19 @@ const eliminarCodigo = (contadorEtiqueta) => {
 }
 
 const validarPalabra = (validarActivo, opt, error) => {
-    if(!validarActivo){
+    if (!validarActivo) {
         opt.value = "";
         error.innerHTML = "";
-        opt.oninput = (e) => {
-        }
-    }else{
+        opt.oninput = (e) => {}
+    } else {
         opt.value = "";
         opt.oninput = (e) => {
             const palabra = opt.value;
             const caracter = palabra.charCodeAt(palabra.length - 1);
-            if(caracter === 32){
+            if (caracter === 32) {
                 opt.value = opt.value.substring(0, opt.value.length - 1);
                 error.innerHTML = `No puede haber espacios`;
-            }else{
+            } else {
                 error.innerHTML = "";
             }
         }

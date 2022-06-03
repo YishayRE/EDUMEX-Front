@@ -93,7 +93,6 @@ const dibujarPopAlerta = (err, route, idT) => {
                     <h2>Inscritos</h2>
                     <div id="listaCompleta">
                 `;
-            console.log(idT.length);
             if (idT.length > 0) {
                 idT.forEach((alumno, index) => {
                     popAlertaHtml += `
@@ -180,9 +179,8 @@ const dibujarPopAlerta = (err, route, idT) => {
                 try {
                     let successful = document.execCommand('copy');
                     let msg = successful ? 'successful' : 'unsuccessful';
-                    console.log('Copying text command was ' + msg);
                 } catch (err) {
-                    console.log('Oops, unable to copy');
+                    throw new Error("No se pudo copiar el código");
                 }
             });
             const btnAceptar = document.querySelector('#aceptarAct');

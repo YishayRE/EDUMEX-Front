@@ -14,7 +14,7 @@ const generarHtml = () => {
         throw new Error("Debe agregar minimo dos reactivos");
     }
     const valoresBien = validarVaciosMemoria(formulario);
-    console.log(valoresBien);
+
     if (valoresBien.length === 0) {
         dibujarPopAlerta("Falta ingresar valores en los campos de los reactivos");
     } else {
@@ -26,7 +26,6 @@ const generarHtml = () => {
             const uIdDos = uuid.v4();
             let cod = "";
             respuesta.push([uIdUno, uIdDos]);
-            console.log(valoresBien[triple]);
             switch (valoresBien[triple]) {
                 case "PP":
                     cod = `<div class="elementosMemorama" id="${uIdUno}">
@@ -52,7 +51,6 @@ const generarHtml = () => {
                     </div>
                     `;
                     htmlAux.push(cod);
-                    console.log(htmlAux.length);
                     break;
                 case "PI":
                     cod = `<div class="elementosMemorama" id="${uIdUno}">
@@ -118,13 +116,9 @@ const generarHtml = () => {
 
         html3 += htmlAux[0];
 
-        console.log(html3);
-        console.log(respuesta);
-
         let body = html3;
         html3 = '';
         const respuestaString = respuesta.join("/?");
-        console.log(respuestaString);
         return [`<form id="contenidoJuego">${body}</form>`, [respuestaString]];
     }
     return false;

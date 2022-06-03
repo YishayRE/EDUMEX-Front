@@ -22,7 +22,6 @@ const terminarJugar = () => {
     finJuego.addEventListener('click', async(e) => {
         e.preventDefault();
         showLoad();
-        console.log(tarjetasElegidas);
 
         if (intentosEst === 0) {
             dibujarPopAlerta("Ya no tienes más intentos");
@@ -33,21 +32,19 @@ const terminarJugar = () => {
             const califNum = parseFloat(enviarRespuestas.calificacion);
 
             if (califNum >= 8) {
-                dibujarPopAlerta("aciertos", "Tienes " + contador + " aciertos, Lo has hecho excelente <br>Intentos restantes: " + enviarRespuestas.intentos, "desactivarOverlay");
+                dibujarPopAlerta("aciertos", "Tienes " + enviarRespuestas.pares + " pares correctos, Lo has hecho excelente <br>Intentos restantes: " + enviarRespuestas.intentos, "desactivarOverlay");
             }
             if (califNum > 5 && califNum < 8) {
-                dibujarPopAlerta("aciertos", "Tienes " + contador + " aciertos, Lo has hecho bien, sigue estudiando <br>Intentos restantes: " + enviarRespuestas.intentos);
+                dibujarPopAlerta("aciertos", "Tienes " + enviarRespuestas.pares + " pares correctos, sigue estudiando <br>Intentos restantes: " + enviarRespuestas.intentos);
             }
             if (califNum <= 5) {
-                dibujarPopAlerta("aciertos", "Tienes " + contador + " aciertos, Puedes mejorar, no dejes de intentarlo <br>Intentos restantes: " + enviarRespuestas.intentos);
+                dibujarPopAlerta("aciertos", "Tienes " + enviarRespuestas.pares + " pares correctos, Puedes mejorar, no dejes de intentarlo <br>Intentos restantes: " + enviarRespuestas.intentos);
             }
 
             if (enviarRespuestas.intentos === 0 || califNum === 10.00) {
                 const btnContinuar = document.querySelector("#continuarC");
                 btnContinuar.style.display = "none";
             }
-
-            console.log("Tienes " + contador + " aciertos");
 
         }
     });

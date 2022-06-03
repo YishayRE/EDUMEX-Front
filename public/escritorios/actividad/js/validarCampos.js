@@ -27,9 +27,7 @@ const validarVaciosAdivinanza = (valoresForm) => {
     let camposVacios = [];
 
     for (const [nombre, valor] of Object.entries(valoresForm)) {
-        if (nombre.startsWith("imagen") && valor == "") {
-            console.log("Las imagenes son opcionales");
-        } else if (!(nombre.startsWith("imagen")) && valor == "") {
+        if (!(nombre.startsWith("imagen")) && valor == "") {
             camposVacios.push(`${nombre}`);
             estaCompleto = false;
         }

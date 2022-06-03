@@ -6,30 +6,30 @@ let html3 = ``;
 
 const generarHtml = () => {
     const imagenes = formJ.querySelectorAll("img");
-    console.log(imagenes[1].currentSrc);
     const formulario = dataForm(formJ);
-    console.log(formulario);
 
     const valoresBien = validarVaciosAdivinanza(formulario);
 
-    if(!valoresBien.estaCompleto){
+    if (!valoresBien.estaCompleto) {
         dibujarPopAlerta("Falta ingresar valores en los campos de los reactivos")
-    }else{
+    } else {
         const size = Object.keys(formulario).length / 3;
-        let arrayJ = [[]];
+        let arrayJ = [
+            []
+        ];
         let respuestas = [];
         let j = 0;
         let i = 0;
 
         for (const el in formulario) {
-            if(i === 3){
+            if (i === 3) {
                 i = 0;
                 j++;
                 arrayJ[j] = [];
             }
             if (Object.hasOwnProperty.call(formulario, el)) {
                 const element = formulario[el];
-                arrayJ[j][i] = element; 
+                arrayJ[j][i] = element;
                 i++;
             }
         }
@@ -37,14 +37,14 @@ const generarHtml = () => {
         arrayJ.forEach((opcionJ, index) => {
             let htmlAux1 = "";
             let htmlAux2 = "";
-            if(imagenes[index].currentSrc.includes("cloudinary")){
+            if (imagenes[index].currentSrc.includes("cloudinary")) {
                 htmlAux1 = `<div id="elemento${index}" class="reactivoAdivinanza">`;
                 htmlAux2 = `
                     <div>
                         <img src="${imagenes[index].currentSrc}" alt="imagenJ" class="imagenReactivo">
                     </div>
                 `;
-            }else{
+            } else {
                 htmlAux1 = `<div id="elemento${index}" style="height: 150px;" class="reactivoAdivinanza">`;
             }
             html3 += htmlAux1;
@@ -60,10 +60,10 @@ const generarHtml = () => {
             `;
             respuestas.push(opcionJ[2]);
         });
-    
+
         let body = html3;
         html3 = '';
-        return [`<form id="contenidoJuego">${body}</form>`,respuestas];
-        }
+        return [`<form id="contenidoJuego">${body}</form>`, respuestas];
+    }
     return false;
 }

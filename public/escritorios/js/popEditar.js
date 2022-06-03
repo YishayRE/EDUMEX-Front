@@ -1,4 +1,4 @@
-const emergenteEditarUser =  document.querySelector("#emergenteEditarUser");
+const emergenteEditarUser = document.querySelector("#emergenteEditarUser");
 let overlayEditarUser;
 let cerrarEditarUser;
 
@@ -38,7 +38,7 @@ const dibujarPopEditarUser = () => {
                 </div>
             </div>
         </div>
-    `;  
+    `;
     emergenteEditarUser.innerHTML = popUpHtml;
 
     overlayEditarUser = document.querySelector("#formEditarUser");
@@ -49,13 +49,12 @@ const dibujarPopEditarUser = () => {
         e.preventDefault();
         showLoad();
         const datos = dataForm(formulario);
-        if(valForm(datos))
+        if (valForm(datos))
             await actTarjeta(datos, `usuario/`);
-        else{
-            console.log("Faltan Datos");
-            dibujarPopAlerta("Faltan campos por llenar"); 
+        else {
+            dibujarPopAlerta("Faltan campos por llenar");
             hiddenLoad();
-        }  
+        }
     });
 
     const elminarUser = document.querySelector("#eliminarUser");
@@ -64,14 +63,14 @@ const dibujarPopEditarUser = () => {
         showLoad();
         await elimTarjeta(`usuario/id/`);
     });
-    
+
     cerrarEditarUser.addEventListener('click', (event) => {
         event.preventDefault();
         hiddenPopEditarUser();
     });
 
     overlayEditarUser.addEventListener('click', (event) => {
-        if(event.target == overlayEditarUser){
+        if (event.target == overlayEditarUser) {
             hiddenPopEditarUser();
         }
     });
@@ -85,7 +84,7 @@ function showPopEditarUser() {
     overlayEditarUser.style.display = "block";
 }
 
-function hiddenPopEditarUser(){
+function hiddenPopEditarUser() {
     overlayEditarUser.style.opacity = "0";
     overlayEditarUser.style.visibility = "hidden";
     overlayEditarUser.style.display = "none";

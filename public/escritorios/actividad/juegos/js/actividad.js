@@ -4,17 +4,15 @@ const obtenerAct = async() => {
 
     const resp = await fetch(`${baseApi}actividad/getAct/id/`, {
         method: 'GET',
-        headers: { 'x-token': token, user: uid, id: actId}
+        headers: { 'x-token': token, user: uid, id: actId }
     });
 
     const respuesta = await resp.json();
 
-    console.log(respuesta);
-    
-    if(respuesta.msg){
+    if (respuesta.msg) {
         hiddenLoad();
-        throw new Error(respuesta.msg);        
+        throw new Error(respuesta.msg);
     }
-    
+
     return respuesta;
 }

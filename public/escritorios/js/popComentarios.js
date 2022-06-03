@@ -1,10 +1,9 @@
-const emergentesComentarios =  document.querySelector("#emergenteComentarios");
+const emergentesComentarios = document.querySelector("#emergenteComentarios");
 let overlayComentarios = "";
 let cerrarComentarios = "";
 
 
 const dibujarPopComentarios = (conversacionesAct, numTarjeta) => {
-    console.log(numTarjeta);
     const color = localStorage.getItem("color");
     const fondo = hexToRgbAFuerte(color);
     let popUpHtml = '';
@@ -22,14 +21,13 @@ const dibujarPopComentarios = (conversacionesAct, numTarjeta) => {
                     <form class="center" style="padding: 10px; width:700px;">
                         <div id="comentariosLista" class="comentariosLista" style="border-color: ${color};">
         `;
-    conversacionesAct.comentarios.comentarios.forEach((conversacion,index) => {
+    conversacionesAct.comentarios.comentarios.forEach((conversacion, index) => {
         popUpHtml += `
         <div class="conversacionIndividual" style="background-color: ${fondo}; border: 3px solid ${color};">
             <div class="mensajesConversacion">
         `;
         conversacion.forEach((mensaje, index) => {
-            console.log(mensaje);
-            if(index === 0)
+            if (index === 0)
                 popUpHtml += `
                     <h4 class="mensajePrincipal">${mensaje[0]}:</h4>
                     <h4 class="mensajePrincipal">${mensaje[1]}</h4>
@@ -49,7 +47,7 @@ const dibujarPopComentarios = (conversacionesAct, numTarjeta) => {
                     </div> 
             </form> 
         </div>
-        `;     
+        `;
     });
     popUpHtml += `
                         </div>
@@ -61,7 +59,7 @@ const dibujarPopComentarios = (conversacionesAct, numTarjeta) => {
                 </div>
             </div>
         </div>
-    `;  
+    `;
     emergentesComentarios.innerHTML = popUpHtml;
 
     overlayComentarios = document.querySelector("#formComentarios");
@@ -78,7 +76,7 @@ const dibujarPopComentarios = (conversacionesAct, numTarjeta) => {
             comentarioAct.forEach(input => {
                 const idInput = input.attributes.id.value;
                 const numInput = parseInt(idInput.charAt(idInput.length - 1));
-                if(i !== numInput)
+                if (i !== numInput)
                     input.classList.replace("visible", "invisible");
                 else
                     input.classList.replace("invisible", "visible");
@@ -86,14 +84,13 @@ const dibujarPopComentarios = (conversacionesAct, numTarjeta) => {
         });
     }
 
-    comentarioAct.forEach((input,index) => {
-        input.addEventListener('keypress', async(e) =>{
-            if(e.key == "Enter"){
+    comentarioAct.forEach((input, index) => {
+        input.addEventListener('keypress', async(e) => {
+            if (e.key == "Enter") {
                 e.preventDefault();
                 const cerrarComentarios = document.querySelector("#cerrarComentarios");
                 const abrirComentarios = document.querySelectorAll("#comentarios");
 
-                console.log(numTarjeta);
                 const data = {
                     mensaje: input.value,
                     conversacion: index,
@@ -114,7 +111,7 @@ const dibujarPopComentarios = (conversacionesAct, numTarjeta) => {
     });
 
     overlayComentarios.addEventListener('click', (event) => {
-        if(event.target == overlayComentarios){
+        if (event.target == overlayComentarios) {
             hiddenPopComentarios();
         }
     });
@@ -126,7 +123,7 @@ function showPopComentarios() {
     overlayComentarios.style.display = "block";
 }
 
-function hiddenPopComentarios(){
+function hiddenPopComentarios() {
     overlayComentarios.style.opacity = "0";
     overlayComentarios.style.visibility = "hidden";
     overlayComentarios.style.display = "none";

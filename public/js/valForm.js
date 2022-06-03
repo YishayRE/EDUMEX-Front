@@ -13,7 +13,6 @@ function soloLetras(e) {
     }
 
     if (letras.indexOf(tecla) == -1 && !tecla_especial) {
-        console.log("Solo letras");
         return false;
     }
 }
@@ -33,7 +32,6 @@ function soloNumeros(e) {
     }
 
     if (numeros.indexOf(tecla) == -1 && !tecla_especial) {
-        console.log("Solo numeros");
         return false;
     }
 }
@@ -53,7 +51,6 @@ function sinEspeciales(e) {
     }
 
     if (especiales1.indexOf(tecla) == -1 && !tecla_especial) {
-        console.log("sin especiales");
         return false;
     }
 }
@@ -73,7 +70,6 @@ function sinEspecialesLetras(e) {
     }
 
     if (especiales1.indexOf(tecla) == -1 && !tecla_especial) {
-        console.log("solo letras sin especiales");
         return false;
     }
 }

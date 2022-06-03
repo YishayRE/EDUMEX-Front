@@ -86,9 +86,6 @@ function testing() {
         respuestas = ""
         acomodados = 0;
     }
-
-    console.log(respuestas);
-    console.log(acomodados);
 }
 
 const draggable = () => {

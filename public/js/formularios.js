@@ -1,38 +1,37 @@
 const dataForm = (formulario) => {
     const datosForm = {};
-    
-    for(let el of formulario.elements){
-        if(el.name.length > 0){
+
+    for (let el of formulario.elements) {
+        if (el.name.length > 0) {
             datosForm[el.name] = el.value.trim();
         }
     }
 
     return datosForm;
-} 
+}
 
 const gruposUpd = (formulario) => {
     const datosForm = {};
     datosForm['nombre'] = '';
     let index = 0;
 
-    for(let el of formulario.elements){
+    for (let el of formulario.elements) {
         index++;
-        if(el.name.length > 0)
-            if(index < 3)
+        if (el.name.length > 0)
+            if (index < 3)
                 datosForm['nombre'] += `${el.value.trim()} `;
             else
                 datosForm[el.name] = el.value.trim();
     }
 
     return datosForm;
-} 
+}
 
 const valForm = (datosForm) => {
     for (const key in datosForm) {
         if (Object.hasOwnProperty.call(datosForm, key)) {
             const element = datosForm[key];
-            console.log(element);
-            if(!element)
+            if (!element)
                 return false;
         }
     }

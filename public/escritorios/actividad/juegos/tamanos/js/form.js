@@ -6,11 +6,8 @@ let html3 = ``;
 
 const generarHtml = () => {
     const imagenes = formJ.querySelectorAll("img");
-    console.log(imagenes);
     const formulario = dataForm(formJ);
-    console.log(formulario);
     const valoresBien = validarVacios(formulario);
-    console.log(valoresBien);
 
     if (!valoresBien.estaCompleto) {
         dibujarPopAlerta("Falta ingresar valores en los campos de los reactivos")
@@ -46,7 +43,6 @@ const generarHtml = () => {
                 i++;
             }
         }
-        console.log(arrayJ);
         arrayJ.forEach((opcionJ, index) => {
             html3 += `<div id="elemento${index}" class="reactivoTamano">`;
             html3 += `
@@ -83,7 +79,6 @@ const generarHtml = () => {
                 </div>
                 </div>
                 `;
-                console.log(`index final: ${auxImagenes}`)
             } else if (opcionJ[1] == "Forma") {
                 html3 += `
                 <div class="textoForma">
@@ -125,7 +120,6 @@ const generarHtml = () => {
             respuestas.push(opcionJ[2]);
         });
 
-        console.log(respuestas);
         let body = html3;
         html3 = '';
         return [`<form id="contenidoJuego">${body}</form>`, respuestas];

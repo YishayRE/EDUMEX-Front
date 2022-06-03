@@ -33,9 +33,6 @@ const generarHtml = () => {
         anchoPieza = anchoPieza * 2;
     }
 
-    console.log(altMax, anchMax);
-    console.log(altoPieza, anchoPieza);
-
     const altoImg = altoPieza * piezasY;
     const anchoImg = anchoPieza * piezasX;
 
@@ -79,6 +76,4 @@ const generarHtml = () => {
     <audio id="win" src="https://raw.githubusercontent.com/NestorPlasencia/PikaPuzzle/master/media/win.mp3"></audio>`;
 
     return [html3, [respuesta]];
-    console.log(respuesta);
-    console.log(html3);
 }

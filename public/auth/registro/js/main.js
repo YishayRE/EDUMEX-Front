@@ -91,7 +91,6 @@ miFormulario.addEventListener('submit', async(ev) => {
         hiddenLoad();
         throw new Error("No se seleccionó el tipo de usuario");
     }
-    console.log(formData)
 
     await registrar(formData);
 

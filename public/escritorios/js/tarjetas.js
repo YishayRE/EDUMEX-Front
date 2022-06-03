@@ -81,7 +81,6 @@ const dibujarGrupo = (grupos = []) => {
         vistaListaEst.forEach((lista, index) => {
             lista.addEventListener('click', async(event) => {
                 event.preventDefault();
-                console.log(grupos[index]._id)
                 const listaEstudiantes = await obtenerEstudiantes(grupos[index]._id);
                 dibujarPopAlerta('listaEst', `inscrito/id/`, listaEstudiantes);
             });
@@ -288,7 +287,6 @@ const dibujarActividad = (actividades = []) => {
     tarjetas.innerHTML = actividadesHtml;
 
     const btnEntrar = document.querySelectorAll('#entrar');
-    console.log(btnEntrar);
     const btnComentarios = document.querySelectorAll('#comentarios');
     let aux = 0;
 
@@ -328,7 +326,6 @@ const dibujarActividad = (actividades = []) => {
             break;
         case "EST_ROLE":
             btnComentarios.forEach((btn, index) => {
-                console.log(actividades[index]);
                 if (actividades[index].disponible == true) {
                     if (actividades[index].calificacion.intentos > 0 && actividades[index].calificacion.calificacion !== 10)
                         btnEntrar[aux++].addEventListener('click', () => {
@@ -346,9 +343,7 @@ const dibujarActividad = (actividades = []) => {
 
     btnComentarios.forEach((btn, index) => {
         btn.addEventListener('click', async() => {
-            console.log(actividades[index]._id);
             const mensajesAct = await obtenerMensajes(actividades[index]._id);
-            console.log(mensajesAct);
             dibujarPopComentarios(mensajesAct, index);
             showPopComentarios();
         });

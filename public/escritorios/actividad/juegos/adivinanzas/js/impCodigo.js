@@ -29,13 +29,9 @@ const insertarCodigo = (contadorEtiqueta) => {
 
     inputImagen.addEventListener('change', async(event) => {
         const file = inputImagen.files[0];
-        console.log(file);
 
-        if (file.type && !file.type.startsWith('image/')) {
-            console.log('File is not an image.', file.type, file);
-        }else{
+        if (file.type && file.type.startsWith('image/')) {
             const respuestaImagen = await subirImagen(cargaImagen.src, file);
-            console.log(respuestaImagen);
             cargaImagen.src = respuestaImagen.url;
         }
     });

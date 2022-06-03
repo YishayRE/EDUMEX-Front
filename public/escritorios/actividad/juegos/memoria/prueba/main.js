@@ -33,7 +33,6 @@ const terminarProbar = (respuestasBien) => {
         arrRespuestas.forEach(respuesta => {
             let i = 0;
             bandera = 0;
-            console.log(tarjetasElegidas.length);
             while (i < tarjetasElegidas.length && bandera === 0) {
                 if (tarjetasElegidas[i][0] == respuesta[0])
                     if (tarjetasElegidas[i][1] == respuesta[1]) {

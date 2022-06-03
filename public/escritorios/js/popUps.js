@@ -1,8 +1,8 @@
 let overlay = "";
 let overlayEditar = "";
 
-const emergentes =  document.querySelector("#emergentes");
-const popsEditar =  document.querySelector("#popsEditar");
+const emergentes = document.querySelector("#emergentes");
+const popsEditar = document.querySelector("#popsEditar");
 
 
 const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '', datosList = []]) => {
@@ -19,10 +19,10 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '', datosList
                     <form class="center" id="${form}">
         `;
     datos.forEach(({ type, name, titulo }) => {
-        if(type == "list"){
+        if (type == "list") {
             popUpHtml += `
             <div class="inputbox">
-                <input list="${type}${name}" name="${name}" id="l${name}">
+                <input list="${type}${name}" name="${name}" id="l${name}" maxlength="1">
 
                 <span>${titulo}</span>
 
@@ -31,7 +31,7 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '', datosList
             switch (name) {
                 case 'grado':
                     let n = 1;
-                    while( n < 7 ){
+                    while (n < 7) {
                         popUpHtml += `
                             <option value="${n}">
                         `;
@@ -40,7 +40,7 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '', datosList
                     break;
                 case 'grupo':
                     let l = 65;
-                    while( l < 71 ){
+                    while (l < 71) {
                         let letra = String.fromCharCode(l);
                         popUpHtml += `
                             <option value="${letra}">
@@ -49,18 +49,18 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '', datosList
                     }
                     break;
                 default:
-                    datosList.forEach(( valor ) => {
+                    datosList.forEach((valor) => {
                         popUpHtml += `
                             <option value="${valor}">
                         `;
-                    });        
+                    });
                     break;
             }
             popUpHtml += `
                 </datalist>
             </div>       
             `;
-        }else{
+        } else {
             popUpHtml += `
             <div class="inputbox">
                 <input type="${type}" name="${name}" id="${name}">
@@ -69,7 +69,7 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '', datosList
             </div>    
             `;
         }
-        
+
     });
     popUpHtml += `
                         <div>
@@ -79,7 +79,7 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '', datosList
                 </div>
             </div>
         </div>
-    `;  
+    `;
     emergentes.innerHTML = popUpHtml;
 
     overlay = document.querySelector("#formsCrear");
@@ -91,7 +91,7 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '', datosList
     });
 
     overlay.addEventListener('click', (event) => {
-        if(event.target == overlay){
+        if (event.target == overlay) {
             hiddenPop();
         }
     });
@@ -101,33 +101,33 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '', datosList
             const grado = document.querySelector('#lgrado');
             const grupo = document.querySelector('#lgrupo');
 
-            grado.onkeypress = function() {return soloNumeros(event)};
-            grupo.onkeypress = function() {return soloLetras(event)};
+            grado.onkeypress = function() { return soloNumeros(event) };
+            grupo.onkeypress = function() { return soloLetras(event) };
 
             break;
         case 'materia':
-    
+
             break;
         case 'actividad':
             const nombre = document.querySelector('#nombre');
             const descripcion = document.querySelector('#descripcion');
-            const objetivo = document.querySelector('#objetivo');            
+            const objetivo = document.querySelector('#objetivo');
 
-            nombre.onkeypress = function() {return sinEspeciales(event)};
-            descripcion.onkeypress = function() {return sinEspeciales(event)};
-            objetivo.onkeypress = function() {return sinEspeciales(event)};
+            nombre.onkeypress = function() { return sinEspeciales(event) };
+            descripcion.onkeypress = function() { return sinEspeciales(event) };
+            objetivo.onkeypress = function() { return sinEspeciales(event) };
 
             break;
         case 'inscrito':
             const codigo = document.querySelector('#codigo');
-            codigo.onkeypress = function() {return sinEspeciales(event)};
-            
+            codigo.onkeypress = function() { return sinEspeciales(event) };
+
             break;
         default:
-                   
+
             break;
     }
-    
+
     const formulario = document.querySelector(`#${form}`);
     formulario.addEventListener('submit', async(e) => {
         e.preventDefault();
@@ -153,29 +153,29 @@ const dibujarPopUp = ([nombre = '', form = '', datos = [], boton = '', datosList
                 break;
             default:
                 hiddenLoad();
-                throw new Error("No se ha podido validar la petición");        
+                throw new Error("No se ha podido validar la petición");
                 break;
         }
         let datos = dataForm(formulario);
         datos[`${validador}`] = vId;
 
-        if(valForm(datos))
+        if (valForm(datos))
             switch (form) {
                 case 'inscrito':
-                    const estu = {estudiante: `${datos['estudiante']}`}
-                    const gru = {codigo: `${datos['codigo']}`}
-                    const finalResult = Object.assign(estu,gru);
+                    const estu = { estudiante: `${datos['estudiante']}` }
+                    const gru = { codigo: `${datos['codigo']}` }
+                    const finalResult = Object.assign(estu, gru);
                     await inscripcion(finalResult, form);
                     break;
                 default:
                     await creacion(datos, form, vId);
                     break;
             }
-        else{
-            console.log("Faltan Datos");  
-            dibujarPopAlerta("Faltan campos por llenar"); 
+        else {
+            console.log("Faltan Datos");
+            dibujarPopAlerta("Faltan campos por llenar");
             hiddenLoad();
-        }  
+        }
     });
 }
 
@@ -193,52 +193,52 @@ const dibujarPopEditar = ([nombre = '', form = '', datos = [], boton = '', datos
                     <form class="center" id="e${form}">
         `;
     datos.forEach(({ type, name, titulo }) => {
-        if(type == "list"){
-            if(name != "grado"){
-            popEditarHtml += `
+        if (type == "list") {
+            if (name != "grado") {
+                popEditarHtml += `
                 <div class="inputbox">
             `;
-            popEditarHtml += `
-                <input list="${type}${name}" name="${name}" id="le${name}">
+                popEditarHtml += `
+                <input list="${type}${name}" name="${name}" id="le${name}" maxlength="1">
 
                 <span>${titulo}</span>
 
                 <datalist id="${type}${name}">
             `;
-            switch (name) {
-                case 'grado':
-                    let n = 1;
-                    while( n < 7 ){
-                        popEditarHtml += `
+                switch (name) {
+                    case 'grado':
+                        let n = 1;
+                        while (n < 7) {
+                            popEditarHtml += `
                             <option value="${n}">
                         `;
-                        n++;
-                    }
-                    break;
-                case 'grupo':
-                    let l = 65;
-                    while( l < 71 ){
-                        let letra = String.fromCharCode(l);
-                        popEditarHtml += `
+                            n++;
+                        }
+                        break;
+                    case 'grupo':
+                        let l = 65;
+                        while (l < 71) {
+                            let letra = String.fromCharCode(l);
+                            popEditarHtml += `
                             <option value="${letra}">
                         `;
-                        l++;
-                    }
-                    break;
-                default:
-                    datosList.forEach(( valor ) => {
-                        popEditarHtml += `
+                            l++;
+                        }
+                        break;
+                    default:
+                        datosList.forEach((valor) => {
+                            popEditarHtml += `
                             <option value="${valor}">
                         `;
-                    });        
-                    break;
-            }
-            popEditarHtml += `
+                        });
+                        break;
+                }
+                popEditarHtml += `
                 </datalist>
             </div>       
             `;
-        }
-        }else{
+            }
+        } else {
             popEditarHtml += `
             <div class="inputbox">
                 <input type="${type}" name="${name}" id="e${name}">
@@ -256,7 +256,7 @@ const dibujarPopEditar = ([nombre = '', form = '', datos = [], boton = '', datos
                 </div>
             </div>
         </div>
-    `;  
+    `;
     popsEditar.innerHTML = popEditarHtml;
 
     overlayEditar = document.querySelector("#formsEditar");
@@ -268,52 +268,52 @@ const dibujarPopEditar = ([nombre = '', form = '', datos = [], boton = '', datos
     });
 
     overlayEditar.addEventListener('click', (event) => {
-        if(event.target == overlayEditar){
+        if (event.target == overlayEditar) {
             hiddenEditar();
         }
-    });  
+    });
 
     switch (form) {
         case 'grupo':
             const grupo = document.querySelector('#legrupo');
-            grupo.onkeypress = function() {return soloLetras(event)};
+            grupo.onkeypress = function() { return soloLetras(event) };
 
             break;
         case 'materia':
-    
+
             break;
         case 'actividad':
             const nombre = document.querySelector('#enombre');
             const descripcion = document.querySelector('#edescripcion');
-            const objetivo = document.querySelector('#eobjetivo');            
+            const objetivo = document.querySelector('#eobjetivo');
 
-            nombre.onkeypress = function() {return sinEspeciales(event)};
-            descripcion.onkeypress = function() {return sinEspeciales(event)};
-            objetivo.onkeypress = function() {return sinEspeciales(event)};
+            nombre.onkeypress = function() { return sinEspeciales(event) };
+            descripcion.onkeypress = function() { return sinEspeciales(event) };
+            objetivo.onkeypress = function() { return sinEspeciales(event) };
 
             break;
         case 'inscrito':
             const codigo = document.querySelector('#grupo');
-            codigo.onkeypress = function() {return sinEspeciales(event)};
-            
+            codigo.onkeypress = function() { return sinEspeciales(event) };
+
             break;
         default:
-                   
+
             break;
     }
-    
+
     const formulario = document.querySelector(`#e${form}`);
     formulario.addEventListener('submit', async(e) => {
         e.preventDefault();
         showLoad();
         const datos = dataForm(formulario);
-        if(valForm(datos))
+        if (valForm(datos))
             await actTarjeta(datos, `${form}/`, editarId);
-        else{
+        else {
             console.log("Faltan Datos");
-            dibujarPopAlerta("Faltan campos por llenar"); 
+            dibujarPopAlerta("Faltan campos por llenar");
             hiddenLoad();
-        }  
+        }
     });
 }
 
@@ -322,7 +322,7 @@ function showPop() {
     overlay.style.visibility = "visible";
 }
 
-function hiddenPop(){
+function hiddenPop() {
     overlay.style.opacity = "0";
     overlay.style.visibility = "hidden";
 }
@@ -332,7 +332,7 @@ function showEditar() {
     overlayEditar.style.visibility = "visible";
 }
 
-function hiddenEditar(){
+function hiddenEditar() {
     overlayEditar.style.opacity = "0";
     overlayEditar.style.visibility = "hidden";
     popsEditar.innerHTML = "";

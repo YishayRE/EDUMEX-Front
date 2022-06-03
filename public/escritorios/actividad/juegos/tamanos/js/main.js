@@ -22,7 +22,6 @@ const accesoP = [{
 ];
 
 let contadorEtiqueta = 0;
-console.log(contadorEtiqueta)
 
 adicion.addEventListener('click', () => {
     insertarCodigo(contadorEtiqueta = contadorEtiqueta + 2);
@@ -33,7 +32,6 @@ adicion.addEventListener('click', () => {
 resta.style.display = "none";
 
 resta.addEventListener('click', () => {
-    console.log(contadorEtiqueta);
     eliminarCodigo(contadorEtiqueta);
     contadorEtiqueta = contadorEtiqueta - 2;
     if (contadorEtiqueta == 0)

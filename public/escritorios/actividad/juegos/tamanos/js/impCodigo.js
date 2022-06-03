@@ -103,26 +103,22 @@ const insertarCodigo = (contadorEtiqueta) => {
 
     inputImagen.addEventListener('change', async(event) => {
         const file = inputImagen.files[0];
-        console.log(file);
 
         if (file.type && !file.type.startsWith('image/')) {
-            console.log('File is not an image.', file.type, file);
+            throw new Error('File is not an image.', file.type, file);
         } else {
             const respuestaImagen = await subirImagen(cargaImagen.src, file);
-            console.log(respuestaImagen);
             cargaImagen.src = respuestaImagen.url;
         }
     });
 
     inputImagenDos.addEventListener('change', async(event) => {
         const file = inputImagenDos.files[0];
-        console.log(file);
 
         if (file.type && !file.type.startsWith('image/')) {
-            console.log('File is not an image.', file.type, file);
+            throw new Error('File is not an image.', file.type, file);
         } else {
             const respuestaImagen = await subirImagen(cargaImagenDos.src, file);
-            console.log(respuestaImagen);
             cargaImagenDos.src = respuestaImagen.url;
         }
     });

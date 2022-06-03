@@ -5,10 +5,7 @@ const crearJuego = async(idAct) => {
     myHeaders.append("user", uid);
     myHeaders.append("idAct", idAct);
     myHeaders.append("Content-Type", "application/json");
-    console.log(myHeaders);
     let raw = JSON.stringify({});
-
-    console.log(raw);
 
     let requestOptions = {
         method: 'POST',
@@ -20,7 +17,6 @@ const crearJuego = async(idAct) => {
     const resp = await fetch(juegosApi, requestOptions);
 
     const respuesta = await resp.json();
-    console.log(respuesta);
 
     let errores = '';
 
@@ -45,10 +41,7 @@ const terminarJuego = async(formData = {}, idT, esJuego = '') => {
     myHeaders.append("idAct", localStorage.getItem('actividad'));
     myHeaders.append("Content-Type", "application/json");
 
-    console.log(localStorage.getItem('actividad'));
     let raw = JSON.stringify(formData);
-    //mandar tipo de juego
-    console.log(raw);
 
     let requestOptions = {
         method: 'PUT',
@@ -60,7 +53,6 @@ const terminarJuego = async(formData = {}, idT, esJuego = '') => {
     const resp = await fetch(juegosApi + 'id/terminar/', requestOptions);
 
     const respuesta = await resp.json();
-    console.log(respuesta);
 
     let errores = '';
 
@@ -82,7 +74,6 @@ const jugarJuego = async(respuestas = [], ruta = "responder/") => {
     myHeaders.append("Content-Type", "application/json");
 
     let raw = JSON.stringify({ respuestas });
-    console.log(raw);
 
     let requestOptions = {
         method: 'PUT',
@@ -94,7 +85,6 @@ const jugarJuego = async(respuestas = [], ruta = "responder/") => {
     const resp = await fetch(juegosApi + ruta, requestOptions);
 
     const respuesta = await resp.json();
-    console.log(respuesta);
 
     let errores = '';
 

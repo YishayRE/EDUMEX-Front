@@ -26,8 +26,7 @@ let contadorEtiqueta = 0;
 
 adicion.addEventListener('click', () => {
     insertarCodigo(contadorEtiqueta++);
-    console.log(contadorEtiqueta);
-    if(contadorEtiqueta > 0)
+    if (contadorEtiqueta > 0)
         resta.style.display = "block";
 });
 
@@ -35,7 +34,7 @@ resta.style.display = "none";
 
 resta.addEventListener('click', () => {
     eliminarCodigo(--contadorEtiqueta);
-    if(contadorEtiqueta == 0)
+    if (contadorEtiqueta == 0)
         resta.style.display = "none";
 });
 
