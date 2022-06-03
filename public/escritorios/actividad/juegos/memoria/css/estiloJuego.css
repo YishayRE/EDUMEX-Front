@@ -1,5 +1,15 @@
 #contenidoJuego {
-    color: black;
+    background-color: #E5989B;
+    height: fit-content;
+    padding: 10px;
+    border: 5px solid;
+    border-radius: 10px;
+    border-color: #68555c;
+    margin: 20px;
+}
+
+#codigo {
+    max-height: 500px;
 }
 
 .imgMemorama {
@@ -11,23 +21,26 @@
 }
 
 .fondoMemo {
-    background-color: black;
+    background-color: #F6AB98;
     border-radius: 10px;
     width: 150px;
     height: 150px;
     display: flex;
     border: 8px solid;
     border-radius: 10px;
-    border-color: black;
+    border-color: #68555c;
+    cursor: pointer;
 }
 
 .caraMemo {
     width: 150px;
     height: 150px;
     display: none;
+    background-color: rgb(250, 194, 227);
     border: 8px solid;
     border-radius: 10px;
     border-color: #68555c;
+    text-align: center;
 }
 
 .imagenParMemorama {
@@ -36,12 +49,35 @@
 }
 
 .textoMemorama {
-    width: 150px;
-    height: 150px;
-    margin: 15px;
+    margin-top: 40px;
     font-size: 30px;
 }
 
 #botonesMemo {
+    height: 200px;
+    height: 50px;
+    padding-left: 41vw;
     display: none;
+}
+
+.btnMemo {
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: #ffb4a2;
+    width: 100px;
+    height: 30px;
+    border: 5px solid;
+    border-radius: 10px;
+    border-color: #68555c;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btnMemo h2 {
+    margin-top: 2px;
+}
+
+.elementosMemorama {
+    width: fit-content;
+    height: fit-content;
 }
